@@ -1,0 +1,605 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		18A0430821894CD2005E04D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0430721894CD2005E04D4 /* AppDelegate.swift */; };
+		18A0430A21894CD2005E04D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0430921894CD2005E04D4 /* ViewController.swift */; };
+		18A0430D21894CD2005E04D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A0430B21894CD2005E04D4 /* Main.storyboard */; };
+		18A0431021894CD2005E04D4 /* IoTGarden.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18A0430E21894CD2005E04D4 /* IoTGarden.xcdatamodeld */; };
+		18A0431221894CD4005E04D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A0431121894CD4005E04D4 /* Assets.xcassets */; };
+		18A0431521894CD4005E04D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A0431321894CD4005E04D4 /* LaunchScreen.storyboard */; };
+		18A0432021894CD4005E04D4 /* IoTGardenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0431F21894CD4005E04D4 /* IoTGardenTests.swift */; };
+		18A0432B21894CD4005E04D4 /* IoTGardenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0432A21894CD4005E04D4 /* IoTGardenUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		18A0431C21894CD4005E04D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18A042FC21894CD2005E04D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 18A0430321894CD2005E04D4;
+			remoteInfo = IoTGarden;
+		};
+		18A0432721894CD4005E04D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18A042FC21894CD2005E04D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 18A0430321894CD2005E04D4;
+			remoteInfo = IoTGarden;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		18A0430421894CD2005E04D4 /* IoTGarden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IoTGarden.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18A0430721894CD2005E04D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		18A0430921894CD2005E04D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		18A0430C21894CD2005E04D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		18A0430F21894CD2005E04D4 /* IoTGarden.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IoTGarden.xcdatamodel; sourceTree = "<group>"; };
+		18A0431121894CD4005E04D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		18A0431421894CD4005E04D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		18A0431621894CD4005E04D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18A0431B21894CD4005E04D4 /* IoTGardenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IoTGardenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		18A0431F21894CD4005E04D4 /* IoTGardenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IoTGardenTests.swift; sourceTree = "<group>"; };
+		18A0432121894CD4005E04D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18A0432621894CD4005E04D4 /* IoTGardenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IoTGardenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		18A0432A21894CD4005E04D4 /* IoTGardenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IoTGardenUITests.swift; sourceTree = "<group>"; };
+		18A0432C21894CD4005E04D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		18A0430121894CD2005E04D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18A0431821894CD4005E04D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18A0432321894CD4005E04D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		18A042FB21894CD2005E04D4 = {
+			isa = PBXGroup;
+			children = (
+				18A0430621894CD2005E04D4 /* IoTGarden */,
+				18A0431E21894CD4005E04D4 /* IoTGardenTests */,
+				18A0432921894CD4005E04D4 /* IoTGardenUITests */,
+				18A0430521894CD2005E04D4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		18A0430521894CD2005E04D4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				18A0430421894CD2005E04D4 /* IoTGarden.app */,
+				18A0431B21894CD4005E04D4 /* IoTGardenTests.xctest */,
+				18A0432621894CD4005E04D4 /* IoTGardenUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		18A0430621894CD2005E04D4 /* IoTGarden */ = {
+			isa = PBXGroup;
+			children = (
+				18A0430721894CD2005E04D4 /* AppDelegate.swift */,
+				18A0430921894CD2005E04D4 /* ViewController.swift */,
+				18A0430B21894CD2005E04D4 /* Main.storyboard */,
+				18A0431121894CD4005E04D4 /* Assets.xcassets */,
+				18A0431321894CD4005E04D4 /* LaunchScreen.storyboard */,
+				18A0431621894CD4005E04D4 /* Info.plist */,
+				18A0430E21894CD2005E04D4 /* IoTGarden.xcdatamodeld */,
+			);
+			path = IoTGarden;
+			sourceTree = "<group>";
+		};
+		18A0431E21894CD4005E04D4 /* IoTGardenTests */ = {
+			isa = PBXGroup;
+			children = (
+				18A0431F21894CD4005E04D4 /* IoTGardenTests.swift */,
+				18A0432121894CD4005E04D4 /* Info.plist */,
+			);
+			path = IoTGardenTests;
+			sourceTree = "<group>";
+		};
+		18A0432921894CD4005E04D4 /* IoTGardenUITests */ = {
+			isa = PBXGroup;
+			children = (
+				18A0432A21894CD4005E04D4 /* IoTGardenUITests.swift */,
+				18A0432C21894CD4005E04D4 /* Info.plist */,
+			);
+			path = IoTGardenUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		18A0430321894CD2005E04D4 /* IoTGarden */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18A0432F21894CD4005E04D4 /* Build configuration list for PBXNativeTarget "IoTGarden" */;
+			buildPhases = (
+				18A0430021894CD2005E04D4 /* Sources */,
+				18A0430121894CD2005E04D4 /* Frameworks */,
+				18A0430221894CD2005E04D4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IoTGarden;
+			productName = IoTGarden;
+			productReference = 18A0430421894CD2005E04D4 /* IoTGarden.app */;
+			productType = "com.apple.product-type.application";
+		};
+		18A0431A21894CD4005E04D4 /* IoTGardenTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18A0433221894CD4005E04D4 /* Build configuration list for PBXNativeTarget "IoTGardenTests" */;
+			buildPhases = (
+				18A0431721894CD4005E04D4 /* Sources */,
+				18A0431821894CD4005E04D4 /* Frameworks */,
+				18A0431921894CD4005E04D4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				18A0431D21894CD4005E04D4 /* PBXTargetDependency */,
+			);
+			name = IoTGardenTests;
+			productName = IoTGardenTests;
+			productReference = 18A0431B21894CD4005E04D4 /* IoTGardenTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		18A0432521894CD4005E04D4 /* IoTGardenUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18A0433521894CD4005E04D4 /* Build configuration list for PBXNativeTarget "IoTGardenUITests" */;
+			buildPhases = (
+				18A0432221894CD4005E04D4 /* Sources */,
+				18A0432321894CD4005E04D4 /* Frameworks */,
+				18A0432421894CD4005E04D4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				18A0432821894CD4005E04D4 /* PBXTargetDependency */,
+			);
+			name = IoTGardenUITests;
+			productName = IoTGardenUITests;
+			productReference = 18A0432621894CD4005E04D4 /* IoTGardenUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		18A042FC21894CD2005E04D4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				TargetAttributes = {
+					18A0430321894CD2005E04D4 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					18A0431A21894CD4005E04D4 = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = 18A0430321894CD2005E04D4;
+					};
+					18A0432521894CD4005E04D4 = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = 18A0430321894CD2005E04D4;
+					};
+				};
+			};
+			buildConfigurationList = 18A042FF21894CD2005E04D4 /* Build configuration list for PBXProject "IoTGarden" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 18A042FB21894CD2005E04D4;
+			productRefGroup = 18A0430521894CD2005E04D4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				18A0430321894CD2005E04D4 /* IoTGarden */,
+				18A0431A21894CD4005E04D4 /* IoTGardenTests */,
+				18A0432521894CD4005E04D4 /* IoTGardenUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		18A0430221894CD2005E04D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18A0431521894CD4005E04D4 /* LaunchScreen.storyboard in Resources */,
+				18A0431221894CD4005E04D4 /* Assets.xcassets in Resources */,
+				18A0430D21894CD2005E04D4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18A0431921894CD4005E04D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18A0432421894CD4005E04D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		18A0430021894CD2005E04D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18A0430A21894CD2005E04D4 /* ViewController.swift in Sources */,
+				18A0430821894CD2005E04D4 /* AppDelegate.swift in Sources */,
+				18A0431021894CD2005E04D4 /* IoTGarden.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18A0431721894CD4005E04D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18A0432021894CD4005E04D4 /* IoTGardenTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18A0432221894CD4005E04D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18A0432B21894CD4005E04D4 /* IoTGardenUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		18A0431D21894CD4005E04D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 18A0430321894CD2005E04D4 /* IoTGarden */;
+			targetProxy = 18A0431C21894CD4005E04D4 /* PBXContainerItemProxy */;
+		};
+		18A0432821894CD4005E04D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 18A0430321894CD2005E04D4 /* IoTGarden */;
+			targetProxy = 18A0432721894CD4005E04D4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		18A0430B21894CD2005E04D4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18A0430C21894CD2005E04D4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		18A0431321894CD4005E04D4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18A0431421894CD4005E04D4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		18A0432D21894CD4005E04D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		18A0432E21894CD4005E04D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		18A0433021894CD4005E04D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T78D673J43;
+				INFOPLIST_FILE = IoTGarden/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ving.IoTGarden;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		18A0433121894CD4005E04D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T78D673J43;
+				INFOPLIST_FILE = IoTGarden/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ving.IoTGarden;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		18A0433321894CD4005E04D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T78D673J43;
+				INFOPLIST_FILE = IoTGardenTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ving.IoTGardenTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IoTGarden.app/IoTGarden";
+			};
+			name = Debug;
+		};
+		18A0433421894CD4005E04D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T78D673J43;
+				INFOPLIST_FILE = IoTGardenTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ving.IoTGardenTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IoTGarden.app/IoTGarden";
+			};
+			name = Release;
+		};
+		18A0433621894CD4005E04D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T78D673J43;
+				INFOPLIST_FILE = IoTGardenUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ving.IoTGardenUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = IoTGarden;
+			};
+			name = Debug;
+		};
+		18A0433721894CD4005E04D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T78D673J43;
+				INFOPLIST_FILE = IoTGardenUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ving.IoTGardenUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = IoTGarden;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		18A042FF21894CD2005E04D4 /* Build configuration list for PBXProject "IoTGarden" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18A0432D21894CD4005E04D4 /* Debug */,
+				18A0432E21894CD4005E04D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18A0432F21894CD4005E04D4 /* Build configuration list for PBXNativeTarget "IoTGarden" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18A0433021894CD4005E04D4 /* Debug */,
+				18A0433121894CD4005E04D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18A0433221894CD4005E04D4 /* Build configuration list for PBXNativeTarget "IoTGardenTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18A0433321894CD4005E04D4 /* Debug */,
+				18A0433421894CD4005E04D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18A0433521894CD4005E04D4 /* Build configuration list for PBXNativeTarget "IoTGardenUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18A0433621894CD4005E04D4 /* Debug */,
+				18A0433721894CD4005E04D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		18A0430E21894CD2005E04D4 /* IoTGarden.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				18A0430F21894CD2005E04D4 /* IoTGarden.xcdatamodel */,
+			);
+			currentVersion = 18A0430F21894CD2005E04D4 /* IoTGarden.xcdatamodel */;
+			path = IoTGarden.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 18A042FC21894CD2005E04D4 /* Project object */;
+}
