@@ -1,0 +1,6 @@
+framework module Pods_IoTGarden {
+  umbrella header "Pods-IoTGarden-umbrella.h"
+
+  export *
+  module * { export * }
+}

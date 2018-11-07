@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1826C625218F51B700A5CE38 /* ItemListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1826C624218F51B700A5CE38 /* ItemListService.swift */; };
+		1846AB53218A9E7800F46053 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846AB52218A9E7800F46053 /* ItemDetailViewController.swift */; };
+		1846AB55218A9EF300F46053 /* ItemDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1846AB54218A9EF300F46053 /* ItemDetailViewController.storyboard */; };
+		1846AB57218AA3B800F46053 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846AB56218AA3B800F46053 /* AddItemViewController.swift */; };
+		1846AB59218AA3E100F46053 /* AddItemViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1846AB58218AA3E100F46053 /* AddItemViewController.storyboard */; };
+		1852DBA22192960D002E1946 /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1852DBA12192960D002E1946 /* AddItemView.swift */; };
+		1852DBA421931E16002E1946 /* AddItemSavingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1852DBA321931E16002E1946 /* AddItemSavingViewController.swift */; };
+		1852DBA621931FA5002E1946 /* AddItemSavingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1852DBA521931FA5002E1946 /* AddItemSavingView.swift */; };
 		18A0430821894CD2005E04D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0430721894CD2005E04D4 /* AppDelegate.swift */; };
 		18A0430A21894CD2005E04D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0430921894CD2005E04D4 /* ViewController.swift */; };
 		18A0430D21894CD2005E04D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A0430B21894CD2005E04D4 /* Main.storyboard */; };
@@ -15,6 +23,21 @@
 		18A0431521894CD4005E04D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A0431321894CD4005E04D4 /* LaunchScreen.storyboard */; };
 		18A0432021894CD4005E04D4 /* IoTGardenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0431F21894CD4005E04D4 /* IoTGardenTests.swift */; };
 		18A0432B21894CD4005E04D4 /* IoTGardenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0432A21894CD4005E04D4 /* IoTGardenUITests.swift */; };
+		18C832BE218ADAD500ED37A1 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C832BD218ADAD500ED37A1 /* Storage.swift */; };
+		18C832C1218AE38800ED37A1 /* ItemList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18C832BF218AE38800ED37A1 /* ItemList.xcdatamodeld */; };
+		18E7A71E218EE4E800F7E689 /* ReactiveReSwiftBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A71D218EE4E800F7E689 /* ReactiveReSwiftBridge.swift */; };
+		18E7A724218EFDF600F7E689 /* ItemListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A723218EFDF600F7E689 /* ItemListState.swift */; };
+		18E7A726218EFE5200F7E689 /* ItemListReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A725218EFE5200F7E689 /* ItemListReducer.swift */; };
+		18E7A728218EFEDD00F7E689 /* ItemListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A727218EFEDD00F7E689 /* ItemListAction.swift */; };
+		18E7A72A218EFF9900F7E689 /* ItemListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A729218EFF9900F7E689 /* ItemListStore.swift */; };
+		18EDCF5021899E3900B233B9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDCF4F21899E3800B233B9 /* Item.swift */; };
+		18EDCF5221899EC500B233B9 /* ConfigurationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDCF5121899EC500B233B9 /* ConfigurationItem.swift */; };
+		18EDCF5421899F3100B233B9 /* GroupItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDCF5321899F3100B233B9 /* GroupItem.swift */; };
+		18EDCF5A2189A0F900B233B9 /* ItemListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDCF592189A0F900B233B9 /* ItemListCell.swift */; };
+		18EDCF5C2189A46500B233B9 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDCF5B2189A46500B233B9 /* ItemListViewController.swift */; };
+		18EDCF5E2189A4AC00B233B9 /* ItemListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EDCF5D2189A4AC00B233B9 /* ItemListViewController.storyboard */; };
+		18EDCF602189AF3600B233B9 /* ItemListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EDCF5F2189AF3600B233B9 /* ItemListCell.xib */; };
+		A59DAFE837AFE2D8DBBFBDD6 /* Pods_IoTGarden.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 881F9D4DBC2B015F5C29BAFA /* Pods_IoTGarden.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +58,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1826C624218F51B700A5CE38 /* ItemListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListService.swift; sourceTree = "<group>"; };
+		1846AB52218A9E7800F46053 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
+		1846AB54218A9EF300F46053 /* ItemDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemDetailViewController.storyboard; sourceTree = "<group>"; };
+		1846AB56218AA3B800F46053 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		1846AB58218AA3E100F46053 /* AddItemViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddItemViewController.storyboard; sourceTree = "<group>"; };
+		1852DBA12192960D002E1946 /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
+		1852DBA321931E16002E1946 /* AddItemSavingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemSavingViewController.swift; sourceTree = "<group>"; };
+		1852DBA521931FA5002E1946 /* AddItemSavingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemSavingView.swift; sourceTree = "<group>"; };
 		18A0430421894CD2005E04D4 /* IoTGarden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IoTGarden.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A0430721894CD2005E04D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18A0430921894CD2005E04D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +80,23 @@
 		18A0432621894CD4005E04D4 /* IoTGardenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IoTGardenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A0432A21894CD4005E04D4 /* IoTGardenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IoTGardenUITests.swift; sourceTree = "<group>"; };
 		18A0432C21894CD4005E04D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18C832BD218ADAD500ED37A1 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		18C832C0218AE38800ED37A1 /* ItemList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ItemList.xcdatamodel; sourceTree = "<group>"; };
+		18E7A71D218EE4E800F7E689 /* ReactiveReSwiftBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveReSwiftBridge.swift; sourceTree = "<group>"; };
+		18E7A723218EFDF600F7E689 /* ItemListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListState.swift; sourceTree = "<group>"; };
+		18E7A725218EFE5200F7E689 /* ItemListReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListReducer.swift; sourceTree = "<group>"; };
+		18E7A727218EFEDD00F7E689 /* ItemListAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListAction.swift; sourceTree = "<group>"; };
+		18E7A729218EFF9900F7E689 /* ItemListStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListStore.swift; sourceTree = "<group>"; };
+		18EDCF4F21899E3800B233B9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		18EDCF5121899EC500B233B9 /* ConfigurationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationItem.swift; sourceTree = "<group>"; };
+		18EDCF5321899F3100B233B9 /* GroupItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupItem.swift; sourceTree = "<group>"; };
+		18EDCF592189A0F900B233B9 /* ItemListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListCell.swift; sourceTree = "<group>"; };
+		18EDCF5B2189A46500B233B9 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
+		18EDCF5D2189A4AC00B233B9 /* ItemListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemListViewController.storyboard; sourceTree = "<group>"; };
+		18EDCF5F2189AF3600B233B9 /* ItemListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListCell.xib; sourceTree = "<group>"; };
+		881F9D4DBC2B015F5C29BAFA /* Pods_IoTGarden.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IoTGarden.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C397D18E5EE8BB6B5777179D /* Pods-IoTGarden.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoTGarden.release.xcconfig"; path = "Pods/Target Support Files/Pods-IoTGarden/Pods-IoTGarden.release.xcconfig"; sourceTree = "<group>"; };
+		F67062452CC96EA3E8E06F13 /* Pods-IoTGarden.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoTGarden.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IoTGarden/Pods-IoTGarden.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A59DAFE837AFE2D8DBBFBDD6 /* Pods_IoTGarden.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +132,8 @@
 				18A0431E21894CD4005E04D4 /* IoTGardenTests */,
 				18A0432921894CD4005E04D4 /* IoTGardenUITests */,
 				18A0430521894CD2005E04D4 /* Products */,
+				7F80F3B828C6EE0A29D0D08C /* Pods */,
+				668BC69708829001B254DD95 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,11 +151,29 @@
 			isa = PBXGroup;
 			children = (
 				18A0430721894CD2005E04D4 /* AppDelegate.swift */,
+				18C832BD218ADAD500ED37A1 /* Storage.swift */,
+				1826C624218F51B700A5CE38 /* ItemListService.swift */,
+				18E7A71C218EE0F800F7E689 /* Redux */,
+				18C832BF218AE38800ED37A1 /* ItemList.xcdatamodeld */,
 				18A0430921894CD2005E04D4 /* ViewController.swift */,
 				18A0430B21894CD2005E04D4 /* Main.storyboard */,
 				18A0431121894CD4005E04D4 /* Assets.xcassets */,
 				18A0431321894CD4005E04D4 /* LaunchScreen.storyboard */,
 				18A0431621894CD4005E04D4 /* Info.plist */,
+				18EDCF4F21899E3800B233B9 /* Item.swift */,
+				18EDCF5121899EC500B233B9 /* ConfigurationItem.swift */,
+				18EDCF5321899F3100B233B9 /* GroupItem.swift */,
+				18EDCF592189A0F900B233B9 /* ItemListCell.swift */,
+				18EDCF5F2189AF3600B233B9 /* ItemListCell.xib */,
+				18EDCF5B2189A46500B233B9 /* ItemListViewController.swift */,
+				18EDCF5D2189A4AC00B233B9 /* ItemListViewController.storyboard */,
+				1846AB52218A9E7800F46053 /* ItemDetailViewController.swift */,
+				1846AB54218A9EF300F46053 /* ItemDetailViewController.storyboard */,
+				1846AB56218AA3B800F46053 /* AddItemViewController.swift */,
+				1852DBA321931E16002E1946 /* AddItemSavingViewController.swift */,
+				1852DBA12192960D002E1946 /* AddItemView.swift */,
+				1852DBA521931FA5002E1946 /* AddItemSavingView.swift */,
+				1846AB58218AA3E100F46053 /* AddItemViewController.storyboard */,
 				18A0430E21894CD2005E04D4 /* IoTGarden.xcdatamodeld */,
 			);
 			path = IoTGarden;
@@ -128,6 +197,35 @@
 			path = IoTGardenUITests;
 			sourceTree = "<group>";
 		};
+		18E7A71C218EE0F800F7E689 /* Redux */ = {
+			isa = PBXGroup;
+			children = (
+				18E7A71D218EE4E800F7E689 /* ReactiveReSwiftBridge.swift */,
+				18E7A723218EFDF600F7E689 /* ItemListState.swift */,
+				18E7A725218EFE5200F7E689 /* ItemListReducer.swift */,
+				18E7A727218EFEDD00F7E689 /* ItemListAction.swift */,
+				18E7A729218EFF9900F7E689 /* ItemListStore.swift */,
+			);
+			path = Redux;
+			sourceTree = "<group>";
+		};
+		668BC69708829001B254DD95 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				881F9D4DBC2B015F5C29BAFA /* Pods_IoTGarden.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7F80F3B828C6EE0A29D0D08C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F67062452CC96EA3E8E06F13 /* Pods-IoTGarden.debug.xcconfig */,
+				C397D18E5EE8BB6B5777179D /* Pods-IoTGarden.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +233,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18A0432F21894CD4005E04D4 /* Build configuration list for PBXNativeTarget "IoTGarden" */;
 			buildPhases = (
+				79C49C32ED866221C638B792 /* [CP] Check Pods Manifest.lock */,
 				18A0430021894CD2005E04D4 /* Sources */,
 				18A0430121894CD2005E04D4 /* Frameworks */,
 				18A0430221894CD2005E04D4 /* Resources */,
+				7C811E94D48669C9CF38B8B9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -232,7 +332,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A0431521894CD4005E04D4 /* LaunchScreen.storyboard in Resources */,
+				1846AB55218A9EF300F46053 /* ItemDetailViewController.storyboard in Resources */,
+				18EDCF602189AF3600B233B9 /* ItemListCell.xib in Resources */,
+				1846AB59218AA3E100F46053 /* AddItemViewController.storyboard in Resources */,
 				18A0431221894CD4005E04D4 /* Assets.xcassets in Resources */,
+				18EDCF5E2189A4AC00B233B9 /* ItemListViewController.storyboard in Resources */,
 				18A0430D21894CD2005E04D4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,14 +357,81 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		79C49C32ED866221C638B792 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IoTGarden-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C811E94D48669C9CF38B8B9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-IoTGarden/Pods-IoTGarden-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaMQTT/CocoaMQTT.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveReSwift/ReactiveReSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyTimer/SwiftyTimer.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaMQTT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveReSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyTimer.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IoTGarden/Pods-IoTGarden-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		18A0430021894CD2005E04D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18EDCF5A2189A0F900B233B9 /* ItemListCell.swift in Sources */,
+				18E7A726218EFE5200F7E689 /* ItemListReducer.swift in Sources */,
+				18C832BE218ADAD500ED37A1 /* Storage.swift in Sources */,
+				18EDCF5C2189A46500B233B9 /* ItemListViewController.swift in Sources */,
+				18E7A724218EFDF600F7E689 /* ItemListState.swift in Sources */,
+				18E7A72A218EFF9900F7E689 /* ItemListStore.swift in Sources */,
+				18EDCF5221899EC500B233B9 /* ConfigurationItem.swift in Sources */,
+				18C832C1218AE38800ED37A1 /* ItemList.xcdatamodeld in Sources */,
+				18EDCF5021899E3900B233B9 /* Item.swift in Sources */,
+				1852DBA22192960D002E1946 /* AddItemView.swift in Sources */,
 				18A0430A21894CD2005E04D4 /* ViewController.swift in Sources */,
+				1846AB57218AA3B800F46053 /* AddItemViewController.swift in Sources */,
+				18E7A71E218EE4E800F7E689 /* ReactiveReSwiftBridge.swift in Sources */,
+				1846AB53218A9E7800F46053 /* ItemDetailViewController.swift in Sources */,
 				18A0430821894CD2005E04D4 /* AppDelegate.swift in Sources */,
+				18EDCF5421899F3100B233B9 /* GroupItem.swift in Sources */,
 				18A0431021894CD2005E04D4 /* IoTGarden.xcdatamodeld in Sources */,
+				1852DBA621931FA5002E1946 /* AddItemSavingView.swift in Sources */,
+				1852DBA421931E16002E1946 /* AddItemSavingViewController.swift in Sources */,
+				1826C625218F51B700A5CE38 /* ItemListService.swift in Sources */,
+				18E7A728218EFEDD00F7E689 /* ItemListAction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +602,7 @@
 		};
 		18A0433021894CD4005E04D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F67062452CC96EA3E8E06F13 /* Pods-IoTGarden.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -449,6 +621,7 @@
 		};
 		18A0433121894CD4005E04D4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C397D18E5EE8BB6B5777179D /* Pods-IoTGarden.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -596,6 +769,16 @@
 			);
 			currentVersion = 18A0430F21894CD2005E04D4 /* IoTGarden.xcdatamodel */;
 			path = IoTGarden.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		18C832BF218AE38800ED37A1 /* ItemList.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				18C832C0218AE38800ED37A1 /* ItemList.xcdatamodel */,
+			);
+			currentVersion = 18C832C0218AE38800ED37A1 /* ItemList.xcdatamodel */;
+			path = ItemList.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
