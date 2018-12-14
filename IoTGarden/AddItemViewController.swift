@@ -9,13 +9,10 @@ import UIKit
 import CocoaMQTT
 import CoreData
 
-
 class AddItemViewController:  UIViewController {
     
     var mqtt: CocoaMQTT?
-    private let itemListService = ItemListService()
     
-    @IBOutlet weak var nameTextField: UITextField?
     @IBOutlet weak var serverTextField: UITextField?
     @IBOutlet weak var portTextField: UITextField?
     @IBOutlet weak var userTextField: UITextField?
@@ -23,32 +20,31 @@ class AddItemViewController:  UIViewController {
     
     @IBOutlet weak var connectButton: UIButton?
     
-    @IBAction func connect(sender: UIButton) {
+    fileprivate var configuration: Configuration?
+    
+    @IBAction func connectButtonTapped(sender: UIButton) {
         
-        let clientID = "CocoaMQTT-" + String(ProcessInfo().processIdentifier)
-        mqtt = CocoaMQTT(clientID: clientID, host: "m15.cloudmqtt.com", port: 11692)
-        mqtt!.username = "quskfiwf"
-        mqtt!.password = "HKfqtBl47aBR"
-        mqtt!.willMessage = CocoaMQTTWill(topic: "/will", message: "hello")
-        mqtt!.keepAlive = 60
+        let uuid = UUID().uuidString
+        let server = serverTextField?.text ?? ""
+        let port = portTextField?.text ?? ""
+        let username = userTextField?.text ?? ""
+        let password = passTextField?.text ?? ""
+        
+        configuration = Configuration(uuid: uuid, server: server, username: username, password: password, port: port)
+        
+        guard let configuration = configuration else { return }
+        guard let portInt = UInt16(configuration.port) else { return }
+
+        let clientID = "CocoaMQTT-" + configuration.uuid
+        mqtt = CocoaMQTT(clientID: clientID, host: configuration.server, port: portInt)
+        mqtt!.username = configuration.username
+        mqtt!.password = configuration.password
+//        mqtt!.willMessage = CocoaMQTTWill(topic: "switch", message: "1")
+//        mqtt!.keepAlive = 60
         mqtt!.delegate = self
         mqtt!.connect()
-        
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier :"AddItemSavingViewController") as? AddItemSavingViewController {
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
-    @IBAction func saveButtonTapped(sender: UIButton) {
-        
-        guard let name = nameTextField?.text else { return }
-        let item = Item(uuid: UUID().uuidString, name: name, isOn: true)
-        itemListService.addLocalItem(item: item)
-        itemListStore.dispatch(AddItemAction())
-        navigationController?.popViewController(animated: true)
     }
 }
-
 
 extension AddItemViewController: CocoaMQTTDelegate {
     // Optional ssl CocoaMQTTDelegate
@@ -62,13 +58,38 @@ extension AddItemViewController: CocoaMQTTDelegate {
         /// } else {
         ///     completionHandler(false)
         /// }
+        
         completionHandler(true)
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
+        
         print("didConnectAck: \(ack)，rawValue: \(ack.rawValue)")
-        
-        
+        if ack == .accept {
+            
+//            let uuid = UUID().uuidString
+//            let server = "m15.cloudmqtt.com"
+//            let username = "rdgbdjfq"
+//            let password = "jtWqc7RiUsz-"
+//            let port = "14985"
+            
+             mqtt.subscribe("switch", qos: CocoaMQTTQOS.qos1)
+            
+//            let server = serverTextField?.text ?? ""
+//            let username = userTextField?.text ?? ""
+            
+//            let configuration = Configuration(uuid: uuid, server: server, username: username, password: password, port: port)
+            
+            let itemListService = ItemListService()
+            guard let configuration = self.configuration else { return }
+            itemListService.addLocalConfiguration(configuration: configuration)
+            
+            if let vc = self.storyboard?.instantiateViewController(withIdentifier :"AddItemSavingViewController") as? AddItemSavingViewController {
+                
+                vc.configuration = configuration
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
         
     }
     

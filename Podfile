@@ -1,4 +1,4 @@
-platform :ios, 9.0
+platform :ios, 11.0
 use_frameworks!
 
 target 'IoTGarden' do
@@ -7,4 +7,5 @@ target 'IoTGarden' do
    pod 'RxSwift'
    pod 'RxCocoa'
    pod 'ReactiveReSwift'
+   pod 'PromiseKit'
 end

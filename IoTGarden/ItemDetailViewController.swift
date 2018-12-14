@@ -11,15 +11,20 @@ import CoreData
 class ItemDetailViewController: UIViewController {
     
     var item = Item()
-    let itemListService = ItemListService()
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
     }
     
+    @IBAction func switchButtonTapped(_ sender: UIButton) {
+        
+        print("Value changed")
+    }
+    
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
         
+        let itemListService = ItemListService()
         itemListService.removeLocalItem(uuid: item.uuid)
         itemListStore.dispatch(AddItemAction())
         navigationController?.popViewController(animated: true)

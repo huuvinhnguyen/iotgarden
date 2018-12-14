@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1826C625218F51B700A5CE38 /* ItemListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1826C624218F51B700A5CE38 /* ItemListService.swift */; };
+		183CAF2C219BCB31005149B1 /* ItemConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183CAF2B219BCB31005149B1 /* ItemConnect.swift */; };
 		1846AB53218A9E7800F46053 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846AB52218A9E7800F46053 /* ItemDetailViewController.swift */; };
 		1846AB55218A9EF300F46053 /* ItemDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1846AB54218A9EF300F46053 /* ItemDetailViewController.storyboard */; };
 		1846AB57218AA3B800F46053 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846AB56218AA3B800F46053 /* AddItemViewController.swift */; };
@@ -16,7 +17,6 @@
 		1852DBA421931E16002E1946 /* AddItemSavingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1852DBA321931E16002E1946 /* AddItemSavingViewController.swift */; };
 		1852DBA621931FA5002E1946 /* AddItemSavingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1852DBA521931FA5002E1946 /* AddItemSavingView.swift */; };
 		18A0430821894CD2005E04D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0430721894CD2005E04D4 /* AppDelegate.swift */; };
-		18A0430A21894CD2005E04D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0430921894CD2005E04D4 /* ViewController.swift */; };
 		18A0430D21894CD2005E04D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A0430B21894CD2005E04D4 /* Main.storyboard */; };
 		18A0431021894CD2005E04D4 /* IoTGarden.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18A0430E21894CD2005E04D4 /* IoTGarden.xcdatamodeld */; };
 		18A0431221894CD4005E04D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A0431121894CD4005E04D4 /* Assets.xcassets */; };
@@ -31,7 +31,7 @@
 		18E7A728218EFEDD00F7E689 /* ItemListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A727218EFEDD00F7E689 /* ItemListAction.swift */; };
 		18E7A72A218EFF9900F7E689 /* ItemListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A729218EFF9900F7E689 /* ItemListStore.swift */; };
 		18EDCF5021899E3900B233B9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDCF4F21899E3800B233B9 /* Item.swift */; };
-		18EDCF5221899EC500B233B9 /* ConfigurationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDCF5121899EC500B233B9 /* ConfigurationItem.swift */; };
+		18EDCF5221899EC500B233B9 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDCF5121899EC500B233B9 /* Configuration.swift */; };
 		18EDCF5421899F3100B233B9 /* GroupItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDCF5321899F3100B233B9 /* GroupItem.swift */; };
 		18EDCF5A2189A0F900B233B9 /* ItemListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDCF592189A0F900B233B9 /* ItemListCell.swift */; };
 		18EDCF5C2189A46500B233B9 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDCF5B2189A46500B233B9 /* ItemListViewController.swift */; };
@@ -59,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		1826C624218F51B700A5CE38 /* ItemListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListService.swift; sourceTree = "<group>"; };
+		183CAF2B219BCB31005149B1 /* ItemConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemConnect.swift; sourceTree = "<group>"; };
 		1846AB52218A9E7800F46053 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		1846AB54218A9EF300F46053 /* ItemDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemDetailViewController.storyboard; sourceTree = "<group>"; };
 		1846AB56218AA3B800F46053 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
@@ -68,7 +69,6 @@
 		1852DBA521931FA5002E1946 /* AddItemSavingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemSavingView.swift; sourceTree = "<group>"; };
 		18A0430421894CD2005E04D4 /* IoTGarden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IoTGarden.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A0430721894CD2005E04D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		18A0430921894CD2005E04D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		18A0430C21894CD2005E04D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18A0430F21894CD2005E04D4 /* IoTGarden.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IoTGarden.xcdatamodel; sourceTree = "<group>"; };
 		18A0431121894CD4005E04D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		18E7A727218EFEDD00F7E689 /* ItemListAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListAction.swift; sourceTree = "<group>"; };
 		18E7A729218EFF9900F7E689 /* ItemListStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListStore.swift; sourceTree = "<group>"; };
 		18EDCF4F21899E3800B233B9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		18EDCF5121899EC500B233B9 /* ConfigurationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationItem.swift; sourceTree = "<group>"; };
+		18EDCF5121899EC500B233B9 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		18EDCF5321899F3100B233B9 /* GroupItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupItem.swift; sourceTree = "<group>"; };
 		18EDCF592189A0F900B233B9 /* ItemListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListCell.swift; sourceTree = "<group>"; };
 		18EDCF5B2189A46500B233B9 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
@@ -152,16 +152,16 @@
 			children = (
 				18A0430721894CD2005E04D4 /* AppDelegate.swift */,
 				18C832BD218ADAD500ED37A1 /* Storage.swift */,
+				183CAF2B219BCB31005149B1 /* ItemConnect.swift */,
 				1826C624218F51B700A5CE38 /* ItemListService.swift */,
 				18E7A71C218EE0F800F7E689 /* Redux */,
 				18C832BF218AE38800ED37A1 /* ItemList.xcdatamodeld */,
-				18A0430921894CD2005E04D4 /* ViewController.swift */,
 				18A0430B21894CD2005E04D4 /* Main.storyboard */,
 				18A0431121894CD4005E04D4 /* Assets.xcassets */,
 				18A0431321894CD4005E04D4 /* LaunchScreen.storyboard */,
 				18A0431621894CD4005E04D4 /* Info.plist */,
 				18EDCF4F21899E3800B233B9 /* Item.swift */,
-				18EDCF5121899EC500B233B9 /* ConfigurationItem.swift */,
+				18EDCF5121899EC500B233B9 /* Configuration.swift */,
 				18EDCF5321899F3100B233B9 /* GroupItem.swift */,
 				18EDCF592189A0F900B233B9 /* ItemListCell.swift */,
 				18EDCF5F2189AF3600B233B9 /* ItemListCell.xib */,
@@ -385,6 +385,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-IoTGarden/Pods-IoTGarden-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaMQTT/CocoaMQTT.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveReSwift/ReactiveReSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -394,6 +395,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaMQTT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveReSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -414,14 +416,14 @@
 				18EDCF5A2189A0F900B233B9 /* ItemListCell.swift in Sources */,
 				18E7A726218EFE5200F7E689 /* ItemListReducer.swift in Sources */,
 				18C832BE218ADAD500ED37A1 /* Storage.swift in Sources */,
+				183CAF2C219BCB31005149B1 /* ItemConnect.swift in Sources */,
 				18EDCF5C2189A46500B233B9 /* ItemListViewController.swift in Sources */,
 				18E7A724218EFDF600F7E689 /* ItemListState.swift in Sources */,
 				18E7A72A218EFF9900F7E689 /* ItemListStore.swift in Sources */,
-				18EDCF5221899EC500B233B9 /* ConfigurationItem.swift in Sources */,
+				18EDCF5221899EC500B233B9 /* Configuration.swift in Sources */,
 				18C832C1218AE38800ED37A1 /* ItemList.xcdatamodeld in Sources */,
 				18EDCF5021899E3900B233B9 /* Item.swift in Sources */,
 				1852DBA22192960D002E1946 /* AddItemView.swift in Sources */,
-				18A0430A21894CD2005E04D4 /* ViewController.swift in Sources */,
 				1846AB57218AA3B800F46053 /* AddItemViewController.swift in Sources */,
 				18E7A71E218EE4E800F7E689 /* ReactiveReSwiftBridge.swift in Sources */,
 				1846AB53218A9E7800F46053 /* ItemDetailViewController.swift in Sources */,
@@ -608,10 +610,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T78D673J43;
 				INFOPLIST_FILE = IoTGarden/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ving.IoTGarden;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -627,10 +626,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T78D673J43;
 				INFOPLIST_FILE = IoTGarden/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ving.IoTGarden;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -646,11 +642,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T78D673J43;
 				INFOPLIST_FILE = IoTGardenTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ving.IoTGardenTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -667,11 +659,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T78D673J43;
 				INFOPLIST_FILE = IoTGardenTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ving.IoTGardenTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -687,11 +675,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T78D673J43;
 				INFOPLIST_FILE = IoTGardenUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ving.IoTGardenUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -707,11 +691,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T78D673J43;
 				INFOPLIST_FILE = IoTGardenUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ving.IoTGardenUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

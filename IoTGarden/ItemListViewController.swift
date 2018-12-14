@@ -14,26 +14,51 @@ class ItemListViewController: UIViewController {
     fileprivate var items = [Item]()
     private let itemListService = ItemListService()
     
+    private let refreshControl = UIRefreshControl()
+
     let disposeBag = SubscriptionReferenceBag()
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
         prepareNibs()
+        configureRefreshControl()
+        loadItems()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         
-        disposeBag += itemListStore.observable.asObservable().subscribe { [weak self] itemListState in
-            
-            if let weakSelf = self {
-                
-                weakSelf.items = weakSelf.itemListService.loadLocalItems()
-                weakSelf.itemListCollectionView.reloadData()
-            }
-        }
+        super.viewDidAppear(animated)
+        itemListCollectionView.reloadData()        
     }
     
     private func prepareNibs() {
         
         itemListCollectionView.register(UINib(nibName: "ItemListCell", bundle: nil), forCellWithReuseIdentifier: "ItemListCell")
+    }
+    
+    @objc private func loadItems() {
+        
+        disposeBag += itemListStore.observable.asObservable().subscribe { [weak self] itemListState in
+            
+            if let weakSelf = self {
+                
+                weakSelf.itemListService.loadLocalItems { items in
+                    weakSelf.items = items
+                    weakSelf.itemListCollectionView.reloadData()
+                    weakSelf.refreshControl.endRefreshing()
+                }
+                            }
+
+        }
+    }
+    
+    
+    private func configureRefreshControl() {
+        
+        itemListCollectionView.alwaysBounceVertical = true
+        refreshControl.addTarget(self, action: #selector(loadItems), for: .valueChanged)
+        itemListCollectionView.addSubview(refreshControl)
     }
     
     @IBAction func addButtonTapped(sender: UIButton) {
