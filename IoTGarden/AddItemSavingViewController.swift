@@ -20,7 +20,7 @@ class AddItemSavingViewController:  UIViewController {
         
         let itemListService = ItemListService()
         guard let name = nameTextField?.text else { return }
-        let item = Item(uuid: UUID().uuidString, name: name, isOn: true, serverUUID: serverUUID)
+        let item = ToggleItem(uuid: UUID().uuidString, name: name, isOn: true, serverUUID: serverUUID, kind: .toggle)
         itemListService.addLocalItem(item: item)
         itemListStore.dispatch(AddItemAction())
         navigationController?.popToRootViewController(animated: true)

@@ -11,3 +11,12 @@ struct ItemListState {
     
     let items: [Item]
 }
+
+struct ItemListCellViewModelState {
+    let itemListCellViewModel: ItemListCellViewModel
+}
+
+struct ItemState {
+    
+    var item: ToggleItem
+}

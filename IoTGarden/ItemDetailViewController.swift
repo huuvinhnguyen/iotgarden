@@ -10,7 +10,7 @@ import CoreData
 
 class ItemDetailViewController: UIViewController {
     
-    var item = Item()
+    var item = ToggleItem()
 
     override func viewDidLoad() {
         

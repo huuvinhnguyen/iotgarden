@@ -14,51 +14,18 @@ class ItemListCell: UICollectionViewCell {
         didSet {
             
             nameLabel?.text = viewModel.name
-            onOffSwitch?.isOn = viewModel.isOn!
+            onOffSwitch?.isOn = viewModel.isOn
         }
     }
     
     @IBOutlet weak var nameLabel: UILabel?
     @IBOutlet weak var onOffSwitch: UISwitch?
-    private var itemConnect: ItemConnect?
 
-    func configure(item: Item) {
-        
-        if let itemConnect = itemConnect {
-            
-            itemConnect.connect(item: item)
-        } else {
-            
-            itemConnect = ItemConnect()
-            itemConnect?.connect(item: item)
-        }
-        
-        nameLabel?.text = item.name
-        onOffSwitch?.isOn = item.isOn!
-        
-        itemConnect?.didReceiveMessage = { [weak self] mqtt, message, id in
-
-            guard let weakSelf = self else { return }
-
-            print("Message from topic \(message.topic) with payload \(message.string!)")
-            if message.string == "1" {
-
-                weakSelf.onOffSwitch?.isOn = true
-            }
-
-            if message.string == "0" {
-
-                weakSelf.onOffSwitch?.isOn = false
-            }
-            weakSelf.setNeedsLayout()
-            weakSelf.layoutIfNeeded()
-        }
-    }
     
     @IBAction func switchButtonTapped(sender: UISwitch) {
         
         let message =  sender.isOn ? "1":"0"
-        itemConnect?.publish(message: message)
+        viewModel.itemConnect.publish(message: message)
     }
 }
 
@@ -75,14 +42,53 @@ protocol Display {
     func display(viewModel: ItemListCellViewModel)
 }
 
-struct ItemListCellViewModel {
+class ItemListCellViewModel {
     
     var name: String?
-    var isOn: Bool?
+    var isOn: Bool = true
+    var item: ToggleItem
+    var itemConnect: ItemConnect
     
-    init(item: Item) {
+    init(item: ToggleItem) {
+        
+        self.item = item
+        name = item.name
+        isOn = item.isOn
+        
+        itemConnect = ItemConnect(item: item)
+        
+        configure(item: item)
+    }
+    
+    func configure(item: ToggleItem) {
+
+        itemConnect.connect(item: item)
         
         name = item.name
         isOn = item.isOn
+        
+        itemConnect.didReceiveMessage = { [weak self] mqtt, message, id in
+            
+            var newItem = item
+            
+            guard let weakSelf = self else { return }
+            print("#Item name = \(item.name)")
+            print("#Message from  topic \(message.topic) with payload \(message.string!)")
+            if message.string == "1" {
+                
+                weakSelf.isOn = true
+            }
+            
+            if message.string == "0" {
+                
+                weakSelf.isOn = false
+            }
+
+            newItem.isOn = weakSelf.isOn
+            print("item.name = \(newItem.name)")
+            itemStore.dispatch(UpdateItemAction(item: newItem))
+            let itemListService = ItemListService()
+            itemListService.updateItem(item: newItem)
+        }
     }
 }

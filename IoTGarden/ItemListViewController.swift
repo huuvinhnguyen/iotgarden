@@ -11,8 +11,8 @@ import ReactiveReSwift
 class ItemListViewController: UIViewController {
     
     @IBOutlet weak var itemListCollectionView: UICollectionView!
-    fileprivate var items = [Item]()
     private let itemListService = ItemListService()
+    private var itemListCellViewModels: [ItemListCellViewModel] = []
     
     private let refreshControl = UIRefreshControl()
 
@@ -23,13 +23,28 @@ class ItemListViewController: UIViewController {
         super.viewDidLoad()
         prepareNibs()
         configureRefreshControl()
-        loadItems()
+        
+        disposeBag += itemStore.observable.asObservable().map { $0.item }.subscribe { [weak self] item in
+            print("#itemState")
+            guard let weakSelf = self else { return }
+            let row = weakSelf.itemListCellViewModels.index { $0.item.uuid == item.uuid }
+            
+            guard let rowIndex = row else { return }
+            
+            let currentViewModel = weakSelf.itemListCellViewModels[rowIndex]
+            
+            if currentViewModel.item.isOn != item.isOn {
+                
+                weakSelf.itemListCellViewModels[rowIndex].item = item
+                weakSelf.itemListCollectionView.reloadItems(at: [IndexPath(row: rowIndex, section: 0)])
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
-        itemListCollectionView.reloadData()        
+        loadItems()
     }
     
     private func prepareNibs() {
@@ -41,18 +56,17 @@ class ItemListViewController: UIViewController {
         
         disposeBag += itemListStore.observable.asObservable().subscribe { [weak self] itemListState in
             
+            print("#asObservable: list")
             if let weakSelf = self {
                 
                 weakSelf.itemListService.loadLocalItems { items in
-                    weakSelf.items = items
+                    weakSelf.itemListCellViewModels = items.map { ItemListCellViewModel(item: $0) }
                     weakSelf.itemListCollectionView.reloadData()
                     weakSelf.refreshControl.endRefreshing()
                 }
-                            }
-
+            }
         }
     }
-    
     
     private func configureRefreshControl() {
         
@@ -69,18 +83,28 @@ class ItemListViewController: UIViewController {
             navigationController?.pushViewController(addItemViewController, animated: true)
         }
     }
+    
+    @IBAction func tempButtonTapped(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "ItemDetailTempViewController", bundle: nil)
+        if let itemDetailTempViewController = storyboard.instantiateViewController(withIdentifier :"ItemDetailTempViewController") as? ItemDetailTempViewController {
+            
+            navigationController?.pushViewController(itemDetailTempViewController, animated: true)
+        }
+    }
 }
 
 extension ItemListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        
+        return itemListCellViewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemListCell",
                                                       for: indexPath) as! ItemListCell
-        let item = items[indexPath.row]
-        cell.configure(item: item)
+        let itemListCellViewModel = itemListCellViewModels[indexPath.row]
+
+        cell.display(viewModel: itemListCellViewModel)
         return cell
     }
     
@@ -89,11 +113,11 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = items[indexPath.row]
+        let viewModelCell = itemListCellViewModels[indexPath.row]
         
         let storyboard = UIStoryboard(name: "ItemDetailViewController", bundle: nil)
         if let itemDetailViewController = storyboard.instantiateViewController(withIdentifier :"ItemDetailViewController") as? ItemDetailViewController {
-            itemDetailViewController.item = item
+            itemDetailViewController.item = viewModelCell.item
             navigationController?.pushViewController(itemDetailViewController, animated: true)
         }
     }

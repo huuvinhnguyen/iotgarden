@@ -6,14 +6,31 @@
 //
 import CocoaMQTT
 
-struct Item {
+enum Kind: String, EnumCollection {
+    
+    case temperature = "temperature"
+    case humidity = "humidity"
+    case toggle = "toggle"
+}
+
+protocol Item {
+    
+    var uuid: String { get set }
+    var name: String { get set }
+    var serverUUID: String { get set }
+    var kind: Kind { get set }
+}
+
+struct ToggleItem: Item {
     
     var uuid: String = ""
     var name: String = ""
-    var isOn: Bool? = false
+    var isOn: Bool = false
     var serverUUID: String = ""
-//    var channel = Channel()
+    var kind: Kind = .toggle
+    //    var channel = Channel()
 }
+
 
 struct Channel {
     
