@@ -19,3 +19,15 @@ let itemListReducer: Reducer<ItemListState> = { action, state in
     
     return state
 }
+
+let sensorListReducer: Reducer<SensorListState> = { action, state in
+    
+    var state = state
+    
+    
+    if let action = action as? AddSensorAction {
+        //        state.clouds.append(action.cloud)
+    }
+    
+    return state
+}

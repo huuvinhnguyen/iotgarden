@@ -6,13 +6,6 @@
 //
 import CocoaMQTT
 
-enum Kind: String, EnumCollection {
-    
-    case temperature = "temperature"
-    case humidity = "humidity"
-    case toggle = "toggle"
-}
-
 protocol Item {
     
     var uuid: String { get set }

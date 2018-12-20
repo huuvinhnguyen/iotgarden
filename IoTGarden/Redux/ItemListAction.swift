@@ -16,3 +16,13 @@ struct RemoveItemAction: Action {
     
     let item: [Item]
 }
+
+struct AddSensorAction: Action {
+    
+    //    let item: [Item]
+}
+
+struct RemoveSensorAction: Action {
+    
+    let item: Sensor
+}

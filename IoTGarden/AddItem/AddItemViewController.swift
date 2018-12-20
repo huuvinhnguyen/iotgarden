@@ -24,11 +24,17 @@ class AddItemViewController:  UIViewController {
     
     @IBAction func connectButtonTapped(sender: UIButton) {
         
-        let uuid = UUID().uuidString
-        let server = serverTextField?.text ?? ""
-        let port = portTextField?.text ?? ""
-        let username = userTextField?.text ?? ""
-        let password = passTextField?.text ?? ""
+//        let uuid = UUID().uuidString
+//        let server = serverTextField?.text ?? ""
+//        let port = portTextField?.text ?? ""
+//        let username = userTextField?.text ?? ""
+//        let password = passTextField?.text ?? ""
+        
+                    let uuid = UUID().uuidString
+                    let server = "m15.cloudmqtt.com"
+                    let username = "rdgbdjfq"
+                    let password = "jtWqc7RiUsz-"
+                    let port = "14985"
         
         configuration = Configuration(uuid: uuid, server: server, username: username, password: password, port: port)
         
@@ -67,28 +73,29 @@ extension AddItemViewController: CocoaMQTTDelegate {
         print("didConnectAck: \(ack)，rawValue: \(ack.rawValue)")
         if ack == .accept {
             
-//            let uuid = UUID().uuidString
-//            let server = "m15.cloudmqtt.com"
-//            let username = "rdgbdjfq"
-//            let password = "jtWqc7RiUsz-"
-//            let port = "14985"
             
              mqtt.subscribe("switch", qos: CocoaMQTTQOS.qos1)
             
-//            let server = serverTextField?.text ?? ""
-//            let username = userTextField?.text ?? ""
-            
-//            let configuration = Configuration(uuid: uuid, server: server, username: username, password: password, port: port)
+
             
             let itemListService = ItemListService()
             guard let configuration = self.configuration else { return }
             itemListService.addLocalConfiguration(configuration: configuration)
             
-            if let vc = self.storyboard?.instantiateViewController(withIdentifier :"AddItemSavingViewController") as? AddItemSavingViewController {
+//            if let vc = self.storyboard?.instantiateViewController(withIdentifier :"AddItemSavingViewController") as? AddItemSavingViewController {
+//
+//                vc.configuration = configuration
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            }
+            
+            let storyboard = UIStoryboard(name: "SelectionViewController", bundle: nil)
+            
+            if let vc = storyboard.instantiateViewController(withIdentifier :"SelectionViewController") as? SelectionViewController {
                 
                 vc.configuration = configuration
                 self.navigationController?.pushViewController(vc, animated: true)
             }
+
         }
         
     }

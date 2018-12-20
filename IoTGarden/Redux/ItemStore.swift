@@ -21,3 +21,17 @@ let itemStore = Store(
     observable: Variable(ItemState(item:ToggleItem())),
     middleware: itemMiddleware
 )
+
+let sensorMiddleware = Middleware<SensorState>().sideEffect { _, _, action in
+    print("Received action:")
+    }.map { _, action in
+        print(action)
+        return action
+}
+
+let sensorStore = Store(
+    
+    reducer: sensorReducer,
+    observable: Variable(SensorState(sensor:Sensor())),
+    middleware: sensorMiddleware
+)

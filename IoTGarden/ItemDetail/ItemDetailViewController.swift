@@ -10,7 +10,7 @@ import CoreData
 
 class ItemDetailViewController: UIViewController {
     
-    var item = ToggleItem()
+    var sensor = Sensor()
 
     override func viewDidLoad() {
         
@@ -25,8 +25,8 @@ class ItemDetailViewController: UIViewController {
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
         
         let itemListService = ItemListService()
-        itemListService.removeLocalItem(uuid: item.uuid)
-        itemListStore.dispatch(AddItemAction())
+        itemListService.removeSensor(sensor: sensor)
+        itemListStore.dispatch(AddSensorAction())
         navigationController?.popViewController(animated: true)
     }
 }

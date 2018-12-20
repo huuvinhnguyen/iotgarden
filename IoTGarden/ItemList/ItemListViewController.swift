@@ -12,7 +12,7 @@ class ItemListViewController: UIViewController {
     
     @IBOutlet weak var itemListCollectionView: UICollectionView!
     private let itemListService = ItemListService()
-    private var itemListCellViewModels: [ItemListCellViewModel] = []
+    private var devices: [Device] = []
     
     private let refreshControl = UIRefreshControl()
 
@@ -23,19 +23,23 @@ class ItemListViewController: UIViewController {
         super.viewDidLoad()
         prepareNibs()
         configureRefreshControl()
+        updateViewModel()
+    }
+    
+    func updateViewModel() {
         
-        disposeBag += itemStore.observable.asObservable().map { $0.item }.subscribe { [weak self] item in
+        disposeBag += sensorStore.observable.asObservable().map { $0.sensor }.subscribe { [weak self] sensor in
             print("#itemState")
             guard let weakSelf = self else { return }
-            let row = weakSelf.itemListCellViewModels.index { $0.item.uuid == item.uuid }
+            let row = weakSelf.devices.index { $0.sensor.uuid == sensor.uuid }
             
             guard let rowIndex = row else { return }
             
-            let currentViewModel = weakSelf.itemListCellViewModels[rowIndex]
+            let currentViewModel = weakSelf.devices[rowIndex]
             
-            if currentViewModel.item.isOn != item.isOn {
+            if currentViewModel.sensor.value != sensor.value {
                 
-                weakSelf.itemListCellViewModels[rowIndex].item = item
+                weakSelf.devices[rowIndex].sensor = sensor
                 weakSelf.itemListCollectionView.reloadItems(at: [IndexPath(row: rowIndex, section: 0)])
             }
         }
@@ -44,23 +48,28 @@ class ItemListViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
-        loadItems()
+        loadSensors()
     }
     
     private func prepareNibs() {
         
         itemListCollectionView.register(UINib(nibName: "ItemListCell", bundle: nil), forCellWithReuseIdentifier: "ItemListCell")
+        
+        itemListCollectionView.register(UINib(nibName: "TemperatureCell", bundle: nil), forCellWithReuseIdentifier: "TemperatureCell")
+        
+        itemListCollectionView.register(UINib(nibName: "HumidityCell", bundle: nil), forCellWithReuseIdentifier: "HumidityCell")
     }
     
-    @objc private func loadItems() {
+    @objc private func loadSensors() {
         
-        disposeBag += itemListStore.observable.asObservable().subscribe { [weak self] itemListState in
+        disposeBag += sensorListStore.observable.asObservable().subscribe { [weak self] sensorListState in
             
             print("#asObservable: list")
             if let weakSelf = self {
                 
-                weakSelf.itemListService.loadLocalItems { items in
-                    weakSelf.itemListCellViewModels = items.map { ItemListCellViewModel(item: $0) }
+                weakSelf.itemListService.loadSensors { sensors in
+                    
+                    weakSelf.devices = sensors.compactMap { HumidityDevice(sensor: $0) }
                     weakSelf.itemListCollectionView.reloadData()
                     weakSelf.refreshControl.endRefreshing()
                 }
@@ -71,7 +80,7 @@ class ItemListViewController: UIViewController {
     private func configureRefreshControl() {
         
         itemListCollectionView.alwaysBounceVertical = true
-        refreshControl.addTarget(self, action: #selector(loadItems), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(loadSensors), for: .valueChanged)
         itemListCollectionView.addSubview(refreshControl)
     }
     
@@ -85,6 +94,7 @@ class ItemListViewController: UIViewController {
     }
     
     @IBAction func tempButtonTapped(_ sender: UIButton) {
+        
         let storyboard = UIStoryboard(name: "ItemDetailTempViewController", bundle: nil)
         if let itemDetailTempViewController = storyboard.instantiateViewController(withIdentifier :"ItemDetailTempViewController") as? ItemDetailTempViewController {
             
@@ -96,15 +106,13 @@ class ItemListViewController: UIViewController {
 extension ItemListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return itemListCellViewModels.count
+        return devices.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemListCell",
-                                                      for: indexPath) as! ItemListCell
-        let itemListCellViewModel = itemListCellViewModels[indexPath.row]
-
-        cell.display(viewModel: itemListCellViewModel)
+        
+        let device = devices[indexPath.row]
+        let cell = CellCreator.create(cellAt: indexPath, with: device, collectionView: collectionView)
         return cell
     }
     
@@ -113,11 +121,12 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let viewModelCell = itemListCellViewModels[indexPath.row]
+        
+        let device = devices[indexPath.row]
         
         let storyboard = UIStoryboard(name: "ItemDetailViewController", bundle: nil)
         if let itemDetailViewController = storyboard.instantiateViewController(withIdentifier :"ItemDetailViewController") as? ItemDetailViewController {
-            itemDetailViewController.item = viewModelCell.item
+            itemDetailViewController.sensor = device.sensor
             navigationController?.pushViewController(itemDetailViewController, animated: true)
         }
     }

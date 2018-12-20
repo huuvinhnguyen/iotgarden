@@ -11,3 +11,8 @@ struct UpdateItemAction: Action {
     
     let item: ToggleItem
 }
+
+struct UpdateSensorAction: Action {
+    
+    let sensor: Sensor
+}

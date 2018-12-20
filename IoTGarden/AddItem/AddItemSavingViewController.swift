@@ -20,9 +20,11 @@ class AddItemSavingViewController:  UIViewController {
         
         let itemListService = ItemListService()
         guard let name = nameTextField?.text else { return }
-        let item = ToggleItem(uuid: UUID().uuidString, name: name, isOn: true, serverUUID: serverUUID, kind: .toggle)
-        itemListService.addLocalItem(item: item)
-        itemListStore.dispatch(AddItemAction())
+//        let item = ToggleItem(uuid: UUID().uuidString, name: name, isOn: true, serverUUID: serverUUID, kind: .toggle)
+//        itemListService.addLocalItem(item: item)
+        let sensor = Sensor(uuid: UUID().uuidString, name: name, value: "0", serverUUID: serverUUID, kind: .toggle)
+        itemListService.addSensor(sensor: sensor)
+        sensorListStore.dispatch(AddSensorAction())
         navigationController?.popToRootViewController(animated: true)
     }
 }

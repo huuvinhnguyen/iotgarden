@@ -19,3 +19,16 @@ let itemReducer: Reducer<ItemState> = { action, state in
     
     return state
 }
+
+let sensorReducer: Reducer<SensorState> = { action, state in
+    
+    var state = state
+    
+    if let action = action as? UpdateSensorAction {
+        
+        state.sensor = action.sensor
+    }
+    
+    return state
+}
+

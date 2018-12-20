@@ -10,38 +10,16 @@ import CoreData
 protocol  SensorMapping {
     
     func add(item: Item ) -> ()
-    func delete(item: Item) -> ()
+    func delete(uuid: String) -> ()
     func update(item: Item) -> ()
     func getItem(uuid: String) -> Item?
 }
 
 extension SensorMapping {
     
-    func delete(item: Item) {
+    func delete(uuid: String) {
         
-        let context = Storage.shared.context
         
-        let request: NSFetchRequest<Sensors> = Sensors.fetchRequest()
-        
-        request.predicate = NSPredicate.init(format: "uuid == %@", item.uuid)
-        
-        if let result = try? context.fetch(request) {
-            
-            for object in result {
-                
-                print("#delete object")
-                context.delete(object)
-            }
-        }
-        
-        do {
-            
-            try context.save()
-            
-        } catch let error as NSError {
-            
-            print("Could not save. \(error), \(error.userInfo)")
-        }
     }
 }
 
@@ -63,10 +41,9 @@ struct Mapping<T: Item> {
     init(item: T) {
         
         _observer = item
-
-        
     }
     func map() -> [T] {
+        
         return []
     }
 }

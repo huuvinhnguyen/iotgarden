@@ -8,8 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		1803374C21C9EDC90098F944 /* SensorMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803374B21C9EDC90098F944 /* SensorMapping.swift */; };
-		1803374E21C9EE880098F944 /* ListSensorMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803374D21C9EE880098F944 /* ListSensorMapping.swift */; };
-		1803375021C9EEF70098F944 /* ListToggleSensorMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803374F21C9EEF70098F944 /* ListToggleSensorMapping.swift */; };
+		1803375421CA2A6B0098F944 /* DataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803375321CA2A6B0098F944 /* DataInteractor.swift */; };
+		1803375621CA9B130098F944 /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803375521CA9B130098F944 /* Sensor.swift */; };
+		1803375921CB3BAE0098F944 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803375821CB3BAE0098F944 /* Device.swift */; };
+		1803375B21CB3C070098F944 /* SwitchDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803375A21CB3C070098F944 /* SwitchDevice.swift */; };
+		1803375D21CB3C350098F944 /* TemperatureDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803375C21CB3C350098F944 /* TemperatureDevice.swift */; };
+		1803376021CB41640098F944 /* SensorConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803375F21CB41640098F944 /* SensorConnect.swift */; };
+		1803376121CB91A00098F944 /* ItemDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1846AB54218A9EF300F46053 /* ItemDetailViewController.storyboard */; };
+		1803376321CB954D0098F944 /* ConfigurationsDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803376221CB954D0098F944 /* ConfigurationsDataInteractor.swift */; };
+		1803376521CBA9860098F944 /* TemperatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803376421CBA9860098F944 /* TemperatureCell.swift */; };
+		1803376721CBA9A20098F944 /* TemperatureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1803376621CBA9A20098F944 /* TemperatureCell.xib */; };
+		1803376921CBAC7D0098F944 /* HumidityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803376821CBAC7D0098F944 /* HumidityCell.swift */; };
+		1803376B21CBAC900098F944 /* HumidityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1803376A21CBAC900098F944 /* HumidityCell.xib */; };
+		1803376D21CBBA660098F944 /* CellCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803376C21CBBA660098F944 /* CellCreator.swift */; };
+		1803376F21CBED960098F944 /* HumidityDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803376E21CBED960098F944 /* HumidityDevice.swift */; };
+		1803377421CBF5220098F944 /* SelectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1803377321CBF5220098F944 /* SelectionViewController.storyboard */; };
+		1803377621CBF5480098F944 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803377521CBF5480098F944 /* SelectionViewController.swift */; };
+		1803377821CBF6CC0098F944 /* SelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1803377721CBF6CC0098F944 /* SelectionCell.xib */; };
+		1803377A21CBF7310098F944 /* SelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803377921CBF7310098F944 /* SelectionCell.swift */; };
 		1826C625218F51B700A5CE38 /* ItemListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1826C624218F51B700A5CE38 /* ItemListService.swift */; };
 		18339BE021C9493E00CC2269 /* IoTGarden.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18339BDE21C9493E00CC2269 /* IoTGarden.xcdatamodeld */; };
 		18339BE321C9496100CC2269 /* ItemList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18339BE121C9496100CC2269 /* ItemList.xcdatamodeld */; };
@@ -68,8 +84,23 @@
 
 /* Begin PBXFileReference section */
 		1803374B21C9EDC90098F944 /* SensorMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorMapping.swift; sourceTree = "<group>"; };
-		1803374D21C9EE880098F944 /* ListSensorMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSensorMapping.swift; sourceTree = "<group>"; };
-		1803374F21C9EEF70098F944 /* ListToggleSensorMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListToggleSensorMapping.swift; sourceTree = "<group>"; };
+		1803375321CA2A6B0098F944 /* DataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataInteractor.swift; sourceTree = "<group>"; };
+		1803375521CA9B130098F944 /* Sensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
+		1803375821CB3BAE0098F944 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		1803375A21CB3C070098F944 /* SwitchDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchDevice.swift; sourceTree = "<group>"; };
+		1803375C21CB3C350098F944 /* TemperatureDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureDevice.swift; sourceTree = "<group>"; };
+		1803375F21CB41640098F944 /* SensorConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorConnect.swift; sourceTree = "<group>"; };
+		1803376221CB954D0098F944 /* ConfigurationsDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationsDataInteractor.swift; sourceTree = "<group>"; };
+		1803376421CBA9860098F944 /* TemperatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureCell.swift; sourceTree = "<group>"; };
+		1803376621CBA9A20098F944 /* TemperatureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemperatureCell.xib; sourceTree = "<group>"; };
+		1803376821CBAC7D0098F944 /* HumidityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumidityCell.swift; sourceTree = "<group>"; };
+		1803376A21CBAC900098F944 /* HumidityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HumidityCell.xib; sourceTree = "<group>"; };
+		1803376C21CBBA660098F944 /* CellCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellCreator.swift; sourceTree = "<group>"; };
+		1803376E21CBED960098F944 /* HumidityDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumidityDevice.swift; sourceTree = "<group>"; };
+		1803377321CBF5220098F944 /* SelectionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectionViewController.storyboard; sourceTree = "<group>"; };
+		1803377521CBF5480098F944 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
+		1803377721CBF6CC0098F944 /* SelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionCell.xib; sourceTree = "<group>"; };
+		1803377921CBF7310098F944 /* SelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionCell.swift; sourceTree = "<group>"; };
 		1826C624218F51B700A5CE38 /* ItemListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListService.swift; sourceTree = "<group>"; };
 		18339BDF21C9493E00CC2269 /* IoTGarden.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IoTGarden.xcdatamodel; sourceTree = "<group>"; };
 		18339BE221C9496100CC2269 /* ItemList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ItemList.xcdatamodel; sourceTree = "<group>"; };
@@ -150,8 +181,8 @@
 				18339BE121C9496100CC2269 /* ItemList.xcdatamodeld */,
 				1826C624218F51B700A5CE38 /* ItemListService.swift */,
 				1803374B21C9EDC90098F944 /* SensorMapping.swift */,
-				1803374D21C9EE880098F944 /* ListSensorMapping.swift */,
-				1803374F21C9EEF70098F944 /* ListToggleSensorMapping.swift */,
+				1803375321CA2A6B0098F944 /* DataInteractor.swift */,
+				1803376221CB954D0098F944 /* ConfigurationsDataInteractor.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -163,6 +194,72 @@
 				18C832BD218ADAD500ED37A1 /* Storage.swift */,
 			);
 			path = Libs;
+			sourceTree = "<group>";
+		};
+		1803375721CB3B910098F944 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1803375821CB3BAE0098F944 /* Device.swift */,
+				1803375A21CB3C070098F944 /* SwitchDevice.swift */,
+				1803375C21CB3C350098F944 /* TemperatureDevice.swift */,
+				1803376E21CBED960098F944 /* HumidityDevice.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1803375E21CB3C760098F944 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				18EDCF5121899EC500B233B9 /* Configuration.swift */,
+				1803375521CA9B130098F944 /* Sensor.swift */,
+				18EDCF4F21899E3800B233B9 /* Item.swift */,
+				183CAF2B219BCB31005149B1 /* ItemConnect.swift */,
+				1803375F21CB41640098F944 /* SensorConnect.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1803377021CBF4400098F944 /* ItemList */ = {
+			isa = PBXGroup;
+			children = (
+				1803376C21CBBA660098F944 /* CellCreator.swift */,
+				18EDCF592189A0F900B233B9 /* ItemListCell.swift */,
+				18EDCF5F2189AF3600B233B9 /* ItemListCell.xib */,
+				1803376421CBA9860098F944 /* TemperatureCell.swift */,
+				1803376621CBA9A20098F944 /* TemperatureCell.xib */,
+				1803376821CBAC7D0098F944 /* HumidityCell.swift */,
+				1803376A21CBAC900098F944 /* HumidityCell.xib */,
+				18EDCF5D2189A4AC00B233B9 /* ItemListViewController.storyboard */,
+				18EDCF5B2189A46500B233B9 /* ItemListViewController.swift */,
+			);
+			path = ItemList;
+			sourceTree = "<group>";
+		};
+		1803377121CBF4BB0098F944 /* ItemDetail */ = {
+			isa = PBXGroup;
+			children = (
+				1854087F21C40D0A00984268 /* ItemDetailTempViewController.storyboard */,
+				1846AB54218A9EF300F46053 /* ItemDetailViewController.storyboard */,
+				1846AB52218A9E7800F46053 /* ItemDetailViewController.swift */,
+				1854087921C40BF000984268 /* ItemDetailTempViewController.swift */,
+			);
+			path = ItemDetail;
+			sourceTree = "<group>";
+		};
+		1803377221CBF4E20098F944 /* AddItem */ = {
+			isa = PBXGroup;
+			children = (
+				1852DBA321931E16002E1946 /* AddItemSavingViewController.swift */,
+				1852DBA12192960D002E1946 /* AddItemView.swift */,
+				1852DBA521931FA5002E1946 /* AddItemSavingView.swift */,
+				1846AB58218AA3E100F46053 /* AddItemViewController.storyboard */,
+				1846AB56218AA3B800F46053 /* AddItemViewController.swift */,
+				1803377321CBF5220098F944 /* SelectionViewController.storyboard */,
+				1803377521CBF5480098F944 /* SelectionViewController.swift */,
+				1803377721CBF6CC0098F944 /* SelectionCell.xib */,
+				1803377921CBF7310098F944 /* SelectionCell.swift */,
+			);
+			path = AddItem;
 			sourceTree = "<group>";
 		};
 		18A042FB21894CD2005E04D4 = {
@@ -192,7 +289,6 @@
 			children = (
 				18A0430721894CD2005E04D4 /* AppDelegate.swift */,
 				1803375221C9EF810098F944 /* Libs */,
-				183CAF2B219BCB31005149B1 /* ItemConnect.swift */,
 				1803375121C9EF430098F944 /* CoreData */,
 				18339BDE21C9493E00CC2269 /* IoTGarden.xcdatamodeld */,
 				18E7A71C218EE0F800F7E689 /* Redux */,
@@ -200,23 +296,13 @@
 				18A0431121894CD4005E04D4 /* Assets.xcassets */,
 				18A0431321894CD4005E04D4 /* LaunchScreen.storyboard */,
 				18A0431621894CD4005E04D4 /* Info.plist */,
-				18EDCF4F21899E3800B233B9 /* Item.swift */,
+				1803375E21CB3C760098F944 /* Model */,
+				1803375721CB3B910098F944 /* ViewModel */,
 				18D9A05021C4109F008EFA72 /* ItemTemp.swift */,
-				18EDCF5121899EC500B233B9 /* Configuration.swift */,
 				18EDCF5321899F3100B233B9 /* GroupItem.swift */,
-				18EDCF592189A0F900B233B9 /* ItemListCell.swift */,
-				18EDCF5F2189AF3600B233B9 /* ItemListCell.xib */,
-				18EDCF5B2189A46500B233B9 /* ItemListViewController.swift */,
-				18EDCF5D2189A4AC00B233B9 /* ItemListViewController.storyboard */,
-				1846AB52218A9E7800F46053 /* ItemDetailViewController.swift */,
-				1846AB54218A9EF300F46053 /* ItemDetailViewController.storyboard */,
-				1846AB56218AA3B800F46053 /* AddItemViewController.swift */,
-				1852DBA321931E16002E1946 /* AddItemSavingViewController.swift */,
-				1852DBA12192960D002E1946 /* AddItemView.swift */,
-				1852DBA521931FA5002E1946 /* AddItemSavingView.swift */,
-				1854087921C40BF000984268 /* ItemDetailTempViewController.swift */,
-				1846AB58218AA3E100F46053 /* AddItemViewController.storyboard */,
-				1854087F21C40D0A00984268 /* ItemDetailTempViewController.storyboard */,
+				1803377021CBF4400098F944 /* ItemList */,
+				1803377121CBF4BB0098F944 /* ItemDetail */,
+				1803377221CBF4E20098F944 /* AddItem */,
 			);
 			path = IoTGarden;
 			sourceTree = "<group>";
@@ -378,8 +464,13 @@
 			files = (
 				18A0431521894CD4005E04D4 /* LaunchScreen.storyboard in Resources */,
 				18EDCF602189AF3600B233B9 /* ItemListCell.xib in Resources */,
+				1803377421CBF5220098F944 /* SelectionViewController.storyboard in Resources */,
 				1846AB59218AA3E100F46053 /* AddItemViewController.storyboard in Resources */,
+				1803377821CBF6CC0098F944 /* SelectionCell.xib in Resources */,
+				1803376121CB91A00098F944 /* ItemDetailViewController.storyboard in Resources */,
 				18A0431221894CD4005E04D4 /* Assets.xcassets in Resources */,
+				1803376721CBA9A20098F944 /* TemperatureCell.xib in Resources */,
+				1803376B21CBAC900098F944 /* HumidityCell.xib in Resources */,
 				1854088021C40D0A00984268 /* ItemDetailTempViewController.storyboard in Resources */,
 				18EDCF5E2189A4AC00B233B9 /* ItemListViewController.storyboard in Resources */,
 				18A0430D21894CD2005E04D4 /* Main.storyboard in Resources */,
@@ -461,32 +552,43 @@
 				18B5506321C559FF004EC438 /* ItemAction.swift in Sources */,
 				18EDCF5A2189A0F900B233B9 /* ItemListCell.swift in Sources */,
 				18E7A726218EFE5200F7E689 /* ItemListReducer.swift in Sources */,
+				1803375421CA2A6B0098F944 /* DataInteractor.swift in Sources */,
 				18C832BE218ADAD500ED37A1 /* Storage.swift in Sources */,
-				1803374E21C9EE880098F944 /* ListSensorMapping.swift in Sources */,
+				1803377621CBF5480098F944 /* SelectionViewController.swift in Sources */,
+				1803375B21CB3C070098F944 /* SwitchDevice.swift in Sources */,
 				18339BE321C9496100CC2269 /* ItemList.xcdatamodeld in Sources */,
 				183CAF2C219BCB31005149B1 /* ItemConnect.swift in Sources */,
 				18EDCF5C2189A46500B233B9 /* ItemListViewController.swift in Sources */,
+				1803376321CB954D0098F944 /* ConfigurationsDataInteractor.swift in Sources */,
 				18E7A724218EFDF600F7E689 /* ItemListState.swift in Sources */,
+				1803375D21CB3C350098F944 /* TemperatureDevice.swift in Sources */,
 				18E7A72A218EFF9900F7E689 /* ItemListStore.swift in Sources */,
 				18EDCF5221899EC500B233B9 /* Configuration.swift in Sources */,
 				18339BE021C9493E00CC2269 /* IoTGarden.xcdatamodeld in Sources */,
 				18EDCF5021899E3900B233B9 /* Item.swift in Sources */,
+				1803376921CBAC7D0098F944 /* HumidityCell.swift in Sources */,
 				1852DBA22192960D002E1946 /* AddItemView.swift in Sources */,
 				1846AB57218AA3B800F46053 /* AddItemViewController.swift in Sources */,
 				18E7A71E218EE4E800F7E689 /* ReactiveReSwiftBridge.swift in Sources */,
 				1846AB53218A9E7800F46053 /* ItemDetailViewController.swift in Sources */,
 				18A0430821894CD2005E04D4 /* AppDelegate.swift in Sources */,
-				1803375021C9EEF70098F944 /* ListToggleSensorMapping.swift in Sources */,
+				1803376D21CBBA660098F944 /* CellCreator.swift in Sources */,
 				18EDCF5421899F3100B233B9 /* GroupItem.swift in Sources */,
+				1803376521CBA9860098F944 /* TemperatureCell.swift in Sources */,
+				1803376F21CBED960098F944 /* HumidityDevice.swift in Sources */,
 				18B5506521C55A14004EC438 /* ItemReducer.swift in Sources */,
 				1854087A21C40BF000984268 /* ItemDetailTempViewController.swift in Sources */,
 				1852DBA621931FA5002E1946 /* AddItemSavingView.swift in Sources */,
+				1803375921CB3BAE0098F944 /* Device.swift in Sources */,
+				1803376021CB41640098F944 /* SensorConnect.swift in Sources */,
 				18D9A05121C4109F008EFA72 /* ItemTemp.swift in Sources */,
 				18B5506721C56104004EC438 /* ItemStore.swift in Sources */,
 				1852DBA421931E16002E1946 /* AddItemSavingViewController.swift in Sources */,
 				1803374C21C9EDC90098F944 /* SensorMapping.swift in Sources */,
 				1826C625218F51B700A5CE38 /* ItemListService.swift in Sources */,
 				18E7A728218EFEDD00F7E689 /* ItemListAction.swift in Sources */,
+				1803375621CA9B130098F944 /* Sensor.swift in Sources */,
+				1803377A21CBF7310098F944 /* SelectionCell.swift in Sources */,
 				18D74DA321C8DA7900612351 /* EnumCollection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
