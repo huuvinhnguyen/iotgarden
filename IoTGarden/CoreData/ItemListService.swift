@@ -12,13 +12,13 @@ struct ItemListService {
     
     func loadSensors(finished: (_ sensors: [Sensor])->()) {
         
-        finished([Sensor(uuid: "abc", name: "abc", value: "aaa", serverUUID: "123", kind: .temperature)])
+//        finished([Sensor(uuid: "abc", name: "abc", value: "aaa", serverUUID: "123", kind: .temperature)])
         
-//        let interactor = SensorsDataInteractor()
-//        interactor.getItems { sensors in
-//            
-//            finished(sensors)
-//        }
+        let interactor = SensorsDataInteractor()
+        interactor.getItems { sensors in
+            
+            finished(sensors)
+        }
     }
     
     func addLocalItem(item: Item) {
@@ -31,15 +31,9 @@ struct ItemListService {
     func addSensor(sensor: Sensor) {
         
         let sensors = SensorsDataInteractor()
-        
         sensors.add(item: sensor) { _ in }
     }
     
-//    func updateItem(item: ToggleItem) {
-//        
-//        let sensors = SensorsDataInteractor()
-//        sensor.update(item: item)
-//    }
     
     func updateSensor(sensor: Sensor) {
         
@@ -47,11 +41,6 @@ struct ItemListService {
         sensors.update(item: sensor)
     }
     
-//    func removeLocalItem(uuid: String) {
-//        
-//        let sensors = SensorsDataInteractor()
-//        sensors.delete(uuid: uuid)
-//    }
     
     func removeSensor(sensor: Sensor) {
         

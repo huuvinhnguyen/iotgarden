@@ -22,7 +22,6 @@
 		1803376B21CBAC900098F944 /* HumidityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1803376A21CBAC900098F944 /* HumidityCell.xib */; };
 		1803376D21CBBA660098F944 /* CellCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803376C21CBBA660098F944 /* CellCreator.swift */; };
 		1803376F21CBED960098F944 /* HumidityDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803376E21CBED960098F944 /* HumidityDevice.swift */; };
-		1803377421CBF5220098F944 /* SelectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1803377321CBF5220098F944 /* SelectionViewController.storyboard */; };
 		1803377621CBF5480098F944 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803377521CBF5480098F944 /* SelectionViewController.swift */; };
 		1803377821CBF6CC0098F944 /* SelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1803377721CBF6CC0098F944 /* SelectionCell.xib */; };
 		1803377A21CBF7310098F944 /* SelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803377921CBF7310098F944 /* SelectionCell.swift */; };
@@ -38,6 +37,8 @@
 		1852DBA621931FA5002E1946 /* AddItemSavingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1852DBA521931FA5002E1946 /* AddItemSavingView.swift */; };
 		1854087A21C40BF000984268 /* ItemDetailTempViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1854087921C40BF000984268 /* ItemDetailTempViewController.swift */; };
 		1854088021C40D0A00984268 /* ItemDetailTempViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1854087F21C40D0A00984268 /* ItemDetailTempViewController.storyboard */; };
+		1862B3DC21E305D200CFD7F1 /* icon_temp.png in Resources */ = {isa = PBXBuildFile; fileRef = 1862B3DB21E305D200CFD7F1 /* icon_temp.png */; };
+		1862B3DE21E32A7200CFD7F1 /* icon_humi.png in Resources */ = {isa = PBXBuildFile; fileRef = 1862B3DD21E32A7200CFD7F1 /* icon_humi.png */; };
 		18A0430821894CD2005E04D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0430721894CD2005E04D4 /* AppDelegate.swift */; };
 		18A0430D21894CD2005E04D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A0430B21894CD2005E04D4 /* Main.storyboard */; };
 		18A0431221894CD4005E04D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A0431121894CD4005E04D4 /* Assets.xcassets */; };
@@ -97,7 +98,6 @@
 		1803376A21CBAC900098F944 /* HumidityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HumidityCell.xib; sourceTree = "<group>"; };
 		1803376C21CBBA660098F944 /* CellCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellCreator.swift; sourceTree = "<group>"; };
 		1803376E21CBED960098F944 /* HumidityDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumidityDevice.swift; sourceTree = "<group>"; };
-		1803377321CBF5220098F944 /* SelectionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectionViewController.storyboard; sourceTree = "<group>"; };
 		1803377521CBF5480098F944 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		1803377721CBF6CC0098F944 /* SelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionCell.xib; sourceTree = "<group>"; };
 		1803377921CBF7310098F944 /* SelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionCell.swift; sourceTree = "<group>"; };
@@ -114,6 +114,8 @@
 		1852DBA521931FA5002E1946 /* AddItemSavingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemSavingView.swift; sourceTree = "<group>"; };
 		1854087921C40BF000984268 /* ItemDetailTempViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailTempViewController.swift; sourceTree = "<group>"; };
 		1854087F21C40D0A00984268 /* ItemDetailTempViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemDetailTempViewController.storyboard; sourceTree = "<group>"; };
+		1862B3DB21E305D200CFD7F1 /* icon_temp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_temp.png; sourceTree = "<group>"; };
+		1862B3DD21E32A7200CFD7F1 /* icon_humi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_humi.png; sourceTree = "<group>"; };
 		18A0430421894CD2005E04D4 /* IoTGarden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IoTGarden.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A0430721894CD2005E04D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18A0430C21894CD2005E04D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -192,6 +194,8 @@
 			children = (
 				18D74DA221C8DA7800612351 /* EnumCollection.swift */,
 				18C832BD218ADAD500ED37A1 /* Storage.swift */,
+				1862B3DB21E305D200CFD7F1 /* icon_temp.png */,
+				1862B3DD21E32A7200CFD7F1 /* icon_humi.png */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -254,7 +258,6 @@
 				1852DBA521931FA5002E1946 /* AddItemSavingView.swift */,
 				1846AB58218AA3E100F46053 /* AddItemViewController.storyboard */,
 				1846AB56218AA3B800F46053 /* AddItemViewController.swift */,
-				1803377321CBF5220098F944 /* SelectionViewController.storyboard */,
 				1803377521CBF5480098F944 /* SelectionViewController.swift */,
 				1803377721CBF6CC0098F944 /* SelectionCell.xib */,
 				1803377921CBF7310098F944 /* SelectionCell.swift */,
@@ -464,8 +467,9 @@
 			files = (
 				18A0431521894CD4005E04D4 /* LaunchScreen.storyboard in Resources */,
 				18EDCF602189AF3600B233B9 /* ItemListCell.xib in Resources */,
-				1803377421CBF5220098F944 /* SelectionViewController.storyboard in Resources */,
 				1846AB59218AA3E100F46053 /* AddItemViewController.storyboard in Resources */,
+				1862B3DE21E32A7200CFD7F1 /* icon_humi.png in Resources */,
+				1862B3DC21E305D200CFD7F1 /* icon_temp.png in Resources */,
 				1803377821CBF6CC0098F944 /* SelectionCell.xib in Resources */,
 				1803376121CB91A00098F944 /* ItemDetailViewController.storyboard in Resources */,
 				18A0431221894CD4005E04D4 /* Assets.xcassets in Resources */,

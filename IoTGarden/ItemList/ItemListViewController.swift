@@ -69,7 +69,20 @@ class ItemListViewController: UIViewController {
                 
                 weakSelf.itemListService.loadSensors { sensors in
                     
-                    weakSelf.devices = sensors.compactMap { HumidityDevice(sensor: $0) }
+                    weakSelf.devices = sensors.compactMap { sensor in
+                        
+                        switch sensor.kind {
+                        case "toggle":
+                            return SwitchDevice(sensor: sensor)
+                        case "temperature":
+                            return TemperatureDevice(sensor: sensor)
+                        case "humidity":
+                            return HumidityDevice(sensor: sensor)
+                        default:
+                            return nil
+                        }
+                    }
+                    
                     weakSelf.itemListCollectionView.reloadData()
                     weakSelf.refreshControl.endRefreshing()
                 }
@@ -117,7 +130,7 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 100)
+        return CGSize(width: collectionView.frame.width, height: 130)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

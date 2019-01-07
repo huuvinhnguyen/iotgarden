@@ -24,17 +24,17 @@ class AddItemViewController:  UIViewController {
     
     @IBAction func connectButtonTapped(sender: UIButton) {
         
-//        let uuid = UUID().uuidString
-//        let server = serverTextField?.text ?? ""
-//        let port = portTextField?.text ?? ""
-//        let username = userTextField?.text ?? ""
-//        let password = passTextField?.text ?? ""
+        let uuid = UUID().uuidString
+        let server = serverTextField?.text ?? ""
+        let port = portTextField?.text ?? ""
+        let username = userTextField?.text ?? ""
+        let password = passTextField?.text ?? ""
         
-                    let uuid = UUID().uuidString
-                    let server = "m15.cloudmqtt.com"
-                    let username = "rdgbdjfq"
-                    let password = "jtWqc7RiUsz-"
-                    let port = "14985"
+//                    let uuid = UUID().uuidString
+//                    let server = "m15.cloudmqtt.com"
+//                    let username = "rdgbdjfq"
+//                    let password = "jtWqc7RiUsz-"
+//                    let port = "14985"
         
         configuration = Configuration(uuid: uuid, server: server, username: username, password: password, port: port)
         
@@ -55,15 +55,7 @@ class AddItemViewController:  UIViewController {
 extension AddItemViewController: CocoaMQTTDelegate {
     // Optional ssl CocoaMQTTDelegate
     func mqtt(_ mqtt: CocoaMQTT, didReceive trust: SecTrust, completionHandler: @escaping (Bool) -> Void) {
-        /// Validate the server certificate
-        ///
-        /// Some custom validation...
-        ///
-        /// if validatePassed {
-        ///     completionHandler(true)
-        /// } else {
-        ///     completionHandler(false)
-        /// }
+        
         
         completionHandler(true)
     }
@@ -82,15 +74,8 @@ extension AddItemViewController: CocoaMQTTDelegate {
             guard let configuration = self.configuration else { return }
             itemListService.addLocalConfiguration(configuration: configuration)
             
-//            if let vc = self.storyboard?.instantiateViewController(withIdentifier :"AddItemSavingViewController") as? AddItemSavingViewController {
-//
-//                vc.configuration = configuration
-//                self.navigationController?.pushViewController(vc, animated: true)
-//            }
             
-            let storyboard = UIStoryboard(name: "SelectionViewController", bundle: nil)
-            
-            if let vc = storyboard.instantiateViewController(withIdentifier :"SelectionViewController") as? SelectionViewController {
+            if let vc = storyboard?.instantiateViewController(withIdentifier :"SelectionViewController") as? SelectionViewController {
                 
                 vc.configuration = configuration
                 self.navigationController?.pushViewController(vc, animated: true)

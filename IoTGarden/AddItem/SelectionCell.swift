@@ -9,4 +9,6 @@ import UIKit
 
 class SelectionCell: UICollectionViewCell {
     
+     @IBOutlet weak var titleLabel: UILabel?
+    
 }

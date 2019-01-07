@@ -17,5 +17,5 @@ struct Sensor {
     
     var serverUUID: String = ""
     
-    var kind: Kind = .toggle
+    var kind: String = ""
 }

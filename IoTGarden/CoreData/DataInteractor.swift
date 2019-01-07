@@ -64,6 +64,8 @@ struct SensorsDataInteractor : DataInteractor {
         
         localItem.setValue(item.value, forKeyPath: "value")
         
+        localItem.setValue(item.kind, forKeyPath: "kind")
+        
         do {
             
             finished(item)
@@ -92,6 +94,8 @@ struct SensorsDataInteractor : DataInteractor {
                 object.setValue(item.serverUUID, forKeyPath: "serverUUID")
                 
                 object.setValue(item.value, forKeyPath: "value")
+                
+                object.setValue(item.kind, forKeyPath: "kind")
             }
         }
         
@@ -115,7 +119,7 @@ struct SensorsDataInteractor : DataInteractor {
             
             for object in result {
                 
-                return Sensor(uuid: String(describing: object.value(forKeyPath: "uuid") ?? ""), name: String(describing: object.value(forKeyPath: "name") ?? ""), value:   String(describing:object.value(forKeyPath: "value") ?? "") , serverUUID: String(describing: object.value(forKeyPath: "serverUUID") ?? ""), kind: Kind(rawValue: String(describing: object.value(forKeyPath: "kind") ?? "toggle"))!)
+                return Sensor(uuid: String(describing: object.value(forKeyPath: "uuid") ?? ""), name: String(describing: object.value(forKeyPath: "name") ?? ""), value:   String(describing:object.value(forKeyPath: "value") ?? "") , serverUUID: String(describing: object.value(forKeyPath: "serverUUID") ?? ""), kind: String(describing: object.value(forKeyPath: "kind") ?? ""))
             }
         }
         
@@ -132,7 +136,8 @@ struct SensorsDataInteractor : DataInteractor {
             
             let items = result.compactMap {
                 
-                            Sensor(uuid: String(describing: $0.value(forKeyPath: "uuid") ?? ""), name: String(describing: $0.value(forKeyPath: "name") ?? ""), value:   String(describing:$0.value(forKeyPath: "value") ?? "") , serverUUID: String(describing: $0.value(forKeyPath: "serverUUID") ?? ""), kind: Kind(rawValue: String(describing: $0.value(forKeyPath: "kind") ?? "toggle"))!)
+//                            Sensor(uuid: String(describing: $0.value(forKeyPath: "uuid") ?? ""), name: String(describing: $0.value(forKeyPath: "name") ?? ""), value:   String(describing:$0.value(forKeyPath: "value") ?? "") , serverUUID: String(describing: $0.value(forKeyPath: "serverUUID") ?? ""), kind: Kind(rawValue: String(describing: $0.value(forKeyPath: "kind") ?? "toggle"))!)
+                Sensor(uuid: String(describing: $0.value(forKeyPath: "uuid") ?? ""), name: String(describing: $0.value(forKeyPath: "name") ?? ""), value:   String(describing:$0.value(forKeyPath: "value") ?? "") , serverUUID: String(describing: $0.value(forKeyPath: "serverUUID") ?? ""), kind: String(describing: $0.value(forKeyPath: "kind") ?? ""))
                         }
             
             finished(items)
@@ -143,6 +148,4 @@ struct SensorsDataInteractor : DataInteractor {
         }
         
     }
-        
-//        finished([("123", .toggle), ("567", .temperature), ("123", .toggle)])
 }

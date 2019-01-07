@@ -13,6 +13,7 @@ class AddItemSavingViewController:  UIViewController {
     @IBOutlet weak var nameTextField: UITextField?
     var mqtt: CocoaMQTT?
     var configuration: Configuration?
+    var kind: String?
     
     @IBAction func saveButtonTapped(sender: UIButton) {
         
@@ -20,9 +21,8 @@ class AddItemSavingViewController:  UIViewController {
         
         let itemListService = ItemListService()
         guard let name = nameTextField?.text else { return }
-//        let item = ToggleItem(uuid: UUID().uuidString, name: name, isOn: true, serverUUID: serverUUID, kind: .toggle)
-//        itemListService.addLocalItem(item: item)
-        let sensor = Sensor(uuid: UUID().uuidString, name: name, value: "0", serverUUID: serverUUID, kind: .toggle)
+        guard let kind = self.kind else { return }
+        let sensor = Sensor(uuid: UUID().uuidString, name: name, value: "0", serverUUID: serverUUID, kind: kind)
         itemListService.addSensor(sensor: sensor)
         sensorListStore.dispatch(AddSensorAction())
         navigationController?.popToRootViewController(animated: true)

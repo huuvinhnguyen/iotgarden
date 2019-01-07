@@ -23,13 +23,17 @@
                         <rect key="frame" x="11" y="7" width="364" height="128"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nhiet do" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3UM-b1-nUX">
-                                <rect key="frame" x="22" y="43" width="133" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20 C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZH6-7U-BrO">
+                                <rect key="frame" x="255" y="54" width="37" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_temp.png" translatesAutoresizingMaskIntoConstraints="NO" id="dU0-9I-JSa">
+                                <rect key="frame" x="25" y="8" width="137" height="112"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.26274509800000001" green="0.85098039219999999" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -37,7 +41,13 @@
             </view>
             <viewLayoutGuide key="safeArea" id="SRo-4e-bcH"/>
             <size key="customSize" width="386" height="143"/>
+            <connections>
+                <outlet property="temperatureLabel" destination="ZH6-7U-BrO" id="igR-vh-pWU"/>
+            </connections>
             <point key="canvasLocation" x="192" y="-236.13193403298354"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="icon_temp.png" width="1590" height="6130"/>
+    </resources>
 </document>

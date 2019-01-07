@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXD-R1-sNh">
-                        <rect key="frame" x="36" y="48" width="104" height="61"/>
+                        <rect key="frame" x="36" y="48" width="243" height="61"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -30,6 +30,9 @@
             </view>
             <viewLayoutGuide key="safeArea" id="gmA-iY-Dck"/>
             <size key="customSize" width="402" height="156"/>
+            <connections>
+                <outlet property="titleLabel" destination="KXD-R1-sNh" id="Y5m-LU-KLf"/>
+            </connections>
             <point key="canvasLocation" x="112" y="-19.790104947526238"/>
         </collectionViewCell>
     </objects>

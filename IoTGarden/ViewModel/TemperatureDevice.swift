@@ -7,14 +7,14 @@
 
 class TemperatureDevice: Device {
     
+    
     var sensor: Sensor {
         
         didSet {
             
         }
     }
-    
-    var isOn: Bool = true
+    var valueString = ""
     var name: String
     internal var sensorConnect: SensorConnect
     
@@ -31,7 +31,7 @@ class TemperatureDevice: Device {
         sensorConnect.connect(sensor: sensor)
         
         name = sensor.name
-        isOn = (sensor.value == "0") ? false : true
+        valueString = sensor.value
         
         sensorConnect.didReceiveMessage = { [weak self] mqtt, message, id in
             
@@ -40,17 +40,11 @@ class TemperatureDevice: Device {
             guard let weakSelf = self else { return }
             
             print("#Message from  topic \(message.topic) with payload \(message.string!)")
-            if message.string == "1" {
-                
-                weakSelf.isOn = true
-            }
             
-            if message.string == "0" {
-                
-                weakSelf.isOn = false
-            }
             
-            newItem.value = message.string ?? "0"
+            weakSelf.valueString = message.string ?? ""
+            
+            newItem.value = message.string ?? ""
             print("item.name = \(newItem.name)")
             sensorStore.dispatch(UpdateSensorAction(sensor: newItem))
             let itemListService = ItemListService()
