@@ -10,6 +10,7 @@ enum Kind: String, EnumCollection {
     case temperature = "temperature"
     case humidity = "humidity"
     case toggle = "toggle"
+    case motion = "motion"
 }
 
 protocol Device {

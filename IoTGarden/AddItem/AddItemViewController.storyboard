@@ -349,6 +349,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="nameTextField" destination="SRA-V9-sBM" id="QEJ-ov-XO5"/>
+                        <outlet property="topicTextField" destination="0gj-nA-Rgq" id="wtB-Rx-GB9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MLO-W7-7bz" userLabel="First Responder" sceneMemberID="firstResponder"/>

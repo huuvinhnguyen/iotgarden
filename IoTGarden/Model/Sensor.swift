@@ -18,4 +18,15 @@ struct Sensor {
     var serverUUID: String = ""
     
     var kind: String = ""
+    
+    var topic: String = ""
+    
+    var time: String = ""
+}
+
+struct SensorValue {
+    
+    var value: String = ""
+    
+    var time: String = ""
 }

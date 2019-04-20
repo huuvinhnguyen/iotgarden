@@ -1,49 +1,67 @@
 PODS:
+  - APIKit (4.0.0):
+    - Result (~> 4.0)
+  - Charts (3.2.2):
+    - Charts/Core (= 3.2.2)
+  - Charts/Core (3.2.2)
   - CocoaAsyncSocket (7.6.3)
-  - CocoaMQTT (1.1.2):
-    - CocoaAsyncSocket (~> 7.6.1)
-    - SwiftyTimer (~> 2.0.0)
-  - PromiseKit (6.2.7):
-    - PromiseKit/CorePromise (= 6.2.7)
-    - PromiseKit/Foundation (= 6.2.7)
-    - PromiseKit/UIKit (= 6.2.7)
-  - PromiseKit/CorePromise (6.2.7)
-  - PromiseKit/Foundation (6.2.7):
+  - CocoaMQTT (1.1.3):
+    - CocoaAsyncSocket (~> 7.6.3)
+  - Himotoki (3.2.0)
+  - PromiseKit (6.8.3):
+    - PromiseKit/CorePromise (= 6.8.3)
+    - PromiseKit/Foundation (= 6.8.3)
+    - PromiseKit/UIKit (= 6.8.3)
+  - PromiseKit/CorePromise (6.8.3)
+  - PromiseKit/Foundation (6.8.3):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (6.2.7):
+  - PromiseKit/UIKit (6.8.3):
     - PromiseKit/CorePromise
   - ReactiveReSwift (4.0.0)
-  - RxCocoa (4.1.2):
+  - Result (4.1.0)
+  - RxAtomic (4.4.1)
+  - RxCocoa (4.4.1):
     - RxSwift (~> 4.0)
-  - RxSwift (4.1.2)
-  - SwiftyTimer (2.0.0)
+  - RxSwift (4.4.1):
+    - RxAtomic (~> 4.4)
 
 DEPENDENCIES:
+  - APIKit
+  - Charts
   - CocoaMQTT
+  - Himotoki
   - PromiseKit
   - ReactiveReSwift
   - RxCocoa
   - RxSwift
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
+    - APIKit
+    - Charts
     - CocoaAsyncSocket
     - CocoaMQTT
+    - Himotoki
     - PromiseKit
     - ReactiveReSwift
+    - Result
+    - RxAtomic
     - RxCocoa
     - RxSwift
-    - SwiftyTimer
 
 SPEC CHECKSUMS:
+  APIKit: 23ddce4be7eccd746d2ab3c62713cd80d5846d5a
+  Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
-  CocoaMQTT: d33ab3cd4e329f9f1cfbb62e25306a318a606616
-  PromiseKit: 12b9d87748b170714247d8b2677146ca57e488f2
+  CocoaMQTT: b506d38ad3bbe1c55a4f8ee8c9fd02c35da1a7d8
+  Himotoki: 2618fc6b939ad6d9b71c52c90fe210f54ea28167
+  PromiseKit: 94c6e781838c5bf4717677d0d882b0e7250c80fc
   ReactiveReSwift: b6187229efcc5ec819fb1d3d19716c231bcc0456
-  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
-  RxSwift: e49536837d9901277638493ea537394d4b55f570
-  SwiftyTimer: 2efd74b060d69ad4f1496baf5bbedbe132125fcf
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  RxAtomic: f8d6adc1ccb87a767811269e4875887bc74dbf19
+  RxCocoa: 2f35a76bf8887872e28a1914112395b11b8e0e64
+  RxSwift: 92fcf68dfef21f3e2ab1965363d9e7b3d787597e
 
-PODFILE CHECKSUM: b01028043b847e34e0f83df1824d6b8710563043
+PODFILE CHECKSUM: 8e5f41b9edda9de31d836f2fceec5d44e69ee9c7
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.6.1

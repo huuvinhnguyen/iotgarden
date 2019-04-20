@@ -4,6 +4,7 @@
 //
 //  Created by Apple on 12/20/18.
 //
+import Foundation
 
 class SwitchDevice: Device {
     
@@ -15,19 +16,21 @@ class SwitchDevice: Device {
     }
     var isOn: Bool = true
     var name: String
+    var stateString: String = "Requesting"
     internal var sensorConnect: SensorConnect
     
     init(sensor: Sensor) {
         
         self.sensor = sensor
         self.sensorConnect = SensorConnect()
+        sensorConnect.connect(sensor: sensor)
+
         self.name = sensor.name
         configure(sensor: sensor)
     }
     
-    func configure(sensor: Sensor) {
+    private func configure(sensor: Sensor) {
         
-        sensorConnect.connect(sensor: sensor)
         
         name = sensor.name
         isOn = (sensor.value == "0") ? false : true
@@ -51,7 +54,14 @@ class SwitchDevice: Device {
             
             newItem.value = message.string ?? "0"
             print("item.name = \(newItem.name)")
+            weakSelf.stateString = "Updated"
             sensorStore.dispatch(UpdateSensorAction(sensor: newItem))
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let dateString = formatter.string(from: Date())
+            newItem.time =  dateString
+            
             let itemListService = ItemListService()
             itemListService.updateSensor(sensor: newItem)
         }

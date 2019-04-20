@@ -4,6 +4,7 @@
 //
 //  Created by Apple on 12/20/18.
 //
+import Foundation
 
 class HumidityDevice: Device {
     
@@ -15,6 +16,7 @@ class HumidityDevice: Device {
     }
     var valueString = ""
     var name: String
+    var timeString = ""
     internal var sensorConnect: SensorConnect
     
     init(sensor: Sensor) {
@@ -22,6 +24,7 @@ class HumidityDevice: Device {
         self.sensor = sensor
         self.sensorConnect = SensorConnect()
         self.name = sensor.name
+        
         configure(sensor: sensor)
     }
     
@@ -31,6 +34,7 @@ class HumidityDevice: Device {
         
         name = sensor.name
         valueString = sensor.value
+        timeString = sensor.time
         
         sensorConnect.didReceiveMessage = { [weak self] mqtt, message, id in
             
@@ -45,6 +49,14 @@ class HumidityDevice: Device {
             
             newItem.value = message.string ?? ""
             print("item.name = \(newItem.name)")
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let dateString = formatter.string(from: Date())
+            newItem.time =  dateString
+            weakSelf.timeString = dateString
+
+            
             sensorStore.dispatch(UpdateSensorAction(sensor: newItem))
             let itemListService = ItemListService()
             itemListService.updateSensor(sensor: newItem)

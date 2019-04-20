@@ -35,13 +35,13 @@ class ItemListViewController: UIViewController {
             
             guard let rowIndex = row else { return }
             
-            let currentViewModel = weakSelf.devices[rowIndex]
+//            let currentViewModel = weakSelf.devices[rowIndex]
             
-            if currentViewModel.sensor.value != sensor.value {
-                
+//            if currentViewModel.sensor.value != sensor.value {
+            
                 weakSelf.devices[rowIndex].sensor = sensor
                 weakSelf.itemListCollectionView.reloadItems(at: [IndexPath(row: rowIndex, section: 0)])
-            }
+//            }
         }
     }
     
@@ -58,6 +58,8 @@ class ItemListViewController: UIViewController {
         itemListCollectionView.register(UINib(nibName: "TemperatureCell", bundle: nil), forCellWithReuseIdentifier: "TemperatureCell")
         
         itemListCollectionView.register(UINib(nibName: "HumidityCell", bundle: nil), forCellWithReuseIdentifier: "HumidityCell")
+        
+        itemListCollectionView.register(UINib(nibName: "MotionCell", bundle: nil), forCellWithReuseIdentifier: "MotionCell")
     }
     
     @objc private func loadSensors() {
@@ -78,6 +80,8 @@ class ItemListViewController: UIViewController {
                             return TemperatureDevice(sensor: sensor)
                         case "humidity":
                             return HumidityDevice(sensor: sensor)
+                        case "motion":
+                            return MotionDevice(sensor: sensor)
                         default:
                             return nil
                         }
@@ -135,12 +139,19 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let device = devices[indexPath.row]
+//        let device = devices[indexPath.row]
+//        
+//        let storyboard = UIStoryboard(name: "ItemDetailViewController", bundle: nil)
+//        if let itemDetailViewController = storyboard.instantiateViewController(withIdentifier :"ItemDetailViewController") as? ItemDetailViewController {
+//            itemDetailViewController.sensor = device.sensor
+//            navigationController?.pushViewController(itemDetailViewController, animated: true)
+//        }
         
-        let storyboard = UIStoryboard(name: "ItemDetailViewController", bundle: nil)
-        if let itemDetailViewController = storyboard.instantiateViewController(withIdentifier :"ItemDetailViewController") as? ItemDetailViewController {
-            itemDetailViewController.sensor = device.sensor
-            navigationController?.pushViewController(itemDetailViewController, animated: true)
+        
+        let storyboard = UIStoryboard(name: "ItemDetailTempViewController", bundle: nil)
+        if let itemDetailTempViewController = storyboard.instantiateViewController(withIdentifier :"ItemDetailTempViewController") as? ItemDetailTempViewController {
+            
+            navigationController?.pushViewController(itemDetailTempViewController, animated: true)
         }
     }
 }

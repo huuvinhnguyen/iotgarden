@@ -23,19 +23,26 @@
                         <rect key="frame" x="11" y="7" width="364" height="128"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_humi.png" translatesAutoresizingMaskIntoConstraints="NO" id="wfp-Dm-6zU">
-                                <rect key="frame" x="8" y="8" width="123" height="112"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_humi.png" translatesAutoresizingMaskIntoConstraints="NO" id="wfp-Dm-6zU">
+                                <rect key="frame" x="0.0" y="0.0" width="117" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="80%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81P-hv-lvA">
-                                <rect key="frame" x="241" y="54" width="35" height="21"/>
+                                <rect key="frame" x="133" y="36" width="213" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="updated 1 min ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rHb-5t-Glp">
+                                <rect key="frame" x="125" y="92" width="207" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="updated 1 min ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rHb-5t-Glp">
-                                <rect key="frame" x="161" y="99" width="141" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jf0-EU-14S">
+                                <rect key="frame" x="125" y="7" width="207" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -48,6 +55,11 @@
             </view>
             <viewLayoutGuide key="safeArea" id="V2N-at-NIa"/>
             <size key="customSize" width="386" height="143"/>
+            <connections>
+                <outlet property="humidityLabel" destination="81P-hv-lvA" id="JfI-S9-pm1"/>
+                <outlet property="nameLabel" destination="Jf0-EU-14S" id="kgu-ll-g7r"/>
+                <outlet property="timeLabel" destination="rHb-5t-Glp" id="XzD-ic-FXt"/>
+            </connections>
             <point key="canvasLocation" x="308.80000000000001" y="-235.23238380809596"/>
         </collectionViewCell>
     </objects>

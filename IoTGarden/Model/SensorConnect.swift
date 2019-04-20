@@ -10,10 +10,12 @@ import CocoaMQTT
 class SensorConnect {
     
     private var mqtt: CocoaMQTT!
+    private var sensor: Sensor!
     
     open var didReceiveMessage: (CocoaMQTT, CocoaMQTTMessage, UInt16) -> Void = { _, _, _ in }
     
     func connect(sensor: Sensor) {
+        self.sensor = sensor
         
         let itemListService = ItemListService()
         guard let configuration = itemListService.loadLocalConfiguration(uuid: sensor.serverUUID) else { return }
@@ -23,7 +25,8 @@ class SensorConnect {
         mqtt = CocoaMQTT(clientID: clientID, host: configuration.server, port: port)
         mqtt.username = configuration.username
         mqtt.password = configuration.password
-        mqtt.autoReconnectTimeInterval = 30
+        mqtt.keepAlive = 60
+        mqtt.autoReconnectTimeInterval = 1
         mqtt.autoReconnect = true
         mqtt.connect()
         
@@ -39,7 +42,7 @@ class SensorConnect {
             
             if ack == .accept {
                 
-                mqtt.subscribe("switch", qos: CocoaMQTTQOS.qos2)
+                mqtt.subscribe(sensor.topic, qos: CocoaMQTTQOS.qos2)
             }
         }
     }
@@ -47,6 +50,6 @@ class SensorConnect {
     func publish(message: String) {
         
         print("#publish message: \(message)")
-        mqtt.publish("switch" , withString: message, qos: .qos0, retained: true, dup: false)
+        mqtt.publish(sensor.topic , withString: message, qos: .qos0, retained: true, dup: false)
     }
 }

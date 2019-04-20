@@ -25,10 +25,12 @@
 		1803377621CBF5480098F944 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803377521CBF5480098F944 /* SelectionViewController.swift */; };
 		1803377821CBF6CC0098F944 /* SelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1803377721CBF6CC0098F944 /* SelectionCell.xib */; };
 		1803377A21CBF7310098F944 /* SelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803377921CBF7310098F944 /* SelectionCell.swift */; };
+		181BAC6C220DD2B700A0D458 /* MotionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181BAC6B220DD2B700A0D458 /* MotionCell.xib */; };
+		181BAC6E220DD2D400A0D458 /* MotionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181BAC6D220DD2D400A0D458 /* MotionCell.swift */; };
+		181BAC72220DE57100A0D458 /* SensorRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181BAC71220DE57100A0D458 /* SensorRequest.swift */; };
 		1826C625218F51B700A5CE38 /* ItemListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1826C624218F51B700A5CE38 /* ItemListService.swift */; };
 		18339BE021C9493E00CC2269 /* IoTGarden.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18339BDE21C9493E00CC2269 /* IoTGarden.xcdatamodeld */; };
 		18339BE321C9496100CC2269 /* ItemList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18339BE121C9496100CC2269 /* ItemList.xcdatamodeld */; };
-		183CAF2C219BCB31005149B1 /* ItemConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183CAF2B219BCB31005149B1 /* ItemConnect.swift */; };
 		1846AB53218A9E7800F46053 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846AB52218A9E7800F46053 /* ItemDetailViewController.swift */; };
 		1846AB57218AA3B800F46053 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846AB56218AA3B800F46053 /* AddItemViewController.swift */; };
 		1846AB59218AA3E100F46053 /* AddItemViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1846AB58218AA3E100F46053 /* AddItemViewController.storyboard */; };
@@ -49,7 +51,9 @@
 		18B5506521C55A14004EC438 /* ItemReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5506421C55A14004EC438 /* ItemReducer.swift */; };
 		18B5506721C56104004EC438 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5506621C56104004EC438 /* ItemStore.swift */; };
 		18C832BE218ADAD500ED37A1 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C832BD218ADAD500ED37A1 /* Storage.swift */; };
+		18CCFFFF21E84A0B0075BA6B /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CCFFFE21E84A0B0075BA6B /* Date+Extension.swift */; };
 		18D74DA321C8DA7900612351 /* EnumCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D74DA221C8DA7800612351 /* EnumCollection.swift */; };
+		18D7C6D9220EB81000FF8529 /* MotionDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7C6D8220EB81000FF8529 /* MotionDevice.swift */; };
 		18D9A05121C4109F008EFA72 /* ItemTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9A05021C4109F008EFA72 /* ItemTemp.swift */; };
 		18E7A71E218EE4E800F7E689 /* ReactiveReSwiftBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A71D218EE4E800F7E689 /* ReactiveReSwiftBridge.swift */; };
 		18E7A724218EFDF600F7E689 /* ItemListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A723218EFDF600F7E689 /* ItemListState.swift */; };
@@ -64,6 +68,8 @@
 		18EDCF5E2189A4AC00B233B9 /* ItemListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EDCF5D2189A4AC00B233B9 /* ItemListViewController.storyboard */; };
 		18EDCF602189AF3600B233B9 /* ItemListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EDCF5F2189AF3600B233B9 /* ItemListCell.xib */; };
 		A59DAFE837AFE2D8DBBFBDD6 /* Pods_IoTGarden.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 881F9D4DBC2B015F5C29BAFA /* Pods_IoTGarden.framework */; };
+		CD33D8E05ADBF25FEC4AE43C /* Pods_IoTGardenUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4541BBD3F476D037AD1CF4F /* Pods_IoTGardenUITests.framework */; };
+		DACEC2CC87FAFB78D3356B5E /* Pods_IoTGardenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7F13111F13601CE88D0773A /* Pods_IoTGardenTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,10 +107,12 @@
 		1803377521CBF5480098F944 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		1803377721CBF6CC0098F944 /* SelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionCell.xib; sourceTree = "<group>"; };
 		1803377921CBF7310098F944 /* SelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionCell.swift; sourceTree = "<group>"; };
+		181BAC6B220DD2B700A0D458 /* MotionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MotionCell.xib; sourceTree = "<group>"; };
+		181BAC6D220DD2D400A0D458 /* MotionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionCell.swift; sourceTree = "<group>"; };
+		181BAC71220DE57100A0D458 /* SensorRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorRequest.swift; sourceTree = "<group>"; };
 		1826C624218F51B700A5CE38 /* ItemListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListService.swift; sourceTree = "<group>"; };
 		18339BDF21C9493E00CC2269 /* IoTGarden.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IoTGarden.xcdatamodel; sourceTree = "<group>"; };
 		18339BE221C9496100CC2269 /* ItemList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ItemList.xcdatamodel; sourceTree = "<group>"; };
-		183CAF2B219BCB31005149B1 /* ItemConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemConnect.swift; sourceTree = "<group>"; };
 		1846AB52218A9E7800F46053 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		1846AB54218A9EF300F46053 /* ItemDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemDetailViewController.storyboard; sourceTree = "<group>"; };
 		1846AB56218AA3B800F46053 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
@@ -132,7 +140,9 @@
 		18B5506421C55A14004EC438 /* ItemReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemReducer.swift; sourceTree = "<group>"; };
 		18B5506621C56104004EC438 /* ItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
 		18C832BD218ADAD500ED37A1 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		18CCFFFE21E84A0B0075BA6B /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		18D74DA221C8DA7800612351 /* EnumCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumCollection.swift; sourceTree = "<group>"; };
+		18D7C6D8220EB81000FF8529 /* MotionDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionDevice.swift; sourceTree = "<group>"; };
 		18D9A05021C4109F008EFA72 /* ItemTemp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTemp.swift; sourceTree = "<group>"; };
 		18E7A71D218EE4E800F7E689 /* ReactiveReSwiftBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveReSwiftBridge.swift; sourceTree = "<group>"; };
 		18E7A723218EFDF600F7E689 /* ItemListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListState.swift; sourceTree = "<group>"; };
@@ -146,8 +156,14 @@
 		18EDCF5B2189A46500B233B9 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
 		18EDCF5D2189A4AC00B233B9 /* ItemListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemListViewController.storyboard; sourceTree = "<group>"; };
 		18EDCF5F2189AF3600B233B9 /* ItemListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListCell.xib; sourceTree = "<group>"; };
+		26FF11245553B5B9CB0BEA4C /* Pods-IoTGardenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoTGardenTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IoTGardenTests/Pods-IoTGardenTests.release.xcconfig"; sourceTree = "<group>"; };
+		4EA2DE0DB42AD6B50F8BDB54 /* Pods-IoTGardenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoTGardenTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IoTGardenTests/Pods-IoTGardenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		881F9D4DBC2B015F5C29BAFA /* Pods_IoTGarden.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IoTGarden.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90D107BBD3DCEB69725EA355 /* Pods-IoTGardenUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoTGardenUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IoTGardenUITests/Pods-IoTGardenUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B7F13111F13601CE88D0773A /* Pods_IoTGardenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IoTGardenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C397D18E5EE8BB6B5777179D /* Pods-IoTGarden.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoTGarden.release.xcconfig"; path = "Pods/Target Support Files/Pods-IoTGarden/Pods-IoTGarden.release.xcconfig"; sourceTree = "<group>"; };
+		C4541BBD3F476D037AD1CF4F /* Pods_IoTGardenUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IoTGardenUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5D9503F7F307460CD4526D8 /* Pods-IoTGardenUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoTGardenUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IoTGardenUITests/Pods-IoTGardenUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F67062452CC96EA3E8E06F13 /* Pods-IoTGarden.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoTGarden.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IoTGarden/Pods-IoTGarden.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,6 +180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DACEC2CC87FAFB78D3356B5E /* Pods_IoTGardenTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD33D8E05ADBF25FEC4AE43C /* Pods_IoTGardenUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,9 +222,11 @@
 			isa = PBXGroup;
 			children = (
 				1803375821CB3BAE0098F944 /* Device.swift */,
+				18CCFFFE21E84A0B0075BA6B /* Date+Extension.swift */,
 				1803375A21CB3C070098F944 /* SwitchDevice.swift */,
 				1803375C21CB3C350098F944 /* TemperatureDevice.swift */,
 				1803376E21CBED960098F944 /* HumidityDevice.swift */,
+				18D7C6D8220EB81000FF8529 /* MotionDevice.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -217,7 +237,6 @@
 				18EDCF5121899EC500B233B9 /* Configuration.swift */,
 				1803375521CA9B130098F944 /* Sensor.swift */,
 				18EDCF4F21899E3800B233B9 /* Item.swift */,
-				183CAF2B219BCB31005149B1 /* ItemConnect.swift */,
 				1803375F21CB41640098F944 /* SensorConnect.swift */,
 			);
 			path = Model;
@@ -228,6 +247,8 @@
 			children = (
 				1803376C21CBBA660098F944 /* CellCreator.swift */,
 				18EDCF592189A0F900B233B9 /* ItemListCell.swift */,
+				181BAC6D220DD2D400A0D458 /* MotionCell.swift */,
+				181BAC6B220DD2B700A0D458 /* MotionCell.xib */,
 				18EDCF5F2189AF3600B233B9 /* ItemListCell.xib */,
 				1803376421CBA9860098F944 /* TemperatureCell.swift */,
 				1803376621CBA9A20098F944 /* TemperatureCell.xib */,
@@ -246,6 +267,7 @@
 				1846AB54218A9EF300F46053 /* ItemDetailViewController.storyboard */,
 				1846AB52218A9E7800F46053 /* ItemDetailViewController.swift */,
 				1854087921C40BF000984268 /* ItemDetailTempViewController.swift */,
+				181BAC71220DE57100A0D458 /* SensorRequest.swift */,
 			);
 			path = ItemDetail;
 			sourceTree = "<group>";
@@ -347,6 +369,8 @@
 			isa = PBXGroup;
 			children = (
 				881F9D4DBC2B015F5C29BAFA /* Pods_IoTGarden.framework */,
+				B7F13111F13601CE88D0773A /* Pods_IoTGardenTests.framework */,
+				C4541BBD3F476D037AD1CF4F /* Pods_IoTGardenUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -356,6 +380,10 @@
 			children = (
 				F67062452CC96EA3E8E06F13 /* Pods-IoTGarden.debug.xcconfig */,
 				C397D18E5EE8BB6B5777179D /* Pods-IoTGarden.release.xcconfig */,
+				4EA2DE0DB42AD6B50F8BDB54 /* Pods-IoTGardenTests.debug.xcconfig */,
+				26FF11245553B5B9CB0BEA4C /* Pods-IoTGardenTests.release.xcconfig */,
+				E5D9503F7F307460CD4526D8 /* Pods-IoTGardenUITests.debug.xcconfig */,
+				90D107BBD3DCEB69725EA355 /* Pods-IoTGardenUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -371,7 +399,7 @@
 				18A0430021894CD2005E04D4 /* Sources */,
 				18A0430121894CD2005E04D4 /* Frameworks */,
 				18A0430221894CD2005E04D4 /* Resources */,
-				7C811E94D48669C9CF38B8B9 /* [CP] Embed Pods Frameworks */,
+				C41179B03176C222D75DE97E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -386,6 +414,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18A0433221894CD4005E04D4 /* Build configuration list for PBXNativeTarget "IoTGardenTests" */;
 			buildPhases = (
+				90F0995A96B69CB3C26CA3ED /* [CP] Check Pods Manifest.lock */,
 				18A0431721894CD4005E04D4 /* Sources */,
 				18A0431821894CD4005E04D4 /* Frameworks */,
 				18A0431921894CD4005E04D4 /* Resources */,
@@ -404,6 +433,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18A0433521894CD4005E04D4 /* Build configuration list for PBXNativeTarget "IoTGardenUITests" */;
 			buildPhases = (
+				1BFE166AF5C6F761EB07FB45 /* [CP] Check Pods Manifest.lock */,
 				18A0432221894CD4005E04D4 /* Sources */,
 				18A0432321894CD4005E04D4 /* Frameworks */,
 				18A0432421894CD4005E04D4 /* Resources */,
@@ -466,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A0431521894CD4005E04D4 /* LaunchScreen.storyboard in Resources */,
+				181BAC6C220DD2B700A0D458 /* MotionCell.xib in Resources */,
 				18EDCF602189AF3600B233B9 /* ItemListCell.xib in Resources */,
 				1846AB59218AA3E100F46053 /* AddItemViewController.storyboard in Resources */,
 				1862B3DE21E32A7200CFD7F1 /* icon_humi.png in Resources */,
@@ -498,6 +529,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1BFE166AF5C6F761EB07FB45 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IoTGardenUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		79C49C32ED866221C638B792 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -516,34 +569,68 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7C811E94D48669C9CF38B8B9 /* [CP] Embed Pods Frameworks */ = {
+		90F0995A96B69CB3C26CA3ED /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-IoTGarden/Pods-IoTGarden-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaMQTT/CocoaMQTT.framework",
-				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveReSwift/ReactiveReSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyTimer/SwiftyTimer.framework",
+			inputFileListPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaMQTT.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveReSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyTimer.framework",
+				"$(DERIVED_FILE_DIR)/Pods-IoTGardenTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IoTGarden/Pods-IoTGarden-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C41179B03176C222D75DE97E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IoTGarden/Pods-IoTGarden-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/APIKit/APIKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaMQTT/CocoaMQTT.framework",
+				"${BUILT_PRODUCTS_DIR}/Himotoki/Himotoki.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveReSwift/ReactiveReSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/APIKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaMQTT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Himotoki.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveReSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IoTGarden/Pods-IoTGarden-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -554,6 +641,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18B5506321C559FF004EC438 /* ItemAction.swift in Sources */,
+				181BAC6E220DD2D400A0D458 /* MotionCell.swift in Sources */,
 				18EDCF5A2189A0F900B233B9 /* ItemListCell.swift in Sources */,
 				18E7A726218EFE5200F7E689 /* ItemListReducer.swift in Sources */,
 				1803375421CA2A6B0098F944 /* DataInteractor.swift in Sources */,
@@ -561,16 +649,17 @@
 				1803377621CBF5480098F944 /* SelectionViewController.swift in Sources */,
 				1803375B21CB3C070098F944 /* SwitchDevice.swift in Sources */,
 				18339BE321C9496100CC2269 /* ItemList.xcdatamodeld in Sources */,
-				183CAF2C219BCB31005149B1 /* ItemConnect.swift in Sources */,
 				18EDCF5C2189A46500B233B9 /* ItemListViewController.swift in Sources */,
 				1803376321CB954D0098F944 /* ConfigurationsDataInteractor.swift in Sources */,
 				18E7A724218EFDF600F7E689 /* ItemListState.swift in Sources */,
 				1803375D21CB3C350098F944 /* TemperatureDevice.swift in Sources */,
+				18CCFFFF21E84A0B0075BA6B /* Date+Extension.swift in Sources */,
 				18E7A72A218EFF9900F7E689 /* ItemListStore.swift in Sources */,
 				18EDCF5221899EC500B233B9 /* Configuration.swift in Sources */,
 				18339BE021C9493E00CC2269 /* IoTGarden.xcdatamodeld in Sources */,
 				18EDCF5021899E3900B233B9 /* Item.swift in Sources */,
 				1803376921CBAC7D0098F944 /* HumidityCell.swift in Sources */,
+				18D7C6D9220EB81000FF8529 /* MotionDevice.swift in Sources */,
 				1852DBA22192960D002E1946 /* AddItemView.swift in Sources */,
 				1846AB57218AA3B800F46053 /* AddItemViewController.swift in Sources */,
 				18E7A71E218EE4E800F7E689 /* ReactiveReSwiftBridge.swift in Sources */,
@@ -588,6 +677,7 @@
 				18D9A05121C4109F008EFA72 /* ItemTemp.swift in Sources */,
 				18B5506721C56104004EC438 /* ItemStore.swift in Sources */,
 				1852DBA421931E16002E1946 /* AddItemSavingViewController.swift in Sources */,
+				181BAC72220DE57100A0D458 /* SensorRequest.swift in Sources */,
 				1803374C21C9EDC90098F944 /* SensorMapping.swift in Sources */,
 				1826C625218F51B700A5CE38 /* ItemListService.swift in Sources */,
 				18E7A728218EFEDD00F7E689 /* ItemListAction.swift in Sources */,
@@ -705,6 +795,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -758,6 +849,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -776,7 +868,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ving.IoTGarden;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -795,13 +887,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ving.IoTGarden;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		18A0433321894CD4005E04D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4EA2DE0DB42AD6B50F8BDB54 /* Pods-IoTGardenTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -823,6 +916,7 @@
 		};
 		18A0433421894CD4005E04D4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26FF11245553B5B9CB0BEA4C /* Pods-IoTGardenTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -844,6 +938,7 @@
 		};
 		18A0433621894CD4005E04D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5D9503F7F307460CD4526D8 /* Pods-IoTGardenUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -864,6 +959,7 @@
 		};
 		18A0433721894CD4005E04D4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90D107BBD3DCEB69725EA355 /* Pods-IoTGardenUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
