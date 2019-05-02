@@ -8,6 +8,12 @@
 import UIKit
 import ReactiveReSwift
 
+private struct ItemDef {
+    let title: String
+    let subtitle: String
+    let `class`: AnyClass
+}
+
 class ItemListViewController: UIViewController {
     
     @IBOutlet weak var itemListCollectionView: UICollectionView!
@@ -148,10 +154,22 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
 //        }
         
         
-        let storyboard = UIStoryboard(name: "ItemDetailTempViewController", bundle: nil)
-        if let itemDetailTempViewController = storyboard.instantiateViewController(withIdentifier :"ItemDetailTempViewController") as? ItemDetailTempViewController {
-            
-            navigationController?.pushViewController(itemDetailTempViewController, animated: true)
-        }
+//        let storyboard = UIStoryboard(name: "ItemDetailTempViewController", bundle: nil)
+//        if let itemDetailTempViewController = storyboard.instantiateViewController(withIdentifier :"ItemDetailTempViewController") as? ItemDetailTempViewController {
+//
+//            navigationController?.pushViewController(itemDetailTempViewController, animated: true)
+//        }
+        
+        let def = ItemDef(title: "Half Pie Chart",
+                subtitle: "This demonstrates how to create a 180 degree PieChart.",
+                class: PositiveNegativeBarChartViewController.self)
+        
+        let vcClass = def.class as! UIViewController.Type
+        let vc = vcClass.init()
+        
+        navigationController?.pushViewController(vc, animated: true)
+
+        
+        
     }
 }
