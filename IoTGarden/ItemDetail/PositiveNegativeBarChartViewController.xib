@@ -22,16 +22,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2B0-0v-rfI" customClass="BarChartView" customModule="Charts">
-                    <rect key="frame" x="67" y="106" width="269" height="561"/>
+                    <rect key="frame" x="10" y="106" width="355" height="561"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="2B0-0v-rfI" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="86" id="QIW-X3-310"/>
-                <constraint firstItem="2B0-0v-rfI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="67" id="p7W-hn-rQh"/>
+                <constraint firstItem="2B0-0v-rfI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="p7W-hn-rQh"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="2B0-0v-rfI" secondAttribute="bottom" id="pQ5-xk-pIe"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2B0-0v-rfI" secondAttribute="trailing" constant="39" id="vgC-GZ-3f1"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2B0-0v-rfI" secondAttribute="trailing" constant="10" id="vgC-GZ-3f1"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="138.40000000000001" y="153.37331334332833"/>

@@ -23,6 +23,12 @@ class PositiveNegativeBarChartViewController: UIViewController {
         
         setChartData()
         
+        let xAxis = chartView.xAxis
+        xAxis.valueFormatter = self
+
+
+
+        
     }
     
     func setChartData() {

@@ -13,6 +13,12 @@ class LineChart3ViewController: UIViewController {
     
     @IBOutlet weak var lineChartView: LineChartView!
     
+    let dataLabels = ["1288",
+                      "12-30",
+                      "12-31",
+                      "01-01",
+                      "01-02", "0111"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -103,5 +109,11 @@ class LineChart3ViewController: UIViewController {
         data.setDrawValues(false)
         
         lineChartView.data = data
+    }
+}
+
+extension LineChart3ViewController: IAxisValueFormatter {
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        return dataLabels[min(max(Int(value), 0), dataLabels.count - 1)]
     }
 }
