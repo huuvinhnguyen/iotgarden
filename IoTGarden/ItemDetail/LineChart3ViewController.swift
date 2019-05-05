@@ -13,14 +13,27 @@ class LineChart3ViewController: UIViewController {
     
     @IBOutlet weak var lineChartView: LineChartView!
     
+    let lineItems = [("1","point1", "on"), ("2","point2", "off"), ("3","point2", "off")]
+    
     let dataLabels = ["1288",
                       "12-30",
-                      "12-31",
-                      "01-01",
-                      "01-02", "0111"]
+                      "12-31"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let xAxis = lineChartView.xAxis
+        xAxis.labelPosition = .bottom
+        xAxis.labelCount = 3
+
+       
+        xAxis.valueFormatter = self
+        
+        lineChartView.pinchZoomEnabled = true
+        lineChartView.dragEnabled = true
+        lineChartView.setScaleEnabled(true)
+        lineChartView.pinchZoomEnabled = true
+
         
         setDataCount(100, range: UInt32(100))
         
@@ -44,8 +57,21 @@ class LineChart3ViewController: UIViewController {
             return ChartDataEntry(x: Double(i), y: val)
         }
         
-        let yVals3 = (0..<count).map { (i) -> ChartDataEntry in
-            let val = Double(arc4random_uniform(range) + 150)
+        let now = Date().timeIntervalSince1970
+        let hourSeconds: TimeInterval = 3600
+        
+        let from = now - (Double(count) / 2) * hourSeconds
+        let to = now + (Double(count) / 2) * hourSeconds
+        
+        let values = [20.0, 0.0, 20.0, 0.0]
+//        let values = stride(from: from, to: to, by: hourSeconds).map { (x) -> ChartDataEntry in
+//            let y = arc4random_uniform(range) + 50
+//            return ChartDataEntry(x: x, y: Double(y))
+//        }
+        
+        
+        let yVals3 = (0..<values.count).map { (i) -> ChartDataEntry in
+            let val = values[i]
             return ChartDataEntry(x: Double(i), y: val)
         }
         
@@ -85,16 +111,16 @@ class LineChart3ViewController: UIViewController {
         }
         
         let set3 = LineChartDataSet(values: yVals3, label: "DataSet 3")
-        set3.axisDependency = .left
+//        set3.axisDependency = .left
         set3.setColor(UIColor(red: 255/255, green: 241/255, blue: 46/255, alpha: 1))
-        set3.drawCirclesEnabled = false
+        set3.drawCirclesEnabled = true
         set3.lineWidth = 2
-        set3.circleRadius = 3
+        set3.circleRadius = 5
         set3.fillAlpha = 1
         set3.drawFilledEnabled = true
         set3.fillColor = .blue
         set3.highlightColor = UIColor(red: 244/255, green: 117/255, blue: 117/255, alpha: 1)
-        set3.drawCircleHoleEnabled = false
+        set3.drawCircleHoleEnabled = true
         set3.fillFormatter = DefaultFillFormatter { _,_  -> CGFloat in
             return CGFloat(self.lineChartView.leftAxis.axisMinimum)
         }
@@ -105,7 +131,7 @@ class LineChart3ViewController: UIViewController {
 //        set2.fill = Fill(linearGradient: gradient2, angle: 90) //.linearGradient(gradient, angle: 90)
 //        set2.drawFilledEnabled = true
         
-        let data = LineChartData(dataSets: [set3, set2, set1])
+        let data = LineChartData(dataSets: [set3])
         data.setDrawValues(false)
         
         lineChartView.data = data
@@ -114,6 +140,7 @@ class LineChart3ViewController: UIViewController {
 
 extension LineChart3ViewController: IAxisValueFormatter {
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        
         return dataLabels[min(max(Int(value), 0), dataLabels.count - 1)]
     }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import ReactiveReSwift
+import MaterialComponents.MaterialNavigationBar
 
 private struct ItemDef {
     let title: String
@@ -30,6 +31,11 @@ class ItemListViewController: UIViewController {
         prepareNibs()
         configureRefreshControl()
         updateViewModel()
+        
+        loadSensors()
+
+        
+//        navigationBar.observe(navigationItem)
     }
     
     func updateViewModel() {
@@ -49,12 +55,6 @@ class ItemListViewController: UIViewController {
                 weakSelf.itemListCollectionView.reloadItems(at: [IndexPath(row: rowIndex, section: 0)])
 //            }
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        super.viewDidAppear(animated)
-        loadSensors()
     }
     
     private func prepareNibs() {
@@ -162,7 +162,7 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
         
         let def = ItemDef(title: "Half Pie Chart",
                 subtitle: "This demonstrates how to create a 180 degree PieChart.",
-                class: PositiveNegativeBarChartViewController.self)
+                class: LineChart3ViewController.self)
         
         let vcClass = def.class as! UIViewController.Type
         let vc = vcClass.init()

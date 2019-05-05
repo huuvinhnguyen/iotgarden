@@ -28,9 +28,11 @@
 		181BAC6C220DD2B700A0D458 /* MotionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181BAC6B220DD2B700A0D458 /* MotionCell.xib */; };
 		181BAC6E220DD2D400A0D458 /* MotionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181BAC6D220DD2D400A0D458 /* MotionCell.swift */; };
 		181BAC72220DE57100A0D458 /* SensorRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181BAC71220DE57100A0D458 /* SensorRequest.swift */; };
+		18243663227D8DC80009F7EA /* CandleStickChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18243662227D8DC80009F7EA /* CandleStickChartViewController.swift */; };
 		1826C625218F51B700A5CE38 /* ItemListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1826C624218F51B700A5CE38 /* ItemListService.swift */; };
 		18339BE021C9493E00CC2269 /* IoTGarden.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18339BDE21C9493E00CC2269 /* IoTGarden.xcdatamodeld */; };
 		18339BE321C9496100CC2269 /* ItemList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18339BE121C9496100CC2269 /* ItemList.xcdatamodeld */; };
+		1836B9D5227D916200CF6F66 /* CandleStickChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1836B9D4227D916200CF6F66 /* CandleStickChartViewController.xib */; };
 		1846AB53218A9E7800F46053 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846AB52218A9E7800F46053 /* ItemDetailViewController.swift */; };
 		1846AB57218AA3B800F46053 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846AB56218AA3B800F46053 /* AddItemViewController.swift */; };
 		1846AB59218AA3E100F46053 /* AddItemViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1846AB58218AA3E100F46053 /* AddItemViewController.storyboard */; };
@@ -114,9 +116,11 @@
 		181BAC6B220DD2B700A0D458 /* MotionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MotionCell.xib; sourceTree = "<group>"; };
 		181BAC6D220DD2D400A0D458 /* MotionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionCell.swift; sourceTree = "<group>"; };
 		181BAC71220DE57100A0D458 /* SensorRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorRequest.swift; sourceTree = "<group>"; };
+		18243662227D8DC80009F7EA /* CandleStickChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandleStickChartViewController.swift; sourceTree = "<group>"; };
 		1826C624218F51B700A5CE38 /* ItemListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListService.swift; sourceTree = "<group>"; };
 		18339BDF21C9493E00CC2269 /* IoTGarden.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IoTGarden.xcdatamodel; sourceTree = "<group>"; };
 		18339BE221C9496100CC2269 /* ItemList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ItemList.xcdatamodel; sourceTree = "<group>"; };
+		1836B9D4227D916200CF6F66 /* CandleStickChartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CandleStickChartViewController.xib; sourceTree = "<group>"; };
 		1846AB52218A9E7800F46053 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		1846AB54218A9EF300F46053 /* ItemDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemDetailViewController.storyboard; sourceTree = "<group>"; };
 		1846AB56218AA3B800F46053 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
@@ -279,6 +283,8 @@
 				5B04F009227AE8F80096FBA1 /* LineChart3ViewController.xib */,
 				5B04F00B227AE9190096FBA1 /* LineChart3ViewController.swift */,
 				5B04F00D227AEEAF0096FBA1 /* PositiveNegativeBarChartViewController.swift */,
+				18243662227D8DC80009F7EA /* CandleStickChartViewController.swift */,
+				1836B9D4227D916200CF6F66 /* CandleStickChartViewController.xib */,
 				5B04F00F227AEEBD0096FBA1 /* PositiveNegativeBarChartViewController.xib */,
 			);
 			path = ItemDetail;
@@ -523,6 +529,7 @@
 				1854088021C40D0A00984268 /* ItemDetailTempViewController.storyboard in Resources */,
 				18EDCF5E2189A4AC00B233B9 /* ItemListViewController.storyboard in Resources */,
 				18A0430D21894CD2005E04D4 /* Main.storyboard in Resources */,
+				1836B9D5227D916200CF6F66 /* CandleStickChartViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,6 +626,9 @@
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaMQTT/CocoaMQTT.framework",
 				"${BUILT_PRODUCTS_DIR}/Himotoki/Himotoki.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveReSwift/ReactiveReSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
@@ -635,6 +645,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaMQTT.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Himotoki.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveReSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
@@ -660,6 +673,7 @@
 				18E7A726218EFE5200F7E689 /* ItemListReducer.swift in Sources */,
 				1803375421CA2A6B0098F944 /* DataInteractor.swift in Sources */,
 				18C832BE218ADAD500ED37A1 /* Storage.swift in Sources */,
+				18243663227D8DC80009F7EA /* CandleStickChartViewController.swift in Sources */,
 				1803377621CBF5480098F944 /* SelectionViewController.swift in Sources */,
 				1803375B21CB3C070098F944 /* SwitchDevice.swift in Sources */,
 				18339BE321C9496100CC2269 /* ItemList.xcdatamodeld in Sources */,

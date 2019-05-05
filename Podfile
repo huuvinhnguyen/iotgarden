@@ -15,6 +15,9 @@ target 'IoTGarden' do
   pod 'Charts'
   pod 'APIKit'
   pod "Himotoki"
+  pod 'MaterialComponents/NavigationBar'
+  pod 'MaterialComponents/NavigationBar+ColorThemer'
+  pod 'MaterialComponents/ButtonBar'
 
   target 'IoTGardenTests' do
     inherit! :search_paths
