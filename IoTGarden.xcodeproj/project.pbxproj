@@ -73,6 +73,9 @@
 		5B04F00C227AE9190096FBA1 /* LineChart3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B04F00B227AE9190096FBA1 /* LineChart3ViewController.swift */; };
 		5B04F00E227AEEAF0096FBA1 /* PositiveNegativeBarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B04F00D227AEEAF0096FBA1 /* PositiveNegativeBarChartViewController.swift */; };
 		5B04F010227AEEBD0096FBA1 /* PositiveNegativeBarChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B04F00F227AEEBD0096FBA1 /* PositiveNegativeBarChartViewController.xib */; };
+		5B2CD58522896DB600EA8B25 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CD58422896DB600EA8B25 /* UIColor+Extension.swift */; };
+		5B2CD58722896E5400EA8B25 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CD58622896E5400EA8B25 /* UIFont+Extension.swift */; };
+		5B2CD589228973A400EA8B25 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CD588228973A400EA8B25 /* UIView+Extension.swift */; };
 		A59DAFE837AFE2D8DBBFBDD6 /* Pods_IoTGarden.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 881F9D4DBC2B015F5C29BAFA /* Pods_IoTGarden.framework */; };
 		CD33D8E05ADBF25FEC4AE43C /* Pods_IoTGardenUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4541BBD3F476D037AD1CF4F /* Pods_IoTGardenUITests.framework */; };
 		DACEC2CC87FAFB78D3356B5E /* Pods_IoTGardenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7F13111F13601CE88D0773A /* Pods_IoTGardenTests.framework */; };
@@ -170,6 +173,9 @@
 		5B04F00B227AE9190096FBA1 /* LineChart3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart3ViewController.swift; sourceTree = "<group>"; };
 		5B04F00D227AEEAF0096FBA1 /* PositiveNegativeBarChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositiveNegativeBarChartViewController.swift; sourceTree = "<group>"; };
 		5B04F00F227AEEBD0096FBA1 /* PositiveNegativeBarChartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PositiveNegativeBarChartViewController.xib; sourceTree = "<group>"; };
+		5B2CD58422896DB600EA8B25 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		5B2CD58622896E5400EA8B25 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		5B2CD588228973A400EA8B25 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		881F9D4DBC2B015F5C29BAFA /* Pods_IoTGarden.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IoTGarden.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D107BBD3DCEB69725EA355 /* Pods-IoTGardenUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoTGardenUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IoTGardenUITests/Pods-IoTGardenUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B7F13111F13601CE88D0773A /* Pods_IoTGardenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IoTGardenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -331,6 +337,9 @@
 			isa = PBXGroup;
 			children = (
 				18A0430721894CD2005E04D4 /* AppDelegate.swift */,
+				5B2CD58422896DB600EA8B25 /* UIColor+Extension.swift */,
+				5B2CD58622896E5400EA8B25 /* UIFont+Extension.swift */,
+				5B2CD588228973A400EA8B25 /* UIView+Extension.swift */,
 				1803375221C9EF810098F944 /* Libs */,
 				1803375121C9EF430098F944 /* CoreData */,
 				18339BDE21C9493E00CC2269 /* IoTGarden.xcdatamodeld */,
@@ -688,6 +697,7 @@
 				18EDCF5021899E3900B233B9 /* Item.swift in Sources */,
 				1803376921CBAC7D0098F944 /* HumidityCell.swift in Sources */,
 				18D7C6D9220EB81000FF8529 /* MotionDevice.swift in Sources */,
+				5B2CD58722896E5400EA8B25 /* UIFont+Extension.swift in Sources */,
 				5B04F00C227AE9190096FBA1 /* LineChart3ViewController.swift in Sources */,
 				1852DBA22192960D002E1946 /* AddItemView.swift in Sources */,
 				1846AB57218AA3B800F46053 /* AddItemViewController.swift in Sources */,
@@ -706,6 +716,7 @@
 				1803376021CB41640098F944 /* SensorConnect.swift in Sources */,
 				18D9A05121C4109F008EFA72 /* ItemTemp.swift in Sources */,
 				18B5506721C56104004EC438 /* ItemStore.swift in Sources */,
+				5B2CD58522896DB600EA8B25 /* UIColor+Extension.swift in Sources */,
 				1852DBA421931E16002E1946 /* AddItemSavingViewController.swift in Sources */,
 				181BAC72220DE57100A0D458 /* SensorRequest.swift in Sources */,
 				1803374C21C9EDC90098F944 /* SensorMapping.swift in Sources */,
@@ -713,6 +724,7 @@
 				18E7A728218EFEDD00F7E689 /* ItemListAction.swift in Sources */,
 				1803375621CA9B130098F944 /* Sensor.swift in Sources */,
 				1803377A21CBF7310098F944 /* SelectionCell.swift in Sources */,
+				5B2CD589228973A400EA8B25 /* UIView+Extension.swift in Sources */,
 				18D74DA321C8DA7900612351 /* EnumCollection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
