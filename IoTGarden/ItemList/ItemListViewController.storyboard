@@ -54,10 +54,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Things" id="Ldg-qt-sfz">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="A04-qK-hMc">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AQY-BE-cBr">
-                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AQY-BE-cBr">
+                                <rect key="frame" x="276" y="7" width="51" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add"/>
+                                <state key="normal" image="add_button"/>
                                 <connections>
                                     <action selector="addButtonTappedWithSender:" destination="CQR-4j-oQI" eventType="touchUpInside" id="MYG-EC-xQa"/>
                                 </connections>
@@ -91,4 +91,7 @@
             <point key="canvasLocation" x="85.599999999999994" y="148.87556221889056"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="add_button" width="18" height="18"/>
+    </resources>
 </document>
