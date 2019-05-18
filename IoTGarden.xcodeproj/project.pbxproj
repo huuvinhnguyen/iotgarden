@@ -41,6 +41,8 @@
 		1852DBA621931FA5002E1946 /* AddItemSavingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1852DBA521931FA5002E1946 /* AddItemSavingView.swift */; };
 		1854087A21C40BF000984268 /* ItemDetailTempViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1854087921C40BF000984268 /* ItemDetailTempViewController.swift */; };
 		1854088021C40D0A00984268 /* ItemDetailTempViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1854087F21C40D0A00984268 /* ItemDetailTempViewController.storyboard */; };
+		18577AA9228816C6007FB9E4 /* BarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18577AA8228816C6007FB9E4 /* BarChartViewController.swift */; };
+		18577AAB228816DC007FB9E4 /* BarChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18577AAA228816DC007FB9E4 /* BarChartViewController.xib */; };
 		1862B3DC21E305D200CFD7F1 /* icon_temp.png in Resources */ = {isa = PBXBuildFile; fileRef = 1862B3DB21E305D200CFD7F1 /* icon_temp.png */; };
 		1862B3DE21E32A7200CFD7F1 /* icon_humi.png in Resources */ = {isa = PBXBuildFile; fileRef = 1862B3DD21E32A7200CFD7F1 /* icon_humi.png */; };
 		18A0430821894CD2005E04D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0430721894CD2005E04D4 /* AppDelegate.swift */; };
@@ -130,6 +132,8 @@
 		1852DBA521931FA5002E1946 /* AddItemSavingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemSavingView.swift; sourceTree = "<group>"; };
 		1854087921C40BF000984268 /* ItemDetailTempViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailTempViewController.swift; sourceTree = "<group>"; };
 		1854087F21C40D0A00984268 /* ItemDetailTempViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemDetailTempViewController.storyboard; sourceTree = "<group>"; };
+		18577AA8228816C6007FB9E4 /* BarChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartViewController.swift; sourceTree = "<group>"; };
+		18577AAA228816DC007FB9E4 /* BarChartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarChartViewController.xib; sourceTree = "<group>"; };
 		1862B3DB21E305D200CFD7F1 /* icon_temp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_temp.png; sourceTree = "<group>"; };
 		1862B3DD21E32A7200CFD7F1 /* icon_humi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_humi.png; sourceTree = "<group>"; };
 		18A0430421894CD2005E04D4 /* IoTGarden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IoTGarden.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -284,6 +288,8 @@
 				5B04F00B227AE9190096FBA1 /* LineChart3ViewController.swift */,
 				5B04F00D227AEEAF0096FBA1 /* PositiveNegativeBarChartViewController.swift */,
 				18243662227D8DC80009F7EA /* CandleStickChartViewController.swift */,
+				18577AA8228816C6007FB9E4 /* BarChartViewController.swift */,
+				18577AAA228816DC007FB9E4 /* BarChartViewController.xib */,
 				1836B9D4227D916200CF6F66 /* CandleStickChartViewController.xib */,
 				5B04F00F227AEEBD0096FBA1 /* PositiveNegativeBarChartViewController.xib */,
 			);
@@ -528,6 +534,7 @@
 				1803376B21CBAC900098F944 /* HumidityCell.xib in Resources */,
 				1854088021C40D0A00984268 /* ItemDetailTempViewController.storyboard in Resources */,
 				18EDCF5E2189A4AC00B233B9 /* ItemListViewController.storyboard in Resources */,
+				18577AAB228816DC007FB9E4 /* BarChartViewController.xib in Resources */,
 				18A0430D21894CD2005E04D4 /* Main.storyboard in Resources */,
 				1836B9D5227D916200CF6F66 /* CandleStickChartViewController.xib in Resources */,
 			);
@@ -696,6 +703,7 @@
 				18A0430821894CD2005E04D4 /* AppDelegate.swift in Sources */,
 				1803376D21CBBA660098F944 /* CellCreator.swift in Sources */,
 				5B04F00E227AEEAF0096FBA1 /* PositiveNegativeBarChartViewController.swift in Sources */,
+				18577AA9228816C6007FB9E4 /* BarChartViewController.swift in Sources */,
 				18EDCF5421899F3100B233B9 /* GroupItem.swift in Sources */,
 				1803376521CBA9860098F944 /* TemperatureCell.swift in Sources */,
 				1803376F21CBED960098F944 /* HumidityDevice.swift in Sources */,

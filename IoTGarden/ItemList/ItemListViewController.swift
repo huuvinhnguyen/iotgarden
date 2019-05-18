@@ -162,7 +162,7 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
         
         let def = ItemDef(title: "Half Pie Chart",
                 subtitle: "This demonstrates how to create a 180 degree PieChart.",
-                class: LineChart3ViewController.self)
+                class: BarChartViewController.self)
         
         let vcClass = def.class as! UIViewController.Type
         let vc = vcClass.init()
