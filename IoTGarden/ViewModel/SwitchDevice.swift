@@ -17,6 +17,8 @@ class SwitchDevice: Device {
     var isOn: Bool = true
     var name: String
     var stateString: String = "Requesting"
+    var timeString  = ""
+
     internal var sensorConnect: SensorConnect
     
     init(sensor: Sensor) {
@@ -34,6 +36,8 @@ class SwitchDevice: Device {
         
         name = sensor.name
         isOn = (sensor.value == "0") ? false : true
+        timeString = sensor.time
+
         
         sensorConnect.didReceiveMessage = { [weak self] mqtt, message, id in
             
@@ -57,10 +61,14 @@ class SwitchDevice: Device {
             weakSelf.stateString = "Updated"
             sensorStore.dispatch(UpdateSensorAction(sensor: newItem))
             
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            let dateString = formatter.string(from: Date())
-            newItem.time =  dateString
+            if message.string == "done" {
+                
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                let dateString = formatter.string(from: Date())
+                newItem.time =  dateString
+                weakSelf.timeString = dateString
+            }
             
             let itemListService = ItemListService()
             itemListService.updateSensor(sensor: newItem)
