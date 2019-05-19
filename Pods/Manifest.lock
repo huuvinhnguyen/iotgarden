@@ -55,6 +55,9 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.8.3):
     - PromiseKit/CorePromise
+  - R.swift (5.0.2):
+    - R.swift.Library (~> 5.0.0)
+  - R.swift.Library (5.0.0)
   - ReactiveReSwift (4.0.0)
   - Result (4.1.0)
   - RxAtomic (4.4.1)
@@ -72,6 +75,7 @@ DEPENDENCIES:
   - MaterialComponents/NavigationBar
   - "MaterialComponents/NavigationBar+ColorThemer"
   - PromiseKit
+  - R.swift
   - ReactiveReSwift
   - RxCocoa
   - RxSwift
@@ -87,6 +91,8 @@ SPEC REPOS:
     - MDFInternationalization
     - MDFTextAccessibility
     - PromiseKit
+    - R.swift
+    - R.swift.Library
     - ReactiveReSwift
     - Result
     - RxAtomic
@@ -103,12 +109,14 @@ SPEC CHECKSUMS:
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
   PromiseKit: 94c6e781838c5bf4717677d0d882b0e7250c80fc
+  R.swift: 81455d81467763cbd3f4d79d938d05f4ac4c0228
+  R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
   ReactiveReSwift: b6187229efcc5ec819fb1d3d19716c231bcc0456
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxAtomic: f8d6adc1ccb87a767811269e4875887bc74dbf19
   RxCocoa: 2f35a76bf8887872e28a1914112395b11b8e0e64
   RxSwift: 92fcf68dfef21f3e2ab1965363d9e7b3d787597e
 
-PODFILE CHECKSUM: 1208ff88e5dedf9ae3d0d31234f9c047add98ed0
+PODFILE CHECKSUM: f62f0322dfd6ad5785c19b7ed773f3141998b280
 
 COCOAPODS: 1.6.1

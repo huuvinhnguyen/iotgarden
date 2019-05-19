@@ -18,6 +18,7 @@ target 'IoTGarden' do
   pod 'MaterialComponents/NavigationBar'
   pod 'MaterialComponents/NavigationBar+ColorThemer'
   pod 'MaterialComponents/ButtonBar'
+  pod 'R.swift'
 
   target 'IoTGardenTests' do
     inherit! :search_paths
