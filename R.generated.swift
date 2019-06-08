@@ -50,7 +50,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 9 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 10 nibs.
   struct nib {
     /// Nib `BarChartViewController`.
     static let barChartViewController = _R.nib._BarChartViewController()
@@ -58,6 +58,8 @@ struct R: Rswift.Validatable {
     static let candleStickChartViewController = _R.nib._CandleStickChartViewController()
     /// Nib `HumidityCell`.
     static let humidityCell = _R.nib._HumidityCell()
+    /// Nib `ItemInputValueCell`.
+    static let itemInputValueCell = _R.nib._ItemInputValueCell()
     /// Nib `ItemListCell`.
     static let itemListCell = _R.nib._ItemListCell()
     /// Nib `LineChart3ViewController`.
@@ -87,6 +89,12 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.humidityCell) instead")
     static func humidityCell(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.humidityCell)
+    }
+    
+    /// `UINib(name: "ItemInputValueCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.itemInputValueCell) instead")
+    static func itemInputValueCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.itemInputValueCell)
     }
     
     /// `UINib(name: "ItemListCell", in: bundle)`
@@ -137,6 +145,10 @@ struct R: Rswift.Validatable {
       return R.nib.humidityCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? HumidityCell
     }
     
+    static func itemInputValueCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemInputValueCell? {
+      return R.nib.itemInputValueCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemInputValueCell
+    }
+    
     static func itemListCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemListCell? {
       return R.nib.itemListCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemListCell
     }
@@ -164,10 +176,12 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 4 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 5 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `HumidityCell`.
     static let humidityCell: Rswift.ReuseIdentifier<HumidityCell> = Rswift.ReuseIdentifier(identifier: "HumidityCell")
+    /// Reuse identifier `ItemInputValueCell`.
+    static let itemInputValueCell: Rswift.ReuseIdentifier<ItemInputValueCell> = Rswift.ReuseIdentifier(identifier: "ItemInputValueCell")
     /// Reuse identifier `MotionCell`.
     static let motionCell: Rswift.ReuseIdentifier<MotionCell> = Rswift.ReuseIdentifier(identifier: "MotionCell")
     /// Reuse identifier `SelectionCell`.
@@ -281,6 +295,20 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "icon_humi.png", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_humi.png' is used in nib 'HumidityCell', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _ItemInputValueCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = ItemInputValueCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "ItemInputValueCell"
+      let name = "ItemInputValueCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemInputValueCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemInputValueCell
       }
       
       fileprivate init() {}

@@ -28,6 +28,10 @@ class CellCreator {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HumidityCell", for: indexPath) as! HumidityCell
             cell.display(device: device)
             return cell
+        case is InputDevice:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemInputValueCell", for: indexPath) as! ItemInputValueCell
+            cell.display(device: device)
+            return cell
         default:
             
             return UICollectionViewCell()

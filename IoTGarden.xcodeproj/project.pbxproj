@@ -43,6 +43,9 @@
 		1854088021C40D0A00984268 /* ItemDetailTempViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1854087F21C40D0A00984268 /* ItemDetailTempViewController.storyboard */; };
 		18577AA9228816C6007FB9E4 /* BarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18577AA8228816C6007FB9E4 /* BarChartViewController.swift */; };
 		18577AAB228816DC007FB9E4 /* BarChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18577AAA228816DC007FB9E4 /* BarChartViewController.xib */; };
+		185FF15222ABB0B7003C0DDF /* ItemInputValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185FF15122ABB0B7003C0DDF /* ItemInputValueCell.swift */; };
+		185FF15422ABB0DD003C0DDF /* ItemInputValueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185FF15322ABB0DD003C0DDF /* ItemInputValueCell.xib */; };
+		185FF15622ABB5B3003C0DDF /* InputDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185FF15522ABB5B3003C0DDF /* InputDevice.swift */; };
 		1862B3DC21E305D200CFD7F1 /* icon_temp.png in Resources */ = {isa = PBXBuildFile; fileRef = 1862B3DB21E305D200CFD7F1 /* icon_temp.png */; };
 		1862B3DE21E32A7200CFD7F1 /* icon_humi.png in Resources */ = {isa = PBXBuildFile; fileRef = 1862B3DD21E32A7200CFD7F1 /* icon_humi.png */; };
 		18A0430821894CD2005E04D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0430721894CD2005E04D4 /* AppDelegate.swift */; };
@@ -137,6 +140,9 @@
 		1854087F21C40D0A00984268 /* ItemDetailTempViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemDetailTempViewController.storyboard; sourceTree = "<group>"; };
 		18577AA8228816C6007FB9E4 /* BarChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartViewController.swift; sourceTree = "<group>"; };
 		18577AAA228816DC007FB9E4 /* BarChartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarChartViewController.xib; sourceTree = "<group>"; };
+		185FF15122ABB0B7003C0DDF /* ItemInputValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInputValueCell.swift; sourceTree = "<group>"; };
+		185FF15322ABB0DD003C0DDF /* ItemInputValueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemInputValueCell.xib; sourceTree = "<group>"; };
+		185FF15522ABB5B3003C0DDF /* InputDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDevice.swift; sourceTree = "<group>"; };
 		1862B3DB21E305D200CFD7F1 /* icon_temp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_temp.png; sourceTree = "<group>"; };
 		1862B3DD21E32A7200CFD7F1 /* icon_humi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_humi.png; sourceTree = "<group>"; };
 		18A0430421894CD2005E04D4 /* IoTGarden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IoTGarden.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -249,6 +255,7 @@
 				1803375C21CB3C350098F944 /* TemperatureDevice.swift */,
 				1803376E21CBED960098F944 /* HumidityDevice.swift */,
 				18D7C6D8220EB81000FF8529 /* MotionDevice.swift */,
+				185FF15522ABB5B3003C0DDF /* InputDevice.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -270,6 +277,8 @@
 				1803376C21CBBA660098F944 /* CellCreator.swift */,
 				18EDCF592189A0F900B233B9 /* ItemListCell.swift */,
 				181BAC6D220DD2D400A0D458 /* MotionCell.swift */,
+				185FF15122ABB0B7003C0DDF /* ItemInputValueCell.swift */,
+				185FF15322ABB0DD003C0DDF /* ItemInputValueCell.xib */,
 				181BAC6B220DD2B700A0D458 /* MotionCell.xib */,
 				18EDCF5F2189AF3600B233B9 /* ItemListCell.xib */,
 				1803376421CBA9860098F944 /* TemperatureCell.swift */,
@@ -530,6 +539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A0431521894CD4005E04D4 /* LaunchScreen.storyboard in Resources */,
+				185FF15422ABB0DD003C0DDF /* ItemInputValueCell.xib in Resources */,
 				181BAC6C220DD2B700A0D458 /* MotionCell.xib in Resources */,
 				18EDCF602189AF3600B233B9 /* ItemListCell.xib in Resources */,
 				1846AB59218AA3E100F46053 /* AddItemViewController.storyboard in Resources */,
@@ -734,6 +744,7 @@
 				1846AB53218A9E7800F46053 /* ItemDetailViewController.swift in Sources */,
 				18A0430821894CD2005E04D4 /* AppDelegate.swift in Sources */,
 				1803376D21CBBA660098F944 /* CellCreator.swift in Sources */,
+				185FF15622ABB5B3003C0DDF /* InputDevice.swift in Sources */,
 				5B04F00E227AEEAF0096FBA1 /* PositiveNegativeBarChartViewController.swift in Sources */,
 				18577AA9228816C6007FB9E4 /* BarChartViewController.swift in Sources */,
 				18EDCF5421899F3100B233B9 /* GroupItem.swift in Sources */,
@@ -748,6 +759,7 @@
 				18B5506721C56104004EC438 /* ItemStore.swift in Sources */,
 				5B2CD58522896DB600EA8B25 /* UIColor+Extension.swift in Sources */,
 				1852DBA421931E16002E1946 /* AddItemSavingViewController.swift in Sources */,
+				185FF15222ABB0B7003C0DDF /* ItemInputValueCell.swift in Sources */,
 				181BAC72220DE57100A0D458 /* SensorRequest.swift in Sources */,
 				1803374C21C9EDC90098F944 /* SensorMapping.swift in Sources */,
 				1826C625218F51B700A5CE38 /* ItemListService.swift in Sources */,

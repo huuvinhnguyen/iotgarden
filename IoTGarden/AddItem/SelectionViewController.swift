@@ -11,7 +11,7 @@ class SelectionViewController:  UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     var configuration: Configuration?
-    var sensorKinds = ["toggle", "temperature", "humidity"]
+    var sensorKinds = ["toggle", "temperature", "humidity", "value"]
     
     override func viewDidLoad() {
         

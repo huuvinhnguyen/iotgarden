@@ -66,6 +66,8 @@ class ItemListViewController: UIViewController {
         itemListCollectionView.register(UINib(nibName: "HumidityCell", bundle: nil), forCellWithReuseIdentifier: "HumidityCell")
         
         itemListCollectionView.register(UINib(nibName: "MotionCell", bundle: nil), forCellWithReuseIdentifier: "MotionCell")
+        
+        itemListCollectionView.register(UINib(nibName: "ItemInputValueCell", bundle: nil), forCellWithReuseIdentifier: "ItemInputValueCell")
     }
     
     @objc private func loadSensors() {
@@ -88,6 +90,8 @@ class ItemListViewController: UIViewController {
                             return HumidityDevice(sensor: sensor)
                         case "motion":
                             return MotionDevice(sensor: sensor)
+                        case "value":
+                            return InputDevice(sensor: sensor)
                         default:
                             return nil
                         }
