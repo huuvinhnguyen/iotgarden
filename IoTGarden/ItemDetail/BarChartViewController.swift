@@ -12,6 +12,8 @@ import Charts
 class BarChartViewController: UIViewController {
     
     @IBOutlet var chartView: BarChartView!
+    var sensor = Sensor()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,5 +63,14 @@ class BarChartViewController: UIViewController {
         }
         
         //        chartView.setNeedsDisplay()
+        
+    }
+    
+    @IBAction func deleteButtonTapped(_ sender: UIButton) {
+        
+        let itemListService = ItemListService()
+        itemListService.removeSensor(sensor: sensor)
+        itemListStore.dispatch(AddSensorAction())
+        navigationController?.popViewController(animated: true)
     }
 }

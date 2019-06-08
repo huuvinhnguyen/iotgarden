@@ -145,8 +145,8 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-//        let device = devices[indexPath.row]
-//        
+        let device = devices[indexPath.row]
+//
 //        let storyboard = UIStoryboard(name: "ItemDetailViewController", bundle: nil)
 //        if let itemDetailViewController = storyboard.instantiateViewController(withIdentifier :"ItemDetailViewController") as? ItemDetailViewController {
 //            itemDetailViewController.sensor = device.sensor
@@ -164,12 +164,10 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
                 subtitle: "This demonstrates how to create a 180 degree PieChart.",
                 class: BarChartViewController.self)
         
-        let vcClass = def.class as! UIViewController.Type
+        let vcClass = def.class as! BarChartViewController.Type
         let vc = vcClass.init()
+        vc.sensor = device.sensor
         
         navigationController?.pushViewController(vc, animated: true)
-
-        
-        
     }
 }
