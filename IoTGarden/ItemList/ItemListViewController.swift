@@ -150,12 +150,12 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let device = devices[indexPath.row]
-//
-//        let storyboard = UIStoryboard(name: "ItemDetailViewController", bundle: nil)
-//        if let itemDetailViewController = storyboard.instantiateViewController(withIdentifier :"ItemDetailViewController") as? ItemDetailViewController {
-//            itemDetailViewController.sensor = device.sensor
-//            navigationController?.pushViewController(itemDetailViewController, animated: true)
-//        }
+
+        let storyboard = UIStoryboard(name: "ItemDetailViewController", bundle: nil)
+        if let itemDetailViewController = storyboard.instantiateViewController(withIdentifier :"ItemDetailViewController") as? ItemDetailViewController {
+            itemDetailViewController.sensor = device.sensor
+            navigationController?.pushViewController(itemDetailViewController, animated: true)
+        }
         
         
 //        let storyboard = UIStoryboard(name: "ItemDetailTempViewController", bundle: nil)
@@ -164,14 +164,14 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
 //            navigationController?.pushViewController(itemDetailTempViewController, animated: true)
 //        }
         
-        let def = ItemDef(title: "Half Pie Chart",
-                subtitle: "This demonstrates how to create a 180 degree PieChart.",
-                class: BarChartViewController.self)
-        
-        let vcClass = def.class as! BarChartViewController.Type
-        let vc = vcClass.init()
-        vc.sensor = device.sensor
-        
-        navigationController?.pushViewController(vc, animated: true)
+//        let def = ItemDef(title: "Half Pie Chart",
+//                subtitle: "This demonstrates how to create a 180 degree PieChart.",
+//                class: BarChartViewController.self)
+//        
+//        let vcClass = def.class as! BarChartViewController.Type
+//        let vc = vcClass.init()
+//        vc.sensor = device.sensor
+//        
+//        navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -48,6 +48,10 @@
 		185FF15622ABB5B3003C0DDF /* InputDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185FF15522ABB5B3003C0DDF /* InputDevice.swift */; };
 		1862B3DC21E305D200CFD7F1 /* icon_temp.png in Resources */ = {isa = PBXBuildFile; fileRef = 1862B3DB21E305D200CFD7F1 /* icon_temp.png */; };
 		1862B3DE21E32A7200CFD7F1 /* icon_humi.png in Resources */ = {isa = PBXBuildFile; fileRef = 1862B3DD21E32A7200CFD7F1 /* icon_humi.png */; };
+		1864B73622B7F22100B9DCE7 /* ItemDetailState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1864B73522B7F22100B9DCE7 /* ItemDetailState.swift */; };
+		1864B73822B7F45B00B9DCE7 /* ItemDetailReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1864B73722B7F45B00B9DCE7 /* ItemDetailReducer.swift */; };
+		1864B73B22BA8C1400B9DCE7 /* ItemDetailAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1864B73A22BA8C1400B9DCE7 /* ItemDetailAction.swift */; };
+		1864B73D22BE363100B9DCE7 /* ItemDetailStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1864B73C22BE363000B9DCE7 /* ItemDetailStore.swift */; };
 		18A0430821894CD2005E04D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0430721894CD2005E04D4 /* AppDelegate.swift */; };
 		18A0431221894CD4005E04D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A0431121894CD4005E04D4 /* Assets.xcassets */; };
 		18A0431521894CD4005E04D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A0431321894CD4005E04D4 /* LaunchScreen.storyboard */; };
@@ -145,6 +149,10 @@
 		185FF15522ABB5B3003C0DDF /* InputDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDevice.swift; sourceTree = "<group>"; };
 		1862B3DB21E305D200CFD7F1 /* icon_temp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_temp.png; sourceTree = "<group>"; };
 		1862B3DD21E32A7200CFD7F1 /* icon_humi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_humi.png; sourceTree = "<group>"; };
+		1864B73522B7F22100B9DCE7 /* ItemDetailState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailState.swift; sourceTree = "<group>"; };
+		1864B73722B7F45B00B9DCE7 /* ItemDetailReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailReducer.swift; sourceTree = "<group>"; };
+		1864B73A22BA8C1400B9DCE7 /* ItemDetailAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailAction.swift; sourceTree = "<group>"; };
+		1864B73C22BE363000B9DCE7 /* ItemDetailStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailStore.swift; sourceTree = "<group>"; };
 		18A0430421894CD2005E04D4 /* IoTGarden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IoTGarden.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A0430721894CD2005E04D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18A0431121894CD4005E04D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -326,9 +334,50 @@
 			path = AddItem;
 			sourceTree = "<group>";
 		};
+		1864B73222B7F10800B9DCE7 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				1864B73522B7F22100B9DCE7 /* ItemDetailState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		1864B73322B7F11500B9DCE7 /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+				1864B73722B7F45B00B9DCE7 /* ItemDetailReducer.swift */,
+			);
+			path = Reducers;
+			sourceTree = "<group>";
+		};
+		1864B73422B7F14700B9DCE7 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				1864B73A22BA8C1400B9DCE7 /* ItemDetailAction.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		1864B73922B7F8DF00B9DCE7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1803375121C9EF430098F944 /* CoreData */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1864B73E22BE387B00B9DCE7 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				1864B73C22BE363000B9DCE7 /* ItemDetailStore.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
 		18A042FB21894CD2005E04D4 = {
 			isa = PBXGroup;
 			children = (
+				1864B73922B7F8DF00B9DCE7 /* Services */,
 				18A0430621894CD2005E04D4 /* IoTGarden */,
 				18A0431E21894CD4005E04D4 /* IoTGardenTests */,
 				18A0432921894CD4005E04D4 /* IoTGardenUITests */,
@@ -357,7 +406,6 @@
 				5B2CD58622896E5400EA8B25 /* UIFont+Extension.swift */,
 				5B2CD588228973A400EA8B25 /* UIView+Extension.swift */,
 				1803375221C9EF810098F944 /* Libs */,
-				1803375121C9EF430098F944 /* CoreData */,
 				18339BDE21C9493E00CC2269 /* IoTGarden.xcdatamodeld */,
 				18E7A71C218EE0F800F7E689 /* Redux */,
 				18A0431121894CD4005E04D4 /* Assets.xcassets */,
@@ -395,6 +443,10 @@
 		18E7A71C218EE0F800F7E689 /* Redux */ = {
 			isa = PBXGroup;
 			children = (
+				1864B73222B7F10800B9DCE7 /* State */,
+				1864B73322B7F11500B9DCE7 /* Reducers */,
+				1864B73422B7F14700B9DCE7 /* Actions */,
+				1864B73E22BE387B00B9DCE7 /* Stores */,
 				18E7A71D218EE4E800F7E689 /* ReactiveReSwiftBridge.swift */,
 				18E7A723218EFDF600F7E689 /* ItemListState.swift */,
 				18E7A725218EFE5200F7E689 /* ItemListReducer.swift */,
@@ -676,11 +728,13 @@
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/ReSwift/ReSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveReSwift/ReactiveReSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -696,11 +750,13 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveReSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -722,6 +778,7 @@
 				18C832BE218ADAD500ED37A1 /* Storage.swift in Sources */,
 				18243663227D8DC80009F7EA /* CandleStickChartViewController.swift in Sources */,
 				1803377621CBF5480098F944 /* SelectionViewController.swift in Sources */,
+				1864B73B22BA8C1400B9DCE7 /* ItemDetailAction.swift in Sources */,
 				1803375B21CB3C070098F944 /* SwitchDevice.swift in Sources */,
 				18339BE321C9496100CC2269 /* ItemList.xcdatamodeld in Sources */,
 				18EDCF5C2189A46500B233B9 /* ItemListViewController.swift in Sources */,
@@ -734,6 +791,7 @@
 				18339BE021C9493E00CC2269 /* IoTGarden.xcdatamodeld in Sources */,
 				18EDCF5021899E3900B233B9 /* Item.swift in Sources */,
 				18A934CF2291727D009C6ADF /* R.generated.swift in Sources */,
+				1864B73D22BE363100B9DCE7 /* ItemDetailStore.swift in Sources */,
 				1803376921CBAC7D0098F944 /* HumidityCell.swift in Sources */,
 				18D7C6D9220EB81000FF8529 /* MotionDevice.swift in Sources */,
 				5B2CD58722896E5400EA8B25 /* UIFont+Extension.swift in Sources */,
@@ -744,6 +802,7 @@
 				1846AB53218A9E7800F46053 /* ItemDetailViewController.swift in Sources */,
 				18A0430821894CD2005E04D4 /* AppDelegate.swift in Sources */,
 				1803376D21CBBA660098F944 /* CellCreator.swift in Sources */,
+				1864B73822B7F45B00B9DCE7 /* ItemDetailReducer.swift in Sources */,
 				185FF15622ABB5B3003C0DDF /* InputDevice.swift in Sources */,
 				5B04F00E227AEEAF0096FBA1 /* PositiveNegativeBarChartViewController.swift in Sources */,
 				18577AA9228816C6007FB9E4 /* BarChartViewController.swift in Sources */,
@@ -756,6 +815,7 @@
 				1803375921CB3BAE0098F944 /* Device.swift in Sources */,
 				1803376021CB41640098F944 /* SensorConnect.swift in Sources */,
 				18D9A05121C4109F008EFA72 /* ItemTemp.swift in Sources */,
+				1864B73622B7F22100B9DCE7 /* ItemDetailState.swift in Sources */,
 				18B5506721C56104004EC438 /* ItemStore.swift in Sources */,
 				5B2CD58522896DB600EA8B25 /* UIColor+Extension.swift in Sources */,
 				1852DBA421931E16002E1946 /* AddItemSavingViewController.swift in Sources */,

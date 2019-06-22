@@ -34,6 +34,12 @@ struct ItemListService {
         sensors.add(item: sensor) { _ in }
     }
     
+    func getSensor(uuid: String) -> Sensor? {
+        let sensors = SensorsDataInteractor()
+        return sensors.getItem(uuid: uuid)
+
+    }
+    
     
     func updateSensor(sensor: Sensor) {
         
