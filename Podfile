@@ -20,6 +20,9 @@ target 'IoTGarden' do
   pod 'MaterialComponents/ButtonBar'
   pod 'R.swift'
   pod 'SwiftLint'
+#  pod 'IHKeyboardAvoiding'
+  pod 'TPKeyboardAvoiding'
+  pod 'ReSwift'
 
   target 'IoTGardenTests' do
     inherit! :search_paths

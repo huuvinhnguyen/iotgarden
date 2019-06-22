@@ -19,12 +19,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="429" height="190"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zyU-n8-7G2">
-                        <rect key="frame" x="40" y="33" width="162" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zyU-n8-7G2">
+                        <rect key="frame" x="40" y="33" width="80" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="Y53-bw-lWX"/>
+                        </constraints>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="postal-code"/>
+                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="postal-code"/>
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvh-DI-bck">
                         <rect key="frame" x="251" y="35" width="87" height="30"/>
@@ -58,6 +60,10 @@
                 </subviews>
             </view>
             <color key="backgroundColor" red="0.82060133941309055" green="0.98039215690000003" blue="0.5079904497807568" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="zyU-n8-7G2" firstAttribute="leading" secondItem="N9Q-Xd-dX8" secondAttribute="leading" constant="40" id="EvS-Gt-VMp"/>
+                <constraint firstItem="zyU-n8-7G2" firstAttribute="top" secondItem="N9Q-Xd-dX8" secondAttribute="top" constant="33" id="jSN-p5-QRf"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="N9Q-Xd-dX8"/>
             <size key="customSize" width="429" height="190"/>
             <connections>
