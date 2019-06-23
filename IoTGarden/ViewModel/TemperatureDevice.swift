@@ -6,7 +6,7 @@
 //
 import Foundation
 
-class TemperatureDevice: Device {
+class TemperatureDevice: CellViewModel {
     
     
     var sensor: Sensor {

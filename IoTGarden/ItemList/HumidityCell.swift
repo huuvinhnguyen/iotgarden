@@ -14,10 +14,10 @@ class HumidityCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel?
 
     
-    fileprivate(set) var device: Device! {
+    fileprivate(set) var cellViewModel: CellViewModel! {
         didSet {
             
-            guard let humidityDevice = device as? HumidityDevice else { return }
+            guard let humidityDevice = cellViewModel as? HumidityDevice else { return }
             nameLabel?.text = humidityDevice.name
             humidityLabel?.text = humidityDevice.valueString + "%"
             timeLabel?.text = humidityDevice.timeString
@@ -27,8 +27,8 @@ class HumidityCell: UICollectionViewCell {
 
 extension HumidityCell: Display {
     
-    func display(device: Device) {
+    func display(cellViewModel: CellViewModel) {
         
-        self.device = device
+        self.cellViewModel = cellViewModel
     }
 }

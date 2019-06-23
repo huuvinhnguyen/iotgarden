@@ -6,7 +6,7 @@
 //
 import Foundation
 
-class HumidityDevice: Device {
+class HumidityDevice: CellViewModel {
     
     var sensor: Sensor {
         

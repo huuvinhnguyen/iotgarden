@@ -26,3 +26,5 @@ struct RemoveSensorAction: Action {
     
     let item: Sensor
 }
+
+struct ListItemsAction: Action { }

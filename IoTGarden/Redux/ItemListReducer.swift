@@ -17,6 +17,32 @@ let itemListReducer: Reducer<ItemListState> = { action, state in
 //        state.clouds.append(action.cloud)
     }
     
+    if let action = action as? ListItemsAction {
+        
+        let itemListService = ItemListService()
+        itemListService.loadSensors { sensors in
+            
+            state.items = sensors.compactMap { sensor in
+                
+                switch sensor.kind {
+                case "toggle":
+                    return SwitchCellViewModel(sensor: sensor)
+                case "temperature":
+                    return TemperatureDevice(sensor: sensor)
+                case "humidity":
+                    return HumidityDevice(sensor: sensor)
+                case "motion":
+                    return MotionDevice(sensor: sensor)
+                case "value":
+                    return InputDevice(sensor: sensor)
+                default:
+                    return nil
+                }
+            }
+        }
+        
+    }
+    
     return state
 }
 

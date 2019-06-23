@@ -6,7 +6,7 @@
 //
 import Foundation
 
-class SwitchDevice: Device {
+class SwitchCellViewModel: CellViewModel {
     
     var sensor: Sensor {
         
@@ -59,7 +59,7 @@ class SwitchDevice: Device {
             newItem.value = message.string ?? "0"
             print("item.name = \(newItem.name)")
             weakSelf.stateString = "Updated"
-            sensorStore.dispatch(UpdateSensorAction(sensor: newItem))
+//            sensorStore.dispatch(UpdateSensorAction(sensor: newItem))
             
             if message.string == "done" {
                 
@@ -72,6 +72,9 @@ class SwitchDevice: Device {
             
             let itemListService = ItemListService()
             itemListService.updateSensor(sensor: newItem)
+            
+            itemListCellStore.dispatch(LoadItemListCellAction(state: ItemListCellState(cellViewModel: self)))
+
         }
     }
 }

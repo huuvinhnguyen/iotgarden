@@ -16,11 +16,11 @@ class TemperatureCell: UICollectionViewCell {
     private weak var timer: Timer?
 
     
-    fileprivate(set) var device: Device! {
+    fileprivate(set) var cellViewModel: CellViewModel! {
         
         didSet {
             
-            guard let temperatureDevice = device as? TemperatureDevice else { return }
+            guard let temperatureDevice = cellViewModel as? TemperatureDevice else { return }
             nameLabel?.text = temperatureDevice.name
             temperatureLabel?.text = temperatureDevice.valueString + "°C"
             timer?.invalidate()
@@ -34,8 +34,8 @@ class TemperatureCell: UICollectionViewCell {
 
 extension TemperatureCell: Display {
     
-    func display(device: Device) {
+    func display(cellViewModel: CellViewModel) {
         
-        self.device = device
+        self.cellViewModel = cellViewModel
     }
 }

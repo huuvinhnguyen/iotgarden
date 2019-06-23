@@ -9,7 +9,7 @@ import ReactiveReSwift
 
 struct ItemListState {
     
-    let items: [Item]
+    var items: [CellViewModel]
 }
 
 
