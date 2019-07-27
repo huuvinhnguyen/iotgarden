@@ -9,7 +9,7 @@ import UIKit
 
 class MotionCell: UICollectionViewCell {
     
-    fileprivate(set) var device: Device! {
+    fileprivate(set) var device: CellViewModel! {
         
         didSet {
             

@@ -9,6 +9,14 @@ import UIKit
 import CoreData
 import ReSwift
 
+struct ItemDetailViewModel {
+    
+    var sensorConnect: SensorConnect? = SensorConnect()
+    init(sensor: Sensor) {
+        sensorConnect?.connect(sensor: sensor)
+    }
+}
+
 class ItemDetailViewController: UIViewController, StoreSubscriber {
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -16,6 +24,8 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak var kindLabel: UILabel!
     @IBOutlet weak var topicLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var publishTextField: UITextField!
+    private var viewModel: ItemDetailViewModel?
 
     func newState(state: ItemDetailState) {
         
@@ -23,20 +33,32 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         valueLabel.text = state.value
         kindLabel.text = state.kind
         topicLabel.text = state.topic
-        timeLabel.text = state.time
+//        timeLabel.text = state.time
+        
+        var timer: Timer?
+
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+            guard let weakSelf = self else { return }
+            weakSelf.timeLabel?.text = state.time.toDate()?.timeAgoDisplay()
+        }
     }
     
     
     typealias StoreSubscriberStateType = ItemDetailState
     
-    var sensor = Sensor()
+    var sensor: Sensor? {
+        didSet {
+            viewModel = ItemDetailViewModel(sensor: sensor ?? Sensor())
+        }
+    }
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         itemDetailStore.subscribe(self)
-        itemDetailStore.dispatch(LoadItemDetail(sensorUUID: sensor.uuid))
+        itemDetailStore.dispatch(LoadItemDetail(sensorUUID: sensor?.uuid ?? ""))
 
     }
     
@@ -45,11 +67,27 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         print("Value changed")
     }
     
+    @IBAction func publishButtonTapped(_ sender: UIButton) {
+        let message = publishTextField.text ?? ""
+        viewModel?.sensorConnect?.publish(message: message)
+    }
+    
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
         
         let itemListService = ItemListService()
-        itemListService.removeSensor(sensor: sensor)
+        itemListService.removeSensor(sensor: sensor ?? Sensor())
         itemListStore.dispatch(AddSensorAction())
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func seeMoreDetail(_ sender: UIButton) {
+        let vc = R.storyboard.itemDetail.serverViewController()!
+        vc.serverUUID = sensor?.serverUUID
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    @IBAction func editTopicTapped(_ sender: UIButton) {
+        let vc = R.storyboard.itemDetail.topicViewController()!
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

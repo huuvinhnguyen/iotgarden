@@ -6,24 +6,48 @@
 //
 
 import UIKit
+import ReSwift
 
-class ItemListCell: UICollectionViewCell {
+struct LoadItemListCellAction: Action {
     
+    var state: ItemListCellState
+
+}
+struct ItemListCellState: StateType {
+    var cellViewModel: CellViewModel?
+//    var sensorConnect: SensorConnect?
+}
+
+let itemListCellReducer: Reducer<ItemListCellState> = { action, state in
     
-    fileprivate(set) var device: Device! {
+    var state = state ?? ItemListCellState()
+    
+    if let action = action as? LoadItemListCellAction {
+        
+        state = action.state
+        
+    }
+    
+    return state
+}
+
+let itemListCellStore = Store<ItemListCellState>(
+    reducer: itemListCellReducer,
+    state: nil
+)
+
+
+class ItemListCell: UICollectionViewCell, StoreSubscriber {
+    
+    typealias StoreSubscriberStateType = ItemListCellState
+    
+    fileprivate(set) var cellViewModel: CellViewModel! {
         
         didSet {
             
-            guard let switchDevice = device as? SwitchDevice else { return }
-            nameLabel?.text = switchDevice.name
-            onOffSwitch?.isOn = switchDevice.isOn
-            stateLabel?.text = switchDevice.stateString
-            
-            timer?.invalidate()
-            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
-                guard let weakSelf = self else { return }
-                weakSelf.timeLabel?.text = switchDevice.timeString.toDate()?.timeAgoDisplay()
-            }
+            itemListCellStore.subscribe(self)
+            itemListCellStore.dispatch(LoadItemListCellAction(state: ItemListCellState(cellViewModel: cellViewModel)))
+
         }
     }
     
@@ -36,20 +60,35 @@ class ItemListCell: UICollectionViewCell {
     
     @IBAction func switchButtonTapped(sender: UISwitch) {
         
-        guard let switchDevice = device as? SwitchDevice else { return }
+        guard let switchDevice = cellViewModel as? SwitchCellViewModel else { return }
         switchDevice.stateString = "Requesting"
         
         stateLabel?.text = "Requesting"
         
         let message =  sender.isOn ? "1":"0"
-        device.sensorConnect.publish(message: message)
+        cellViewModel.sensorConnect.publish(message: message)
+    }
+    
+    func newState(state: ItemListCellState) {
+        
+        guard let viewModel = cellViewModel as? SwitchCellViewModel else { return }
+//        guard let viewModel = state.cellViewModel as? SwitchCellViewModel else { return }
+        nameLabel?.text = viewModel.name
+        onOffSwitch?.isOn = viewModel.isOn
+        stateLabel?.text = viewModel.stateString
+        
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+            guard let weakSelf = self else { return }
+            weakSelf.timeLabel?.text = viewModel.timeString.toDate()?.timeAgoDisplay()
+        }
     }
 }
 
 extension ItemListCell: Display {
 
-    func display(device: Device) {
+    func display(cellViewModel: CellViewModel) {
 
-        self.device = device
+        self.cellViewModel = cellViewModel
     }
 }

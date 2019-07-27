@@ -7,7 +7,7 @@
 
 import Foundation
 
-class InputDevice: Device {
+class InputDevice: CellViewModel {
     
     var sensor: Sensor {
         

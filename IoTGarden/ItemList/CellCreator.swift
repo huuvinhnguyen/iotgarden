@@ -9,28 +9,28 @@ import UIKit
 
 class CellCreator {
     
-    class func create(cellAt indexPath: IndexPath, with device: Device, collectionView: UICollectionView) -> UICollectionViewCell {
+    class func create(cellAt indexPath: IndexPath, with cellViewModel: CellViewModel, collectionView: UICollectionView) -> UICollectionViewCell {
         
-        switch device {
+        switch cellViewModel {
             
-        case is SwitchDevice:
+        case is SwitchCellViewModel:
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemListCell", for: indexPath) as! ItemListCell
-            cell.display(device: device)
+            cell.display(cellViewModel: cellViewModel)
             return cell
         case is TemperatureDevice:
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TemperatureCell", for: indexPath) as! TemperatureCell
-            cell.display(device: device)
+            cell.display(cellViewModel: cellViewModel)
             return cell
         case is HumidityDevice:
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HumidityCell", for: indexPath) as! HumidityCell
-            cell.display(device: device)
+            cell.display(cellViewModel: cellViewModel)
             return cell
         case is InputDevice:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemInputValueCell", for: indexPath) as! ItemInputValueCell
-            cell.display(device: device)
+            cell.display(cellViewModel: cellViewModel)
             return cell
         default:
             

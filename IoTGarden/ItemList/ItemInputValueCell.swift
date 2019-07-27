@@ -14,10 +14,10 @@ class ItemInputValueCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel?
     @IBOutlet weak var inputTextField: UITextField?
     
-    fileprivate(set) var device: Device! {
+    fileprivate(set) var cellViewModel: CellViewModel! {
         didSet {
             
-            guard let inputDevice = device as? InputDevice else { return }
+            guard let inputDevice = cellViewModel as? InputDevice else { return }
             nameLabel?.text = inputDevice.name
             stateLabel?.text = inputDevice.stateString
             timeLabel?.text = inputDevice.timeString
@@ -27,20 +27,20 @@ class ItemInputValueCell: UICollectionViewCell {
     
     @IBAction func updateButtonTapped(sender: UISwitch) {
         
-        guard let inputDevice = device as? InputDevice else { return }
+        guard let inputDevice = cellViewModel as? InputDevice else { return }
         inputDevice.stateString = "Requesting"
         
         stateLabel?.text = "Requesting"
         
         let message =  inputTextField?.text ?? ""
-        device.sensorConnect.publish(message: message)
+        cellViewModel.sensorConnect.publish(message: message)
     }
 }
 
 extension ItemInputValueCell: Display {
     
-    func display(device: Device) {
+    func display(cellViewModel: CellViewModel) {
         
-        self.device = device
+        self.cellViewModel = cellViewModel
     }
 }

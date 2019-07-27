@@ -20,6 +20,7 @@ target 'IoTGarden' do
   pod 'MaterialComponents/ButtonBar'
   pod 'R.swift'
   pod 'SwiftLint'
+  pod 'RxDataSources'
 #  pod 'IHKeyboardAvoiding'
   pod 'TPKeyboardAvoiding'
   pod 'ReSwift'

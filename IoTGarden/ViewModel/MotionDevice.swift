@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MotionDevice: Device {
+class MotionDevice: CellViewModel {
     
     var sensor: Sensor
     
