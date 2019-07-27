@@ -39,14 +39,18 @@ struct ItemListPublishMQTTAction: Action {
     
     var message: String = "5555"
     var mqtt: CocoaMQTT
+    var sensorConnect = SensorConnect2()
 
 
-    init?(uuid: String) {
+    init?(sensor: Sensor) {
+        print("#mqtt sensorConnect 5555")
+
+        sensorConnect.connect(sensor: sensor)
         
         
         let itemListService = ItemListService()
-        guard let configuration = itemListService.loadLocalConfiguration(uuid: uuid) else { return  nil }
-        
+        guard let configuration = itemListService.loadLocalConfiguration(uuid: sensor.serverUUID) else { return  nil }
+
         guard let port = UInt16(configuration.port) else { return nil }
         let clientID = "CocoaMQTT-" + configuration.uuid
         mqtt = CocoaMQTT(clientID: clientID, host: configuration.server, port: port)
@@ -55,21 +59,21 @@ struct ItemListPublishMQTTAction: Action {
         mqtt.keepAlive = 60
         mqtt.autoReconnectTimeInterval = 1
         mqtt.autoReconnect = true
-        mqtt.connect()
-        
+//        mqtt.connect()
+
         print("#mqtt connecting UUID5555")
-        
-        mqtt.didReceiveMessage = { mqtt, message, id in
-            
-            print("#didReceiveMessageUUID5555: \(message)")
-            itemListStore.dispatch(ItemListUpdateFromMQTTAction(uuid: uuid, message: message.string))
-            
-            // TODO - Update sensor in coredata
-//            let itemListService = ItemListService()
-//            var sensor = itemListService.getSensor(uuid: "")
-//            sensor?.value = ""
-//            itemListService.updateSensor(sensor: sensor!)
-        }
+
+//        mqtt.didReceiveMessage = { mqtt, message, id in
+//
+//            print("#didReceiveMessageUUID5555: \(message)")
+//            itemListStore.dispatch(ItemListUpdateFromMQTTAction(uuid: uuid, message: message.string))
+//
+//            // TODO - Update sensor in coredata
+////            let itemListService = ItemListService()
+////            var sensor = itemListService.getSensor(uuid: "")
+////            sensor?.value = ""
+////            itemListService.updateSensor(sensor: sensor!)
+//        }
     }
 }
 struct ItemListUpdateFromMQTTAction: Action {

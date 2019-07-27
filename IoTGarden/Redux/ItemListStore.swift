@@ -18,7 +18,7 @@ let itemListMiddleware = Middleware<ItemListState>().sideEffect { _, _, action i
 let itemListStore = Store(
     
     reducer: itemListReducer,
-    observable: Variable(ItemListState(items:[], mqtt: nil)),
+    observable: Variable(ItemListState(items:[])),
     middleware: itemListMiddleware
 )
 

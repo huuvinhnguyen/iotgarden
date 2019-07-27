@@ -72,7 +72,11 @@ let itemListReducer: Reducer<ItemListState> = { action, state in
     
     if let action = action as? ItemListPublishMQTTAction {
         print("##ItemListPublishMQTTAction")
-        state.mqtt = action.mqtt
+        if state.sensorConnect != nil {
+            state.sensorConnect.disconnect()
+        }
+        
+        state.sensorConnect = action.sensorConnect
         
     }
     

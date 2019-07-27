@@ -12,6 +12,10 @@ struct ItemListState {
     
     var items: [CellViewModel]
     var mqtt: CocoaMQTT?
+    var sensorConnect = SensorConnect2()
+    init(items: [CellViewModel]) {
+        self.items = items
+    }
 }
 
 

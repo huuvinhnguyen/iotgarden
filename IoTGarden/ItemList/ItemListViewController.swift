@@ -27,18 +27,40 @@ class ItemListViewController: UIViewController {
     private let refreshControl = UIRefreshControl()
 
     let disposeBag = SubscriptionReferenceBag()
+    let disposeBag2 = DisposeBag()
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        listsenToPublisher()
+//        listsenToPublisher()
         prepareNibs()
-        configureRefreshControl()
-        updateViewModel()
+//        configureRefreshControl()
+//        updateViewModel()
         
         loadItems()
+        
+//        let sensor = Sensor(object: <#T##Any#>)
+//        let cellViewmodel = SwitchCellViewModel(sensor: sensor)
+        
+        let sensor = Sensor(uuid: "uid",
+               name: "name1",
+               value: "value1" ,
+               serverUUID: "serverUUID",
+               kind: "kind1",
+               topic: "top1",
+               time: "time1")
+        
+        let sections: [ItemSectionModel] = [ .itemSection(title: "", items: [SwitchCellViewModel(sensor: sensor)])]
+        
+        let dataSource = self.dataSource()
+        
+        Observable.just(sections)
+            .bind(to: itemListCollectionView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag2)
+        itemListCollectionView.rx.setDelegate(self).disposed(by: disposeBag2)
     
 //        navigationBar.observe(navigationItem)
+//        itemListCollectionView.rx.items(dataSource: <#T##RxCollectionViewDataSourceType & UICollectionViewDataSource#>)
     }
     
     private func listsenToPublisher() {
@@ -174,20 +196,26 @@ extension ItemSectionModel: SectionModelType {
     }
 }
 
+enum SectionItem {
+    case switchSectionItem(name: String, enable: Bool)
+    case valueSectionItem(name: String)
+    case temperatureSectionItem(name: String)
+}
+
 
 extension ItemListViewController {
     
     func dataSource() -> RxCollectionViewSectionedReloadDataSource<ItemSectionModel> {
         
-        return RxCollectionViewSectionedReloadDataSource<ItemSectionModel>(configureCell: { dataSource, collectionView, idxPath, _ in
-            switch dataSource[idxPath] {
+        return RxCollectionViewSectionedReloadDataSource<ItemSectionModel>(configureCell: { dataSource, collectionView, indexPath, _ in
+            switch dataSource[indexPath] {
                 
             default:
                 ()
             }
             
-            let cellViewModel = dataSource[idxPath]
-            let cell = CellCreator.create(cellAt: idxPath, with: cellViewModel, collectionView: collectionView)
+            let cellViewModel = dataSource[indexPath]
+            let cell = CellCreator.create(cellAt: indexPath, with: cellViewModel, collectionView: collectionView)
             return cell
         
         })

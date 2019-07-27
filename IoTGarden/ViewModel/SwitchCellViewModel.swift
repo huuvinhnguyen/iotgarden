@@ -73,7 +73,7 @@ class SwitchCellViewModel: CellViewModel {
             let itemListService = ItemListService()
             itemListService.updateSensor(sensor: newItem)
             
-            itemListCellStore.dispatch(LoadItemListCellAction(state: ItemListCellState(cellViewModel: self)))
+//            itemListCellStore.dispatch(LoadItemListCellAction(state: ItemListCellState(cellViewModel: self)))
 
         }
     }

@@ -45,9 +45,20 @@ class ItemListCell: UICollectionViewCell, StoreSubscriber {
         
         didSet {
             
-            itemListCellStore.subscribe(self)
-            itemListCellStore.dispatch(LoadItemListCellAction(state: ItemListCellState(cellViewModel: cellViewModel)))
-
+//            itemListCellStore.subscribe(self)
+//            itemListCellStore.dispatch(LoadItemListCellAction(state: ItemListCellState(cellViewModel: cellViewModel)))
+            
+            guard let viewModel = cellViewModel as? SwitchCellViewModel else { return }
+            //        guard let viewModel = state.cellViewModel as? SwitchCellViewModel else { return }
+            nameLabel?.text = viewModel.name
+            onOffSwitch?.isOn = viewModel.isOn
+            stateLabel?.text = viewModel.stateString
+            
+            timer?.invalidate()
+            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+                guard let weakSelf = self else { return }
+                weakSelf.timeLabel?.text = viewModel.timeString.toDate()?.timeAgoDisplay()
+            }
         }
     }
     
@@ -67,6 +78,9 @@ class ItemListCell: UICollectionViewCell, StoreSubscriber {
         
         let message =  sender.isOn ? "1":"0"
         cellViewModel.sensorConnect.publish(message: message)
+        let action1 = ItemListPublishMQTTAction(sensor: cellViewModel.sensor)
+//        itemListStore.dispatch(action1!)
+
     }
     
     func newState(state: ItemListCellState) {
