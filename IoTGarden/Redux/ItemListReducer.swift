@@ -12,7 +12,6 @@ let itemListReducer: Reducer<ItemListState> = { action, state in
     
     var state = state
     
-    
     if let action = action as? AddItemAction {
 //        state.clouds.append(action.cloud)
     }
@@ -43,6 +42,40 @@ let itemListReducer: Reducer<ItemListState> = { action, state in
         
     }
     
+    if let action = action as? ItemListUpdateItemAction {
+        
+        for i in 0..<state.items.count {
+            if state.items[i].uuid == "abc" {
+                let item = state.items[i]
+            }
+        }
+    }
+    
+    if let action = action as? ItemListUpdateFromMQTTAction {
+        
+        
+        for i in 0..<state.items.count {
+            print("#uuid: \(state.items[i].uuid)" )
+            if state.items[i].uuid == action.uuid {
+                print("#uuid exists")
+                
+                let item = state.items[i]
+                if let switchCellViewModel = item as? SwitchCellViewModel {
+                    
+                    if action.message == "1" { switchCellViewModel.isOn = true }
+                    if action.message == "0" { switchCellViewModel.isOn = false }
+                    state.items[i] = switchCellViewModel
+                }
+            }
+        }
+    }
+    
+    if let action = action as? ItemListPublishMQTTAction {
+        print("##ItemListPublishMQTTAction")
+        state.mqtt = action.mqtt
+        
+    }
+    
     return state
 }
 
@@ -50,7 +83,7 @@ let sensorListReducer: Reducer<SensorListState> = { action, state in
     
     var state = state
     
-    
+
     if let action = action as? AddSensorAction {
         //        state.clouds.append(action.cloud)
     }

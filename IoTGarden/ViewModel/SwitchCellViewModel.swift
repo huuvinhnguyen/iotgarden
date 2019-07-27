@@ -1,8 +1,8 @@
 //
-//  SwitchDevice.swift
+//  SwitchCellViewModel.swift
 //  IoTGarden
 //
-//  Created by Apple on 12/20/18.
+//  Created by Vinh Nguyen on 12/20/18.
 //
 import Foundation
 
@@ -77,4 +77,13 @@ class SwitchCellViewModel: CellViewModel {
 
         }
     }
+    
+    func switchButton() {
+//        itemListStore.dispatch(ItemListPublishMQTTAction())
+    }
+    
+    private func subscribeMQTTTopic() {
+        
+    }
 }
+

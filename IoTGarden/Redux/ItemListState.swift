@@ -6,10 +6,12 @@
 //
 
 import ReactiveReSwift
+import CocoaMQTT
 
 struct ItemListState {
     
     var items: [CellViewModel]
+    var mqtt: CocoaMQTT?
 }
 
 

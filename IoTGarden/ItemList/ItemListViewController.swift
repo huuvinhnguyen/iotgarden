@@ -8,6 +8,9 @@
 import UIKit
 import ReactiveReSwift
 import MaterialComponents.MaterialNavigationBar
+import RxDataSources
+import RxSwift
+import RxCocoa
 
 private struct ItemDef {
     let title: String
@@ -34,8 +37,7 @@ class ItemListViewController: UIViewController {
         updateViewModel()
         
         loadItems()
-
-        
+    
 //        navigationBar.observe(navigationItem)
     }
     
@@ -67,6 +69,7 @@ class ItemListViewController: UIViewController {
     
     private func prepareNibs() {
         
+        
         itemListCollectionView.register(UINib(nibName: "ItemListCell", bundle: nil), forCellWithReuseIdentifier: "ItemListCell")
 
         itemListCollectionView.register(UINib(nibName: "TemperatureCell", bundle: nil), forCellWithReuseIdentifier: "TemperatureCell")
@@ -92,11 +95,8 @@ class ItemListViewController: UIViewController {
     
     @IBAction func addButtonTapped(sender: UIButton) {
         
-        let storyboard = UIStoryboard(name: "AddItemViewController", bundle: nil)
-        if let addItemViewController = storyboard.instantiateViewController(withIdentifier :"AddItemViewController") as? AddItemViewController {
-            
-            navigationController?.pushViewController(addItemViewController, animated: true)
-        }
+        let addItemViewController = R.storyboard.addItemViewController.addItemViewController()!
+        navigationController?.pushViewController(addItemViewController, animated: true)
     }
     
     @IBAction func tempButtonTapped(_ sender: UIButton) {
@@ -129,12 +129,10 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let cellViewModel = cellViewModels[indexPath.row]
-
-        let storyboard = UIStoryboard(name: "ItemDetailViewController", bundle: nil)
-        if let itemDetailViewController = storyboard.instantiateViewController(withIdentifier :"ItemDetailViewController") as? ItemDetailViewController {
-            itemDetailViewController.sensor = cellViewModel.sensor
-            navigationController?.pushViewController(itemDetailViewController, animated: true)
-        }
+        let vc = R.storyboard.itemDetail.itemDetailViewController()!
+        navigationController?.pushViewController(vc, animated: true)
+        
+        vc.sensor = cellViewModel.sensor
         
         
 //        let storyboard = UIStoryboard(name: "ItemDetailTempViewController", bundle: nil)
@@ -152,5 +150,46 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
 //        vc.sensor = device.sensor
 //        
 //        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+enum ItemSectionModel {
+    case itemSection(title: String, items: [CellViewModel])
+}
+
+extension ItemSectionModel: SectionModelType {
+    init(original: ItemSectionModel, items: [CellViewModel]) {
+        typealias Item = CellViewModel
+        switch original {
+        case let .itemSection(title: title, items: items):
+             self = .itemSection(title: title, items: items)
+        }
+    }
+    
+    var items: [CellViewModel] {
+        switch self {
+        case .itemSection(title: _, items: let items):
+        return items
+        }
+    }
+}
+
+
+extension ItemListViewController {
+    
+    func dataSource() -> RxCollectionViewSectionedReloadDataSource<ItemSectionModel> {
+        
+        return RxCollectionViewSectionedReloadDataSource<ItemSectionModel>(configureCell: { dataSource, collectionView, idxPath, _ in
+            switch dataSource[idxPath] {
+                
+            default:
+                ()
+            }
+            
+            let cellViewModel = dataSource[idxPath]
+            let cell = CellCreator.create(cellAt: idxPath, with: cellViewModel, collectionView: collectionView)
+            return cell
+        
+        })
     }
 }

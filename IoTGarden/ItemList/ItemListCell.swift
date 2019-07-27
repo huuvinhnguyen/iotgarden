@@ -8,8 +8,6 @@
 import UIKit
 import ReSwift
 
-import ReSwift
-
 struct LoadItemListCellAction: Action {
     
     var state: ItemListCellState
