@@ -42,6 +42,29 @@ let itemListReducer: Reducer<ItemListState> = { action, state in
         
     }
     
+    if let action = action as? ListItemsAction2 {
+        
+        let itemListService = ItemListService()
+        itemListService.loadSensors { sensors in
+            
+            let items: [SectionItem] = sensors.compactMap { sensor in
+                
+                switch sensor.kind {
+                case "toggle":
+                    return .switchSectionItem(viewModel: SwitchCellViewModel(sensor: sensor))
+                case "value":
+                    return .valueSectionItem(viewModel: InputDevice(sensor: sensor))
+                default:
+                    return nil
+                }
+                
+            }
+            
+            state.sections = [ .itemSection(title: "", items: items)]
+        }
+        
+    }
+    
     if let action = action as? ItemListUpdateItemAction {
         
         for i in 0..<state.items.count {
@@ -72,9 +95,9 @@ let itemListReducer: Reducer<ItemListState> = { action, state in
     
     if let action = action as? ItemListPublishMQTTAction {
         print("##ItemListPublishMQTTAction")
-        if state.sensorConnect != nil {
-            state.sensorConnect.disconnect()
-        }
+//        if state.sensorConnect != nil {
+//            state.sensorConnect.disconnect()
+//        }
         
         state.sensorConnect = action.sensorConnect
         

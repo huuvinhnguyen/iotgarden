@@ -37,7 +37,7 @@ let itemListCellStore = Store<ItemListCellState>(
 )
 
 
-class ItemListCell: UICollectionViewCell, StoreSubscriber {
+class ItemListCell: UICollectionViewCell {
     
     typealias StoreSubscriberStateType = ItemListCellState
     
@@ -45,13 +45,9 @@ class ItemListCell: UICollectionViewCell, StoreSubscriber {
         
         didSet {
             
-//            itemListCellStore.subscribe(self)
-//            itemListCellStore.dispatch(LoadItemListCellAction(state: ItemListCellState(cellViewModel: cellViewModel)))
-            
             guard let viewModel = cellViewModel as? SwitchCellViewModel else { return }
-            //        guard let viewModel = state.cellViewModel as? SwitchCellViewModel else { return }
             nameLabel?.text = viewModel.name
-            onOffSwitch?.isOn = viewModel.isOn
+//            onOffSwitch?.isOn = viewModel.isOn
             stateLabel?.text = viewModel.stateString
             
             timer?.invalidate()
@@ -76,27 +72,18 @@ class ItemListCell: UICollectionViewCell, StoreSubscriber {
         
         stateLabel?.text = "Requesting"
         
-        let message =  sender.isOn ? "1":"0"
-        cellViewModel.sensorConnect.publish(message: message)
-        let action1 = ItemListPublishMQTTAction(sensor: cellViewModel.sensor)
-//        itemListStore.dispatch(action1!)
+        var message =  sender.isOn ? "1":"0"
+//        var action1 = ItemListPublishMQTTAction(sensor: cellViewModel.sensor)
+//        print("#sensorid : \(cellViewModel.sensor.uuid)")
+//        action1.message = message
+//        itemListStore.dispatch(action1)
+        let action = ListState.Action.switchItem(viewModel: switchDevice)
+        appStore.dispatch(action)
+
 
     }
     
-    func newState(state: ItemListCellState) {
-        
-        guard let viewModel = cellViewModel as? SwitchCellViewModel else { return }
-//        guard let viewModel = state.cellViewModel as? SwitchCellViewModel else { return }
-        nameLabel?.text = viewModel.name
-        onOffSwitch?.isOn = viewModel.isOn
-        stateLabel?.text = viewModel.stateString
-        
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
-            guard let weakSelf = self else { return }
-            weakSelf.timeLabel?.text = viewModel.timeString.toDate()?.timeAgoDisplay()
-        }
-    }
+
 }
 
 extension ItemListCell: Display {

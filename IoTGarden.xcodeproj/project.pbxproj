@@ -27,6 +27,7 @@
 		181BAC6C220DD2B700A0D458 /* MotionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181BAC6B220DD2B700A0D458 /* MotionCell.xib */; };
 		181BAC6E220DD2D400A0D458 /* MotionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181BAC6D220DD2D400A0D458 /* MotionCell.swift */; };
 		181BAC72220DE57100A0D458 /* SensorRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181BAC71220DE57100A0D458 /* SensorRequest.swift */; };
+		181F50A422F1FEAE00EA89D1 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181F50A322F1FEAE00EA89D1 /* AppState.swift */; };
 		18243663227D8DC80009F7EA /* CandleStickChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18243662227D8DC80009F7EA /* CandleStickChartViewController.swift */; };
 		1826C625218F51B700A5CE38 /* ItemListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1826C624218F51B700A5CE38 /* ItemListService.swift */; };
 		18339BE021C9493E00CC2269 /* IoTGarden.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18339BDE21C9493E00CC2269 /* IoTGarden.xcdatamodeld */; };
@@ -132,6 +133,7 @@
 		181BAC6B220DD2B700A0D458 /* MotionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MotionCell.xib; sourceTree = "<group>"; };
 		181BAC6D220DD2D400A0D458 /* MotionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionCell.swift; sourceTree = "<group>"; };
 		181BAC71220DE57100A0D458 /* SensorRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorRequest.swift; sourceTree = "<group>"; };
+		181F50A322F1FEAE00EA89D1 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		18243662227D8DC80009F7EA /* CandleStickChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandleStickChartViewController.swift; sourceTree = "<group>"; };
 		1826C624218F51B700A5CE38 /* ItemListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListService.swift; sourceTree = "<group>"; };
 		18339BDF21C9493E00CC2269 /* IoTGarden.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IoTGarden.xcdatamodel; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 				18B5506221C559FF004EC438 /* ItemAction.swift */,
 				18B5506421C55A14004EC438 /* ItemReducer.swift */,
 				18B5506621C56104004EC438 /* ItemStore.swift */,
+				181F50A322F1FEAE00EA89D1 /* AppState.swift */,
 			);
 			path = Redux;
 			sourceTree = "<group>";
@@ -824,6 +827,7 @@
 				5B04F00C227AE9190096FBA1 /* LineChart3ViewController.swift in Sources */,
 				1852DBA22192960D002E1946 /* AddItemView.swift in Sources */,
 				1846AB57218AA3B800F46053 /* AddItemViewController.swift in Sources */,
+				181F50A422F1FEAE00EA89D1 /* AppState.swift in Sources */,
 				18E7A71E218EE4E800F7E689 /* ReactiveReSwiftBridge.swift in Sources */,
 				1846AB53218A9E7800F46053 /* ItemDetailViewController.swift in Sources */,
 				18A0430821894CD2005E04D4 /* AppDelegate.swift in Sources */,

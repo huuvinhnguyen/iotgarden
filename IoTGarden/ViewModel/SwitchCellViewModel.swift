@@ -5,8 +5,21 @@
 //  Created by Vinh Nguyen on 12/20/18.
 //
 import Foundation
+import RxDataSources
 
-class SwitchCellViewModel: CellViewModel {
+
+class SwitchCellViewModel: CellViewModel, Equatable, IdentifiableType {
+    var identity: Identity {
+        return uuid
+    }
+    
+    typealias Identity = String?
+    
+
+    static func == (lhs: SwitchCellViewModel, rhs: SwitchCellViewModel) -> Bool {
+        return lhs.isOn == rhs.isOn
+    }
+
     
     var sensor: Sensor {
         
