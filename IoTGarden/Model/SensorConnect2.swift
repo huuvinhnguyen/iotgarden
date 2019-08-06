@@ -29,8 +29,12 @@ class SensorConnect2 {
         mqtt.autoReconnectTimeInterval = 1
         mqtt.autoReconnect = true
         mqtt.connect()
-
         
+        mqtt.didConnectAck = { _,_  in
+            print("didConnectAck")
+            
+        }
+
         mqtt.didReceiveMessage = { [weak self] mqtt, message, id in
             
             print("#didReceiveMessage $$$$: \(message)")

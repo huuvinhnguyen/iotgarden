@@ -49,11 +49,11 @@ struct AppState: ReSwift.StateType {
 struct ListState: ReSwift.StateType, Identifiable {
     
     fileprivate(set) var identifiableComponent = IdentifiableComponent()
-
-    var viewModels: [CellViewModel] = []
+    
+    var sensorConnect = SensorConnect2()
     var sections: [ItemSectionModel] = []
     var sectionItems: [SectionItem] = []
-
+    
 }
 
 extension ListState {
@@ -75,9 +75,12 @@ extension ListState {
         switch action {
         case .switchItem(let switchCellViewModel):
             
+            state.sensorConnect.connect(sensor: switchCellViewModel.sensor)
+//            state.sensorConnect.publish(message: "1")
+            
             let indexItem = state.sectionItems.firstIndex {
                 if case let .switchSectionItem(viewModel) = $0 {
-                    return viewModel.uuid == switchCellViewModel.uuid && viewModel.isOn != switchCellViewModel.isOn
+                    return viewModel.identity == switchCellViewModel.identity && viewModel.isOn != switchCellViewModel.isOn
                 }
                 return false
             }
@@ -115,7 +118,7 @@ extension ListState {
             let itemListService = ItemListService()
             itemListService.loadSensors { sensors in
                 
-                let items: [SectionItem] = sensors.compactMap { sensor in
+                    let items: [SectionItem] = sensors.compactMap { sensor in
                     
                     switch sensor.kind {
                     case "toggle":

@@ -70,11 +70,11 @@ class ItemListViewController: UIViewController, StoreSubscriber {
         }).disposed(by: disposeBag2)
         
         itemListCollectionView.rx.modelSelected(SectionItem.self).subscribe(onNext:{ [weak self] sectionItem in
-//            guard let weakSelf = self else { return }
-//            let vc = R.storyboard.itemDetail.itemDetailViewController()!
-//            weakSelf.navigationController?.pushViewController(vc, animated: true)
-//            
-//            vc.sensor = cellViewModel.sensor
+            guard let weakSelf = self else { return }
+            let vc = R.storyboard.itemDetail.itemDetailViewController()!
+            weakSelf.navigationController?.pushViewController(vc, animated: true)
+            
+            vc.sensor = sectionItem.cellViewModel.sensor
         }).disposed(by: disposeBag2)
 
 
@@ -116,32 +116,17 @@ class ItemListViewController: UIViewController, StoreSubscriber {
     }
 }
 
-extension ItemListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ItemListViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return cellViewModels.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cellViewModel = cellViewModels[indexPath.row]
-        let cell = CellCreator.create(cellAt: indexPath, with: cellViewModel, collectionView: collectionView)
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 130)
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//
-//        let cellViewModel = cellViewModels[indexPath.row]
-//        let vc = R.storyboard.itemDetail.itemDetailViewController()!
-//        navigationController?.pushViewController(vc, animated: true)
-//
-//        vc.sensor = cellViewModel.sensor
-//
-//    }
+
 }
 
 enum ItemSectionModel {
@@ -181,6 +166,18 @@ enum SectionItem {
     case temperatureSectionItem(name: TemperatureDevice)
 }
 
+extension SectionItem {
+    var cellViewModel: CellViewModel {
+        switch self {
+        case .switchSectionItem(let viewModel):
+            return viewModel
+        case .valueSectionItem(let viewModel):
+            return viewModel
+        case .temperatureSectionItem( let viewModel):
+            return viewModel
+        }
+    }
+}
 
 extension ItemListViewController {
     

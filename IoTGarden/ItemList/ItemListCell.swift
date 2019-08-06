@@ -83,7 +83,7 @@ class ItemListCell: UICollectionViewCell {
 
     }
     
-
+  
 }
 
 extension ItemListCell: Display {
