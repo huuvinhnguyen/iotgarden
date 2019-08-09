@@ -33,7 +33,7 @@ class ItemListViewController: UIViewController, StoreSubscriber {
     
     @IBOutlet weak var itemListCollectionView: UICollectionView!
     private let itemListService = ItemListService()
-    private var cellViewModels: [CellViewModel] = []
+    
     
     private let refreshControl = UIRefreshControl()
 
@@ -65,10 +65,7 @@ class ItemListViewController: UIViewController, StoreSubscriber {
         
         itemListCollectionView.rx.setDelegate(self).disposed(by: disposeBag2)
         
-        itemListCollectionView.rx.itemSelected.subscribe(onNext:{ indexPath in
-            
-        }).disposed(by: disposeBag2)
-        
+
         itemListCollectionView.rx.modelSelected(SectionItem.self).subscribe(onNext:{ [weak self] sectionItem in
             guard let weakSelf = self else { return }
             let vc = R.storyboard.itemDetail.itemDetailViewController()!
@@ -117,10 +114,7 @@ class ItemListViewController: UIViewController, StoreSubscriber {
 }
 
 extension ItemListViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return cellViewModels.count
-    }
+   
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 130)

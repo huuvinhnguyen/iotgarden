@@ -83,6 +83,7 @@
 		18EDCF5C2189A46500B233B9 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDCF5B2189A46500B233B9 /* ItemListViewController.swift */; };
 		18EDCF5E2189A4AC00B233B9 /* ItemListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EDCF5D2189A4AC00B233B9 /* ItemListViewController.storyboard */; };
 		18EDCF602189AF3600B233B9 /* ItemListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EDCF5F2189AF3600B233B9 /* ItemListCell.xib */; };
+		18F214FD22F9EAAA0001CD67 /* ItemListStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F214FC22F9EAAA0001CD67 /* ItemListStateTests.swift */; };
 		5B04F00A227AE8F80096FBA1 /* LineChart3ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B04F009227AE8F80096FBA1 /* LineChart3ViewController.xib */; };
 		5B04F00C227AE9190096FBA1 /* LineChart3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B04F00B227AE9190096FBA1 /* LineChart3ViewController.swift */; };
 		5B04F00E227AEEAF0096FBA1 /* PositiveNegativeBarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B04F00D227AEEAF0096FBA1 /* PositiveNegativeBarChartViewController.swift */; };
@@ -195,6 +196,7 @@
 		18EDCF5B2189A46500B233B9 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
 		18EDCF5D2189A4AC00B233B9 /* ItemListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemListViewController.storyboard; sourceTree = "<group>"; };
 		18EDCF5F2189AF3600B233B9 /* ItemListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListCell.xib; sourceTree = "<group>"; };
+		18F214FC22F9EAAA0001CD67 /* ItemListStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListStateTests.swift; sourceTree = "<group>"; };
 		26FF11245553B5B9CB0BEA4C /* Pods-IoTGardenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoTGardenTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IoTGardenTests/Pods-IoTGardenTests.release.xcconfig"; sourceTree = "<group>"; };
 		4EA2DE0DB42AD6B50F8BDB54 /* Pods-IoTGardenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoTGardenTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IoTGardenTests/Pods-IoTGardenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5B04F009227AE8F80096FBA1 /* LineChart3ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LineChart3ViewController.xib; sourceTree = "<group>"; };
@@ -457,6 +459,7 @@
 			isa = PBXGroup;
 			children = (
 				18A0432A21894CD4005E04D4 /* IoTGardenUITests.swift */,
+				18F214FC22F9EAAA0001CD67 /* ItemListStateTests.swift */,
 				18A0432C21894CD4005E04D4 /* Info.plist */,
 			);
 			path = IoTGardenUITests;
@@ -875,6 +878,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F214FD22F9EAAA0001CD67 /* ItemListStateTests.swift in Sources */,
 				18A0432B21894CD4005E04D4 /* IoTGardenUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

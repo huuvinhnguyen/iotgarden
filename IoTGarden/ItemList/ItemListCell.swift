@@ -8,38 +8,7 @@
 import UIKit
 import ReSwift
 
-struct LoadItemListCellAction: Action {
-    
-    var state: ItemListCellState
-
-}
-struct ItemListCellState: StateType {
-    var cellViewModel: CellViewModel?
-//    var sensorConnect: SensorConnect?
-}
-
-let itemListCellReducer: Reducer<ItemListCellState> = { action, state in
-    
-    var state = state ?? ItemListCellState()
-    
-    if let action = action as? LoadItemListCellAction {
-        
-        state = action.state
-        
-    }
-    
-    return state
-}
-
-let itemListCellStore = Store<ItemListCellState>(
-    reducer: itemListCellReducer,
-    state: nil
-)
-
-
 class ItemListCell: UICollectionViewCell {
-    
-    typealias StoreSubscriberStateType = ItemListCellState
     
     fileprivate(set) var cellViewModel: CellViewModel! {
         
@@ -47,7 +16,7 @@ class ItemListCell: UICollectionViewCell {
             
             guard let viewModel = cellViewModel as? SwitchCellViewModel else { return }
             nameLabel?.text = viewModel.name
-//            onOffSwitch?.isOn = viewModel.isOn
+            onOffSwitch?.isOn = viewModel.isOn
             stateLabel?.text = viewModel.stateString
             
             timer?.invalidate()
@@ -72,18 +41,10 @@ class ItemListCell: UICollectionViewCell {
         
         stateLabel?.text = "Requesting"
         
-        var message =  sender.isOn ? "1":"0"
-//        var action1 = ItemListPublishMQTTAction(sensor: cellViewModel.sensor)
-//        print("#sensorid : \(cellViewModel.sensor.uuid)")
-//        action1.message = message
-//        itemListStore.dispatch(action1)
+        switchDevice.isOn =  sender.isOn
         let action = ListState.Action.switchItem(viewModel: switchDevice)
         appStore.dispatch(action)
-
-
     }
-    
-  
 }
 
 extension ItemListCell: Display {

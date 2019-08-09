@@ -31,6 +31,8 @@ class SwitchCellViewModel: CellViewModel, Equatable, IdentifiableType {
     var name: String
     var stateString: String = "Requesting"
     var timeString  = ""
+    
+    var sensorConnect2: SensorConnect2
 
     internal var sensorConnect: SensorConnect
     
@@ -38,6 +40,8 @@ class SwitchCellViewModel: CellViewModel, Equatable, IdentifiableType {
         
         self.sensor = sensor
         self.sensorConnect = SensorConnect()
+        self.sensorConnect2 = SensorConnect2()
+
         sensorConnect.connect(sensor: sensor)
 
         self.name = sensor.name
@@ -89,14 +93,6 @@ class SwitchCellViewModel: CellViewModel, Equatable, IdentifiableType {
 //            itemListCellStore.dispatch(LoadItemListCellAction(state: ItemListCellState(cellViewModel: self)))
 
         }
-    }
-    
-    func switchButton() {
-//        itemListStore.dispatch(ItemListPublishMQTTAction())
-    }
-    
-    private func subscribeMQTTTopic() {
-        
     }
 }
 

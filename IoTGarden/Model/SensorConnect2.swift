@@ -21,7 +21,7 @@ class SensorConnect2 {
         guard let configuration = itemListService.loadLocalConfiguration(uuid: sensor.serverUUID) else { return }
         
         guard let port = UInt16(configuration.port) else { return }
-        let clientID = "CocoaMQTT-" + configuration.uuid
+        let clientID = sensor.uuid
         mqtt = CocoaMQTT(clientID: clientID, host: configuration.server, port: port)
         mqtt.username = configuration.username
         mqtt.password = configuration.password
@@ -38,8 +38,9 @@ class SensorConnect2 {
         mqtt.didReceiveMessage = { [weak self] mqtt, message, id in
             
             print("#didReceiveMessage $$$$: \(message)")
-            itemListStore.dispatch(ItemListUpdateFromMQTTAction(uuid: sensor.uuid, message: message.string))
-            
+            guard let weakSelf = self else { return }
+            weakSelf.didReceiveMessage(mqtt, message, id)
+
         }
         
         mqtt.didConnectAck = { mqtt, ack in

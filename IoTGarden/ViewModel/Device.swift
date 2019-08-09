@@ -48,7 +48,7 @@ extension CellViewModel {
 
 extension CellViewModel {
     var uuid: String? {
-        return nil
+        return sensor.uuid
     }
 }
 

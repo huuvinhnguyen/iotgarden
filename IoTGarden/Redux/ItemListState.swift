@@ -60,6 +60,8 @@ extension ListState {
     enum Action: ReSwift.Action {
         case requestSuccess(response: [CellViewModel])
         case switchItem(viewModel: SwitchCellViewModel)
+        case updateSwitchItem(viewModel: SwitchCellViewModel)
+
         case loadItems()
     }
 }
@@ -73,46 +75,49 @@ extension ListState {
         
         guard let action = action as? ListState.Action else { return state }
         switch action {
-        case .switchItem(let switchCellViewModel):
             
-            state.sensorConnect.connect(sensor: switchCellViewModel.sensor)
-//            state.sensorConnect.publish(message: "1")
-            
+        case .updateSwitchItem(let switchCellViewModel):
+          
             let indexItem = state.sectionItems.firstIndex {
                 if case let .switchSectionItem(viewModel) = $0 {
-                    return viewModel.identity == switchCellViewModel.identity && viewModel.isOn != switchCellViewModel.isOn
+                    return viewModel.uuid == switchCellViewModel.uuid
                 }
                 return false
             }
             
-            guard let index = indexItem else { break }
-            state.sectionItems[index] = .switchSectionItem(viewModel: switchCellViewModel)
-            state.identifiableComponent.update()
+            
+            
+            if let index = indexItem  {
+                print("#index: \(index)")
+                print("#id = \(switchCellViewModel.uuid)")
+                state.sectionItems[index] = .switchSectionItem(viewModel: switchCellViewModel)
+                state.identifiableComponent.update()
+            }
+           
+            
+            
+//        case .switchItem(let switchCellViewModel):
+//
+////            state.sensorConnect.connect(sensor: switchCellViewModel.sensor)
+////            state.sensorConnect.publish(message: "1")
+////            state.sensorConnect.didReceiveMessage = {  mqtt, message, id in
+////                print("#mqtt message: \(message)")
+////                print("#clienti = \(mqtt.clientID)")
+////            }
+//
+//            let indexItem = state.sectionItems.firstIndex {
+//                if case let .switchSectionItem(viewModel) = $0 {
+//                    return viewModel.identity == switchCellViewModel.identity && viewModel.isOn != switchCellViewModel.isOn
+//                }
+//                return false
+//            }
+//
+//            guard let index = indexItem else { break }
+//            state.sectionItems[index] = .switchSectionItem(viewModel: switchCellViewModel)
+//            state.identifiableComponent.update()
 
             
         case .loadItems():
-//            let sensor1 = Sensor(uuid: "1234",
-//                                name: "name1",
-//                                value: "value1" ,
-//                                serverUUID: "serverUUID",
-//                                kind: "kind1",
-//                                topic: "top1",
-//                                time: "time1")
-//            let sensor2 = Sensor(uuid: "456",
-//                                name: "name1",
-//                                value: "value1" ,
-//                                serverUUID: "serverUUID",
-//                                kind: "kind1",
-//                                topic: "top1",
-//                                time: "time1")
-//
-//            state.sectionItems = [
-//                .switchSectionItem(viewModel: SwitchCellViewModel(sensor: sensor1)),
-//                .valueSectionItem(viewModel: InputDevice(sensor: sensor2))
-//            ]
-//            let sections: [ItemSectionModel] = [ .itemSection(title: "", items: state.sectionItems)]
-//            state.sections = sections
-//            state.identifiableComponent.update()
 
             
             let itemListService = ItemListService()
@@ -136,7 +141,10 @@ extension ListState {
                     }
                 }
                 
-                let sections: [ItemSectionModel] = [ .itemSection(title: "", items: items)]
+                state.sectionItems = items
+
+                
+                let sections: [ItemSectionModel] = [ .itemSection(title: "", items: state.sectionItems)]
                 state.sections = sections
                 state.identifiableComponent.update()
             }
@@ -160,7 +168,41 @@ func appReduce(action: ReSwift.Action, state: AppState?) -> AppState {
 var appStore = ReSwift.Store<AppState>(
     reducer: appReduce,
     state: nil,
-    middleware: [])
+    middleware: [loggingMiddleware  ])
+
+let loggingMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
+    return { next in
+        return { action in
+
+            print("middleware action : \(action)")
+            if case let ListState.Action.switchItem(viewModel: switchCellViewModel) = action {
+                let state = getState()?.listState ?? ListState()
+                switchCellViewModel.sensorConnect2.connect(sensor: switchCellViewModel.sensor)
+                switchCellViewModel.sensorConnect2.publish(message: switchCellViewModel.isOn ? "1" : "0")
+                switchCellViewModel.sensorConnect2.didReceiveMessage = {  mqtt, message, id in
+                    print("#mqtt message: \(message)")
+                    print("#clienti = \(mqtt.clientID)")
+                    switchCellViewModel.stateString = "Update"
+                    
+                    if message.string == "done" {
+                        
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                        let dateString = formatter.string(from: Date())
+                        switchCellViewModel.timeString = dateString
+                    }
+                    
+                    let action2 = ListState.Action.updateSwitchItem(viewModel: switchCellViewModel)
+                    appStore.dispatch(action2)
+                }
+
+                
+            } else {
+                return next(action)
+            }
+        }
+    }
+}
 
 
 struct IdentifiableComponent : Hashable {
