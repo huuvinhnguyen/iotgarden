@@ -66,6 +66,7 @@
 		18B5506321C559FF004EC438 /* ItemAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5506221C559FF004EC438 /* ItemAction.swift */; };
 		18B5506521C55A14004EC438 /* ItemReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5506421C55A14004EC438 /* ItemReducer.swift */; };
 		18B5506721C56104004EC438 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5506621C56104004EC438 /* ItemStore.swift */; };
+		18B975C822FE945700E7DD8D /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B975C722FE945700E7DD8D /* AppStore.swift */; };
 		18C832BE218ADAD500ED37A1 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C832BD218ADAD500ED37A1 /* Storage.swift */; };
 		18CCFFFF21E84A0B0075BA6B /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CCFFFE21E84A0B0075BA6B /* Date+Extension.swift */; };
 		18D74DA321C8DA7900612351 /* EnumCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D74DA221C8DA7800612351 /* EnumCollection.swift */; };
@@ -179,6 +180,7 @@
 		18B5506221C559FF004EC438 /* ItemAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemAction.swift; sourceTree = "<group>"; };
 		18B5506421C55A14004EC438 /* ItemReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemReducer.swift; sourceTree = "<group>"; };
 		18B5506621C56104004EC438 /* ItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
+		18B975C722FE945700E7DD8D /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		18C832BD218ADAD500ED37A1 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		18CCFFFE21E84A0B0075BA6B /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		18D74DA221C8DA7800612351 /* EnumCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumCollection.swift; sourceTree = "<group>"; };
@@ -481,6 +483,7 @@
 				18B5506421C55A14004EC438 /* ItemReducer.swift */,
 				18B5506621C56104004EC438 /* ItemStore.swift */,
 				181F50A322F1FEAE00EA89D1 /* AppState.swift */,
+				18B975C722FE945700E7DD8D /* AppStore.swift */,
 			);
 			path = Redux;
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				18339BE021C9493E00CC2269 /* IoTGarden.xcdatamodeld in Sources */,
 				18EDCF5021899E3900B233B9 /* Item.swift in Sources */,
 				18A934CF2291727D009C6ADF /* R.generated.swift in Sources */,
+				18B975C822FE945700E7DD8D /* AppStore.swift in Sources */,
 				1864B73D22BE363100B9DCE7 /* ItemDetailStore.swift in Sources */,
 				1803376921CBAC7D0098F944 /* HumidityCell.swift in Sources */,
 				18D7C6D9220EB81000FF8529 /* MotionDevice.swift in Sources */,

@@ -2,7 +2,7 @@
 //  ItemDetailViewController.swift
 //  IoTGarden
 //
-//  Created by Apple on 11/1/18.
+//  Created by Vinh Nguyen on 11/1/18.
 //
 
 import UIKit
@@ -52,13 +52,20 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
             viewModel = ItemDetailViewModel(sensor: sensor ?? Sensor())
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        appStore.subscribe(self) { subcription in
+            subcription.select { state in state.detailState }.skipRepeats()
+        }
+        
+    }
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        itemDetailStore.subscribe(self)
-        itemDetailStore.dispatch(LoadItemDetail(sensorUUID: sensor?.uuid ?? ""))
+        let action = ItemDetailState.Action.loadDetail(id: sensor?.uuid ?? "")
+        appStore.dispatch(action)
 
     }
     
@@ -76,7 +83,8 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         
         let itemListService = ItemListService()
         itemListService.removeSensor(sensor: sensor ?? Sensor())
-        itemListStore.dispatch(AddSensorAction())
+        let action = ListState.Action.loadItems()
+        appStore.dispatch(action)
         navigationController?.popViewController(animated: true)
     }
     

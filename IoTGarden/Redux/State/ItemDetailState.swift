@@ -7,7 +7,9 @@
 
 import ReSwift
 
-struct ItemDetailState: StateType {
+struct ItemDetailState: StateType, Identifiable {
+    
+    var identifiableComponent = IdentifiableComponent()
     
     var name = ""
     var value = ""

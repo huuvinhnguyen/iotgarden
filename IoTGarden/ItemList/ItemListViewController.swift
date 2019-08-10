@@ -37,16 +37,12 @@ class ItemListViewController: UIViewController, StoreSubscriber {
     
     private let refreshControl = UIRefreshControl()
 
-    let disposeBag = SubscriptionReferenceBag()
-    let disposeBag2 = DisposeBag()
+    let disposeBag = DisposeBag()
     
     
     override func viewWillAppear(_ animated: Bool) {
-        appStore.subscribe(self) { subcription in
-            subcription.select {
-                state in state.listState
-            }.skipRepeats()
-        }
+        super.viewWillAppear(animated)
+        appStore.subscribe(self) { $0.select { $0.listState }.skipRepeats() }
     }
     
     override func viewDidLoad() {
@@ -54,16 +50,15 @@ class ItemListViewController: UIViewController, StoreSubscriber {
         super.viewDidLoad()
         prepareNibs()
 
-
         let action = ListState.Action.loadItems()
         appStore.dispatch(action)
     
         listSection.asObservable()
             .bind(to: itemListCollectionView.rx.items(dataSource: dataSource()))
-            .disposed(by: disposeBag2)
+            .disposed(by: disposeBag)
         
         
-        itemListCollectionView.rx.setDelegate(self).disposed(by: disposeBag2)
+        itemListCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         
 
         itemListCollectionView.rx.modelSelected(SectionItem.self).subscribe(onNext:{ [weak self] sectionItem in
@@ -72,7 +67,7 @@ class ItemListViewController: UIViewController, StoreSubscriber {
             weakSelf.navigationController?.pushViewController(vc, animated: true)
             
             vc.sensor = sectionItem.cellViewModel.sensor
-        }).disposed(by: disposeBag2)
+        }).disposed(by: disposeBag)
 
 
     }
@@ -102,15 +97,7 @@ class ItemListViewController: UIViewController, StoreSubscriber {
         let addItemViewController = R.storyboard.addItemViewController.addItemViewController()!
         navigationController?.pushViewController(addItemViewController, animated: true)
     }
-    
-    @IBAction func tempButtonTapped(_ sender: UIButton) {
-        
-        let storyboard = UIStoryboard(name: "ItemDetailTempViewController", bundle: nil)
-        if let itemDetailTempViewController = storyboard.instantiateViewController(withIdentifier :"ItemDetailTempViewController") as? ItemDetailTempViewController {
-            
-            navigationController?.pushViewController(itemDetailTempViewController, animated: true)
-        }
-    }
+
 }
 
 extension ItemListViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -119,23 +106,11 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 130)
     }
-    
-
 }
 
 enum ItemSectionModel {
     case itemSection(title: String, items: [SectionItem])
 }
-
-//extension ItemSectionModel: IdentifiableType {
-//    var identity: String {
-//        return ""
-//        
-//    }
-//    
-//    typealias Identity = String
-//}
-
 
 extension ItemSectionModel: SectionModelType {
     typealias Item = SectionItem

@@ -41,6 +41,7 @@ class SwitchCellViewModel: CellViewModel, Equatable, IdentifiableType {
         self.sensor = sensor
         self.sensorConnect = SensorConnect()
         self.sensorConnect2 = SensorConnect2()
+        self.sensorConnect2.connect(sensor: sensor)
 
         sensorConnect.connect(sensor: sensor)
 
@@ -89,8 +90,7 @@ class SwitchCellViewModel: CellViewModel, Equatable, IdentifiableType {
             
             let itemListService = ItemListService()
             itemListService.updateSensor(sensor: newItem)
-            
-//            itemListCellStore.dispatch(LoadItemListCellAction(state: ItemListCellState(cellViewModel: self)))
+        
 
         }
     }

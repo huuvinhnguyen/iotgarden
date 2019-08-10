@@ -68,9 +68,9 @@ class BarChartViewController: UIViewController {
     
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
         
-        let itemListService = ItemListService()
-        itemListService.removeSensor(sensor: sensor)
-        itemListStore.dispatch(AddSensorAction())
-        navigationController?.popViewController(animated: true)
+//        let itemListService = ItemListService()
+//        itemListService.removeSensor(sensor: sensor)
+//        itemListStore.dispatch(AddSensorAction())
+//        navigationController?.popViewController(animated: true)
     }
 }
