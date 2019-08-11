@@ -14,6 +14,9 @@ class ItemInputValueCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel?
     @IBOutlet weak var inputTextField: UITextField?
     
+    var inputCellUI: InputCellUI?
+
+    
     fileprivate(set) var cellViewModel: CellViewModel! {
         didSet {
             
@@ -27,13 +30,21 @@ class ItemInputValueCell: UICollectionViewCell {
     
     @IBAction func updateButtonTapped(sender: UISwitch) {
         
-        guard let inputDevice = cellViewModel as? InputDevice else { return }
-        inputDevice.stateString = "Requesting"
-        
+        guard let cellUI = inputCellUI else { return }
         stateLabel?.text = "Requesting"
-        
         let message =  inputTextField?.text ?? ""
-        cellViewModel.sensorConnect.publish(message: message)
+
+        let action = ListState.Action.inputItem(cellUI: cellUI, message: message)
+        appStore.dispatch(action)
+    }
+    
+    func configure(cellUI: InputCellUI) {
+        
+        inputCellUI = cellUI
+
+        nameLabel?.text = cellUI.name
+        stateLabel?.text = cellUI.stateString
+        timeLabel?.text = cellUI.timeString
     }
 }
 
@@ -44,3 +55,15 @@ extension ItemInputValueCell: Display {
         self.cellViewModel = cellViewModel
     }
 }
+
+
+struct InputCellUI: CellUI {
+    var uuid: String
+    var isOn: Bool = true
+    var name: String
+    var stateString: String = "Requesting"
+    var timeString  = ""
+    var message: String
+}
+
+

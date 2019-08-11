@@ -23,11 +23,13 @@ class ItemListViewController: UIViewController, StoreSubscriber {
     
     func newState(state: ListState) {
        
-        listSection.accept(state.sections)
+//        listSection.accept(state.sections)
+        sectionItems.accept(state.sectionItems)
 
     }
 
     var listSection = PublishRelay<[ItemSectionModel]>()
+    var sectionItems = PublishRelay<[SectionItem]>()
 
     typealias StoreSubscriberStateType = ListState
     
@@ -53,7 +55,8 @@ class ItemListViewController: UIViewController, StoreSubscriber {
         let action = ListState.Action.loadItems()
         appStore.dispatch(action)
     
-        listSection.asObservable()
+        sectionItems.asObservable()
+            .map { [AnimatableSectionModel<String, SectionItem>(model: "", items: $0)] }
             .bind(to: itemListCollectionView.rx.items(dataSource: dataSource()))
             .disposed(by: disposeBag)
         
@@ -66,7 +69,7 @@ class ItemListViewController: UIViewController, StoreSubscriber {
             let vc = R.storyboard.itemDetail.itemDetailViewController()!
             weakSelf.navigationController?.pushViewController(vc, animated: true)
             
-            vc.sensor = sectionItem.cellViewModel.sensor
+//            vc.sensor = sectionItem.cellViewModel.sensor
         }).disposed(by: disposeBag)
 
 
@@ -130,38 +133,93 @@ extension ItemSectionModel: SectionModelType {
 }
 
 enum SectionItem {
-    case switchSectionItem(viewModel: SwitchCellViewModel)
-    case valueSectionItem(viewModel: InputDevice)
+//    case switchSectionItem(viewModel: SwitchCellViewModel)
+    case switchSectionItem(cellUI: SwitchCellUI)
+    case inputSectionItem(cellUI: InputCellUI)
     case temperatureSectionItem(name: TemperatureDevice)
 }
 
-extension SectionItem {
-    var cellViewModel: CellViewModel {
+//extension SectionItem {
+//    var cellViewModel: CellViewModel {
+//        switch self {
+//        case .switchSectionItem(let viewModel):
+//            return viewModel
+//        case .switchSectionItem2(let cellUI):
+//            return cellUI
+//        case .valueSectionItem(let viewModel):
+//            return viewModel
+//        case .temperatureSectionItem( let viewModel):
+//            return viewModel
+//        }
+//    }
+//}
+
+extension SectionItem: IdentifiableType, Equatable {
+    
+    
+    static func == (lhs: SectionItem, rhs: SectionItem) -> Bool {
+//        guard case let .switchSectionItem( lvm) = lhs  else { return true }
+//        guard case let .switchSectionItem( rvm) = rhs  else { return true }
+//
+//        print("#left = \(lvm.isOn)")
+//        print("#right = \(rvm.isOn)")
+
+        print("left message: \(lhs.message)")
+        print("right message: \(rhs.message)")
+        return lhs.message == rhs.message
+    }
+    
+    typealias Identity = String
+    
+    var identity: String {
         switch self {
+      
+            
         case .switchSectionItem(let viewModel):
-            return viewModel
-        case .valueSectionItem(let viewModel):
-            return viewModel
-        case .temperatureSectionItem( let viewModel):
-            return viewModel
+            return viewModel.uuid ?? ""
+
+            
+        case .inputSectionItem(let viewModel):
+            return viewModel.uuid ?? ""
+        default:
+            return ""
+        }
+    }
+    
+    var message: String {
+        switch self {
+            
+            
+        case .switchSectionItem(let viewModel):
+            return viewModel.message ?? ""
+
+        case .inputSectionItem(let viewModel):
+            return viewModel.message ?? ""
+        default:
+            return ""
         }
     }
 }
 
 extension ItemListViewController {
     
-    func dataSource() -> RxCollectionViewSectionedReloadDataSource<ItemSectionModel> {
+    func dataSource() -> RxCollectionViewSectionedAnimatedDataSource<AnimatableSectionModel<String, SectionItem>>{
         
-        return RxCollectionViewSectionedReloadDataSource<ItemSectionModel>(configureCell: { dataSource, collectionView, indexPath, _ in
+        return RxCollectionViewSectionedAnimatedDataSource<AnimatableSectionModel<String, SectionItem>>(configureCell: { dataSource, collectionView, indexPath, _ in
+            
+            print("rendering cells")
+
             switch dataSource[indexPath] {
                 
-            case let .switchSectionItem(switchCellViewModel):
+            case let .switchSectionItem(cellUI):
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemListCell", for: indexPath) as! ItemListCell
-                cell.display(cellViewModel: switchCellViewModel)
+                cell.configure(cellUI: cellUI)
                 return cell
                 
-            case let .valueSectionItem(viewModel):
-                let cell = CellCreator.create(cellAt: indexPath, with: viewModel, collectionView: collectionView)
+            case let .inputSectionItem(cellUI):
+                
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemInputValueCell", for: indexPath) as! ItemInputValueCell
+                cell.configure(cellUI: cellUI)
                 return cell
                 
             default:

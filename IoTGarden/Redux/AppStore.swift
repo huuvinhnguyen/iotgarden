@@ -10,7 +10,7 @@ import ReSwift
 var appStore = ReSwift.Store<AppState>(
     reducer: appReduce,
     state: nil,
-    middleware: [switchingMiddleware])
+    middleware: [switchingMiddleware, inputMiddleware])
 
 func appReduce(action: ReSwift.Action, state: AppState?) -> AppState {
     var state = state ?? AppState()

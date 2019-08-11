@@ -16,23 +16,36 @@ extension ListState {
         guard let action = action as? ListState.Action else { return state }
         switch action {
             
-        case .updateSwitchItem(let switchCellViewModel):
+        case .updateSwitchItem(let switchCellUI):
             
             let indexItem = state.sectionItems.firstIndex {
-                if case let .switchSectionItem(viewModel) = $0 {
-                    return viewModel.uuid == switchCellViewModel.uuid
+                if case let .switchSectionItem(cellUI) = $0 {
+                    return cellUI.uuid == switchCellUI.uuid
                 }
                 return false
             }
             
             if let index = indexItem  {
-                state.sectionItems[index] = .switchSectionItem(viewModel: switchCellViewModel)
+                state.sectionItems[index] = .switchSectionItem(cellUI: switchCellUI)
                 state.identifiableComponent.update()
             }
             
+        case .updateInputItem(let inputCellUI):
+            
+            let indexItem = state.sectionItems.firstIndex {
+                if case let .inputSectionItem(cellUI) = $0 {
+                    return cellUI.uuid == inputCellUI.uuid
+                }
+                return false
+            }
+            
+            if let index = indexItem  {
+                state.sectionItems[index] = .inputSectionItem(cellUI: inputCellUI)
+                state.identifiableComponent.update()
+            }
+
             
         case .loadItems():
-            
             
             let itemListService = ItemListService()
             itemListService.loadSensors { sensors in
@@ -41,7 +54,13 @@ extension ListState {
                     
                     switch sensor.kind {
                     case "toggle":
-                        return .switchSectionItem(viewModel: SwitchCellViewModel(sensor: sensor))
+                        
+                        let task = SensorConnect2()
+                        task.connect(sensor: sensor)
+                        state.tasks[sensor.uuid] = task
+                        let switchCellUI = SwitchCellUI(uuid: sensor.uuid, isOn: sensor.value == "1", name: sensor.name, stateString: "Updated", timeString: sensor.time, message: sensor.value )
+                        
+                        return .switchSectionItem(cellUI: switchCellUI)
                         //                    case "temperature":
                         //                        return TemperatureDevice(sensor: sensor)
                         //                    case "humidity":
@@ -49,7 +68,11 @@ extension ListState {
                         //                    case "motion":
                     //                        return MotionDevice(sensor: sensor)
                     case "value":
-                        return .valueSectionItem(viewModel: InputDevice(sensor: sensor))
+                        let task = SensorConnect2()
+                        task.connect(sensor: sensor)
+                        state.tasks[sensor.uuid] = task
+                        let inputCellUI = InputCellUI(uuid: sensor.uuid, isOn: sensor.value == "1", name: sensor.name, stateString: "Updated", timeString: sensor.time, message: sensor.value)
+                        return .inputSectionItem(cellUI: inputCellUI)
                     default:
                         return nil
                     }

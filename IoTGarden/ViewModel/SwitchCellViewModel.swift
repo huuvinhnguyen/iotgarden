@@ -8,7 +8,10 @@ import Foundation
 import RxDataSources
 
 
+
+
 class SwitchCellViewModel: CellViewModel, Equatable, IdentifiableType {
+    
     var identity: Identity {
         return uuid
     }
@@ -41,12 +44,16 @@ class SwitchCellViewModel: CellViewModel, Equatable, IdentifiableType {
         self.sensor = sensor
         self.sensorConnect = SensorConnect()
         self.sensorConnect2 = SensorConnect2()
-        self.sensorConnect2.connect(sensor: sensor)
 
-        sensorConnect.connect(sensor: sensor)
+//        sensorConnect.connect(sensor: sensor)
 
         self.name = sensor.name
-        configure(sensor: sensor)
+//        configure(sensor: sensor)
+    }
+    
+    func connectSensor() {
+        self.sensorConnect2.connect(sensor: sensor)
+
     }
     
     private func configure(sensor: Sensor) {

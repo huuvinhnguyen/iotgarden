@@ -9,6 +9,8 @@ import UIKit
 
 class ItemListCell: UICollectionViewCell {
     
+    var switchCellUI: SwitchCellUI?
+    
     fileprivate(set) var cellViewModel: CellViewModel! {
         
         didSet {
@@ -17,6 +19,8 @@ class ItemListCell: UICollectionViewCell {
             nameLabel?.text = viewModel.name
             onOffSwitch?.isOn = viewModel.isOn
             stateLabel?.text = viewModel.stateString
+            
+            print("#state string: \(viewModel.stateString)")
             
             timer?.invalidate()
             timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
@@ -35,14 +39,28 @@ class ItemListCell: UICollectionViewCell {
     
     @IBAction func switchButtonTapped(sender: UISwitch) {
         
-        guard let switchDevice = cellViewModel as? SwitchCellViewModel else { return }
-        switchDevice.stateString = "Requesting"
         
+        guard let cellUI = switchCellUI else { return }
         stateLabel?.text = "Requesting"
-        
-        switchDevice.isOn =  sender.isOn
-        let action = ListState.Action.switchItem(viewModel: switchDevice)
+        let action = ListState.Action.switchItem(cellUI: cellUI, message: sender.isOn ? "1" : "0")
         appStore.dispatch(action)
+
+        
+    }
+    
+    func configure(cellUI: SwitchCellUI) {
+        switchCellUI = cellUI
+        
+        nameLabel?.text = cellUI.name
+        onOffSwitch?.isOn = cellUI.isOn
+        stateLabel?.text = cellUI.stateString
+        
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+            guard let weakSelf = self else { return }
+            weakSelf.timeLabel?.text = cellUI.timeString.toDate()?.timeAgoDisplay()
+        }
+        
     }
 }
 
@@ -53,3 +71,15 @@ extension ItemListCell: Display {
         self.cellViewModel = cellViewModel
     }
 }
+
+struct SwitchCellUI: CellUI {
+
+    var uuid: String
+    var isOn: Bool = true
+    var name: String
+    var stateString: String = "Requesting"
+    var timeString  = ""
+    var message: String
+
+}
+

@@ -9,8 +9,8 @@ import CocoaMQTT
 
 class SensorConnect2 {
     
-    private var mqtt: CocoaMQTT!
-    private var sensor: Sensor!
+    private var mqtt: CocoaMQTT?
+    var sensor: Sensor!
     
     open var didReceiveMessage: (CocoaMQTT, CocoaMQTTMessage, UInt16) -> Void = { _, _, _ in }
     
@@ -23,19 +23,19 @@ class SensorConnect2 {
         guard let port = UInt16(configuration.port) else { return }
         let clientID = sensor.uuid
         mqtt = CocoaMQTT(clientID: clientID, host: configuration.server, port: port)
-        mqtt.username = configuration.username
-        mqtt.password = configuration.password
-        mqtt.keepAlive = 60
-        mqtt.autoReconnectTimeInterval = 1
-        mqtt.autoReconnect = true
-        mqtt.connect()
+        mqtt?.username = configuration.username
+        mqtt?.password = configuration.password
+        mqtt?.keepAlive = 60
+        mqtt?.autoReconnectTimeInterval = 1
+        mqtt?.autoReconnect = true
+        mqtt?.connect()
         
-        mqtt.didConnectAck = { _,_  in
+        mqtt?.didConnectAck = { _,_  in
             print("didConnectAck")
             
         }
 
-        mqtt.didReceiveMessage = { [weak self] mqtt, message, id in
+        mqtt?.didReceiveMessage = { [weak self] mqtt, message, id in
             
             print("#didReceiveMessage $$$$: \(message)")
             guard let weakSelf = self else { return }
@@ -43,7 +43,7 @@ class SensorConnect2 {
 
         }
         
-        mqtt.didConnectAck = { mqtt, ack in
+        mqtt?.didConnectAck = { mqtt, ack in
             
             if ack == .accept {
                 
@@ -54,14 +54,14 @@ class SensorConnect2 {
     
     func disconnect() {
         if mqtt == nil { } else {
-            mqtt.disconnect()
+            mqtt?.disconnect()
         }
     }
     
     func publish(message: String) {
         
         print("#publish message: \(message)")
-        mqtt.publish(sensor.topic , withString: message, qos: .qos0, retained: true, dup: false)
+        mqtt?.publish(sensor.topic , withString: message, qos: .qos0, retained: true, dup: false)
     }
 }
 

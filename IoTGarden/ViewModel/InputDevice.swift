@@ -75,3 +75,5 @@ class InputDevice: CellViewModel {
         }
     }
 }
+
+

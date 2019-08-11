@@ -35,16 +35,10 @@ enum CellType: String, EnumCollection {
 
 protocol CellViewModel {
     var uuid: String? { get }
-    var cellState: CellState? { get }
     var sensor: Sensor { get set }
     var sensorConnect: SensorConnect { get set }
 }
 
-extension CellViewModel {
-    var cellState: CellState? {
-        return nil
-    }
-}
 
 extension CellViewModel {
     var uuid: String? {
@@ -56,4 +50,8 @@ extension CellViewModel {
 protocol Display {
     
     func display(cellViewModel: CellViewModel)
+}
+
+protocol CellUI {
+    var message: String { get set }
 }
