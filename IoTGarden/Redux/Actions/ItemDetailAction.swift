@@ -16,5 +16,6 @@ extension ItemDetailState {
     
     enum Action: ReSwift.Action {
         case loadDetail(id: String)
+        case publish(message: String, id: String)
     }
 }

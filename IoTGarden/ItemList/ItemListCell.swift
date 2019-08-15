@@ -75,7 +75,9 @@ extension ItemListCell: Display {
 struct SwitchCellUI: CellUI {
 
     var uuid: String
-    var isOn: Bool = true
+    var isOn: Bool {
+        return message == "1"
+    }
     var name: String
     var stateString: String = "Requesting"
     var timeString  = ""

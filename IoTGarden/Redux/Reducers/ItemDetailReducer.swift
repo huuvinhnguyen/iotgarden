@@ -43,6 +43,11 @@ extension ItemDetailState {
             state.topic = sensor?.topic ?? ""
             state.time = sensor?.time ?? ""
             state.identifiableComponent.update()
+        case .publish(message: let message, id: let uuid):
+            let itemListService = ItemListService()
+            guard let sensor = itemListService.getSensor(uuid: uuid) else { break }
+            state.sensorConnect.connect(sensor: sensor)
+            state.sensorConnect.publish(message: message)
         }
         
         return state

@@ -59,7 +59,6 @@ extension ItemInputValueCell: Display {
 
 struct InputCellUI: CellUI {
     var uuid: String
-    var isOn: Bool = true
     var name: String
     var stateString: String = "Requesting"
     var timeString  = ""

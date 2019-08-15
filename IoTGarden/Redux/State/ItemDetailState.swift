@@ -9,6 +9,7 @@ import ReSwift
 
 struct ItemDetailState: StateType, Identifiable {
     
+    let sensorConnect = SensorConnect2()
     var identifiableComponent = IdentifiableComponent()
     
     var name = ""

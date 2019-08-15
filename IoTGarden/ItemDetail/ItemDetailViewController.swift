@@ -53,6 +53,8 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         }
     }
     
+    var identifier = ""
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         appStore.subscribe(self) { subcription in
@@ -64,7 +66,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        let action = ItemDetailState.Action.loadDetail(id: sensor?.uuid ?? "")
+        let action = ItemDetailState.Action.loadDetail(id: identifier)
         appStore.dispatch(action)
 
     }
@@ -76,7 +78,9 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     
     @IBAction func publishButtonTapped(_ sender: UIButton) {
         let message = publishTextField.text ?? ""
-        viewModel?.sensorConnect?.publish(message: message)
+//        viewModel?.sensorConnect?.publish(message: message)
+        let action = ItemDetailState.Action.publish(message: message, id: identifier)
+        appStore.dispatch(action)
     }
     
     @IBAction func deleteButtonTapped(_ sender: UIButton) {

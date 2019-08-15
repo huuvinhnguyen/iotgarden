@@ -26,6 +26,7 @@ extension ListState {
             }
             
             if let index = indexItem  {
+                
                 state.sectionItems[index] = .switchSectionItem(cellUI: switchCellUI)
                 state.identifiableComponent.update()
             }
@@ -58,7 +59,7 @@ extension ListState {
                         let task = SensorConnect2()
                         task.connect(sensor: sensor)
                         state.tasks[sensor.uuid] = task
-                        let switchCellUI = SwitchCellUI(uuid: sensor.uuid, isOn: sensor.value == "1", name: sensor.name, stateString: "Updated", timeString: sensor.time, message: sensor.value )
+                        let switchCellUI = SwitchCellUI(uuid: sensor.uuid, name: sensor.name, stateString: "Updated", timeString: sensor.time, message: sensor.value )
                         
                         return .switchSectionItem(cellUI: switchCellUI)
                         //                    case "temperature":
@@ -71,7 +72,7 @@ extension ListState {
                         let task = SensorConnect2()
                         task.connect(sensor: sensor)
                         state.tasks[sensor.uuid] = task
-                        let inputCellUI = InputCellUI(uuid: sensor.uuid, isOn: sensor.value == "1", name: sensor.name, stateString: "Updated", timeString: sensor.time, message: sensor.value)
+                        let inputCellUI = InputCellUI(uuid: sensor.uuid, name: sensor.name, stateString: "Updated", timeString: sensor.time, message: sensor.value)
                         return .inputSectionItem(cellUI: inputCellUI)
                     default:
                         return nil

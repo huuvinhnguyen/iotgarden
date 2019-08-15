@@ -24,17 +24,10 @@ struct SensorState {
 }
 
 import ReSwift
-
-struct AppState: ReSwift.StateType {
-    var listState = ListState()
-    var detailState = ItemDetailState()
-}
-
 struct ListState: ReSwift.StateType, Identifiable {
     
     var identifiableComponent = IdentifiableComponent()
     
-    var sensorConnect = SensorConnect2()
     var sections: [ItemSectionModel] = []
     var sectionItems: [SectionItem] = []
     var tasks: [String: SensorConnect2] = [:]
@@ -84,26 +77,30 @@ let switchingMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
                     
                     switchCellUI.stateString = "Updated"
                     
-                    if message.string == "1" {
-                        
-                        switchCellUI.isOn = true
-                    }
-                    
-                    if message.string == "0" {
-                        
-                        switchCellUI.isOn = false
-                    }
                     switchCellUI.message = message.string ?? ""
+                    if let sensor = task?.sensor {
+                        let itemListService = ItemListService()
+                        itemListService.updateSensor(sensor: sensor)
+                    }
                     let action2 = ListState.Action.updateSwitchItem(viewModel: switchCellUI)
                     appStore.dispatch(action2)
-                    
-//                    let itemListService = ItemListService()
-//                    itemListService.updateSensor(sensor: switchCellViewModel.sensor)
+
+
                 }
                 
             } else {
                 return next(action)
             }
+        }
+    }
+}
+
+let detailMiddleware: ReSwift.Middleware<ItemDetailState> = {  dispatch, getState in
+    
+    return { next in
+        print("enter detail middleware")
+        return { action in
+            next(action)
         }
     }
 }
@@ -141,11 +138,14 @@ let inputMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
                     inputCellUI.stateString = "Updated"
                     
                     
+                    if let sensor = task?.sensor {
+                        let itemListService = ItemListService()
+                        itemListService.updateSensor(sensor: sensor)
+                    }
+                    
                     let action2 = ListState.Action.updateInputItem(cellUI: inputCellUI)
                     appStore.dispatch(action2)
                     
-                    //                    let itemListService = ItemListService()
-                    //                    itemListService.updateSensor(sensor: switchCellViewModel.sensor)
                 }
                 
             } else {

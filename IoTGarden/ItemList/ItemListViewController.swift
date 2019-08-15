@@ -22,10 +22,7 @@ private struct ItemDef {
 class ItemListViewController: UIViewController, StoreSubscriber {
     
     func newState(state: ListState) {
-       
-//        listSection.accept(state.sections)
         sectionItems.accept(state.sectionItems)
-
     }
 
     var listSection = PublishRelay<[ItemSectionModel]>()
@@ -40,7 +37,6 @@ class ItemListViewController: UIViewController, StoreSubscriber {
     private let refreshControl = UIRefreshControl()
 
     let disposeBag = DisposeBag()
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -69,7 +65,7 @@ class ItemListViewController: UIViewController, StoreSubscriber {
             let vc = R.storyboard.itemDetail.itemDetailViewController()!
             weakSelf.navigationController?.pushViewController(vc, animated: true)
             
-//            vc.sensor = sectionItem.cellViewModel.sensor
+            vc.identifier = sectionItem.identity
         }).disposed(by: disposeBag)
 
 
@@ -133,7 +129,6 @@ extension ItemSectionModel: SectionModelType {
 }
 
 enum SectionItem {
-//    case switchSectionItem(viewModel: SwitchCellViewModel)
     case switchSectionItem(cellUI: SwitchCellUI)
     case inputSectionItem(cellUI: InputCellUI)
     case temperatureSectionItem(name: TemperatureDevice)
@@ -158,11 +153,6 @@ extension SectionItem: IdentifiableType, Equatable {
     
     
     static func == (lhs: SectionItem, rhs: SectionItem) -> Bool {
-//        guard case let .switchSectionItem( lvm) = lhs  else { return true }
-//        guard case let .switchSectionItem( rvm) = rhs  else { return true }
-//
-//        print("#left = \(lvm.isOn)")
-//        print("#right = \(rvm.isOn)")
 
         print("left message: \(lhs.message)")
         print("right message: \(rhs.message)")
@@ -173,14 +163,10 @@ extension SectionItem: IdentifiableType, Equatable {
     
     var identity: String {
         switch self {
-      
-            
         case .switchSectionItem(let viewModel):
-            return viewModel.uuid ?? ""
-
-            
+            return viewModel.uuid
         case .inputSectionItem(let viewModel):
-            return viewModel.uuid ?? ""
+            return viewModel.uuid
         default:
             return ""
         }
@@ -189,12 +175,11 @@ extension SectionItem: IdentifiableType, Equatable {
     var message: String {
         switch self {
             
-            
         case .switchSectionItem(let viewModel):
-            return viewModel.message ?? ""
+            return viewModel.message
 
         case .inputSectionItem(let viewModel):
-            return viewModel.message ?? ""
+            return viewModel.message
         default:
             return ""
         }
