@@ -17,4 +17,5 @@ struct ItemDetailState: StateType, Identifiable {
     var kind = ""
     var topic = ""
     var time = ""
+    var serverUUID = ""
 }

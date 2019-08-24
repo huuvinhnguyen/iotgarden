@@ -42,6 +42,7 @@ extension ItemDetailState {
             state.kind = sensor?.kind ?? ""
             state.topic = sensor?.topic ?? ""
             state.time = sensor?.time ?? ""
+            state.serverUUID = sensor?.serverUUID ?? ""
             state.identifiableComponent.update()
         case .publish(message: let message, id: let uuid):
             let itemListService = ItemListService()

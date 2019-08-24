@@ -26,6 +26,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var publishTextField: UITextField!
     private var viewModel: ItemDetailViewModel?
+    private var serverUUID = ""
 
     func newState(state: ItemDetailState) {
         
@@ -34,6 +35,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         kindLabel.text = state.kind
         topicLabel.text = state.topic
 //        timeLabel.text = state.time
+        serverUUID = state.serverUUID
         
         var timer: Timer?
 
@@ -68,7 +70,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         super.viewDidLoad()
         let action = ItemDetailState.Action.loadDetail(id: identifier)
         appStore.dispatch(action)
-
+        
     }
     
     @IBAction func switchButtonTapped(_ sender: UIButton) {
@@ -95,6 +97,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     @IBAction func seeMoreDetail(_ sender: UIButton) {
         let vc = R.storyboard.itemDetail.serverViewController()!
         vc.serverUUID = sensor?.serverUUID
+        vc.serverUUID = serverUUID
         navigationController?.pushViewController(vc, animated: true)
     }
 
