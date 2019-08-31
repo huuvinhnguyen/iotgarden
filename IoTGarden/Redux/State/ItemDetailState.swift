@@ -7,11 +7,15 @@
 
 import ReSwift
 
-struct ItemDetailState: StateType {
+struct ItemDetailState: StateType, Identifiable {
+    
+    let sensorConnect = SensorConnect2()
+    var identifiableComponent = IdentifiableComponent()
     
     var name = ""
     var value = ""
     var kind = ""
     var topic = ""
     var time = ""
+    var serverUUID = ""
 }

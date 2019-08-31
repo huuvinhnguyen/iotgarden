@@ -40,10 +40,6 @@
                                                 </view>
                                             </collectionViewCell>
                                         </cells>
-                                        <connections>
-                                            <outlet property="dataSource" destination="CQR-4j-oQI" id="YPO-1j-l03"/>
-                                            <outlet property="delegate" destination="CQR-4j-oQI" id="xhj-9h-aLw"/>
-                                        </connections>
                                     </collectionView>
                                 </subviews>
                                 <constraints>

@@ -5,8 +5,24 @@
 //  Created by Vinh Nguyen on 12/20/18.
 //
 import Foundation
+import RxDataSources
 
-class SwitchCellViewModel: CellViewModel {
+
+
+
+class SwitchCellViewModel: CellViewModel, Equatable, IdentifiableType {
+    
+    var identity: Identity {
+        return uuid
+    }
+    
+    typealias Identity = String?
+    
+
+    static func == (lhs: SwitchCellViewModel, rhs: SwitchCellViewModel) -> Bool {
+        return lhs.isOn == rhs.isOn
+    }
+
     
     var sensor: Sensor {
         
@@ -18,6 +34,8 @@ class SwitchCellViewModel: CellViewModel {
     var name: String
     var stateString: String = "Requesting"
     var timeString  = ""
+    
+    var sensorConnect2: SensorConnect2
 
     internal var sensorConnect: SensorConnect
     
@@ -25,10 +43,17 @@ class SwitchCellViewModel: CellViewModel {
         
         self.sensor = sensor
         self.sensorConnect = SensorConnect()
-        sensorConnect.connect(sensor: sensor)
+        self.sensorConnect2 = SensorConnect2()
+
+//        sensorConnect.connect(sensor: sensor)
 
         self.name = sensor.name
-        configure(sensor: sensor)
+//        configure(sensor: sensor)
+    }
+    
+    func connectSensor() {
+        self.sensorConnect2.connect(sensor: sensor)
+
     }
     
     private func configure(sensor: Sensor) {
@@ -72,18 +97,9 @@ class SwitchCellViewModel: CellViewModel {
             
             let itemListService = ItemListService()
             itemListService.updateSensor(sensor: newItem)
-            
-            itemListCellStore.dispatch(LoadItemListCellAction(state: ItemListCellState(cellViewModel: self)))
+        
 
         }
-    }
-    
-    func switchButton() {
-//        itemListStore.dispatch(ItemListPublishMQTTAction())
-    }
-    
-    private func subscribeMQTTTopic() {
-        
     }
 }
 

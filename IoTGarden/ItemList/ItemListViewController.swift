@@ -11,6 +11,7 @@ import MaterialComponents.MaterialNavigationBar
 import RxDataSources
 import RxSwift
 import RxCocoa
+import ReSwift
 
 private struct ItemDef {
     let title: String
@@ -18,53 +19,56 @@ private struct ItemDef {
     let `class`: AnyClass
 }
 
-class ItemListViewController: UIViewController {
+class ItemListViewController: UIViewController, StoreSubscriber {
+    
+    func newState(state: ListState) {
+        sectionItems.accept(state.sectionItems)
+    }
+
+    var listSection = PublishRelay<[ItemSectionModel]>()
+    var sectionItems = PublishRelay<[SectionItem]>()
+
+    typealias StoreSubscriberStateType = ListState
     
     @IBOutlet weak var itemListCollectionView: UICollectionView!
     private let itemListService = ItemListService()
-    private var cellViewModels: [CellViewModel] = []
+    
     
     private let refreshControl = UIRefreshControl()
 
-    let disposeBag = SubscriptionReferenceBag()
-
+    let disposeBag = DisposeBag()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        appStore.subscribe(self) { $0.select { $0.listState }.skipRepeats() }
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        listsenToPublisher()
         prepareNibs()
-        configureRefreshControl()
-        updateViewModel()
-        
-        loadItems()
+
+        let action = ListState.Action.loadItems()
+        appStore.dispatch(action)
     
-//        navigationBar.observe(navigationItem)
-    }
-    
-    private func listsenToPublisher() {
+        sectionItems.asObservable()
+            .map { [AnimatableSectionModel<String, SectionItem>(model: "", items: $0)] }
+            .bind(to: itemListCollectionView.rx.items(dataSource: dataSource()))
+            .disposed(by: disposeBag)
         
-        disposeBag += itemListStore.observable.asObservable().subscribe{ [weak self] state in
-            
-            if let weakSelf = self {
-                weakSelf.cellViewModels = state.items
-                weakSelf.itemListCollectionView.reloadData()
-                weakSelf.refreshControl.endRefreshing()
-            }
-        }
-    }
-    
-    func updateViewModel() {
         
-        disposeBag += sensorStore.observable.asObservable().map { $0.sensor }.subscribe { [weak self] sensor in
-            print("#itemState")
+        itemListCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        
+
+        itemListCollectionView.rx.modelSelected(SectionItem.self).subscribe(onNext:{ [weak self] sectionItem in
             guard let weakSelf = self else { return }
-            let row = weakSelf.cellViewModels.index { $0.sensor.uuid == sensor.uuid }
+            let vc = R.storyboard.itemDetail.itemDetailViewController()!
+            weakSelf.navigationController?.pushViewController(vc, animated: true)
             
-            guard let rowIndex = row else { return }
-            
-                weakSelf.cellViewModels[rowIndex].sensor = sensor
-                weakSelf.itemListCollectionView.reloadItems(at: [IndexPath(row: rowIndex, section: 0)])
-        }
+            vc.identifier = sectionItem.identity
+        }).disposed(by: disposeBag)
+
+
     }
     
     private func prepareNibs() {
@@ -81,16 +85,10 @@ class ItemListViewController: UIViewController {
         itemListCollectionView.register(UINib(nibName: "ItemInputValueCell", bundle: nil), forCellWithReuseIdentifier: "ItemInputValueCell")
     }
     
-    @objc private func loadItems() {
-        
-        itemListStore.dispatch(ListItemsAction())
-    }
-    
     private func configureRefreshControl() {
         
-        itemListCollectionView.alwaysBounceVertical = true
-        refreshControl.addTarget(self, action: #selector(loadItems), for: .valueChanged)
-        itemListCollectionView.addSubview(refreshControl)
+        let action = ListState.Action.loadItems()
+        appStore.dispatch(action)
     }
     
     @IBAction func addButtonTapped(sender: UIButton) {
@@ -98,98 +96,120 @@ class ItemListViewController: UIViewController {
         let addItemViewController = R.storyboard.addItemViewController.addItemViewController()!
         navigationController?.pushViewController(addItemViewController, animated: true)
     }
-    
-    @IBAction func tempButtonTapped(_ sender: UIButton) {
-        
-        let storyboard = UIStoryboard(name: "ItemDetailTempViewController", bundle: nil)
-        if let itemDetailTempViewController = storyboard.instantiateViewController(withIdentifier :"ItemDetailTempViewController") as? ItemDetailTempViewController {
-            
-            navigationController?.pushViewController(itemDetailTempViewController, animated: true)
-        }
-    }
+
 }
 
-extension ItemListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return cellViewModels.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cellViewModel = cellViewModels[indexPath.row]
-        let cell = CellCreator.create(cellAt: indexPath, with: cellViewModel, collectionView: collectionView)
-        return cell
-    }
+extension ItemListViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+   
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 130)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let cellViewModel = cellViewModels[indexPath.row]
-        let vc = R.storyboard.itemDetail.itemDetailViewController()!
-        navigationController?.pushViewController(vc, animated: true)
-        
-        vc.sensor = cellViewModel.sensor
-        
-        
-//        let storyboard = UIStoryboard(name: "ItemDetailTempViewController", bundle: nil)
-//        if let itemDetailTempViewController = storyboard.instantiateViewController(withIdentifier :"ItemDetailTempViewController") as? ItemDetailTempViewController {
-//
-//            navigationController?.pushViewController(itemDetailTempViewController, animated: true)
-//        }
-        
-//        let def = ItemDef(title: "Half Pie Chart",
-//                subtitle: "This demonstrates how to create a 180 degree PieChart.",
-//                class: BarChartViewController.self)
-//        
-//        let vcClass = def.class as! BarChartViewController.Type
-//        let vc = vcClass.init()
-//        vc.sensor = device.sensor
-//        
-//        navigationController?.pushViewController(vc, animated: true)
-    }
 }
 
 enum ItemSectionModel {
-    case itemSection(title: String, items: [CellViewModel])
+    case itemSection(title: String, items: [SectionItem])
 }
 
 extension ItemSectionModel: SectionModelType {
-    init(original: ItemSectionModel, items: [CellViewModel]) {
-        typealias Item = CellViewModel
+    typealias Item = SectionItem
+    init(original: ItemSectionModel, items: [Item]) {
         switch original {
         case let .itemSection(title: title, items: items):
              self = .itemSection(title: title, items: items)
         }
     }
     
-    var items: [CellViewModel] {
+    var items: [SectionItem] {
         switch self {
         case .itemSection(title: _, items: let items):
-        return items
+            return items.map {$0}
         }
     }
 }
 
+enum SectionItem {
+    case switchSectionItem(cellUI: SwitchCellUI)
+    case inputSectionItem(cellUI: InputCellUI)
+    case temperatureSectionItem(name: TemperatureDevice)
+}
+
+//extension SectionItem {
+//    var cellViewModel: CellViewModel {
+//        switch self {
+//        case .switchSectionItem(let viewModel):
+//            return viewModel
+//        case .switchSectionItem2(let cellUI):
+//            return cellUI
+//        case .valueSectionItem(let viewModel):
+//            return viewModel
+//        case .temperatureSectionItem( let viewModel):
+//            return viewModel
+//        }
+//    }
+//}
+
+extension SectionItem: IdentifiableType, Equatable {
+    
+    
+    static func == (lhs: SectionItem, rhs: SectionItem) -> Bool {
+
+        print("left message: \(lhs.message)")
+        print("right message: \(rhs.message)")
+        return lhs.message == rhs.message
+    }
+    
+    typealias Identity = String
+    
+    var identity: String {
+        switch self {
+        case .switchSectionItem(let viewModel):
+            return viewModel.uuid
+        case .inputSectionItem(let viewModel):
+            return viewModel.uuid
+        default:
+            return ""
+        }
+    }
+    
+    var message: String {
+        switch self {
+            
+        case .switchSectionItem(let viewModel):
+            return viewModel.message
+
+        case .inputSectionItem(let viewModel):
+            return viewModel.message
+        default:
+            return ""
+        }
+    }
+}
 
 extension ItemListViewController {
     
-    func dataSource() -> RxCollectionViewSectionedReloadDataSource<ItemSectionModel> {
+    func dataSource() -> RxCollectionViewSectionedAnimatedDataSource<AnimatableSectionModel<String, SectionItem>>{
         
-        return RxCollectionViewSectionedReloadDataSource<ItemSectionModel>(configureCell: { dataSource, collectionView, idxPath, _ in
-            switch dataSource[idxPath] {
+        return RxCollectionViewSectionedAnimatedDataSource<AnimatableSectionModel<String, SectionItem>>(configureCell: { dataSource, collectionView, indexPath, _ in
+            
+            print("rendering cells")
+
+            switch dataSource[indexPath] {
+                
+            case let .switchSectionItem(cellUI):
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemListCell", for: indexPath) as! ItemListCell
+                cell.configure(cellUI: cellUI)
+                return cell
+                
+            case let .inputSectionItem(cellUI):
+                
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemInputValueCell", for: indexPath) as! ItemInputValueCell
+                cell.configure(cellUI: cellUI)
+                return cell
                 
             default:
-                ()
+                return UICollectionViewCell()
             }
-            
-            let cellViewModel = dataSource[idxPath]
-            let cell = CellCreator.create(cellAt: idxPath, with: cellViewModel, collectionView: collectionView)
-            return cell
-        
         })
     }
 }

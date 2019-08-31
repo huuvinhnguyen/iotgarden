@@ -2,91 +2,94 @@
 //  ItemListReducer.swift
 //  IoTGarden
 //
-//  Created by Apple on 11/4/18.
+//  Created by Vinh Nguyen on 11/4/18.
 //
 
-import ReactiveReSwift
-import RxSwift
+import ReSwift
 
-let itemListReducer: Reducer<ItemListState> = { action, state in
+extension ListState {
     
-    var state = state
-    
-    if let action = action as? AddItemAction {
-//        state.clouds.append(action.cloud)
-    }
-    
-    if let action = action as? ListItemsAction {
+    public static func reducer(action: ReSwift.Action, state: ListState?) -> ListState {
         
-        let itemListService = ItemListService()
-        itemListService.loadSensors { sensors in
+        var state = state ?? ListState()
+        
+        guard let action = action as? ListState.Action else { return state }
+        switch action {
             
-            state.items = sensors.compactMap { sensor in
-                
-                switch sensor.kind {
-                case "toggle":
-                    return SwitchCellViewModel(sensor: sensor)
-                case "temperature":
-                    return TemperatureDevice(sensor: sensor)
-                case "humidity":
-                    return HumidityDevice(sensor: sensor)
-                case "motion":
-                    return MotionDevice(sensor: sensor)
-                case "value":
-                    return InputDevice(sensor: sensor)
-                default:
-                    return nil
+        case .updateSwitchItem(let switchCellUI):
+            
+            let indexItem = state.sectionItems.firstIndex {
+                if case let .switchSectionItem(cellUI) = $0 {
+                    return cellUI.uuid == switchCellUI.uuid
                 }
+                return false
             }
-        }
-        
-    }
-    
-    if let action = action as? ItemListUpdateItemAction {
-        
-        for i in 0..<state.items.count {
-            if state.items[i].uuid == "abc" {
-                let item = state.items[i]
-            }
-        }
-    }
-    
-    if let action = action as? ItemListUpdateFromMQTTAction {
-        
-        
-        for i in 0..<state.items.count {
-            print("#uuid: \(state.items[i].uuid)" )
-            if state.items[i].uuid == action.uuid {
-                print("#uuid exists")
+            
+            if let index = indexItem  {
                 
-                let item = state.items[i]
-                if let switchCellViewModel = item as? SwitchCellViewModel {
+                state.sectionItems[index] = .switchSectionItem(cellUI: switchCellUI)
+                state.identifiableComponent.update()
+            }
+            
+        case .updateInputItem(let inputCellUI):
+            
+            let indexItem = state.sectionItems.firstIndex {
+                if case let .inputSectionItem(cellUI) = $0 {
+                    return cellUI.uuid == inputCellUI.uuid
+                }
+                return false
+            }
+            
+            if let index = indexItem  {
+                state.sectionItems[index] = .inputSectionItem(cellUI: inputCellUI)
+                state.identifiableComponent.update()
+            }
+
+            
+        case .loadItems():
+            
+            let itemListService = ItemListService()
+            itemListService.loadSensors { sensors in
+                
+                let items: [SectionItem] = sensors.compactMap { sensor in
                     
-                    if action.message == "1" { switchCellViewModel.isOn = true }
-                    if action.message == "0" { switchCellViewModel.isOn = false }
-                    state.items[i] = switchCellViewModel
+                    switch sensor.kind {
+                    case "toggle":
+                        
+                        let task = SensorConnect2()
+                        task.connect(sensor: sensor)
+                        state.tasks[sensor.uuid] = task
+                        let switchCellUI = SwitchCellUI(uuid: sensor.uuid, name: sensor.name, stateString: "Updated", timeString: sensor.time, message: sensor.value )
+                        
+                        return .switchSectionItem(cellUI: switchCellUI)
+                        //                    case "temperature":
+                        //                        return TemperatureDevice(sensor: sensor)
+                        //                    case "humidity":
+                        //                        return HumidityDevice(sensor: sensor)
+                        //                    case "motion":
+                    //                        return MotionDevice(sensor: sensor)
+                    case "value":
+                        let task = SensorConnect2()
+                        task.connect(sensor: sensor)
+                        state.tasks[sensor.uuid] = task
+                        let inputCellUI = InputCellUI(uuid: sensor.uuid, name: sensor.name, stateString: "Updated", timeString: sensor.time, message: sensor.value)
+                        return .inputSectionItem(cellUI: inputCellUI)
+                    default:
+                        return nil
+                    }
                 }
+                
+                state.sectionItems = items
+                
+                
+                let sections: [ItemSectionModel] = [ .itemSection(title: "", items: state.sectionItems)]
+                state.sections = sections
+                state.identifiableComponent.update()
             }
+            
+        default: ()
         }
-    }
-    
-    if let action = action as? ItemListPublishMQTTAction {
-        print("##ItemListPublishMQTTAction")
-        state.mqtt = action.mqtt
         
+        return state
     }
-    
-    return state
-}
-
-let sensorListReducer: Reducer<SensorListState> = { action, state in
-    
-    var state = state
-    
-
-    if let action = action as? AddSensorAction {
-        //        state.clouds.append(action.cloud)
-    }
-    
-    return state
 }

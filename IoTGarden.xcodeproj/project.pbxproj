@@ -27,6 +27,7 @@
 		181BAC6C220DD2B700A0D458 /* MotionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181BAC6B220DD2B700A0D458 /* MotionCell.xib */; };
 		181BAC6E220DD2D400A0D458 /* MotionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181BAC6D220DD2D400A0D458 /* MotionCell.swift */; };
 		181BAC72220DE57100A0D458 /* SensorRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181BAC71220DE57100A0D458 /* SensorRequest.swift */; };
+		181F50A422F1FEAE00EA89D1 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181F50A322F1FEAE00EA89D1 /* AppState.swift */; };
 		18243663227D8DC80009F7EA /* CandleStickChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18243662227D8DC80009F7EA /* CandleStickChartViewController.swift */; };
 		1826C625218F51B700A5CE38 /* ItemListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1826C624218F51B700A5CE38 /* ItemListService.swift */; };
 		18339BE021C9493E00CC2269 /* IoTGarden.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18339BDE21C9493E00CC2269 /* IoTGarden.xcdatamodeld */; };
@@ -35,6 +36,7 @@
 		183A91FD22EAFEA600EBDC4A /* ItemDetailServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183A91FC22EAFEA600EBDC4A /* ItemDetailServerViewController.swift */; };
 		183A91FF22EAFFAB00EBDC4A /* ItemDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 183A91FE22EAFFAB00EBDC4A /* ItemDetail.storyboard */; };
 		183A920122EB53FC00EBDC4A /* ItemDetailTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183A920022EB53FC00EBDC4A /* ItemDetailTopicViewController.swift */; };
+		183A920322EC023D00EBDC4A /* SensorConnect2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183A920222EC023D00EBDC4A /* SensorConnect2.swift */; };
 		1846AB53218A9E7800F46053 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846AB52218A9E7800F46053 /* ItemDetailViewController.swift */; };
 		1846AB57218AA3B800F46053 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846AB56218AA3B800F46053 /* AddItemViewController.swift */; };
 		1846AB59218AA3E100F46053 /* AddItemViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1846AB58218AA3E100F46053 /* AddItemViewController.storyboard */; };
@@ -55,6 +57,10 @@
 		1864B73B22BA8C1400B9DCE7 /* ItemDetailAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1864B73A22BA8C1400B9DCE7 /* ItemDetailAction.swift */; };
 		1864B73D22BE363100B9DCE7 /* ItemDetailStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1864B73C22BE363000B9DCE7 /* ItemDetailStore.swift */; };
 		1864B74122C7D1FD00B9DCE7 /* MQTTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1864B74022C7D1FD00B9DCE7 /* MQTTService.swift */; };
+		189C812D2311397D00E4BC95 /* ItemDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189C812C2311397D00E4BC95 /* ItemDetailHeaderCell.swift */; };
+		189C812F231139C800E4BC95 /* ItemDetailHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189C812E231139C800E4BC95 /* ItemDetailHeaderCell.xib */; };
+		189C813123113A8A00E4BC95 /* ItemDetailTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189C813023113A8A00E4BC95 /* ItemDetailTopicCell.swift */; };
+		189C813323113AA100E4BC95 /* ItemDetailTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189C813223113AA100E4BC95 /* ItemDetailTopicCell.xib */; };
 		18A0430821894CD2005E04D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0430721894CD2005E04D4 /* AppDelegate.swift */; };
 		18A0431221894CD4005E04D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A0431121894CD4005E04D4 /* Assets.xcassets */; };
 		18A0431521894CD4005E04D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A0431321894CD4005E04D4 /* LaunchScreen.storyboard */; };
@@ -64,6 +70,7 @@
 		18B5506321C559FF004EC438 /* ItemAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5506221C559FF004EC438 /* ItemAction.swift */; };
 		18B5506521C55A14004EC438 /* ItemReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5506421C55A14004EC438 /* ItemReducer.swift */; };
 		18B5506721C56104004EC438 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5506621C56104004EC438 /* ItemStore.swift */; };
+		18B975C822FE945700E7DD8D /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B975C722FE945700E7DD8D /* AppStore.swift */; };
 		18C832BE218ADAD500ED37A1 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C832BD218ADAD500ED37A1 /* Storage.swift */; };
 		18CCFFFF21E84A0B0075BA6B /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CCFFFE21E84A0B0075BA6B /* Date+Extension.swift */; };
 		18D74DA321C8DA7900612351 /* EnumCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D74DA221C8DA7800612351 /* EnumCollection.swift */; };
@@ -81,6 +88,7 @@
 		18EDCF5C2189A46500B233B9 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDCF5B2189A46500B233B9 /* ItemListViewController.swift */; };
 		18EDCF5E2189A4AC00B233B9 /* ItemListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EDCF5D2189A4AC00B233B9 /* ItemListViewController.storyboard */; };
 		18EDCF602189AF3600B233B9 /* ItemListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EDCF5F2189AF3600B233B9 /* ItemListCell.xib */; };
+		18F214FD22F9EAAA0001CD67 /* ItemListStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F214FC22F9EAAA0001CD67 /* ItemListStateTests.swift */; };
 		5B04F00A227AE8F80096FBA1 /* LineChart3ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B04F009227AE8F80096FBA1 /* LineChart3ViewController.xib */; };
 		5B04F00C227AE9190096FBA1 /* LineChart3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B04F00B227AE9190096FBA1 /* LineChart3ViewController.swift */; };
 		5B04F00E227AEEAF0096FBA1 /* PositiveNegativeBarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B04F00D227AEEAF0096FBA1 /* PositiveNegativeBarChartViewController.swift */; };
@@ -131,6 +139,7 @@
 		181BAC6B220DD2B700A0D458 /* MotionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MotionCell.xib; sourceTree = "<group>"; };
 		181BAC6D220DD2D400A0D458 /* MotionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionCell.swift; sourceTree = "<group>"; };
 		181BAC71220DE57100A0D458 /* SensorRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorRequest.swift; sourceTree = "<group>"; };
+		181F50A322F1FEAE00EA89D1 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		18243662227D8DC80009F7EA /* CandleStickChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandleStickChartViewController.swift; sourceTree = "<group>"; };
 		1826C624218F51B700A5CE38 /* ItemListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListService.swift; sourceTree = "<group>"; };
 		18339BDF21C9493E00CC2269 /* IoTGarden.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IoTGarden.xcdatamodel; sourceTree = "<group>"; };
@@ -139,6 +148,7 @@
 		183A91FC22EAFEA600EBDC4A /* ItemDetailServerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailServerViewController.swift; sourceTree = "<group>"; };
 		183A91FE22EAFFAB00EBDC4A /* ItemDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemDetail.storyboard; sourceTree = "<group>"; };
 		183A920022EB53FC00EBDC4A /* ItemDetailTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailTopicViewController.swift; sourceTree = "<group>"; };
+		183A920222EC023D00EBDC4A /* SensorConnect2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorConnect2.swift; sourceTree = "<group>"; };
 		1846AB52218A9E7800F46053 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		1846AB56218AA3B800F46053 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		1846AB58218AA3E100F46053 /* AddItemViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddItemViewController.storyboard; sourceTree = "<group>"; };
@@ -159,6 +169,10 @@
 		1864B73A22BA8C1400B9DCE7 /* ItemDetailAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailAction.swift; sourceTree = "<group>"; };
 		1864B73C22BE363000B9DCE7 /* ItemDetailStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailStore.swift; sourceTree = "<group>"; };
 		1864B74022C7D1FD00B9DCE7 /* MQTTService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTService.swift; sourceTree = "<group>"; };
+		189C812C2311397D00E4BC95 /* ItemDetailHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailHeaderCell.swift; sourceTree = "<group>"; };
+		189C812E231139C800E4BC95 /* ItemDetailHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemDetailHeaderCell.xib; sourceTree = "<group>"; };
+		189C813023113A8A00E4BC95 /* ItemDetailTopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailTopicCell.swift; sourceTree = "<group>"; };
+		189C813223113AA100E4BC95 /* ItemDetailTopicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemDetailTopicCell.xib; sourceTree = "<group>"; };
 		18A0430421894CD2005E04D4 /* IoTGarden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IoTGarden.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A0430721894CD2005E04D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18A0431121894CD4005E04D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -174,6 +188,7 @@
 		18B5506221C559FF004EC438 /* ItemAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemAction.swift; sourceTree = "<group>"; };
 		18B5506421C55A14004EC438 /* ItemReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemReducer.swift; sourceTree = "<group>"; };
 		18B5506621C56104004EC438 /* ItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
+		18B975C722FE945700E7DD8D /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		18C832BD218ADAD500ED37A1 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		18CCFFFE21E84A0B0075BA6B /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		18D74DA221C8DA7800612351 /* EnumCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumCollection.swift; sourceTree = "<group>"; };
@@ -191,6 +206,7 @@
 		18EDCF5B2189A46500B233B9 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
 		18EDCF5D2189A4AC00B233B9 /* ItemListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemListViewController.storyboard; sourceTree = "<group>"; };
 		18EDCF5F2189AF3600B233B9 /* ItemListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListCell.xib; sourceTree = "<group>"; };
+		18F214FC22F9EAAA0001CD67 /* ItemListStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListStateTests.swift; sourceTree = "<group>"; };
 		26FF11245553B5B9CB0BEA4C /* Pods-IoTGardenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoTGardenTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IoTGardenTests/Pods-IoTGardenTests.release.xcconfig"; sourceTree = "<group>"; };
 		4EA2DE0DB42AD6B50F8BDB54 /* Pods-IoTGardenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoTGardenTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IoTGardenTests/Pods-IoTGardenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5B04F009227AE8F80096FBA1 /* LineChart3ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LineChart3ViewController.xib; sourceTree = "<group>"; };
@@ -281,6 +297,7 @@
 				1803375521CA9B130098F944 /* Sensor.swift */,
 				18EDCF4F21899E3800B233B9 /* Item.swift */,
 				1803375F21CB41640098F944 /* SensorConnect.swift */,
+				183A920222EC023D00EBDC4A /* SensorConnect2.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -310,6 +327,7 @@
 			children = (
 				1854087F21C40D0A00984268 /* ItemDetailTempViewController.storyboard */,
 				1846AB52218A9E7800F46053 /* ItemDetailViewController.swift */,
+				189C81342311405D00E4BC95 /* Cells */,
 				183A91FC22EAFEA600EBDC4A /* ItemDetailServerViewController.swift */,
 				183A91FE22EAFFAB00EBDC4A /* ItemDetail.storyboard */,
 				1854087921C40BF000984268 /* ItemDetailTempViewController.swift */,
@@ -391,6 +409,17 @@
 			path = MQTT;
 			sourceTree = "<group>";
 		};
+		189C81342311405D00E4BC95 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				189C812C2311397D00E4BC95 /* ItemDetailHeaderCell.swift */,
+				189C812E231139C800E4BC95 /* ItemDetailHeaderCell.xib */,
+				189C813023113A8A00E4BC95 /* ItemDetailTopicCell.swift */,
+				189C813223113AA100E4BC95 /* ItemDetailTopicCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		18A042FB21894CD2005E04D4 = {
 			isa = PBXGroup;
 			children = (
@@ -452,6 +481,7 @@
 			isa = PBXGroup;
 			children = (
 				18A0432A21894CD4005E04D4 /* IoTGardenUITests.swift */,
+				18F214FC22F9EAAA0001CD67 /* ItemListStateTests.swift */,
 				18A0432C21894CD4005E04D4 /* Info.plist */,
 			);
 			path = IoTGardenUITests;
@@ -472,6 +502,8 @@
 				18B5506221C559FF004EC438 /* ItemAction.swift */,
 				18B5506421C55A14004EC438 /* ItemReducer.swift */,
 				18B5506621C56104004EC438 /* ItemStore.swift */,
+				181F50A322F1FEAE00EA89D1 /* AppState.swift */,
+				18B975C722FE945700E7DD8D /* AppStore.swift */,
 			);
 			path = Redux;
 			sourceTree = "<group>";
@@ -619,6 +651,8 @@
 				5B04F010227AEEBD0096FBA1 /* PositiveNegativeBarChartViewController.xib in Resources */,
 				5B04F00A227AE8F80096FBA1 /* LineChart3ViewController.xib in Resources */,
 				18A0431221894CD4005E04D4 /* Assets.xcassets in Resources */,
+				189C812F231139C800E4BC95 /* ItemDetailHeaderCell.xib in Resources */,
+				189C813323113AA100E4BC95 /* ItemDetailTopicCell.xib in Resources */,
 				1803376721CBA9A20098F944 /* TemperatureCell.xib in Resources */,
 				1803376B21CBAC900098F944 /* HumidityCell.xib in Resources */,
 				1854088021C40D0A00984268 /* ItemDetailTempViewController.storyboard in Resources */,
@@ -800,7 +834,9 @@
 				18243663227D8DC80009F7EA /* CandleStickChartViewController.swift in Sources */,
 				1803377621CBF5480098F944 /* SelectionViewController.swift in Sources */,
 				1864B73B22BA8C1400B9DCE7 /* ItemDetailAction.swift in Sources */,
+				189C812D2311397D00E4BC95 /* ItemDetailHeaderCell.swift in Sources */,
 				1803375B21CB3C070098F944 /* SwitchCellViewModel.swift in Sources */,
+				189C813123113A8A00E4BC95 /* ItemDetailTopicCell.swift in Sources */,
 				18339BE321C9496100CC2269 /* ItemList.xcdatamodeld in Sources */,
 				1864B74122C7D1FD00B9DCE7 /* MQTTService.swift in Sources */,
 				18EDCF5C2189A46500B233B9 /* ItemListViewController.swift in Sources */,
@@ -814,6 +850,7 @@
 				18339BE021C9493E00CC2269 /* IoTGarden.xcdatamodeld in Sources */,
 				18EDCF5021899E3900B233B9 /* Item.swift in Sources */,
 				18A934CF2291727D009C6ADF /* R.generated.swift in Sources */,
+				18B975C822FE945700E7DD8D /* AppStore.swift in Sources */,
 				1864B73D22BE363100B9DCE7 /* ItemDetailStore.swift in Sources */,
 				1803376921CBAC7D0098F944 /* HumidityCell.swift in Sources */,
 				18D7C6D9220EB81000FF8529 /* MotionDevice.swift in Sources */,
@@ -821,6 +858,7 @@
 				5B04F00C227AE9190096FBA1 /* LineChart3ViewController.swift in Sources */,
 				1852DBA22192960D002E1946 /* AddItemView.swift in Sources */,
 				1846AB57218AA3B800F46053 /* AddItemViewController.swift in Sources */,
+				181F50A422F1FEAE00EA89D1 /* AppState.swift in Sources */,
 				18E7A71E218EE4E800F7E689 /* ReactiveReSwiftBridge.swift in Sources */,
 				1846AB53218A9E7800F46053 /* ItemDetailViewController.swift in Sources */,
 				18A0430821894CD2005E04D4 /* AppDelegate.swift in Sources */,
@@ -842,6 +880,7 @@
 				18B5506721C56104004EC438 /* ItemStore.swift in Sources */,
 				5B2CD58522896DB600EA8B25 /* UIColor+Extension.swift in Sources */,
 				1852DBA421931E16002E1946 /* AddItemSavingViewController.swift in Sources */,
+				183A920322EC023D00EBDC4A /* SensorConnect2.swift in Sources */,
 				185FF15222ABB0B7003C0DDF /* ItemInputValueCell.swift in Sources */,
 				183A91FD22EAFEA600EBDC4A /* ItemDetailServerViewController.swift in Sources */,
 				181BAC72220DE57100A0D458 /* SensorRequest.swift in Sources */,
@@ -867,6 +906,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F214FD22F9EAAA0001CD67 /* ItemListStateTests.swift in Sources */,
 				18A0432B21894CD4005E04D4 /* IoTGardenUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

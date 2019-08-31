@@ -2,52 +2,31 @@
 //  ItemListCell.swift
 //  IoTGarden
 //
-//  Created by Apple on 10/31/18.
+//  Created by Vinh Nguyen on 10/31/18.
 //
 
 import UIKit
-import ReSwift
 
-struct LoadItemListCellAction: Action {
+class ItemListCell: UICollectionViewCell {
     
-    var state: ItemListCellState
-
-}
-struct ItemListCellState: StateType {
-    var cellViewModel: CellViewModel?
-//    var sensorConnect: SensorConnect?
-}
-
-let itemListCellReducer: Reducer<ItemListCellState> = { action, state in
-    
-    var state = state ?? ItemListCellState()
-    
-    if let action = action as? LoadItemListCellAction {
-        
-        state = action.state
-        
-    }
-    
-    return state
-}
-
-let itemListCellStore = Store<ItemListCellState>(
-    reducer: itemListCellReducer,
-    state: nil
-)
-
-
-class ItemListCell: UICollectionViewCell, StoreSubscriber {
-    
-    typealias StoreSubscriberStateType = ItemListCellState
+    var switchCellUI: SwitchCellUI?
     
     fileprivate(set) var cellViewModel: CellViewModel! {
         
         didSet {
             
-            itemListCellStore.subscribe(self)
-            itemListCellStore.dispatch(LoadItemListCellAction(state: ItemListCellState(cellViewModel: cellViewModel)))
-
+            guard let viewModel = cellViewModel as? SwitchCellViewModel else { return }
+            nameLabel?.text = viewModel.name
+            onOffSwitch?.isOn = viewModel.isOn
+            stateLabel?.text = viewModel.stateString
+            
+            print("#state string: \(viewModel.stateString)")
+            
+            timer?.invalidate()
+            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+                guard let weakSelf = self else { return }
+                weakSelf.timeLabel?.text = viewModel.timeString.toDate()?.timeAgoDisplay()
+            }
         }
     }
     
@@ -60,28 +39,28 @@ class ItemListCell: UICollectionViewCell, StoreSubscriber {
     
     @IBAction func switchButtonTapped(sender: UISwitch) {
         
-        guard let switchDevice = cellViewModel as? SwitchCellViewModel else { return }
-        switchDevice.stateString = "Requesting"
         
+        guard let cellUI = switchCellUI else { return }
         stateLabel?.text = "Requesting"
+        let action = ListState.Action.switchItem(cellUI: cellUI, message: sender.isOn ? "1" : "0")
+        appStore.dispatch(action)
+
         
-        let message =  sender.isOn ? "1":"0"
-        cellViewModel.sensorConnect.publish(message: message)
     }
     
-    func newState(state: ItemListCellState) {
+    func configure(cellUI: SwitchCellUI) {
+        switchCellUI = cellUI
         
-        guard let viewModel = cellViewModel as? SwitchCellViewModel else { return }
-//        guard let viewModel = state.cellViewModel as? SwitchCellViewModel else { return }
-        nameLabel?.text = viewModel.name
-        onOffSwitch?.isOn = viewModel.isOn
-        stateLabel?.text = viewModel.stateString
+        nameLabel?.text = cellUI.name
+        onOffSwitch?.isOn = cellUI.isOn
+        stateLabel?.text = cellUI.stateString
         
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
             guard let weakSelf = self else { return }
-            weakSelf.timeLabel?.text = viewModel.timeString.toDate()?.timeAgoDisplay()
+            weakSelf.timeLabel?.text = cellUI.timeString.toDate()?.timeAgoDisplay()
         }
+        
     }
 }
 
@@ -92,3 +71,17 @@ extension ItemListCell: Display {
         self.cellViewModel = cellViewModel
     }
 }
+
+struct SwitchCellUI: CellUI {
+
+    var uuid: String
+    var isOn: Bool {
+        return message == "1"
+    }
+    var name: String
+    var stateString: String = "Requesting"
+    var timeString  = ""
+    var message: String
+
+}
+
