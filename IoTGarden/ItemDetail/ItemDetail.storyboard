@@ -205,6 +205,33 @@
             </objects>
             <point key="canvasLocation" x="-127" y="191"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="xjp-RZ-bAJ">
+            <objects>
+                <viewController id="nY1-P9-RKf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="I6R-cP-hYq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wLu-fV-t7M">
+                                <rect key="frame" x="34" y="134" width="309" height="498"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2Kz-14-p5a" firstAttribute="bottom" secondItem="wLu-fV-t7M" secondAttribute="bottom" constant="35" id="05q-Ag-vHO"/>
+                            <constraint firstItem="2Kz-14-p5a" firstAttribute="trailing" secondItem="wLu-fV-t7M" secondAttribute="trailing" constant="32" id="MO4-Nl-j63"/>
+                            <constraint firstItem="wLu-fV-t7M" firstAttribute="leading" secondItem="2Kz-14-p5a" secondAttribute="leading" constant="34" id="W4H-SN-Gfg"/>
+                            <constraint firstItem="wLu-fV-t7M" firstAttribute="top" secondItem="2Kz-14-p5a" secondAttribute="top" constant="114" id="n52-aK-CDl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2Kz-14-p5a"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="orY-q5-JZK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1788" y="212.74362818590706"/>
+        </scene>
         <!--Item Detail View Controller-->
         <scene sceneID="cfU-27-XbX">
             <objects>
@@ -296,22 +323,6 @@
                                     <action selector="publishButtonTapped:" destination="kjX-6G-naK" eventType="touchUpInside" id="Ot3-jb-nlI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sny-LZ-SAR" customClass="ConnectButton" customModule="IoTGarden" customModuleProvider="target">
-                                <rect key="frame" x="60" y="353" width="157" height="46"/>
-                                <color key="backgroundColor" red="1" green="0.48601310720000002" blue="0.38645711579999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="157" id="boS-mC-5aX"/>
-                                    <constraint firstAttribute="height" constant="46" id="vr5-ce-J5O"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="see more">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="connectButtonTappedWithSender:" destination="Sbg-4A-jfE" eventType="touchUpInside" id="JAZ-pr-Uzd"/>
-                                    <action selector="seeMoreDetail:" destination="kjX-6G-naK" eventType="touchUpInside" id="hi8-sc-G20"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RK7-ss-Kq3" customClass="ConnectButton" customModule="IoTGarden" customModuleProvider="target">
                                 <rect key="frame" x="315" y="30" width="50" height="46"/>
                                 <color key="backgroundColor" red="1" green="0.48601310720000002" blue="0.38645711579999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -327,21 +338,42 @@
                                     <action selector="editTopicTapped:" destination="kjX-6G-naK" eventType="touchUpInside" id="sWr-MF-STT"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LOy-og-9gD">
+                                <rect key="frame" x="10" y="343" width="355" height="205"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sny-LZ-SAR" customClass="ConnectButton" customModule="IoTGarden" customModuleProvider="target">
+                                <rect key="frame" x="47" y="292" width="157" height="46"/>
+                                <color key="backgroundColor" red="1" green="0.48601310720000002" blue="0.38645711579999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="157" id="boS-mC-5aX"/>
+                                    <constraint firstAttribute="height" constant="46" id="vr5-ce-J5O"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="see more">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="connectButtonTappedWithSender:" destination="Sbg-4A-jfE" eventType="touchUpInside" id="JAZ-pr-Uzd"/>
+                                    <action selector="seeMoreDetail:" destination="kjX-6G-naK" eventType="touchUpInside" id="hi8-sc-G20"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="WHr-Gj-pN4" firstAttribute="firstBaseline" secondItem="Tvc-Ec-SwH" secondAttribute="firstBaseline" id="50s-eb-ahz"/>
                             <constraint firstItem="Tvc-Ec-SwH" firstAttribute="top" secondItem="KG2-sV-OWx" secondAttribute="bottom" constant="10" id="8Pi-NK-s04"/>
-                            <constraint firstItem="Sny-LZ-SAR" firstAttribute="top" secondItem="4nx-pc-sWd" secondAttribute="bottom" constant="76" id="9XD-F9-5Jt"/>
+                            <constraint firstItem="Sny-LZ-SAR" firstAttribute="top" secondItem="4nx-pc-sWd" secondAttribute="bottom" constant="15" id="9XD-F9-5Jt"/>
                             <constraint firstItem="NPl-eY-dYZ" firstAttribute="firstBaseline" secondItem="4nx-pc-sWd" secondAttribute="firstBaseline" id="FnL-jk-oxZ"/>
                             <constraint firstItem="ocV-xl-m34" firstAttribute="firstBaseline" secondItem="KG2-sV-OWx" secondAttribute="firstBaseline" id="Hct-sM-sow"/>
                             <constraint firstItem="RK7-ss-Kq3" firstAttribute="top" secondItem="Nyc-Jt-C0u" secondAttribute="top" constant="10" id="Hqw-lt-C1N"/>
                             <constraint firstItem="WHr-Gj-pN4" firstAttribute="leading" secondItem="Tvc-Ec-SwH" secondAttribute="trailing" constant="20" id="IEh-Qu-7LR"/>
                             <constraint firstItem="KG2-sV-OWx" firstAttribute="top" secondItem="Nyc-Jt-C0u" secondAttribute="top" constant="10" id="L7P-fo-G7s"/>
                             <constraint firstItem="30T-nG-6y2" firstAttribute="firstBaseline" secondItem="HUj-ft-Oim" secondAttribute="firstBaseline" id="Ob3-Is-try"/>
-                            <constraint firstItem="Sny-LZ-SAR" firstAttribute="leading" secondItem="Nyc-Jt-C0u" secondAttribute="leading" constant="60" id="RC2-ry-aOs"/>
+                            <constraint firstItem="Sny-LZ-SAR" firstAttribute="leading" secondItem="Nyc-Jt-C0u" secondAttribute="leading" constant="47" id="RC2-ry-aOs"/>
                             <constraint firstItem="Tvc-Ec-SwH" firstAttribute="leading" secondItem="Nyc-Jt-C0u" secondAttribute="leading" constant="10" id="SaJ-vU-vEy"/>
                             <constraint firstItem="HUj-ft-Oim" firstAttribute="top" secondItem="CYo-bi-3fY" secondAttribute="bottom" constant="15" id="Sdo-lJ-4j4"/>
+                            <constraint firstItem="AxA-sm-JJu" firstAttribute="top" secondItem="LOy-og-9gD" secondAttribute="bottom" constant="10" id="Srt-b4-gDj"/>
                             <constraint firstItem="5hb-81-kvQ" firstAttribute="firstBaseline" secondItem="CYo-bi-3fY" secondAttribute="firstBaseline" id="XqZ-r6-MOb"/>
                             <constraint firstItem="5hb-81-kvQ" firstAttribute="leading" secondItem="CYo-bi-3fY" secondAttribute="trailing" constant="20" id="Ynl-nA-g4w"/>
                             <constraint firstItem="HUj-ft-Oim" firstAttribute="leading" secondItem="Nyc-Jt-C0u" secondAttribute="leading" constant="12" id="Zuc-0v-VEk"/>
@@ -349,12 +381,15 @@
                             <constraint firstItem="4nx-pc-sWd" firstAttribute="top" secondItem="HUj-ft-Oim" secondAttribute="bottom" constant="17" id="bre-qj-1cc"/>
                             <constraint firstItem="CA8-pv-cd2" firstAttribute="leading" secondItem="Nyc-Jt-C0u" secondAttribute="leading" constant="10" id="cQ2-35-dYr"/>
                             <constraint firstItem="4nx-pc-sWd" firstAttribute="leading" secondItem="Nyc-Jt-C0u" secondAttribute="leading" constant="73" id="dCS-Zr-VFT"/>
+                            <constraint firstItem="LOy-og-9gD" firstAttribute="leading" secondItem="Nyc-Jt-C0u" secondAttribute="leading" constant="10" id="gWx-yG-AgM"/>
+                            <constraint firstItem="Nyc-Jt-C0u" firstAttribute="trailing" secondItem="LOy-og-9gD" secondAttribute="trailing" constant="10" id="gv9-cF-5yq"/>
                             <constraint firstItem="CA8-pv-cd2" firstAttribute="top" secondItem="Tvc-Ec-SwH" secondAttribute="bottom" constant="10" id="iAY-gE-rIp"/>
                             <constraint firstItem="30T-nG-6y2" firstAttribute="leading" secondItem="HUj-ft-Oim" secondAttribute="trailing" constant="20" id="kDa-0H-7xk"/>
                             <constraint firstItem="ocV-xl-m34" firstAttribute="leading" secondItem="KG2-sV-OWx" secondAttribute="trailing" constant="20" id="mc1-Ep-JZ2"/>
                             <constraint firstItem="AxA-sm-JJu" firstAttribute="centerX" secondItem="Nyc-Jt-C0u" secondAttribute="centerX" id="n3y-3V-sBO"/>
                             <constraint firstItem="mae-RS-LbM" firstAttribute="leading" secondItem="CA8-pv-cd2" secondAttribute="trailing" constant="20" id="nNV-kz-zyD"/>
                             <constraint firstItem="Nyc-Jt-C0u" firstAttribute="trailing" secondItem="RK7-ss-Kq3" secondAttribute="trailing" constant="10" id="oDd-Gf-yHg"/>
+                            <constraint firstItem="LOy-og-9gD" firstAttribute="top" secondItem="Sny-LZ-SAR" secondAttribute="bottom" constant="5" id="pW6-yh-gVm"/>
                             <constraint firstItem="NPl-eY-dYZ" firstAttribute="leading" secondItem="4nx-pc-sWd" secondAttribute="trailing" constant="36" id="uPm-ue-ZHk"/>
                             <constraint firstItem="CYo-bi-3fY" firstAttribute="leading" secondItem="Nyc-Jt-C0u" secondAttribute="leading" constant="12" id="vD8-lM-Pgl"/>
                             <constraint firstItem="KG2-sV-OWx" firstAttribute="leading" secondItem="Nyc-Jt-C0u" secondAttribute="leading" constant="10" id="vGe-mm-ID9"/>
@@ -367,6 +402,7 @@
                         <outlet property="kindLabel" destination="mae-RS-LbM" id="kjz-0L-pV2"/>
                         <outlet property="nameLabel" destination="ocV-xl-m34" id="wZm-DI-eyj"/>
                         <outlet property="publishTextField" destination="4nx-pc-sWd" id="miz-g4-u6t"/>
+                        <outlet property="tableView" destination="LOy-og-9gD" id="aaK-7N-jco"/>
                         <outlet property="timeLabel" destination="30T-nG-6y2" id="FxJ-9a-E7I"/>
                         <outlet property="topicLabel" destination="5hb-81-kvQ" id="xkR-C7-LiV"/>
                         <outlet property="valueLabel" destination="WHr-Gj-pN4" id="MdZ-OX-ZAZ"/>
