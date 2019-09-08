@@ -51,6 +51,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_plug" translatesAutoresizingMaskIntoConstraints="NO" id="mIV-GI-xjK">
+                                <rect key="frame" x="85" y="8" width="123" height="103"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.83841174840927124" green="0.33516985177993774" blue="0.27203738689422607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -67,4 +71,7 @@
             <point key="canvasLocation" x="192" y="-236.13193403298354"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="icon_plug" width="25" height="25"/>
+    </resources>
 </document>

@@ -1,0 +1,25 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "faPlusSquare.pdf"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "faPlusSquare-1.pdf",
+      "appearances" : [
+        {
+          "appearance" : "contrast",
+          "value" : "high"
+        }
+      ]
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

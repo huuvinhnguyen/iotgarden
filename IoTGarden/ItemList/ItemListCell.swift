@@ -76,7 +76,7 @@ struct SwitchCellUI: CellUI {
 
     var uuid: String
     var isOn: Bool {
-        return message == "1"
+            return message == "1"
     }
     var name: String
     var stateString: String = "Requesting"

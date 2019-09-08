@@ -25,12 +25,14 @@ enum ItemDetailSectionModel {
     
     case headerSection(items: [ItemDetailSectionItem])
     case topicSection(items: [ItemDetailSectionItem])
+    case footerSection(items: [ItemDetailSectionItem])
 }
 
 enum ItemDetailSectionItem {
     
     case headerItem(viewModel: ItemDetailHeaderViewModel)
     case topicItem(viewModel: ItemDetailTopicViewModel)
+    case footerItem(viewModel: ItemDetailFooterViewModel)
 }
 
 extension ItemDetailSectionModel: SectionModelType {
@@ -42,6 +44,8 @@ extension ItemDetailSectionModel: SectionModelType {
             return items
         case .topicSection(items: let items):
             return items
+        case .footerSection(items: let items):
+            return items
         }
     }
     
@@ -51,6 +55,8 @@ extension ItemDetailSectionModel: SectionModelType {
             self = .headerSection(items: items)
         case let .topicSection(items):
             self = .topicSection(items: items)
+        case let .footerSection(items):
+            self = .footerSection(items: items)
         }
     }
 }
