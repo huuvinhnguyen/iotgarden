@@ -15,9 +15,9 @@ class ItemDetailTopicCell: UITableViewCell {
     var viewModel: ItemDetailTopicViewModel? {
         
         didSet {
-            nameLabel.text = viewModel?.name ?? ""
-            valueLabel.text = viewModel?.value ?? ""
-            updatedLabel.text = viewModel?.updated ?? ""
+//            nameLabel.text = viewModel?.name ?? ""
+//            valueLabel.text = viewModel?.value ?? ""
+//            updatedLabel.text = viewModel?.updated ?? ""
         }
     }
 }
@@ -27,4 +27,5 @@ struct ItemDetailTopicViewModel {
     let name: String
     let value: String
     let updated: String
+    let type: String
 }

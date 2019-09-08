@@ -57,7 +57,7 @@ class ItemListViewController: UIViewController, StoreSubscriber {
             .disposed(by: disposeBag)
         
         
-        itemListCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
+//        itemListCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         
 
         itemListCollectionView.rx.modelSelected(SectionItem.self).subscribe(onNext:{ [weak self] sectionItem in
@@ -67,6 +67,17 @@ class ItemListViewController: UIViewController, StoreSubscriber {
             
             vc.identifier = sectionItem.identity
         }).disposed(by: disposeBag)
+        
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+        let screenWidth = UIScreen.main.bounds.width
+        
+        layout.itemSize = CGSize(width: screenWidth/3, height: screenWidth/3)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        itemListCollectionView.collectionViewLayout = layout
 
 
     }
@@ -99,13 +110,17 @@ class ItemListViewController: UIViewController, StoreSubscriber {
 
 }
 
-extension ItemListViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-   
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 130)
-    }
-}
+//extension ItemListViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+//
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+//
+//
+//
+//        return CGSize(width: collectionView.frame.width, height: 130)
+//    }
+//}
 
 enum ItemSectionModel {
     case itemSection(title: String, items: [SectionItem])

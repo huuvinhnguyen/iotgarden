@@ -21,12 +21,12 @@ struct ItemDetailViewModel {
 
 class ItemDetailViewController: UIViewController, StoreSubscriber {
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var valueLabel: UILabel!
-    @IBOutlet weak var kindLabel: UILabel!
-    @IBOutlet weak var topicLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var publishTextField: UITextField!
+//    @IBOutlet weak var nameLabel: UILabel!
+//    @IBOutlet weak var valueLabel: UILabel!
+//    @IBOutlet weak var kindLabel: UILabel!
+//    @IBOutlet weak var topicLabel: UILabel!
+//    @IBOutlet weak var timeLabel: UILabel!
+//    @IBOutlet weak var publishTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
 
     private var viewModel: ItemDetailViewModel?
@@ -45,9 +45,36 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                 return cell
                 
             case .topicItem(let viewModel):
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailTopicCell, for: indexPath) else { return UITableViewCell() }
                 
-                cell.viewModel = viewModel
+                if viewModel.type == "Switch" {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailSwitchCell, for: indexPath) else { return UITableViewCell() }
+                    
+//                    cell.viewModel = viewModel
+                    return cell
+                    
+                } else {
+                    
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailTopicCell, for: indexPath) else { return UITableViewCell() }
+                    
+                    cell.viewModel = viewModel
+                    return cell
+                    
+                }
+                
+                return UITableViewCell()
+                
+            case .footerItem(let viewModel):
+                if viewModel.kind == "trash" {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailTrashCell, for: indexPath) else { return UITableViewCell() }
+                    //                cell.viewModel = viewModel
+                    return cell
+                } else if viewModel.kind == "plus" {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailPlusCell, for: indexPath) else { return UITableViewCell() }
+                    //                cell.viewModel = viewModel
+                    return cell
+                }
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailFooterCell, for: indexPath) else { return UITableViewCell() }
+//                cell.viewModel = viewModel
                 return cell
             }
         })
@@ -55,20 +82,20 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
 
     func newState(state: ItemDetailState) {
         
-        nameLabel.text = state.name
-        valueLabel.text = state.value
-        kindLabel.text = state.kind
-        topicLabel.text = state.topic
+//        nameLabel.text = state.name
+//        valueLabel.text = state.value
+//        kindLabel.text = state.kind
+//        topicLabel.text = state.topic
 //        timeLabel.text = state.time
         serverUUID = state.serverUUID
         
-        var timer: Timer?
+//        var timer: Timer?
 
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
-            guard let weakSelf = self else { return }
-            weakSelf.timeLabel?.text = state.time.toDate()?.timeAgoDisplay()
-        }
+//        timer?.invalidate()
+//        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+//            guard let weakSelf = self else { return }
+//            weakSelf.timeLabel?.text = state.time.toDate()?.timeAgoDisplay()
+//        }
     }
     
     
@@ -102,10 +129,23 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         
         tableView.register(R.nib.itemDetailHeaderCell)
         tableView.register(R.nib.itemDetailTopicCell)
-        
+        tableView.register(R.nib.itemDetailFooterCell)
+        tableView.register(R.nib.itemDetailSwitchCell)
+        tableView.register(R.nib.itemDetailPlusCell)
+
+        tableView.register(R.nib.itemDetailTrashCell)
+
         let sections: [ItemDetailSectionModel] = [
             .headerSection(items: [.headerItem(viewModel: ItemDetailHeaderViewModel(name: "Header AAA"))]),
-            .topicSection(items: [.topicItem(viewModel: ItemDetailTopicViewModel(name: "Topic switch", value: "ON", updated: "25-08-2019"))])
+            .topicSection(items: [
+                .topicItem(viewModel: ItemDetailTopicViewModel(name: "Topic switch", value: "ON", updated: "25-08-2019", type: "Switch")),
+                .topicItem(viewModel: ItemDetailTopicViewModel(name: "Topic switch", value: "ON", updated: "25-08-2019", type: "Normal"))
+                ]),
+            
+            .footerSection(items: [
+                .footerItem(viewModel: ItemDetailFooterViewModel(kind: "plus")),
+                .footerItem(viewModel: ItemDetailFooterViewModel(kind: "trash"))
+                ])
         ]
 
         Observable.just(sections)
@@ -119,10 +159,10 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     }
     
     @IBAction func publishButtonTapped(_ sender: UIButton) {
-        let message = publishTextField.text ?? ""
+//        let message = publishTextField.text ?? ""
 //        viewModel?.sensorConnect?.publish(message: message)
-        let action = ItemDetailState.Action.publish(message: message, id: identifier)
-        appStore.dispatch(action)
+//        let action = ItemDetailState.Action.publish(message: message, id: identifier)
+//        appStore.dispatch(action)
     }
     
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
