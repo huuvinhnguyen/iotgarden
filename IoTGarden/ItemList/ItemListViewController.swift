@@ -62,16 +62,27 @@ class ItemListViewController: UIViewController, StoreSubscriber {
 
         itemListCollectionView.rx.modelSelected(SectionItem.self).subscribe(onNext:{ [weak self] sectionItem in
             guard let weakSelf = self else { return }
-            let vc = R.storyboard.itemDetail.itemDetailViewController()!
-            weakSelf.navigationController?.pushViewController(vc, animated: true)
             
-            vc.identifier = sectionItem.identity
+            if case  SectionItem.tailSectionItem() = sectionItem {
+                let addItemViewController = R.storyboard.addItemViewController.addItemViewController()!
+                self?.navigationController?.pushViewController(addItemViewController, animated: true)
+                
+            } else {
+                
+                let vc = R.storyboard.itemDetail.itemDetailViewController()!
+                weakSelf.navigationController?.pushViewController(vc, animated: true)
+                
+                vc.identifier = sectionItem.identity
+                
+            }
+            
+            
         }).disposed(by: disposeBag)
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
 
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+//        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+//        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
         let screenWidth = UIScreen.main.bounds.width
         
         layout.itemSize = CGSize(width: screenWidth/3, height: screenWidth/3)
@@ -94,6 +105,8 @@ class ItemListViewController: UIViewController, StoreSubscriber {
         itemListCollectionView.register(UINib(nibName: "MotionCell", bundle: nil), forCellWithReuseIdentifier: "MotionCell")
         
         itemListCollectionView.register(UINib(nibName: "ItemInputValueCell", bundle: nil), forCellWithReuseIdentifier: "ItemInputValueCell")
+        
+        itemListCollectionView.register(UINib(nibName: "ItemListPlusCell", bundle: nil), forCellWithReuseIdentifier: "ItemListPlusCell")
     }
     
     private func configureRefreshControl() {
@@ -147,6 +160,7 @@ enum SectionItem {
     case switchSectionItem(cellUI: SwitchCellUI)
     case inputSectionItem(cellUI: InputCellUI)
     case temperatureSectionItem(name: TemperatureDevice)
+    case tailSectionItem()
 }
 
 //extension SectionItem {
@@ -222,6 +236,9 @@ extension ItemListViewController {
                 cell.configure(cellUI: cellUI)
                 return cell
                 
+            case .tailSectionItem():
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemListPlusCell", for: indexPath) as! ItemListPlusCell
+                return cell
             default:
                 return UICollectionViewCell()
             }
