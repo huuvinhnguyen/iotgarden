@@ -74,6 +74,8 @@
 		18A33DDC2324FAD800DFDBB6 /* ItemDetailTrashCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A33DDB2324FAD800DFDBB6 /* ItemDetailTrashCell.swift */; };
 		18A33DDE2324FFCC00DFDBB6 /* ItemDetailPlusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A33DDD2324FFCB00DFDBB6 /* ItemDetailPlusCell.swift */; };
 		18A33DE02325007300DFDBB6 /* ItemDetailPlusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A33DDF2325007300DFDBB6 /* ItemDetailPlusCell.xib */; };
+		18A33DE22326AAE400DFDBB6 /* ItemListPlusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A33DE12326AAE400DFDBB6 /* ItemListPlusCell.xib */; };
+		18A33DE42326AAFA00DFDBB6 /* ItemListPlusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A33DE32326AAFA00DFDBB6 /* ItemListPlusCell.swift */; };
 		18A934CF2291727D009C6ADF /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A934CE2291727D009C6ADF /* R.generated.swift */; };
 		18B5506321C559FF004EC438 /* ItemAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5506221C559FF004EC438 /* ItemAction.swift */; };
 		18B5506521C55A14004EC438 /* ItemReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5506421C55A14004EC438 /* ItemReducer.swift */; };
@@ -200,6 +202,8 @@
 		18A33DDB2324FAD800DFDBB6 /* ItemDetailTrashCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailTrashCell.swift; sourceTree = "<group>"; };
 		18A33DDD2324FFCB00DFDBB6 /* ItemDetailPlusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailPlusCell.swift; sourceTree = "<group>"; };
 		18A33DDF2325007300DFDBB6 /* ItemDetailPlusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemDetailPlusCell.xib; sourceTree = "<group>"; };
+		18A33DE12326AAE400DFDBB6 /* ItemListPlusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListPlusCell.xib; sourceTree = "<group>"; };
+		18A33DE32326AAFA00DFDBB6 /* ItemListPlusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListPlusCell.swift; sourceTree = "<group>"; };
 		18A934CE2291727D009C6ADF /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		18B5506221C559FF004EC438 /* ItemAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemAction.swift; sourceTree = "<group>"; };
 		18B5506421C55A14004EC438 /* ItemReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemReducer.swift; sourceTree = "<group>"; };
@@ -334,6 +338,8 @@
 				1803376A21CBAC900098F944 /* HumidityCell.xib */,
 				18EDCF5D2189A4AC00B233B9 /* ItemListViewController.storyboard */,
 				18EDCF5B2189A46500B233B9 /* ItemListViewController.swift */,
+				18A33DE12326AAE400DFDBB6 /* ItemListPlusCell.xib */,
+				18A33DE32326AAFA00DFDBB6 /* ItemListPlusCell.swift */,
 			);
 			path = ItemList;
 			sourceTree = "<group>";
@@ -676,6 +682,7 @@
 				1803377821CBF6CC0098F944 /* SelectionCell.xib in Resources */,
 				5B04F010227AEEBD0096FBA1 /* PositiveNegativeBarChartViewController.xib in Resources */,
 				5B04F00A227AE8F80096FBA1 /* LineChart3ViewController.xib in Resources */,
+				18A33DE22326AAE400DFDBB6 /* ItemListPlusCell.xib in Resources */,
 				18A0431221894CD4005E04D4 /* Assets.xcassets in Resources */,
 				189C812F231139C800E4BC95 /* ItemDetailHeaderCell.xib in Resources */,
 				189C813323113AA100E4BC95 /* ItemDetailTopicCell.xib in Resources */,
@@ -852,6 +859,7 @@
 				181F50A422F1FEAE00EA89D1 /* AppState.swift in Sources */,
 				18E7A71E218EE4E800F7E689 /* ReactiveReSwiftBridge.swift in Sources */,
 				1846AB53218A9E7800F46053 /* ItemDetailViewController.swift in Sources */,
+				18A33DE42326AAFA00DFDBB6 /* ItemListPlusCell.swift in Sources */,
 				18A0430821894CD2005E04D4 /* AppDelegate.swift in Sources */,
 				1803376D21CBBA660098F944 /* CellCreator.swift in Sources */,
 				1864B73822B7F45B00B9DCE7 /* ItemDetailReducer.swift in Sources */,

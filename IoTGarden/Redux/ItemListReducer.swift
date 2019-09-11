@@ -80,7 +80,8 @@ extension ListState {
                 }
                 
                 state.sectionItems = items
-                
+                let tailItem = SectionItem.tailSectionItem()
+                state.sectionItems.append(tailItem)
                 
                 let sections: [ItemSectionModel] = [ .itemSection(title: "", items: state.sectionItems)]
                 state.sections = sections
