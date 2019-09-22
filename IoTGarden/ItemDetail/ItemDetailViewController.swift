@@ -21,12 +21,6 @@ struct ItemDetailViewModel {
 
 class ItemDetailViewController: UIViewController, StoreSubscriber {
     
-//    @IBOutlet weak var nameLabel: UILabel!
-//    @IBOutlet weak var valueLabel: UILabel!
-//    @IBOutlet weak var kindLabel: UILabel!
-//    @IBOutlet weak var topicLabel: UILabel!
-//    @IBOutlet weak var timeLabel: UILabel!
-//    @IBOutlet weak var publishTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
 
     private var viewModel: ItemDetailViewModel?

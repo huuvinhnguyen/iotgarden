@@ -61,6 +61,18 @@
 		1864B73B22BA8C1400B9DCE7 /* ItemDetailAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1864B73A22BA8C1400B9DCE7 /* ItemDetailAction.swift */; };
 		1864B73D22BE363100B9DCE7 /* ItemDetailStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1864B73C22BE363000B9DCE7 /* ItemDetailStore.swift */; };
 		1864B74122C7D1FD00B9DCE7 /* MQTTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1864B74022C7D1FD00B9DCE7 /* MQTTService.swift */; };
+		186AB610233287430017F935 /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186AB60F233287430017F935 /* ConnectionsViewController.swift */; };
+		186AB6122332875F0017F935 /* Connection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 186AB6112332875F0017F935 /* Connection.storyboard */; };
+		186AB614233289470017F935 /* ConnectionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186AB613233289470017F935 /* ConnectionSection.swift */; };
+		186AB616233289A20017F935 /* ConnectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186AB615233289A20017F935 /* ConnectionViewModel.swift */; };
+		186AB61823328A360017F935 /* ConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186AB61723328A360017F935 /* ConnectionCell.swift */; };
+		186AB61A23328A7D0017F935 /* ConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186AB61923328A7D0017F935 /* ConnectionCell.xib */; };
+		186AB61D23328EE80017F935 /* AddItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 186AB61C23328EE80017F935 /* AddItem.storyboard */; };
+		186AB61F23328F120017F935 /* AddItemTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186AB61E23328F120017F935 /* AddItemTopicViewController.swift */; };
+		186AB62123328FB30017F935 /* AddItemTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186AB62023328FB30017F935 /* AddItemTopicCell.swift */; };
+		186AB62323328FFF0017F935 /* AddItemTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186AB62223328FFF0017F935 /* AddItemTopicCell.xib */; };
+		186AB625233291080017F935 /* AddItemTopicSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186AB624233291080017F935 /* AddItemTopicSection.swift */; };
+		186AB6272332913D0017F935 /* AddItemTopicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186AB6262332913D0017F935 /* AddItemTopicViewModel.swift */; };
 		189C812D2311397D00E4BC95 /* ItemDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189C812C2311397D00E4BC95 /* ItemDetailHeaderCell.swift */; };
 		189C812F231139C800E4BC95 /* ItemDetailHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189C812E231139C800E4BC95 /* ItemDetailHeaderCell.xib */; };
 		189C813123113A8A00E4BC95 /* ItemDetailTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189C813023113A8A00E4BC95 /* ItemDetailTopicCell.swift */; };
@@ -183,6 +195,18 @@
 		1864B73A22BA8C1400B9DCE7 /* ItemDetailAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailAction.swift; sourceTree = "<group>"; };
 		1864B73C22BE363000B9DCE7 /* ItemDetailStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailStore.swift; sourceTree = "<group>"; };
 		1864B74022C7D1FD00B9DCE7 /* MQTTService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTService.swift; sourceTree = "<group>"; };
+		186AB60F233287430017F935 /* ConnectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsViewController.swift; sourceTree = "<group>"; };
+		186AB6112332875F0017F935 /* Connection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Connection.storyboard; sourceTree = "<group>"; };
+		186AB613233289470017F935 /* ConnectionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionSection.swift; sourceTree = "<group>"; };
+		186AB615233289A20017F935 /* ConnectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionViewModel.swift; sourceTree = "<group>"; };
+		186AB61723328A360017F935 /* ConnectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionCell.swift; sourceTree = "<group>"; };
+		186AB61923328A7D0017F935 /* ConnectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionCell.xib; sourceTree = "<group>"; };
+		186AB61C23328EE80017F935 /* AddItem.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddItem.storyboard; sourceTree = "<group>"; };
+		186AB61E23328F120017F935 /* AddItemTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTopicViewController.swift; sourceTree = "<group>"; };
+		186AB62023328FB30017F935 /* AddItemTopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTopicCell.swift; sourceTree = "<group>"; };
+		186AB62223328FFF0017F935 /* AddItemTopicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddItemTopicCell.xib; sourceTree = "<group>"; };
+		186AB624233291080017F935 /* AddItemTopicSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTopicSection.swift; sourceTree = "<group>"; };
+		186AB6262332913D0017F935 /* AddItemTopicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTopicViewModel.swift; sourceTree = "<group>"; };
 		189C812C2311397D00E4BC95 /* ItemDetailHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailHeaderCell.swift; sourceTree = "<group>"; };
 		189C812E231139C800E4BC95 /* ItemDetailHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemDetailHeaderCell.xib; sourceTree = "<group>"; };
 		189C813023113A8A00E4BC95 /* ItemDetailTopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailTopicCell.swift; sourceTree = "<group>"; };
@@ -378,6 +402,12 @@
 				1803377521CBF5480098F944 /* SelectionViewController.swift */,
 				1803377721CBF6CC0098F944 /* SelectionCell.xib */,
 				1803377921CBF7310098F944 /* SelectionCell.swift */,
+				186AB61C23328EE80017F935 /* AddItem.storyboard */,
+				186AB61E23328F120017F935 /* AddItemTopicViewController.swift */,
+				186AB62023328FB30017F935 /* AddItemTopicCell.swift */,
+				186AB6262332913D0017F935 /* AddItemTopicViewModel.swift */,
+				186AB624233291080017F935 /* AddItemTopicSection.swift */,
+				186AB62223328FFF0017F935 /* AddItemTopicCell.xib */,
 			);
 			path = AddItem;
 			sourceTree = "<group>";
@@ -429,6 +459,19 @@
 				1864B74022C7D1FD00B9DCE7 /* MQTTService.swift */,
 			);
 			path = MQTT;
+			sourceTree = "<group>";
+		};
+		186AB61B23328D150017F935 /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				186AB6112332875F0017F935 /* Connection.storyboard */,
+				186AB613233289470017F935 /* ConnectionSection.swift */,
+				186AB61723328A360017F935 /* ConnectionCell.swift */,
+				186AB61923328A7D0017F935 /* ConnectionCell.xib */,
+				186AB615233289A20017F935 /* ConnectionViewModel.swift */,
+				186AB60F233287430017F935 /* ConnectionsViewController.swift */,
+			);
+			path = Connection;
 			sourceTree = "<group>";
 		};
 		189C81342311405D00E4BC95 /* Cells */ = {
@@ -491,6 +534,7 @@
 				1803375721CB3B910098F944 /* ViewModel */,
 				18D9A05021C4109F008EFA72 /* ItemTemp.swift */,
 				18EDCF5321899F3100B233B9 /* GroupItem.swift */,
+				186AB61B23328D150017F935 /* Connection */,
 				1803377021CBF4400098F944 /* ItemList */,
 				1803377121CBF4BB0098F944 /* ItemDetail */,
 				1803377221CBF4E20098F944 /* AddItem */,
@@ -676,15 +720,18 @@
 				183A91FF22EAFFAB00EBDC4A /* ItemDetail.storyboard in Resources */,
 				18A33DE02325007300DFDBB6 /* ItemDetailPlusCell.xib in Resources */,
 				1846AB59218AA3E100F46053 /* AddItemViewController.storyboard in Resources */,
+				186AB61A23328A7D0017F935 /* ConnectionCell.xib in Resources */,
 				18592A0E23216C1500DFB310 /* ItemDetailFooterCell.xib in Resources */,
 				1862B3DE21E32A7200CFD7F1 /* icon_humi.png in Resources */,
 				1862B3DC21E305D200CFD7F1 /* icon_temp.png in Resources */,
 				1803377821CBF6CC0098F944 /* SelectionCell.xib in Resources */,
 				5B04F010227AEEBD0096FBA1 /* PositiveNegativeBarChartViewController.xib in Resources */,
 				5B04F00A227AE8F80096FBA1 /* LineChart3ViewController.xib in Resources */,
+				186AB62323328FFF0017F935 /* AddItemTopicCell.xib in Resources */,
 				18A33DE22326AAE400DFDBB6 /* ItemListPlusCell.xib in Resources */,
 				18A0431221894CD4005E04D4 /* Assets.xcassets in Resources */,
 				189C812F231139C800E4BC95 /* ItemDetailHeaderCell.xib in Resources */,
+				186AB61D23328EE80017F935 /* AddItem.storyboard in Resources */,
 				189C813323113AA100E4BC95 /* ItemDetailTopicCell.xib in Resources */,
 				1803376721CBA9A20098F944 /* TemperatureCell.xib in Resources */,
 				1803376B21CBAC900098F944 /* HumidityCell.xib in Resources */,
@@ -693,6 +740,7 @@
 				18592A082321699100DFB310 /* ItemDetailSwitchCell.xib in Resources */,
 				18577AAB228816DC007FB9E4 /* BarChartViewController.xib in Resources */,
 				18A33DDA2324FAAE00DFDBB6 /* ItemDetailTrashCell.xib in Resources */,
+				186AB6122332875F0017F935 /* Connection.storyboard in Resources */,
 				1836B9D5227D916200CF6F66 /* CandleStickChartViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -827,11 +875,14 @@
 				18A33DDE2324FFCC00DFDBB6 /* ItemDetailPlusCell.swift in Sources */,
 				1803375421CA2A6B0098F944 /* DataInteractor.swift in Sources */,
 				18C832BE218ADAD500ED37A1 /* Storage.swift in Sources */,
+				186AB610233287430017F935 /* ConnectionsViewController.swift in Sources */,
 				18243663227D8DC80009F7EA /* CandleStickChartViewController.swift in Sources */,
 				1803377621CBF5480098F944 /* SelectionViewController.swift in Sources */,
 				1864B73B22BA8C1400B9DCE7 /* ItemDetailAction.swift in Sources */,
+				186AB625233291080017F935 /* AddItemTopicSection.swift in Sources */,
 				189C812D2311397D00E4BC95 /* ItemDetailHeaderCell.swift in Sources */,
 				1803375B21CB3C070098F944 /* SwitchCellViewModel.swift in Sources */,
+				186AB61F23328F120017F935 /* AddItemTopicViewController.swift in Sources */,
 				189C813123113A8A00E4BC95 /* ItemDetailTopicCell.swift in Sources */,
 				18339BE321C9496100CC2269 /* ItemList.xcdatamodeld in Sources */,
 				1864B74122C7D1FD00B9DCE7 /* MQTTService.swift in Sources */,
@@ -841,6 +892,7 @@
 				1803375D21CB3C350098F944 /* TemperatureDevice.swift in Sources */,
 				18CCFFFF21E84A0B0075BA6B /* Date+Extension.swift in Sources */,
 				18E7A72A218EFF9900F7E689 /* ItemListStore.swift in Sources */,
+				186AB62123328FB30017F935 /* AddItemTopicCell.swift in Sources */,
 				183A920122EB53FC00EBDC4A /* ItemDetailTopicViewController.swift in Sources */,
 				18EDCF5221899EC500B233B9 /* Configuration.swift in Sources */,
 				18339BE021C9493E00CC2269 /* IoTGarden.xcdatamodeld in Sources */,
@@ -857,12 +909,14 @@
 				1846AB57218AA3B800F46053 /* AddItemViewController.swift in Sources */,
 				18592A0C23216C0000DFB310 /* ItemDetailFooterCell.swift in Sources */,
 				181F50A422F1FEAE00EA89D1 /* AppState.swift in Sources */,
+				186AB61823328A360017F935 /* ConnectionCell.swift in Sources */,
 				18E7A71E218EE4E800F7E689 /* ReactiveReSwiftBridge.swift in Sources */,
 				1846AB53218A9E7800F46053 /* ItemDetailViewController.swift in Sources */,
 				18A33DE42326AAFA00DFDBB6 /* ItemListPlusCell.swift in Sources */,
 				18A0430821894CD2005E04D4 /* AppDelegate.swift in Sources */,
 				1803376D21CBBA660098F944 /* CellCreator.swift in Sources */,
 				1864B73822B7F45B00B9DCE7 /* ItemDetailReducer.swift in Sources */,
+				186AB614233289470017F935 /* ConnectionSection.swift in Sources */,
 				185FF15622ABB5B3003C0DDF /* InputDevice.swift in Sources */,
 				5B04F00E227AEEAF0096FBA1 /* PositiveNegativeBarChartViewController.swift in Sources */,
 				18577AA9228816C6007FB9E4 /* BarChartViewController.swift in Sources */,
@@ -881,10 +935,12 @@
 				1852DBA421931E16002E1946 /* AddItemSavingViewController.swift in Sources */,
 				183A920322EC023D00EBDC4A /* SensorConnect2.swift in Sources */,
 				185FF15222ABB0B7003C0DDF /* ItemInputValueCell.swift in Sources */,
+				186AB6272332913D0017F935 /* AddItemTopicViewModel.swift in Sources */,
 				183A91FD22EAFEA600EBDC4A /* ItemDetailServerViewController.swift in Sources */,
 				181BAC72220DE57100A0D458 /* SensorRequest.swift in Sources */,
 				1803374C21C9EDC90098F944 /* SensorMapping.swift in Sources */,
 				1826C625218F51B700A5CE38 /* ItemListService.swift in Sources */,
+				186AB616233289A20017F935 /* ConnectionViewModel.swift in Sources */,
 				18E7A728218EFEDD00F7E689 /* ItemListAction.swift in Sources */,
 				1803375621CA9B130098F944 /* Sensor.swift in Sources */,
 				1803377A21CBF7310098F944 /* SelectionCell.swift in Sources */,
