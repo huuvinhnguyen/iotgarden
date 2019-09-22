@@ -141,12 +141,16 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 17 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 21 nibs.
   struct nib {
+    /// Nib `AddItemTopicCell`.
+    static let addItemTopicCell = _R.nib._AddItemTopicCell()
     /// Nib `BarChartViewController`.
     static let barChartViewController = _R.nib._BarChartViewController()
     /// Nib `CandleStickChartViewController`.
     static let candleStickChartViewController = _R.nib._CandleStickChartViewController()
+    /// Nib `ConnectionCell`.
+    static let connectionCell = _R.nib._ConnectionCell()
     /// Nib `HumidityCell`.
     static let humidityCell = _R.nib._HumidityCell()
     /// Nib `ItemDetailFooterCell`.
@@ -167,6 +171,10 @@ struct R: Rswift.Validatable {
     static let itemListCell = _R.nib._ItemListCell()
     /// Nib `ItemListPlusCell`.
     static let itemListPlusCell = _R.nib._ItemListPlusCell()
+    /// Nib `ItemTopicCell`.
+    static let itemTopicCell = _R.nib._ItemTopicCell()
+    /// Nib `ItemTopicServerCell`.
+    static let itemTopicServerCell = _R.nib._ItemTopicServerCell()
     /// Nib `LineChart3ViewController`.
     static let lineChart3ViewController = _R.nib._LineChart3ViewController()
     /// Nib `MotionCell`.
@@ -178,6 +186,12 @@ struct R: Rswift.Validatable {
     /// Nib `TemperatureCell`.
     static let temperatureCell = _R.nib._TemperatureCell()
     
+    /// `UINib(name: "AddItemTopicCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.addItemTopicCell) instead")
+    static func addItemTopicCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.addItemTopicCell)
+    }
+    
     /// `UINib(name: "BarChartViewController", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.barChartViewController) instead")
     static func barChartViewController(_: Void = ()) -> UIKit.UINib {
@@ -188,6 +202,12 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.candleStickChartViewController) instead")
     static func candleStickChartViewController(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.candleStickChartViewController)
+    }
+    
+    /// `UINib(name: "ConnectionCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.connectionCell) instead")
+    static func connectionCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.connectionCell)
     }
     
     /// `UINib(name: "HumidityCell", in: bundle)`
@@ -250,6 +270,18 @@ struct R: Rswift.Validatable {
       return UIKit.UINib(resource: R.nib.itemListPlusCell)
     }
     
+    /// `UINib(name: "ItemTopicCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.itemTopicCell) instead")
+    static func itemTopicCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.itemTopicCell)
+    }
+    
+    /// `UINib(name: "ItemTopicServerCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.itemTopicServerCell) instead")
+    static func itemTopicServerCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.itemTopicServerCell)
+    }
+    
     /// `UINib(name: "LineChart3ViewController", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.lineChart3ViewController) instead")
     static func lineChart3ViewController(_: Void = ()) -> UIKit.UINib {
@@ -280,12 +312,20 @@ struct R: Rswift.Validatable {
       return UIKit.UINib(resource: R.nib.temperatureCell)
     }
     
+    static func addItemTopicCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> AddItemTopicCell? {
+      return R.nib.addItemTopicCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? AddItemTopicCell
+    }
+    
     static func barChartViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.barChartViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
     
     static func candleStickChartViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.candleStickChartViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+    
+    static func connectionCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ConnectionCell? {
+      return R.nib.connectionCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ConnectionCell
     }
     
     static func humidityCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> HumidityCell? {
@@ -328,6 +368,14 @@ struct R: Rswift.Validatable {
       return R.nib.itemListPlusCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemListPlusCell
     }
     
+    static func itemTopicCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemTopicCell? {
+      return R.nib.itemTopicCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemTopicCell
+    }
+    
+    static func itemTopicServerCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemTopicServerCell? {
+      return R.nib.itemTopicServerCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemTopicServerCell
+    }
+    
     static func lineChart3ViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.lineChart3ViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
@@ -351,8 +399,12 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 12 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 16 reuse identifiers.
   struct reuseIdentifier {
+    /// Reuse identifier `AddItemTopicCell`.
+    static let addItemTopicCell: Rswift.ReuseIdentifier<AddItemTopicCell> = Rswift.ReuseIdentifier(identifier: "AddItemTopicCell")
+    /// Reuse identifier `ConnectionCell`.
+    static let connectionCell: Rswift.ReuseIdentifier<ConnectionCell> = Rswift.ReuseIdentifier(identifier: "ConnectionCell")
     /// Reuse identifier `HumidityCell`.
     static let humidityCell: Rswift.ReuseIdentifier<HumidityCell> = Rswift.ReuseIdentifier(identifier: "HumidityCell")
     /// Reuse identifier `ItemDetailFooterCell`.
@@ -371,6 +423,10 @@ struct R: Rswift.Validatable {
     static let itemInputValueCell: Rswift.ReuseIdentifier<ItemInputValueCell> = Rswift.ReuseIdentifier(identifier: "ItemInputValueCell")
     /// Reuse identifier `ItemListPlusCell`.
     static let itemListPlusCell: Rswift.ReuseIdentifier<ItemListPlusCell> = Rswift.ReuseIdentifier(identifier: "ItemListPlusCell")
+    /// Reuse identifier `ItemTopicCell`.
+    static let itemTopicCell: Rswift.ReuseIdentifier<ItemTopicCell> = Rswift.ReuseIdentifier(identifier: "ItemTopicCell")
+    /// Reuse identifier `ItemTopicServerCell`.
+    static let itemTopicServerCell: Rswift.ReuseIdentifier<ItemTopicServerCell> = Rswift.ReuseIdentifier(identifier: "ItemTopicServerCell")
     /// Reuse identifier `MotionCell`.
     static let motionCell: Rswift.ReuseIdentifier<MotionCell> = Rswift.ReuseIdentifier(identifier: "MotionCell")
     /// Reuse identifier `SelectionCell`.
@@ -381,22 +437,38 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.storyboard` struct is generated, and contains static references to 5 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 8 storyboards.
   struct storyboard {
     /// Storyboard `AddItemViewController`.
     static let addItemViewController = _R.storyboard.addItemViewController()
+    /// Storyboard `AddItem`.
+    static let addItem = _R.storyboard.addItem()
+    /// Storyboard `Connection`.
+    static let connection = _R.storyboard.connection()
     /// Storyboard `ItemDetailTempViewController`.
     static let itemDetailTempViewController = _R.storyboard.itemDetailTempViewController()
     /// Storyboard `ItemDetail`.
     static let itemDetail = _R.storyboard.itemDetail()
     /// Storyboard `ItemListViewController`.
     static let itemListViewController = _R.storyboard.itemListViewController()
+    /// Storyboard `ItemTopic`.
+    static let itemTopic = _R.storyboard.itemTopic()
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
+    
+    /// `UIStoryboard(name: "AddItem", bundle: ...)`
+    static func addItem(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.addItem)
+    }
     
     /// `UIStoryboard(name: "AddItemViewController", bundle: ...)`
     static func addItemViewController(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.addItemViewController)
+    }
+    
+    /// `UIStoryboard(name: "Connection", bundle: ...)`
+    static func connection(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.connection)
     }
     
     /// `UIStoryboard(name: "ItemDetail", bundle: ...)`
@@ -412,6 +484,11 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "ItemListViewController", bundle: ...)`
     static func itemListViewController(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.itemListViewController)
+    }
+    
+    /// `UIStoryboard(name: "ItemTopic", bundle: ...)`
+    static func itemTopic(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.itemTopic)
     }
     
     /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
@@ -452,7 +529,23 @@ struct _R: Rswift.Validatable {
       try _ItemInputValueCell.validate()
       try _ItemListCell.validate()
       try _ItemListPlusCell.validate()
+      try _ItemTopicCell.validate()
+      try _ItemTopicServerCell.validate()
       try _TemperatureCell.validate()
+    }
+    
+    struct _AddItemTopicCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = AddItemTopicCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "AddItemTopicCell"
+      let name = "AddItemTopicCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> AddItemTopicCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? AddItemTopicCell
+      }
+      
+      fileprivate init() {}
     }
     
     struct _BarChartViewController: Rswift.NibResourceType {
@@ -472,6 +565,20 @@ struct _R: Rswift.Validatable {
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _ConnectionCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = ConnectionCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "ConnectionCell"
+      let name = "ConnectionCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ConnectionCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ConnectionCell
       }
       
       fileprivate init() {}
@@ -675,6 +782,46 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
+    struct _ItemTopicCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = ItemTopicCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "ItemTopicCell"
+      let name = "ItemTopicCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemTopicCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemTopicCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_edit", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_edit' is used in nib 'ItemTopicCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _ItemTopicServerCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = ItemTopicServerCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "ItemTopicServerCell"
+      let name = "ItemTopicServerCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemTopicServerCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemTopicServerCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_edit", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_edit' is used in nib 'ItemTopicServerCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
+      fileprivate init() {}
+    }
+    
     struct _LineChart3ViewController: Rswift.NibResourceType {
       let bundle = R.hostingBundle
       let name = "LineChart3ViewController"
@@ -750,11 +897,26 @@ struct _R: Rswift.Validatable {
   
   struct storyboard: Rswift.Validatable {
     static func validate() throws {
+      try addItem.validate()
       try addItemViewController.validate()
+      try connection.validate()
       try itemDetail.validate()
       try itemDetailTempViewController.validate()
       try itemListViewController.validate()
+      try itemTopic.validate()
       try launchScreen.validate()
+    }
+    
+    struct addItem: Rswift.StoryboardResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "AddItem"
+      
+      static func validate() throws {
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
+      fileprivate init() {}
     }
     
     struct addItemViewController: Rswift.StoryboardResourceType, Rswift.Validatable {
@@ -782,6 +944,24 @@ struct _R: Rswift.Validatable {
         if _R.storyboard.addItemViewController().addItemSavingViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'addItemSavingViewController' could not be loaded from storyboard 'AddItemViewController' as 'IoTGarden.AddItemSavingViewController'.") }
         if _R.storyboard.addItemViewController().addItemViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'addItemViewController' could not be loaded from storyboard 'AddItemViewController' as 'AddItemViewController'.") }
         if _R.storyboard.addItemViewController().selectionViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'selectionViewController' could not be loaded from storyboard 'AddItemViewController' as 'SelectionViewController'.") }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct connection: Rswift.StoryboardResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "Connection"
+      let serverViewController = StoryboardViewControllerResource<ServerViewController>(identifier: "ServerViewController")
+      
+      func serverViewController(_: Void = ()) -> ServerViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: serverViewController)
+      }
+      
+      static func validate() throws {
+        if #available(iOS 11.0, *) {
+        }
+        if _R.storyboard.connection().serverViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'serverViewController' could not be loaded from storyboard 'Connection' as 'ServerViewController'.") }
       }
       
       fileprivate init() {}
@@ -850,6 +1030,26 @@ struct _R: Rswift.Validatable {
         if #available(iOS 11.0, *) {
         }
         if _R.storyboard.itemListViewController().itemListViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'itemListViewController' could not be loaded from storyboard 'ItemListViewController' as 'ItemListViewController'.") }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct itemTopic: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = ItemTopicViewController
+      
+      let bundle = R.hostingBundle
+      let itemTopic = StoryboardViewControllerResource<ItemTopicViewController>(identifier: "ItemTopic")
+      let name = "ItemTopic"
+      
+      func itemTopic(_: Void = ()) -> ItemTopicViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: itemTopic)
+      }
+      
+      static func validate() throws {
+        if #available(iOS 11.0, *) {
+        }
+        if _R.storyboard.itemTopic().itemTopic() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'itemTopic' could not be loaded from storyboard 'ItemTopic' as 'ItemTopicViewController'.") }
       }
       
       fileprivate init() {}

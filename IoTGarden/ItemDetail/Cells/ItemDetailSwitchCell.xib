@@ -50,24 +50,28 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_info" translatesAutoresizingMaskIntoConstraints="NO" id="g1k-jH-Pje">
-                        <rect key="frame" x="311" y="208.5" width="56" height="48"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fA6-Pb-BRy">
+                        <rect key="frame" x="313" y="210" width="46" height="46"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="56" id="2Yb-AX-M7f"/>
-                            <constraint firstAttribute="height" constant="48" id="lf8-zd-ksX"/>
+                            <constraint firstAttribute="width" constant="46" id="Jlu-tH-tqa"/>
+                            <constraint firstAttribute="width" secondItem="fA6-Pb-BRy" secondAttribute="height" multiplier="1:1" id="nkk-hL-RWT"/>
                         </constraints>
-                    </imageView>
+                        <state key="normal" image="icon_info"/>
+                        <connections>
+                            <action selector="infoButtonTapped:" destination="29b-aa-5tO" eventType="touchUpInside" id="1YD-1P-G5u"/>
+                        </connections>
+                    </button>
                 </subviews>
-                <color key="backgroundColor" red="0.2486996055" green="0.44706130030000002" blue="0.58785885569999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" red="0.24705882352941178" green="0.44705882352941173" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="R6O-Um-KRt" firstAttribute="leading" secondItem="Dln-Ja-qCP" secondAttribute="leading" constant="24" id="3R7-2W-ahH"/>
-                    <constraint firstAttribute="trailing" secondItem="g1k-jH-Pje" secondAttribute="trailing" constant="8" id="4Tp-fa-JFk"/>
+                    <constraint firstAttribute="bottom" secondItem="fA6-Pb-BRy" secondAttribute="bottom" constant="10.5" id="4s6-bN-h21"/>
                     <constraint firstAttribute="bottom" secondItem="R6O-Um-KRt" secondAttribute="bottom" constant="67.5" id="ILB-7j-XJ2"/>
                     <constraint firstItem="jDg-93-CDp" firstAttribute="leading" secondItem="Dln-Ja-qCP" secondAttribute="leading" constant="16" id="LiY-ZJ-cGE"/>
+                    <constraint firstAttribute="trailing" secondItem="fA6-Pb-BRy" secondAttribute="trailing" constant="16" id="O3C-wV-PHl"/>
                     <constraint firstItem="a9Q-EF-Nw0" firstAttribute="leading" secondItem="R6O-Um-KRt" secondAttribute="trailing" constant="8" id="T4P-wf-SJm"/>
                     <constraint firstItem="7lt-y5-o2a" firstAttribute="top" secondItem="Dln-Ja-qCP" secondAttribute="top" constant="63" id="TaY-ga-Tfz"/>
                     <constraint firstItem="jDg-93-CDp" firstAttribute="top" secondItem="Dln-Ja-qCP" secondAttribute="top" constant="11" id="V0g-Kb-7TV"/>
-                    <constraint firstAttribute="bottom" secondItem="g1k-jH-Pje" secondAttribute="bottom" constant="10" id="WqW-nc-bW0"/>
                     <constraint firstItem="R6O-Um-KRt" firstAttribute="top" secondItem="7lt-y5-o2a" secondAttribute="bottom" constant="36" id="fep-VQ-fJU"/>
                     <constraint firstItem="a9Q-EF-Nw0" firstAttribute="top" secondItem="7lt-y5-o2a" secondAttribute="bottom" constant="33" id="qTf-jp-rUd"/>
                     <constraint firstItem="7lt-y5-o2a" firstAttribute="centerX" secondItem="Dln-Ja-qCP" secondAttribute="centerX" id="sVm-5Z-aWs"/>
