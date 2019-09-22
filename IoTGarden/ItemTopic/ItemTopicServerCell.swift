@@ -9,6 +9,12 @@ import UIKit
 
 class ItemTopicServerCell: UITableViewCell {
     
+    var didTapEditAction: (() -> Void)?
+    
+    @IBAction private func editButtonTapped(_ sender: UIButton) {
+        didTapEditAction?()
+    }
+    
 }
 
 struct ItemTopicServerViewModel {

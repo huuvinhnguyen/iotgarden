@@ -368,6 +368,14 @@ struct R: Rswift.Validatable {
       return R.nib.itemListPlusCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemListPlusCell
     }
     
+    static func itemTopicCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemTopicCell? {
+      return R.nib.itemTopicCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemTopicCell
+    }
+    
+    static func itemTopicServerCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemTopicServerCell? {
+      return R.nib.itemTopicServerCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemTopicServerCell
+    }
+    
     static func lineChart3ViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.lineChart3ViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
@@ -391,7 +399,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 14 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 16 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `AddItemTopicCell`.
     static let addItemTopicCell: Rswift.ReuseIdentifier<AddItemTopicCell> = Rswift.ReuseIdentifier(identifier: "AddItemTopicCell")
@@ -415,6 +423,10 @@ struct R: Rswift.Validatable {
     static let itemInputValueCell: Rswift.ReuseIdentifier<ItemInputValueCell> = Rswift.ReuseIdentifier(identifier: "ItemInputValueCell")
     /// Reuse identifier `ItemListPlusCell`.
     static let itemListPlusCell: Rswift.ReuseIdentifier<ItemListPlusCell> = Rswift.ReuseIdentifier(identifier: "ItemListPlusCell")
+    /// Reuse identifier `ItemTopicCell`.
+    static let itemTopicCell: Rswift.ReuseIdentifier<ItemTopicCell> = Rswift.ReuseIdentifier(identifier: "ItemTopicCell")
+    /// Reuse identifier `ItemTopicServerCell`.
+    static let itemTopicServerCell: Rswift.ReuseIdentifier<ItemTopicServerCell> = Rswift.ReuseIdentifier(identifier: "ItemTopicServerCell")
     /// Reuse identifier `MotionCell`.
     static let motionCell: Rswift.ReuseIdentifier<MotionCell> = Rswift.ReuseIdentifier(identifier: "MotionCell")
     /// Reuse identifier `SelectionCell`.
@@ -517,6 +529,8 @@ struct _R: Rswift.Validatable {
       try _ItemInputValueCell.validate()
       try _ItemListCell.validate()
       try _ItemListPlusCell.validate()
+      try _ItemTopicCell.validate()
+      try _ItemTopicServerCell.validate()
       try _TemperatureCell.validate()
     }
     
@@ -768,16 +782,42 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    struct _ItemTopicCell: Rswift.NibResourceType {
+    struct _ItemTopicCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = ItemTopicCell
+      
       let bundle = R.hostingBundle
+      let identifier = "ItemTopicCell"
       let name = "ItemTopicCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemTopicCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemTopicCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_edit", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_edit' is used in nib 'ItemTopicCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
       
       fileprivate init() {}
     }
     
-    struct _ItemTopicServerCell: Rswift.NibResourceType {
+    struct _ItemTopicServerCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = ItemTopicServerCell
+      
       let bundle = R.hostingBundle
+      let identifier = "ItemTopicServerCell"
       let name = "ItemTopicServerCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemTopicServerCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemTopicServerCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_edit", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_edit' is used in nib 'ItemTopicServerCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
       
       fileprivate init() {}
     }
@@ -912,10 +952,16 @@ struct _R: Rswift.Validatable {
     struct connection: Rswift.StoryboardResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "Connection"
+      let serverViewController = StoryboardViewControllerResource<ServerViewController>(identifier: "ServerViewController")
+      
+      func serverViewController(_: Void = ()) -> ServerViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: serverViewController)
+      }
       
       static func validate() throws {
         if #available(iOS 11.0, *) {
         }
+        if _R.storyboard.connection().serverViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'serverViewController' could not be loaded from storyboard 'Connection' as 'ServerViewController'.") }
       }
       
       fileprivate init() {}
@@ -989,13 +1035,21 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    struct itemTopic: Rswift.StoryboardResourceType, Rswift.Validatable {
+    struct itemTopic: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = ItemTopicViewController
+      
       let bundle = R.hostingBundle
+      let itemTopic = StoryboardViewControllerResource<ItemTopicViewController>(identifier: "ItemTopic")
       let name = "ItemTopic"
+      
+      func itemTopic(_: Void = ()) -> ItemTopicViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: itemTopic)
+      }
       
       static func validate() throws {
         if #available(iOS 11.0, *) {
         }
+        if _R.storyboard.itemTopic().itemTopic() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'itemTopic' could not be loaded from storyboard 'ItemTopic' as 'ItemTopicViewController'.") }
       }
       
       fileprivate init() {}

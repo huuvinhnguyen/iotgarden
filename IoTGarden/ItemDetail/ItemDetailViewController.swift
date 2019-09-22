@@ -29,7 +29,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
 
     private var dataSource: RxTableViewSectionedReloadDataSource<ItemDetailSectionModel> {
         
-        return RxTableViewSectionedReloadDataSource<ItemDetailSectionModel>(configureCell: { dataSource, tableView, indexPath, _ in
+        return RxTableViewSectionedReloadDataSource<ItemDetailSectionModel>(configureCell: { [weak self] dataSource, tableView, indexPath, _ in
             
             switch dataSource[indexPath] {
             case .headerItem(let viewModel):
@@ -42,6 +42,13 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                 
                 if viewModel.type == "Switch" {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailSwitchCell, for: indexPath) else { return UITableViewCell() }
+                    
+                    cell.didTapInfoAction = {
+                        
+                        guard let weakSelf = self else { return }
+                        let viewController = R.storyboard.itemTopic.itemTopic()!
+                        weakSelf.navigationController?.pushViewController(viewController, animated: true)
+                    }
                     
 //                    cell.viewModel = viewModel
                     return cell

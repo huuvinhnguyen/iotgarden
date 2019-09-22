@@ -9,6 +9,11 @@ import UIKit
 
 class ItemTopicCell: UITableViewCell {
     
+    var didTapEditAction: (() -> Void)?
+    
+    @IBAction private func editButtonTapped(_ sender: UIButton) {
+        didTapEditAction?()
+    }
 }
 
 struct ItemTopicViewModel {

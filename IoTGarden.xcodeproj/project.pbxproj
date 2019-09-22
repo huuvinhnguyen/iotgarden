@@ -14,6 +14,7 @@
 		04F2480423378DF6003239B6 /* ItemTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F2480323378DF6003239B6 /* ItemTopicCell.xib */; };
 		04F2480623378E04003239B6 /* ItemTopicServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2480523378E04003239B6 /* ItemTopicServerCell.swift */; };
 		04F2480823378E25003239B6 /* ItemTopicServerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F2480723378E25003239B6 /* ItemTopicServerCell.xib */; };
+		04F2480B2337DD5D003239B6 /* ServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2480A2337DD5D003239B6 /* ServerViewController.swift */; };
 		1803374C21C9EDC90098F944 /* SensorMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803374B21C9EDC90098F944 /* SensorMapping.swift */; };
 		1803375421CA2A6B0098F944 /* DataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803375321CA2A6B0098F944 /* DataInteractor.swift */; };
 		1803375621CA9B130098F944 /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803375521CA9B130098F944 /* Sensor.swift */; };
@@ -155,6 +156,7 @@
 		04F2480323378DF6003239B6 /* ItemTopicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTopicCell.xib; sourceTree = "<group>"; };
 		04F2480523378E04003239B6 /* ItemTopicServerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicServerCell.swift; sourceTree = "<group>"; };
 		04F2480723378E25003239B6 /* ItemTopicServerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTopicServerCell.xib; sourceTree = "<group>"; };
+		04F2480A2337DD5D003239B6 /* ServerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerViewController.swift; sourceTree = "<group>"; };
 		1803374B21C9EDC90098F944 /* SensorMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorMapping.swift; sourceTree = "<group>"; };
 		1803375321CA2A6B0098F944 /* DataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataInteractor.swift; sourceTree = "<group>"; };
 		1803375521CA9B130098F944 /* Sensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
@@ -311,6 +313,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04F248092337DCBE003239B6 /* ItemTopic */ = {
+			isa = PBXGroup;
+			children = (
+				04F247FB23378B80003239B6 /* ItemTopic.storyboard */,
+				04F247FD23378B9B003239B6 /* ItemTopicViewController.swift */,
+				04F247FF23378C53003239B6 /* ItemTopicSection.swift */,
+				04F2480123378DE7003239B6 /* ItemTopicCell.swift */,
+				04F2480323378DF6003239B6 /* ItemTopicCell.xib */,
+				04F2480523378E04003239B6 /* ItemTopicServerCell.swift */,
+				04F2480723378E25003239B6 /* ItemTopicServerCell.xib */,
+			);
+			path = ItemTopic;
+			sourceTree = "<group>";
+		};
 		1803375121C9EF430098F944 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -484,13 +500,7 @@
 				186AB61923328A7D0017F935 /* ConnectionCell.xib */,
 				186AB615233289A20017F935 /* ConnectionViewModel.swift */,
 				186AB60F233287430017F935 /* ConnectionsViewController.swift */,
-				04F247FB23378B80003239B6 /* ItemTopic.storyboard */,
-				04F247FD23378B9B003239B6 /* ItemTopicViewController.swift */,
-				04F247FF23378C53003239B6 /* ItemTopicSection.swift */,
-				04F2480123378DE7003239B6 /* ItemTopicCell.swift */,
-				04F2480323378DF6003239B6 /* ItemTopicCell.xib */,
-				04F2480523378E04003239B6 /* ItemTopicServerCell.swift */,
-				04F2480723378E25003239B6 /* ItemTopicServerCell.xib */,
+				04F2480A2337DD5D003239B6 /* ServerViewController.swift */,
 			);
 			path = Connection;
 			sourceTree = "<group>";
@@ -555,6 +565,7 @@
 				1803375721CB3B910098F944 /* ViewModel */,
 				18D9A05021C4109F008EFA72 /* ItemTemp.swift */,
 				18EDCF5321899F3100B233B9 /* GroupItem.swift */,
+				04F248092337DCBE003239B6 /* ItemTopic */,
 				186AB61B23328D150017F935 /* Connection */,
 				1803377021CBF4400098F944 /* ItemList */,
 				1803377121CBF4BB0098F944 /* ItemDetail */,
@@ -930,6 +941,7 @@
 				5B2CD58722896E5400EA8B25 /* UIFont+Extension.swift in Sources */,
 				18A33DDC2324FAD800DFDBB6 /* ItemDetailTrashCell.swift in Sources */,
 				5B04F00C227AE9190096FBA1 /* LineChart3ViewController.swift in Sources */,
+				04F2480B2337DD5D003239B6 /* ServerViewController.swift in Sources */,
 				1852DBA22192960D002E1946 /* AddItemView.swift in Sources */,
 				1846AB57218AA3B800F46053 /* AddItemViewController.swift in Sources */,
 				18592A0C23216C0000DFB310 /* ItemDetailFooterCell.swift in Sources */,

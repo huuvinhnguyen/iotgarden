@@ -19,10 +19,10 @@ enum ItemTopicSection {
 
 enum ItemTopicSectionItem {
     
-    case headerItem(viewModel: SectionItemViewModel)
+    case headerItem(viewModel: SectionItemViewModel?)
     case topicItem(viewModel: ItemTopicViewModel)
     case serverItem(viewModel: ItemTopicServerViewModel)
-    case footerItem(viewModel: SectionItemViewModel)
+    case footerItem(viewModel: SectionItemViewModel?)
 }
 
 extension ItemTopicSection: SectionModelType {
