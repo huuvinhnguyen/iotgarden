@@ -7,6 +7,7 @@ PODS:
   - CocoaAsyncSocket (7.6.3)
   - CocoaMQTT (1.1.3):
     - CocoaAsyncSocket (~> 7.6.3)
+  - Differentiator (3.1.0)
   - Himotoki (3.2.0)
   - MaterialComponents/ButtonBar (78.0.0):
     - MaterialComponents/Buttons
@@ -60,12 +61,18 @@ PODS:
   - R.swift.Library (5.0.0)
   - ReactiveReSwift (4.0.0)
   - Result (4.1.0)
+  - ReSwift (4.0.1)
   - RxAtomic (4.4.1)
   - RxCocoa (4.4.1):
+    - RxSwift (~> 4.0)
+  - RxDataSources (3.1.0):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
   - RxSwift (4.4.1):
     - RxAtomic (~> 4.4)
   - SwiftLint (0.30.1)
+  - TPKeyboardAvoiding (1.3.2)
 
 DEPENDENCIES:
   - APIKit
@@ -78,9 +85,12 @@ DEPENDENCIES:
   - PromiseKit
   - R.swift
   - ReactiveReSwift
+  - ReSwift
   - RxCocoa
+  - RxDataSources
   - RxSwift
   - SwiftLint
+  - TPKeyboardAvoiding
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -88,6 +98,7 @@ SPEC REPOS:
     - Charts
     - CocoaAsyncSocket
     - CocoaMQTT
+    - Differentiator
     - Himotoki
     - MaterialComponents
     - MDFInternationalization
@@ -97,16 +108,20 @@ SPEC REPOS:
     - R.swift.Library
     - ReactiveReSwift
     - Result
+    - ReSwift
     - RxAtomic
     - RxCocoa
+    - RxDataSources
     - RxSwift
     - SwiftLint
+    - TPKeyboardAvoiding
 
 SPEC CHECKSUMS:
   APIKit: 23ddce4be7eccd746d2ab3c62713cd80d5846d5a
   Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   CocoaMQTT: b506d38ad3bbe1c55a4f8ee8c9fd02c35da1a7d8
+  Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
   Himotoki: 2618fc6b939ad6d9b71c52c90fe210f54ea28167
   MaterialComponents: f50582fcff415a2459e62a29310fb3ec70a70234
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
@@ -116,11 +131,14 @@ SPEC CHECKSUMS:
   R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
   ReactiveReSwift: b6187229efcc5ec819fb1d3d19716c231bcc0456
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  ReSwift: f4012c613e13da7398827fe5aebdb938eaed40a3
   RxAtomic: f8d6adc1ccb87a767811269e4875887bc74dbf19
   RxCocoa: 2f35a76bf8887872e28a1914112395b11b8e0e64
+  RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxSwift: 92fcf68dfef21f3e2ab1965363d9e7b3d787597e
   SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
+  TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: 4e62f39a5bca97582a75430e7bd0b222d2e198fb
+PODFILE CHECKSUM: 331aea06cf4f009f9bf0e5dcab2f5124139a9f2b
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.7.5

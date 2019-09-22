@@ -16,14 +16,40 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
   
-  /// This `R.image` struct is generated, and contains static references to 4 images.
+  /// This `R.image` struct is generated, and contains static references to 17 images.
   struct image {
     /// Image `add_button`.
     static let add_button = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_button")
+    /// Image `icon_angle_double`.
+    static let icon_angle_double = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_angle_double")
+    /// Image `icon_bookmark`.
+    static let icon_bookmark = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_bookmark")
+    /// Image `icon_camera`.
+    static let icon_camera = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_camera")
+    /// Image `icon_edit`.
+    static let icon_edit = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_edit")
+    /// Image `icon_eye`.
+    static let icon_eye = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_eye")
+    /// Image `icon_home`.
+    static let icon_home = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_home")
     /// Image `icon_humi`.
     static let icon_humi = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_humi")
+    /// Image `icon_info`.
+    static let icon_info = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_info")
+    /// Image `icon_next`.
+    static let icon_next = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_next")
+    /// Image `icon_plug`.
+    static let icon_plug = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_plug")
+    /// Image `icon_plus`.
+    static let icon_plus = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_plus")
+    /// Image `icon_power_off`.
+    static let icon_power_off = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_power_off")
+    /// Image `icon_publish`.
+    static let icon_publish = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_publish")
     /// Image `icon_temp`.
     static let icon_temp = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_temp")
+    /// Image `icon_trash`.
+    static let icon_trash = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_trash")
     /// Image `icon`.
     static let icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon")
     
@@ -37,9 +63,69 @@ struct R: Rswift.Validatable {
       return UIKit.UIImage(resource: R.image.icon, compatibleWith: traitCollection)
     }
     
+    /// `UIImage(named: "icon_angle_double", bundle: ..., traitCollection: ...)`
+    static func icon_angle_double(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_angle_double, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_bookmark", bundle: ..., traitCollection: ...)`
+    static func icon_bookmark(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_bookmark, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_camera", bundle: ..., traitCollection: ...)`
+    static func icon_camera(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_camera, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_edit", bundle: ..., traitCollection: ...)`
+    static func icon_edit(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_edit, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_eye", bundle: ..., traitCollection: ...)`
+    static func icon_eye(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_eye, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_home", bundle: ..., traitCollection: ...)`
+    static func icon_home(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_home, compatibleWith: traitCollection)
+    }
+    
     /// `UIImage(named: "icon_humi", bundle: ..., traitCollection: ...)`
     static func icon_humi(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_humi, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_info", bundle: ..., traitCollection: ...)`
+    static func icon_info(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_info, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_next", bundle: ..., traitCollection: ...)`
+    static func icon_next(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_next, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_plug", bundle: ..., traitCollection: ...)`
+    static func icon_plug(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_plug, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_plus", bundle: ..., traitCollection: ...)`
+    static func icon_plus(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_plus, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_power_off", bundle: ..., traitCollection: ...)`
+    static func icon_power_off(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_power_off, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_publish", bundle: ..., traitCollection: ...)`
+    static func icon_publish(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_publish, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "icon_temp", bundle: ..., traitCollection: ...)`
@@ -47,10 +133,15 @@ struct R: Rswift.Validatable {
       return UIKit.UIImage(resource: R.image.icon_temp, compatibleWith: traitCollection)
     }
     
+    /// `UIImage(named: "icon_trash", bundle: ..., traitCollection: ...)`
+    static func icon_trash(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_trash, compatibleWith: traitCollection)
+    }
+    
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 10 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 17 nibs.
   struct nib {
     /// Nib `BarChartViewController`.
     static let barChartViewController = _R.nib._BarChartViewController()
@@ -58,10 +149,24 @@ struct R: Rswift.Validatable {
     static let candleStickChartViewController = _R.nib._CandleStickChartViewController()
     /// Nib `HumidityCell`.
     static let humidityCell = _R.nib._HumidityCell()
+    /// Nib `ItemDetailFooterCell`.
+    static let itemDetailFooterCell = _R.nib._ItemDetailFooterCell()
+    /// Nib `ItemDetailHeaderCell`.
+    static let itemDetailHeaderCell = _R.nib._ItemDetailHeaderCell()
+    /// Nib `ItemDetailPlusCell`.
+    static let itemDetailPlusCell = _R.nib._ItemDetailPlusCell()
+    /// Nib `ItemDetailSwitchCell`.
+    static let itemDetailSwitchCell = _R.nib._ItemDetailSwitchCell()
+    /// Nib `ItemDetailTopicCell`.
+    static let itemDetailTopicCell = _R.nib._ItemDetailTopicCell()
+    /// Nib `ItemDetailTrashCell`.
+    static let itemDetailTrashCell = _R.nib._ItemDetailTrashCell()
     /// Nib `ItemInputValueCell`.
     static let itemInputValueCell = _R.nib._ItemInputValueCell()
     /// Nib `ItemListCell`.
     static let itemListCell = _R.nib._ItemListCell()
+    /// Nib `ItemListPlusCell`.
+    static let itemListPlusCell = _R.nib._ItemListPlusCell()
     /// Nib `LineChart3ViewController`.
     static let lineChart3ViewController = _R.nib._LineChart3ViewController()
     /// Nib `MotionCell`.
@@ -91,6 +196,42 @@ struct R: Rswift.Validatable {
       return UIKit.UINib(resource: R.nib.humidityCell)
     }
     
+    /// `UINib(name: "ItemDetailFooterCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.itemDetailFooterCell) instead")
+    static func itemDetailFooterCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.itemDetailFooterCell)
+    }
+    
+    /// `UINib(name: "ItemDetailHeaderCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.itemDetailHeaderCell) instead")
+    static func itemDetailHeaderCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.itemDetailHeaderCell)
+    }
+    
+    /// `UINib(name: "ItemDetailPlusCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.itemDetailPlusCell) instead")
+    static func itemDetailPlusCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.itemDetailPlusCell)
+    }
+    
+    /// `UINib(name: "ItemDetailSwitchCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.itemDetailSwitchCell) instead")
+    static func itemDetailSwitchCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.itemDetailSwitchCell)
+    }
+    
+    /// `UINib(name: "ItemDetailTopicCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.itemDetailTopicCell) instead")
+    static func itemDetailTopicCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.itemDetailTopicCell)
+    }
+    
+    /// `UINib(name: "ItemDetailTrashCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.itemDetailTrashCell) instead")
+    static func itemDetailTrashCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.itemDetailTrashCell)
+    }
+    
     /// `UINib(name: "ItemInputValueCell", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.itemInputValueCell) instead")
     static func itemInputValueCell(_: Void = ()) -> UIKit.UINib {
@@ -101,6 +242,12 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.itemListCell) instead")
     static func itemListCell(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.itemListCell)
+    }
+    
+    /// `UINib(name: "ItemListPlusCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.itemListPlusCell) instead")
+    static func itemListPlusCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.itemListPlusCell)
     }
     
     /// `UINib(name: "LineChart3ViewController", in: bundle)`
@@ -145,12 +292,40 @@ struct R: Rswift.Validatable {
       return R.nib.humidityCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? HumidityCell
     }
     
+    static func itemDetailFooterCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemDetailFooterCell? {
+      return R.nib.itemDetailFooterCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemDetailFooterCell
+    }
+    
+    static func itemDetailHeaderCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemDetailHeaderCell? {
+      return R.nib.itemDetailHeaderCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemDetailHeaderCell
+    }
+    
+    static func itemDetailPlusCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemDetailPlusCell? {
+      return R.nib.itemDetailPlusCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemDetailPlusCell
+    }
+    
+    static func itemDetailSwitchCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemDetailSwitchCell? {
+      return R.nib.itemDetailSwitchCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemDetailSwitchCell
+    }
+    
+    static func itemDetailTopicCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemDetailTopicCell? {
+      return R.nib.itemDetailTopicCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemDetailTopicCell
+    }
+    
+    static func itemDetailTrashCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemDetailTrashCell? {
+      return R.nib.itemDetailTrashCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemDetailTrashCell
+    }
+    
     static func itemInputValueCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemInputValueCell? {
       return R.nib.itemInputValueCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemInputValueCell
     }
     
     static func itemListCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemListCell? {
       return R.nib.itemListCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemListCell
+    }
+    
+    static func itemListPlusCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemListPlusCell? {
+      return R.nib.itemListPlusCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemListPlusCell
     }
     
     static func lineChart3ViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
@@ -176,12 +351,26 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 5 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 12 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `HumidityCell`.
     static let humidityCell: Rswift.ReuseIdentifier<HumidityCell> = Rswift.ReuseIdentifier(identifier: "HumidityCell")
+    /// Reuse identifier `ItemDetailFooterCell`.
+    static let itemDetailFooterCell: Rswift.ReuseIdentifier<ItemDetailFooterCell> = Rswift.ReuseIdentifier(identifier: "ItemDetailFooterCell")
+    /// Reuse identifier `ItemDetailHeaderCell`.
+    static let itemDetailHeaderCell: Rswift.ReuseIdentifier<ItemDetailHeaderCell> = Rswift.ReuseIdentifier(identifier: "ItemDetailHeaderCell")
+    /// Reuse identifier `ItemDetailPlusCell`.
+    static let itemDetailPlusCell: Rswift.ReuseIdentifier<ItemDetailPlusCell> = Rswift.ReuseIdentifier(identifier: "ItemDetailPlusCell")
+    /// Reuse identifier `ItemDetailSwitchCell`.
+    static let itemDetailSwitchCell: Rswift.ReuseIdentifier<ItemDetailSwitchCell> = Rswift.ReuseIdentifier(identifier: "ItemDetailSwitchCell")
+    /// Reuse identifier `ItemDetailTopicCell`.
+    static let itemDetailTopicCell: Rswift.ReuseIdentifier<ItemDetailTopicCell> = Rswift.ReuseIdentifier(identifier: "ItemDetailTopicCell")
+    /// Reuse identifier `ItemDetailTrashCell`.
+    static let itemDetailTrashCell: Rswift.ReuseIdentifier<ItemDetailTrashCell> = Rswift.ReuseIdentifier(identifier: "ItemDetailTrashCell")
     /// Reuse identifier `ItemInputValueCell`.
     static let itemInputValueCell: Rswift.ReuseIdentifier<ItemInputValueCell> = Rswift.ReuseIdentifier(identifier: "ItemInputValueCell")
+    /// Reuse identifier `ItemListPlusCell`.
+    static let itemListPlusCell: Rswift.ReuseIdentifier<ItemListPlusCell> = Rswift.ReuseIdentifier(identifier: "ItemListPlusCell")
     /// Reuse identifier `MotionCell`.
     static let motionCell: Rswift.ReuseIdentifier<MotionCell> = Rswift.ReuseIdentifier(identifier: "MotionCell")
     /// Reuse identifier `SelectionCell`.
@@ -198,8 +387,8 @@ struct R: Rswift.Validatable {
     static let addItemViewController = _R.storyboard.addItemViewController()
     /// Storyboard `ItemDetailTempViewController`.
     static let itemDetailTempViewController = _R.storyboard.itemDetailTempViewController()
-    /// Storyboard `ItemDetailViewController`.
-    static let itemDetailViewController = _R.storyboard.itemDetailViewController()
+    /// Storyboard `ItemDetail`.
+    static let itemDetail = _R.storyboard.itemDetail()
     /// Storyboard `ItemListViewController`.
     static let itemListViewController = _R.storyboard.itemListViewController()
     /// Storyboard `LaunchScreen`.
@@ -210,14 +399,14 @@ struct R: Rswift.Validatable {
       return UIKit.UIStoryboard(resource: R.storyboard.addItemViewController)
     }
     
+    /// `UIStoryboard(name: "ItemDetail", bundle: ...)`
+    static func itemDetail(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.itemDetail)
+    }
+    
     /// `UIStoryboard(name: "ItemDetailTempViewController", bundle: ...)`
     static func itemDetailTempViewController(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.itemDetailTempViewController)
-    }
-    
-    /// `UIStoryboard(name: "ItemDetailViewController", bundle: ...)`
-    static func itemDetailViewController(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.itemDetailViewController)
     }
     
     /// `UIStoryboard(name: "ItemListViewController", bundle: ...)`
@@ -255,6 +444,14 @@ struct _R: Rswift.Validatable {
   struct nib: Rswift.Validatable {
     static func validate() throws {
       try _HumidityCell.validate()
+      try _ItemDetailHeaderCell.validate()
+      try _ItemDetailPlusCell.validate()
+      try _ItemDetailSwitchCell.validate()
+      try _ItemDetailTopicCell.validate()
+      try _ItemDetailTrashCell.validate()
+      try _ItemInputValueCell.validate()
+      try _ItemListCell.validate()
+      try _ItemListPlusCell.validate()
       try _TemperatureCell.validate()
     }
     
@@ -300,7 +497,128 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    struct _ItemInputValueCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+    struct _ItemDetailFooterCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = ItemDetailFooterCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "ItemDetailFooterCell"
+      let name = "ItemDetailFooterCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemDetailFooterCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemDetailFooterCell
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _ItemDetailHeaderCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = ItemDetailHeaderCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "ItemDetailHeaderCell"
+      let name = "ItemDetailHeaderCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemDetailHeaderCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemDetailHeaderCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_bookmark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_bookmark' is used in nib 'ItemDetailHeaderCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_edit", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_edit' is used in nib 'ItemDetailHeaderCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _ItemDetailPlusCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = ItemDetailPlusCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "ItemDetailPlusCell"
+      let name = "ItemDetailPlusCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemDetailPlusCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemDetailPlusCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_plus", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_plus' is used in nib 'ItemDetailPlusCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _ItemDetailSwitchCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = ItemDetailSwitchCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "ItemDetailSwitchCell"
+      let name = "ItemDetailSwitchCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemDetailSwitchCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemDetailSwitchCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_angle_double", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_angle_double' is used in nib 'ItemDetailSwitchCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_eye", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_eye' is used in nib 'ItemDetailSwitchCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_info", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_info' is used in nib 'ItemDetailSwitchCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_power_off", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_power_off' is used in nib 'ItemDetailSwitchCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _ItemDetailTopicCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = ItemDetailTopicCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "ItemDetailTopicCell"
+      let name = "ItemDetailTopicCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemDetailTopicCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemDetailTopicCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_angle_double", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_angle_double' is used in nib 'ItemDetailTopicCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_eye", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_eye' is used in nib 'ItemDetailTopicCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_info", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_info' is used in nib 'ItemDetailTopicCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_publish", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_publish' is used in nib 'ItemDetailTopicCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _ItemDetailTrashCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = ItemDetailTrashCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "ItemDetailTrashCell"
+      let name = "ItemDetailTrashCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemDetailTrashCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemDetailTrashCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_trash", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_trash' is used in nib 'ItemDetailTrashCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _ItemInputValueCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
       typealias ReusableType = ItemInputValueCell
       
       let bundle = R.hostingBundle
@@ -311,15 +629,47 @@ struct _R: Rswift.Validatable {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemInputValueCell
       }
       
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_home", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_home' is used in nib 'ItemInputValueCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
       fileprivate init() {}
     }
     
-    struct _ItemListCell: Rswift.NibResourceType {
+    struct _ItemListCell: Rswift.NibResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "ItemListCell"
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemListCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemListCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_plug", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_plug' is used in nib 'ItemListCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _ItemListPlusCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = ItemListPlusCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "ItemListPlusCell"
+      let name = "ItemListPlusCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemListPlusCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemListPlusCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_plus", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_plus' is used in nib 'ItemListPlusCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
       }
       
       fileprivate init() {}
@@ -401,8 +751,8 @@ struct _R: Rswift.Validatable {
   struct storyboard: Rswift.Validatable {
     static func validate() throws {
       try addItemViewController.validate()
+      try itemDetail.validate()
       try itemDetailTempViewController.validate()
-      try itemDetailViewController.validate()
       try itemListViewController.validate()
       try launchScreen.validate()
     }
@@ -437,6 +787,36 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
+    struct itemDetail: Rswift.StoryboardResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let itemDetailViewController = StoryboardViewControllerResource<IoTGarden.ItemDetailViewController>(identifier: "ItemDetailViewController")
+      let name = "ItemDetail"
+      let serverViewController = StoryboardViewControllerResource<ItemDetailServerViewController>(identifier: "ServerViewController")
+      let topicViewController = StoryboardViewControllerResource<ItemDetailTopicViewController>(identifier: "TopicViewController")
+      
+      func itemDetailViewController(_: Void = ()) -> IoTGarden.ItemDetailViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: itemDetailViewController)
+      }
+      
+      func serverViewController(_: Void = ()) -> ItemDetailServerViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: serverViewController)
+      }
+      
+      func topicViewController(_: Void = ()) -> ItemDetailTopicViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: topicViewController)
+      }
+      
+      static func validate() throws {
+        if #available(iOS 11.0, *) {
+        }
+        if _R.storyboard.itemDetail().itemDetailViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'itemDetailViewController' could not be loaded from storyboard 'ItemDetail' as 'IoTGarden.ItemDetailViewController'.") }
+        if _R.storyboard.itemDetail().serverViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'serverViewController' could not be loaded from storyboard 'ItemDetail' as 'ItemDetailServerViewController'.") }
+        if _R.storyboard.itemDetail().topicViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'topicViewController' could not be loaded from storyboard 'ItemDetail' as 'ItemDetailTopicViewController'.") }
+      }
+      
+      fileprivate init() {}
+    }
+    
     struct itemDetailTempViewController: Rswift.StoryboardResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let itemDetailTempViewController = StoryboardViewControllerResource<ItemDetailTempViewController>(identifier: "ItemDetailTempViewController")
@@ -455,24 +835,6 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    struct itemDetailViewController: Rswift.StoryboardResourceType, Rswift.Validatable {
-      let bundle = R.hostingBundle
-      let itemDetailViewController = StoryboardViewControllerResource<IoTGarden.ItemDetailViewController>(identifier: "ItemDetailViewController")
-      let name = "ItemDetailViewController"
-      
-      func itemDetailViewController(_: Void = ()) -> IoTGarden.ItemDetailViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: itemDetailViewController)
-      }
-      
-      static func validate() throws {
-        if #available(iOS 11.0, *) {
-        }
-        if _R.storyboard.itemDetailViewController().itemDetailViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'itemDetailViewController' could not be loaded from storyboard 'ItemDetailViewController' as 'IoTGarden.ItemDetailViewController'.") }
-      }
-      
-      fileprivate init() {}
-    }
-    
     struct itemListViewController: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
       typealias InitialController = UIKit.UINavigationController
       
@@ -485,7 +847,6 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if UIKit.UIImage(named: "add_button", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'add_button' is used in storyboard 'ItemListViewController', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
         if _R.storyboard.itemListViewController().itemListViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'itemListViewController' could not be loaded from storyboard 'ItemListViewController' as 'ItemListViewController'.") }
