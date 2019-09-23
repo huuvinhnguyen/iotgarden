@@ -141,7 +141,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 21 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 23 nibs.
   struct nib {
     /// Nib `AddItemTopicCell`.
     static let addItemTopicCell = _R.nib._AddItemTopicCell()
@@ -183,8 +183,12 @@ struct R: Rswift.Validatable {
     static let positiveNegativeBarChartViewController = _R.nib._PositiveNegativeBarChartViewController()
     /// Nib `SelectionCell`.
     static let selectionCell = _R.nib._SelectionCell()
+    /// Nib `ServerCell`.
+    static let serverCell = _R.nib._ServerCell()
     /// Nib `TemperatureCell`.
     static let temperatureCell = _R.nib._TemperatureCell()
+    /// Nib `TopicCell`.
+    static let topicCell = _R.nib._TopicCell()
     
     /// `UINib(name: "AddItemTopicCell", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.addItemTopicCell) instead")
@@ -306,10 +310,22 @@ struct R: Rswift.Validatable {
       return UIKit.UINib(resource: R.nib.selectionCell)
     }
     
+    /// `UINib(name: "ServerCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.serverCell) instead")
+    static func serverCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.serverCell)
+    }
+    
     /// `UINib(name: "TemperatureCell", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.temperatureCell) instead")
     static func temperatureCell(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.temperatureCell)
+    }
+    
+    /// `UINib(name: "TopicCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.topicCell) instead")
+    static func topicCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.topicCell)
     }
     
     static func addItemTopicCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> AddItemTopicCell? {
@@ -392,14 +408,22 @@ struct R: Rswift.Validatable {
       return R.nib.selectionCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SelectionCell
     }
     
+    static func serverCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ServerCell? {
+      return R.nib.serverCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ServerCell
+    }
+    
     static func temperatureCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> TemperatureCell? {
       return R.nib.temperatureCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? TemperatureCell
+    }
+    
+    static func topicCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> TopicCell? {
+      return R.nib.topicCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? TopicCell
     }
     
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 16 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 18 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `AddItemTopicCell`.
     static let addItemTopicCell: Rswift.ReuseIdentifier<AddItemTopicCell> = Rswift.ReuseIdentifier(identifier: "AddItemTopicCell")
@@ -431,8 +455,12 @@ struct R: Rswift.Validatable {
     static let motionCell: Rswift.ReuseIdentifier<MotionCell> = Rswift.ReuseIdentifier(identifier: "MotionCell")
     /// Reuse identifier `SelectionCell`.
     static let selectionCell: Rswift.ReuseIdentifier<SelectionCell> = Rswift.ReuseIdentifier(identifier: "SelectionCell")
+    /// Reuse identifier `ServerCell`.
+    static let serverCell: Rswift.ReuseIdentifier<ServerCell> = Rswift.ReuseIdentifier(identifier: "ServerCell")
     /// Reuse identifier `TemperatureCell`.
     static let temperatureCell: Rswift.ReuseIdentifier<TemperatureCell> = Rswift.ReuseIdentifier(identifier: "TemperatureCell")
+    /// Reuse identifier `TopicCell`.
+    static let topicCell: Rswift.ReuseIdentifier<TopicCell> = Rswift.ReuseIdentifier(identifier: "TopicCell")
     
     fileprivate init() {}
   }
@@ -531,6 +559,7 @@ struct _R: Rswift.Validatable {
       try _ItemListPlusCell.validate()
       try _ItemTopicCell.validate()
       try _ItemTopicServerCell.validate()
+      try _ServerCell.validate()
       try _TemperatureCell.validate()
     }
     
@@ -872,6 +901,26 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
+    struct _ServerCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = ServerCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "ServerCell"
+      let name = "ServerCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ServerCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ServerCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_camera", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_camera' is used in nib 'ServerCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
+      fileprivate init() {}
+    }
+    
     struct _TemperatureCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
       typealias ReusableType = TemperatureCell
       
@@ -887,6 +936,20 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "icon_temp.png", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_temp.png' is used in nib 'TemperatureCell', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _TopicCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = TopicCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "TopicCell"
+      let name = "TopicCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> TopicCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? TopicCell
       }
       
       fileprivate init() {}
