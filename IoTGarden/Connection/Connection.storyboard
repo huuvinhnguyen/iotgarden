@@ -13,7 +13,7 @@
         <!--Connections View Controller-->
         <scene sceneID="fWl-Jl-Zf5">
             <objects>
-                <viewController id="aav-cj-D0A" customClass="ConnectionsViewController" customModule="IoTGarden" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConnectionsViewController" id="aav-cj-D0A" customClass="ConnectionsViewController" customModule="IoTGarden" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hCA-Zm-ZWX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

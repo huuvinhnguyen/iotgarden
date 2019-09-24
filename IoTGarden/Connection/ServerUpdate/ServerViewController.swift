@@ -16,7 +16,7 @@ class ServerViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private var dataSource: RxTableViewSectionedReloadDataSource<ServerSection> {
         
-        return RxTableViewSectionedReloadDataSource<ServerSection>(configureCell: { dataSource, tableView, indexPath, viewModel in
+        return RxTableViewSectionedReloadDataSource<ServerSection>(configureCell: { [weak self] dataSource, tableView, indexPath, viewModel in
             
             switch dataSource[indexPath] {
                 
@@ -28,6 +28,16 @@ class ServerViewController: UIViewController {
             case .serverItem(let viewModel):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.serverCell, for: indexPath) else { return UITableViewCell() }
                 //            cell.viewModel = viewModel
+                cell.didTapSelectAction = {
+                    let viewController = R.storyboard.connection.connectionsViewController()!
+                    guard let weakSelf = self else { return }
+                    weakSelf.navigationController?.pushViewController(viewController, animated: true)
+                }
+                
+                cell.didTapSaveAction = {
+                    guard let weakSelf = self else { return }
+                    self?.navigationController?.popViewController(animated: true)
+                }
                 return cell
             }
             

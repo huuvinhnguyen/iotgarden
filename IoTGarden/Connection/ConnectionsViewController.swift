@@ -18,6 +18,7 @@ class ConnectionsViewController: UIViewController {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.connectionCell, for: indexPath) else { return UITableViewCell() }
             cell.viewModel = viewModel
+            
             return cell
         }, titleForHeaderInSection: { dataSource, index in
             let section = dataSource[index]
