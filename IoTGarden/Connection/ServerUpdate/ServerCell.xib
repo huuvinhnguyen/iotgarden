@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kes-2y-Z3U">
-                        <rect key="frame" x="202.5" y="10" width="300" height="354.5"/>
+                        <rect key="frame" x="202.5" y="10" width="300" height="382.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dv3-MI-IUV">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="20.5"/>
@@ -28,12 +28,28 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FmL-Sp-6v4">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="1Kh-nC-ifT">
                                 <rect key="frame" x="0.0" y="25.5" width="300" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FmL-Sp-6v4">
+                                        <rect key="frame" x="0.0" y="0.0" width="256" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Og7-jM-T0X">
+                                        <rect key="frame" x="270" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Og7-jM-T0X" secondAttribute="height" multiplier="1:1" id="H8y-pa-JaR"/>
+                                            <constraint firstAttribute="width" constant="30" id="bfu-6H-hsq"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="icon_circle_down"/>
+                                        <connections>
+                                            <action selector="selectButtonTapped:" destination="FAX-pb-LAP" eventType="touchUpInside" id="JB2-M8-3YZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W7c-X6-c9x">
                                 <rect key="frame" x="0.0" y="60.5" width="300" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -120,9 +136,15 @@
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="K2Q-Ud-Nmx"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUj-c4-an9">
-                                <rect key="frame" x="0.0" y="332.5" width="300" height="22"/>
-                                <state key="normal" image="icon_camera"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUj-c4-an9">
+                                <rect key="frame" x="0.0" y="332.5" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="x2B-Z2-X7m"/>
+                                </constraints>
+                                <state key="normal" image="icon_save"/>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="FAX-pb-LAP" eventType="touchUpInside" id="JNm-xq-5ef"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -141,6 +163,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icon_camera" width="25" height="22"/>
+        <image name="icon_circle_down" width="22" height="22"/>
+        <image name="icon_save" width="22" height="22"/>
     </resources>
 </document>

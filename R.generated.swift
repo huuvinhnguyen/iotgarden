@@ -16,7 +16,7 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
   
-  /// This `R.image` struct is generated, and contains static references to 17 images.
+  /// This `R.image` struct is generated, and contains static references to 19 images.
   struct image {
     /// Image `add_button`.
     static let add_button = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_button")
@@ -26,6 +26,8 @@ struct R: Rswift.Validatable {
     static let icon_bookmark = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_bookmark")
     /// Image `icon_camera`.
     static let icon_camera = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_camera")
+    /// Image `icon_circle_down`.
+    static let icon_circle_down = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_circle_down")
     /// Image `icon_edit`.
     static let icon_edit = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_edit")
     /// Image `icon_eye`.
@@ -46,6 +48,8 @@ struct R: Rswift.Validatable {
     static let icon_power_off = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_power_off")
     /// Image `icon_publish`.
     static let icon_publish = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_publish")
+    /// Image `icon_save`.
+    static let icon_save = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_save")
     /// Image `icon_temp`.
     static let icon_temp = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_temp")
     /// Image `icon_trash`.
@@ -76,6 +80,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icon_camera", bundle: ..., traitCollection: ...)`
     static func icon_camera(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_camera, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_circle_down", bundle: ..., traitCollection: ...)`
+    static func icon_circle_down(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_circle_down, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "icon_edit", bundle: ..., traitCollection: ...)`
@@ -126,6 +135,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icon_publish", bundle: ..., traitCollection: ...)`
     static func icon_publish(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_publish, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_save", bundle: ..., traitCollection: ...)`
+    static func icon_save(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_save, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "icon_temp", bundle: ..., traitCollection: ...)`
@@ -913,7 +927,8 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if UIKit.UIImage(named: "icon_camera", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_camera' is used in nib 'ServerCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_circle_down", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_circle_down' is used in nib 'ServerCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_save", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_save' is used in nib 'ServerCell', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
       }
@@ -1014,8 +1029,13 @@ struct _R: Rswift.Validatable {
     
     struct connection: Rswift.StoryboardResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
+      let connectionsViewController = StoryboardViewControllerResource<ConnectionsViewController>(identifier: "ConnectionsViewController")
       let name = "Connection"
       let serverViewController = StoryboardViewControllerResource<ServerViewController>(identifier: "ServerViewController")
+      
+      func connectionsViewController(_: Void = ()) -> ConnectionsViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: connectionsViewController)
+      }
       
       func serverViewController(_: Void = ()) -> ServerViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: serverViewController)
@@ -1024,6 +1044,7 @@ struct _R: Rswift.Validatable {
       static func validate() throws {
         if #available(iOS 11.0, *) {
         }
+        if _R.storyboard.connection().connectionsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'connectionsViewController' could not be loaded from storyboard 'Connection' as 'ConnectionsViewController'.") }
         if _R.storyboard.connection().serverViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'serverViewController' could not be loaded from storyboard 'Connection' as 'ServerViewController'.") }
       }
       
