@@ -70,5 +70,35 @@
             </objects>
             <point key="canvasLocation" x="900" y="9"/>
         </scene>
+        <!--Topic View Controller-->
+        <scene sceneID="Sks-xF-w9u">
+            <objects>
+                <viewController storyboardIdentifier="TopicViewController" id="VJc-S4-n9l" customClass="TopicViewController" customModule="IoTGarden" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7CU-Zg-4oS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s2J-Ed-UHB">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="0.2470588235" green="0.44705882349999998" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pP0-db-pQb" firstAttribute="trailing" secondItem="s2J-Ed-UHB" secondAttribute="trailing" id="5DU-fn-rV5"/>
+                            <constraint firstItem="pP0-db-pQb" firstAttribute="bottom" secondItem="s2J-Ed-UHB" secondAttribute="bottom" id="SzP-zR-QgE"/>
+                            <constraint firstItem="s2J-Ed-UHB" firstAttribute="top" secondItem="pP0-db-pQb" secondAttribute="top" id="ZAy-Jf-bu4"/>
+                            <constraint firstItem="s2J-Ed-UHB" firstAttribute="leading" secondItem="pP0-db-pQb" secondAttribute="leading" id="zul-Nx-YOm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pP0-db-pQb"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="s2J-Ed-UHB" id="DAG-Rh-Xd1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t1l-Ts-dgU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1642" y="5"/>
+        </scene>
     </scenes>
 </document>

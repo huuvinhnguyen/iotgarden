@@ -16,7 +16,7 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
   
-  /// This `R.image` struct is generated, and contains static references to 19 images.
+  /// This `R.image` struct is generated, and contains static references to 20 images.
   struct image {
     /// Image `add_button`.
     static let add_button = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_button")
@@ -38,6 +38,8 @@ struct R: Rswift.Validatable {
     static let icon_humi = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_humi")
     /// Image `icon_info`.
     static let icon_info = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_info")
+    /// Image `icon_link`.
+    static let icon_link = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_link")
     /// Image `icon_next`.
     static let icon_next = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_next")
     /// Image `icon_plug`.
@@ -110,6 +112,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icon_info", bundle: ..., traitCollection: ...)`
     static func icon_info(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_info, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_link", bundle: ..., traitCollection: ...)`
+    static func icon_link(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_link, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "icon_next", bundle: ..., traitCollection: ...)`
@@ -858,6 +865,8 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if UIKit.UIImage(named: "icon_edit", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_edit' is used in nib 'ItemTopicServerCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_eye", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_eye' is used in nib 'ItemTopicServerCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_link", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_link' is used in nib 'ItemTopicServerCell', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
       }
@@ -1032,6 +1041,7 @@ struct _R: Rswift.Validatable {
       let connectionsViewController = StoryboardViewControllerResource<ConnectionsViewController>(identifier: "ConnectionsViewController")
       let name = "Connection"
       let serverViewController = StoryboardViewControllerResource<ServerViewController>(identifier: "ServerViewController")
+      let topicViewController = StoryboardViewControllerResource<TopicViewController>(identifier: "TopicViewController")
       
       func connectionsViewController(_: Void = ()) -> ConnectionsViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: connectionsViewController)
@@ -1041,11 +1051,16 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: serverViewController)
       }
       
+      func topicViewController(_: Void = ()) -> TopicViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: topicViewController)
+      }
+      
       static func validate() throws {
         if #available(iOS 11.0, *) {
         }
         if _R.storyboard.connection().connectionsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'connectionsViewController' could not be loaded from storyboard 'Connection' as 'ConnectionsViewController'.") }
         if _R.storyboard.connection().serverViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'serverViewController' could not be loaded from storyboard 'Connection' as 'ServerViewController'.") }
+        if _R.storyboard.connection().topicViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'topicViewController' could not be loaded from storyboard 'Connection' as 'TopicViewController'.") }
       }
       
       fileprivate init() {}
