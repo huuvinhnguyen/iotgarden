@@ -72,6 +72,11 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                 } else if viewModel.kind == "plus" {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailPlusCell, for: indexPath) else { return UITableViewCell() }
                     //                cell.viewModel = viewModel
+                    cell.didTapPlusAction = {
+                        guard let weakSelf = self else { return }
+                        let viewController = R.storyboard.connection.topicViewController()!
+                        weakSelf.navigationController?.pushViewController(viewController, animated: true)
+                    }
                     return cell
                 }
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailFooterCell, for: indexPath) else { return UITableViewCell() }

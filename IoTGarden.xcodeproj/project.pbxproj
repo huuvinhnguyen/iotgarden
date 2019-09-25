@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04051B64233BCE8800224600 /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04051B63233BCE8800224600 /* TopicViewController.swift */; };
 		04F247FC23378B80003239B6 /* ItemTopic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F247FB23378B80003239B6 /* ItemTopic.storyboard */; };
 		04F247FE23378B9B003239B6 /* ItemTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F247FD23378B9B003239B6 /* ItemTopicViewController.swift */; };
 		04F2480023378C53003239B6 /* ItemTopicSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F247FF23378C53003239B6 /* ItemTopicSection.swift */; };
@@ -154,6 +155,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04051B63233BCE8800224600 /* TopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
 		04F247FB23378B80003239B6 /* ItemTopic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemTopic.storyboard; sourceTree = "<group>"; };
 		04F247FD23378B9B003239B6 /* ItemTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicViewController.swift; sourceTree = "<group>"; };
 		04F247FF23378C53003239B6 /* ItemTopicSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicSection.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 				04F2480E2338EB18003239B6 /* ServerCell.xib */,
 				04F248152339285B003239B6 /* TopicCell.swift */,
 				04F248172339286D003239B6 /* TopicCell.xib */,
+				04051B63233BCE8800224600 /* TopicViewController.swift */,
 			);
 			path = ServerUpdate;
 			sourceTree = "<group>";
@@ -937,6 +940,7 @@
 				18A33DDE2324FFCC00DFDBB6 /* ItemDetailPlusCell.swift in Sources */,
 				1803375421CA2A6B0098F944 /* DataInteractor.swift in Sources */,
 				18C832BE218ADAD500ED37A1 /* Storage.swift in Sources */,
+				04051B64233BCE8800224600 /* TopicViewController.swift in Sources */,
 				04F2480023378C53003239B6 /* ItemTopicSection.swift in Sources */,
 				186AB610233287430017F935 /* ConnectionsViewController.swift in Sources */,
 				18243663227D8DC80009F7EA /* CandleStickChartViewController.swift in Sources */,
