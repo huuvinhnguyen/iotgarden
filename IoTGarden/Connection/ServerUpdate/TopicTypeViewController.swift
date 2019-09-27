@@ -1,15 +1,15 @@
 //
-//  TopicViewController.swift
+//  TopicTypeViewController.swift
 //  IoTGarden
 //
-//  Created by chuyendo on 9/25/19.
+//  Created by Vinh Nguyen on 9/27/19.
 //
 
 import UIKit
 import RxSwift
 import RxDataSources
 
-class TopicViewController: UIViewController {
+class TopicTypeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,16 +23,6 @@ class TopicViewController: UIViewController {
             case .topicItem(let viewModel):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.topicCell, for: indexPath) else { return UITableViewCell() }
                 //            cell.viewModel = viewModel
-                cell.didTapSelectAction = {
-                    
-                    let viewController = R.storyboard.connection.topicTypeViewController()!
-                    guard let weakSelf = self else { return }
-//                    weakSelf.present(viewController, animated: true, completion: nil)
-//                    weakSelf.modalPresentationStyle = .overFullScreen
-                    weakSelf.navigationController?.pushViewController(viewController, animated: true)
-                    
-                }
-                
                 return cell
                 
             case .serverItem(let viewModel):
@@ -54,22 +44,21 @@ class TopicViewController: UIViewController {
     
     private func prepairNibs() {
         
-//        tableView.register(R.nib.serverCell)
+        //        tableView.register(R.nib.serverCell)
         tableView.register(R.nib.topicCell)
+        tableView.register(R.nib.topicTypeCell)
     }
     
     private func loadData() {
         
-        let sections: [ServerSection] = [
-
-            ServerSection(title: "", items: [ .topicItem(viewModel: TopicViewModel())
-                ])
-        ]
-        
-        Observable.just(sections)
-            .bind(to: tableView.rx.items(dataSource: dataSource))
-            .disposed(by: disposeBag)
-        
+//        let sections: [ServerSection] = [
+//            
+//            ServerSection(title: "", items: [ .topicItem(viewModel: TopicViewModel())
+//                ])
+//        ]
+//        
+//        Observable.just(sections)
+//            .bind(to: tableView.rx.items(dataSource: dataSource))
+//            .disposed(by: disposeBag)
     }
-    
 }

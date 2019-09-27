@@ -23,6 +23,7 @@ class ServerViewController: UIViewController {
             case .topicItem(let viewModel):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.topicCell, for: indexPath) else { return UITableViewCell() }
                 //            cell.viewModel = viewModel
+              
                 return cell
                 
             case .serverItem(let viewModel):
@@ -64,7 +65,7 @@ class ServerViewController: UIViewController {
         
         let sections: [ServerSection] = [
             
-            ServerSection(title: "", items: [.serverItem(viewModel: ServerViewModel()), .topicItem(viewModel: TopicViewModel())
+            ServerSection(title: "", items: [.serverItem(viewModel: ServerViewModel())
                 ])
         ]
         

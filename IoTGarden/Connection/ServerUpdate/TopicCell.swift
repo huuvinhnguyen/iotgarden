@@ -8,7 +8,11 @@
 import UIKit
 
 class TopicCell: UITableViewCell {
+    var didTapSelectAction: (() -> Void)?
     
+    @IBAction private func selectButtonTapped(_ sender: UIButton) {
+        didTapSelectAction?()
+    }
 }
 
 struct TopicViewModel {

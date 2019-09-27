@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		04051B64233BCE8800224600 /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04051B63233BCE8800224600 /* TopicViewController.swift */; };
+		04051B66233E6E2D00224600 /* TopicTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04051B65233E6E2D00224600 /* TopicTypeViewController.swift */; };
+		04051B68233E6F3400224600 /* TopicTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04051B67233E6F3300224600 /* TopicTypeCell.swift */; };
+		04051B6A233E6F7600224600 /* TopicTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04051B69233E6F7600224600 /* TopicTypeCell.xib */; };
 		04F247FC23378B80003239B6 /* ItemTopic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F247FB23378B80003239B6 /* ItemTopic.storyboard */; };
 		04F247FE23378B9B003239B6 /* ItemTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F247FD23378B9B003239B6 /* ItemTopicViewController.swift */; };
 		04F2480023378C53003239B6 /* ItemTopicSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F247FF23378C53003239B6 /* ItemTopicSection.swift */; };
@@ -156,6 +159,9 @@
 
 /* Begin PBXFileReference section */
 		04051B63233BCE8800224600 /* TopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
+		04051B65233E6E2D00224600 /* TopicTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTypeViewController.swift; sourceTree = "<group>"; };
+		04051B67233E6F3300224600 /* TopicTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTypeCell.swift; sourceTree = "<group>"; };
+		04051B69233E6F7600224600 /* TopicTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicTypeCell.xib; sourceTree = "<group>"; };
 		04F247FB23378B80003239B6 /* ItemTopic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemTopic.storyboard; sourceTree = "<group>"; };
 		04F247FD23378B9B003239B6 /* ItemTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicViewController.swift; sourceTree = "<group>"; };
 		04F247FF23378C53003239B6 /* ItemTopicSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicSection.swift; sourceTree = "<group>"; };
@@ -349,6 +355,9 @@
 				04F248152339285B003239B6 /* TopicCell.swift */,
 				04F248172339286D003239B6 /* TopicCell.xib */,
 				04051B63233BCE8800224600 /* TopicViewController.swift */,
+				04051B65233E6E2D00224600 /* TopicTypeViewController.swift */,
+				04051B67233E6F3300224600 /* TopicTypeCell.swift */,
+				04051B69233E6F7600224600 /* TopicTypeCell.xib */,
 			);
 			path = ServerUpdate;
 			sourceTree = "<group>";
@@ -782,6 +791,7 @@
 				186AB61A23328A7D0017F935 /* ConnectionCell.xib in Resources */,
 				18592A0E23216C1500DFB310 /* ItemDetailFooterCell.xib in Resources */,
 				04F2480423378DF6003239B6 /* ItemTopicCell.xib in Resources */,
+				04051B6A233E6F7600224600 /* TopicTypeCell.xib in Resources */,
 				1862B3DE21E32A7200CFD7F1 /* icon_humi.png in Resources */,
 				1862B3DC21E305D200CFD7F1 /* icon_temp.png in Resources */,
 				04F2480F2338EB18003239B6 /* ServerCell.xib in Resources */,
@@ -968,6 +978,7 @@
 				18B975C822FE945700E7DD8D /* AppStore.swift in Sources */,
 				1864B73D22BE363100B9DCE7 /* ItemDetailStore.swift in Sources */,
 				1803376921CBAC7D0098F944 /* HumidityCell.swift in Sources */,
+				04051B66233E6E2D00224600 /* TopicTypeViewController.swift in Sources */,
 				18D7C6D9220EB81000FF8529 /* MotionDevice.swift in Sources */,
 				5B2CD58722896E5400EA8B25 /* UIFont+Extension.swift in Sources */,
 				18A33DDC2324FAD800DFDBB6 /* ItemDetailTrashCell.swift in Sources */,
@@ -980,6 +991,7 @@
 				186AB61823328A360017F935 /* ConnectionCell.swift in Sources */,
 				18E7A71E218EE4E800F7E689 /* ReactiveReSwiftBridge.swift in Sources */,
 				1846AB53218A9E7800F46053 /* ItemDetailViewController.swift in Sources */,
+				04051B68233E6F3400224600 /* TopicTypeCell.swift in Sources */,
 				18A33DE42326AAFA00DFDBB6 /* ItemListPlusCell.swift in Sources */,
 				18A0430821894CD2005E04D4 /* AppDelegate.swift in Sources */,
 				1803376D21CBBA660098F944 /* CellCreator.swift in Sources */,

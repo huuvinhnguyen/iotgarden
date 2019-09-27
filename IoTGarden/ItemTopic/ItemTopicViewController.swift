@@ -31,7 +31,7 @@ class ItemTopicViewController: UIViewController {
                 
                 cell.didTapEditAction = {
                     guard let weakSelf = self else { return }
-                    let viewController = R.storyboard.connection.serverViewController()!
+                    let viewController = R.storyboard.connection.topicViewController()!
                     weakSelf.navigationController?.pushViewController(viewController, animated: true)
                     
                 }
@@ -72,7 +72,6 @@ class ItemTopicViewController: UIViewController {
             
             .topicSection(items: [
                 .topicItem(viewModel: ItemTopicViewModel()),
-                .topicItem(viewModel: ItemTopicViewModel())
                 ]),
             .serverSection(items: [
                 .serverItem(viewModel: ItemTopicServerViewModel())
