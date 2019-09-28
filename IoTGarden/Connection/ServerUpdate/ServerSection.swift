@@ -16,6 +16,8 @@ struct ServerSection {
 enum ServerSectionItem {
     case serverItem(viewModel: ServerViewModel)
     case topicItem(viewModel: TopicViewModel)
+    case topicSwitchItem(viewModel: TopicSwitchViewModel)
+    case topicQosItem(viewModel: TopicQosViewModel)
 }
 
 extension ServerSection: SectionModelType {

@@ -34,8 +34,14 @@ class TopicViewController: UIViewController {
                 }
                 
                 return cell
+            case .topicSwitchItem(let viewModel):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.topicSwitchCell, for: indexPath) else { return UITableViewCell() }
+                return cell
                 
-            case .serverItem(let viewModel):
+            case .topicQosItem(let viewModel):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.topicQosCell, for: indexPath) else { return UITableViewCell() }
+                return UITableViewCell()
+            default:
                 return UITableViewCell()
             }
             
@@ -56,13 +62,19 @@ class TopicViewController: UIViewController {
         
 //        tableView.register(R.nib.serverCell)
         tableView.register(R.nib.topicCell)
+        tableView.register(R.nib.topicSwitchCell)
+        tableView.register(R.nib.topicQosCell)
     }
     
     private func loadData() {
         
         let sections: [ServerSection] = [
 
-            ServerSection(title: "", items: [ .topicItem(viewModel: TopicViewModel())
+            ServerSection(title: "", items: [
+                .topicItem(viewModel: TopicViewModel()),
+                .topicSwitchItem(viewModel: TopicSwitchViewModel()),
+                .topicQosItem(viewModel: TopicQosViewModel())
+
                 ])
         ]
         

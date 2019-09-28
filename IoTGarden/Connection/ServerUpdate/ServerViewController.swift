@@ -40,6 +40,9 @@ class ServerViewController: UIViewController {
                     self?.navigationController?.popViewController(animated: true)
                 }
                 return cell
+                
+            default:
+                return UITableViewCell()
             }
             
             

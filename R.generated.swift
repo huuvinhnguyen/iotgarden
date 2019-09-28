@@ -190,7 +190,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 24 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 26 nibs.
   struct nib {
     /// Nib `AddItemTopicCell`.
     static let addItemTopicCell = _R.nib._AddItemTopicCell()
@@ -238,6 +238,10 @@ struct R: Rswift.Validatable {
     static let temperatureCell = _R.nib._TemperatureCell()
     /// Nib `TopicCell`.
     static let topicCell = _R.nib._TopicCell()
+    /// Nib `TopicQosCell`.
+    static let topicQosCell = _R.nib._TopicQosCell()
+    /// Nib `TopicSwitchCell`.
+    static let topicSwitchCell = _R.nib._TopicSwitchCell()
     /// Nib `TopicTypeCell`.
     static let topicTypeCell = _R.nib._TopicTypeCell()
     
@@ -379,6 +383,18 @@ struct R: Rswift.Validatable {
       return UIKit.UINib(resource: R.nib.topicCell)
     }
     
+    /// `UINib(name: "TopicQosCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.topicQosCell) instead")
+    static func topicQosCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.topicQosCell)
+    }
+    
+    /// `UINib(name: "TopicSwitchCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.topicSwitchCell) instead")
+    static func topicSwitchCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.topicSwitchCell)
+    }
+    
     /// `UINib(name: "TopicTypeCell", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.topicTypeCell) instead")
     static func topicTypeCell(_: Void = ()) -> UIKit.UINib {
@@ -477,6 +493,14 @@ struct R: Rswift.Validatable {
       return R.nib.topicCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? TopicCell
     }
     
+    static func topicQosCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> TopicQosCell? {
+      return R.nib.topicQosCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? TopicQosCell
+    }
+    
+    static func topicSwitchCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> TopicSwitchCell? {
+      return R.nib.topicSwitchCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? TopicSwitchCell
+    }
+    
     static func topicTypeCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> TopicTypeCell? {
       return R.nib.topicTypeCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? TopicTypeCell
     }
@@ -484,7 +508,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 19 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 21 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `AddItemTopicCell`.
     static let addItemTopicCell: Rswift.ReuseIdentifier<AddItemTopicCell> = Rswift.ReuseIdentifier(identifier: "AddItemTopicCell")
@@ -522,6 +546,10 @@ struct R: Rswift.Validatable {
     static let temperatureCell: Rswift.ReuseIdentifier<TemperatureCell> = Rswift.ReuseIdentifier(identifier: "TemperatureCell")
     /// Reuse identifier `TopicCell`.
     static let topicCell: Rswift.ReuseIdentifier<TopicCell> = Rswift.ReuseIdentifier(identifier: "TopicCell")
+    /// Reuse identifier `TopicQosCell`.
+    static let topicQosCell: Rswift.ReuseIdentifier<TopicQosCell> = Rswift.ReuseIdentifier(identifier: "TopicQosCell")
+    /// Reuse identifier `TopicSwitchCell`.
+    static let topicSwitchCell: Rswift.ReuseIdentifier<TopicSwitchCell> = Rswift.ReuseIdentifier(identifier: "TopicSwitchCell")
     /// Reuse identifier `TopicTypeCell`.
     static let topicTypeCell: Rswift.ReuseIdentifier<TopicTypeCell> = Rswift.ReuseIdentifier(identifier: "TopicTypeCell")
     
@@ -625,6 +653,7 @@ struct _R: Rswift.Validatable {
       try _ServerCell.validate()
       try _TemperatureCell.validate()
       try _TopicCell.validate()
+      try _TopicQosCell.validate()
     }
     
     struct _AddItemTopicCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
@@ -1021,10 +1050,43 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if UIKit.UIImage(named: "icon_circle_down", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_circle_down' is used in nib 'TopicCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "icon_circle_o", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_circle_o' is used in nib 'TopicCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "icon_dot_circle_o", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_dot_circle_o' is used in nib 'TopicCell', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _TopicQosCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = TopicQosCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "TopicQosCell"
+      let name = "TopicQosCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> TopicQosCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? TopicQosCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "button:Af0-yI-rx9:backgroundImage", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'button:Af0-yI-rx9:backgroundImage' is used in nib 'TopicQosCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "button:pc8-AI-Ygp:backgroundImage", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'button:pc8-AI-Ygp:backgroundImage' is used in nib 'TopicQosCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _TopicSwitchCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = TopicSwitchCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "TopicSwitchCell"
+      let name = "TopicSwitchCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> TopicSwitchCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? TopicSwitchCell
       }
       
       fileprivate init() {}

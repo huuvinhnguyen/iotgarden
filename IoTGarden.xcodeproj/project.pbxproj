@@ -11,6 +11,10 @@
 		04051B66233E6E2D00224600 /* TopicTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04051B65233E6E2D00224600 /* TopicTypeViewController.swift */; };
 		04051B68233E6F3400224600 /* TopicTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04051B67233E6F3300224600 /* TopicTypeCell.swift */; };
 		04051B6A233E6F7600224600 /* TopicTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04051B69233E6F7600224600 /* TopicTypeCell.xib */; };
+		0446881E233F5AD00074CF75 /* TopicSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0446881D233F5AD00074CF75 /* TopicSwitchCell.swift */; };
+		04468820233F5B0C0074CF75 /* TopicSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0446881F233F5B0C0074CF75 /* TopicSwitchCell.xib */; };
+		04468822233F64360074CF75 /* TopicQosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04468821233F64360074CF75 /* TopicQosCell.swift */; };
+		04468824233F65D70074CF75 /* TopicQosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04468823233F65D70074CF75 /* TopicQosCell.xib */; };
 		04F247FC23378B80003239B6 /* ItemTopic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F247FB23378B80003239B6 /* ItemTopic.storyboard */; };
 		04F247FE23378B9B003239B6 /* ItemTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F247FD23378B9B003239B6 /* ItemTopicViewController.swift */; };
 		04F2480023378C53003239B6 /* ItemTopicSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F247FF23378C53003239B6 /* ItemTopicSection.swift */; };
@@ -162,6 +166,10 @@
 		04051B65233E6E2D00224600 /* TopicTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTypeViewController.swift; sourceTree = "<group>"; };
 		04051B67233E6F3300224600 /* TopicTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTypeCell.swift; sourceTree = "<group>"; };
 		04051B69233E6F7600224600 /* TopicTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicTypeCell.xib; sourceTree = "<group>"; };
+		0446881D233F5AD00074CF75 /* TopicSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicSwitchCell.swift; sourceTree = "<group>"; };
+		0446881F233F5B0C0074CF75 /* TopicSwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicSwitchCell.xib; sourceTree = "<group>"; };
+		04468821233F64360074CF75 /* TopicQosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicQosCell.swift; sourceTree = "<group>"; };
+		04468823233F65D70074CF75 /* TopicQosCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicQosCell.xib; sourceTree = "<group>"; };
 		04F247FB23378B80003239B6 /* ItemTopic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemTopic.storyboard; sourceTree = "<group>"; };
 		04F247FD23378B9B003239B6 /* ItemTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicViewController.swift; sourceTree = "<group>"; };
 		04F247FF23378C53003239B6 /* ItemTopicSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicSection.swift; sourceTree = "<group>"; };
@@ -354,10 +362,14 @@
 				04F2480E2338EB18003239B6 /* ServerCell.xib */,
 				04F248152339285B003239B6 /* TopicCell.swift */,
 				04F248172339286D003239B6 /* TopicCell.xib */,
+				0446881D233F5AD00074CF75 /* TopicSwitchCell.swift */,
+				0446881F233F5B0C0074CF75 /* TopicSwitchCell.xib */,
 				04051B63233BCE8800224600 /* TopicViewController.swift */,
 				04051B65233E6E2D00224600 /* TopicTypeViewController.swift */,
 				04051B67233E6F3300224600 /* TopicTypeCell.swift */,
 				04051B69233E6F7600224600 /* TopicTypeCell.xib */,
+				04468821233F64360074CF75 /* TopicQosCell.swift */,
+				04468823233F65D70074CF75 /* TopicQosCell.xib */,
 			);
 			path = ServerUpdate;
 			sourceTree = "<group>";
@@ -781,6 +793,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A0431521894CD4005E04D4 /* LaunchScreen.storyboard in Resources */,
+				04468820233F5B0C0074CF75 /* TopicSwitchCell.xib in Resources */,
 				185FF15422ABB0DD003C0DDF /* ItemInputValueCell.xib in Resources */,
 				181BAC6C220DD2B700A0D458 /* MotionCell.xib in Resources */,
 				18EDCF602189AF3600B233B9 /* ItemListCell.xib in Resources */,
@@ -813,6 +826,7 @@
 				18577AAB228816DC007FB9E4 /* BarChartViewController.xib in Resources */,
 				18A33DDA2324FAAE00DFDBB6 /* ItemDetailTrashCell.xib in Resources */,
 				04F247FC23378B80003239B6 /* ItemTopic.storyboard in Resources */,
+				04468824233F65D70074CF75 /* TopicQosCell.xib in Resources */,
 				186AB6122332875F0017F935 /* Connection.storyboard in Resources */,
 				1836B9D5227D916200CF6F66 /* CandleStickChartViewController.xib in Resources */,
 			);
@@ -955,6 +969,7 @@
 				186AB610233287430017F935 /* ConnectionsViewController.swift in Sources */,
 				18243663227D8DC80009F7EA /* CandleStickChartViewController.swift in Sources */,
 				1803377621CBF5480098F944 /* SelectionViewController.swift in Sources */,
+				0446881E233F5AD00074CF75 /* TopicSwitchCell.swift in Sources */,
 				1864B73B22BA8C1400B9DCE7 /* ItemDetailAction.swift in Sources */,
 				186AB625233291080017F935 /* AddItemTopicSection.swift in Sources */,
 				189C812D2311397D00E4BC95 /* ItemDetailHeaderCell.swift in Sources */,
@@ -986,6 +1001,7 @@
 				04F2480B2337DD5D003239B6 /* ServerViewController.swift in Sources */,
 				1852DBA22192960D002E1946 /* AddItemView.swift in Sources */,
 				1846AB57218AA3B800F46053 /* AddItemViewController.swift in Sources */,
+				04468822233F64360074CF75 /* TopicQosCell.swift in Sources */,
 				18592A0C23216C0000DFB310 /* ItemDetailFooterCell.swift in Sources */,
 				181F50A422F1FEAE00EA89D1 /* AppState.swift in Sources */,
 				186AB61823328A360017F935 /* ConnectionCell.swift in Sources */,
