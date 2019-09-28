@@ -27,9 +27,10 @@ class TopicTypeViewController: UIViewController {
                 
             case .serverItem(let viewModel):
                 return UITableViewCell()
+                
+            default:
+                return UITableViewCell()
             }
-            
-            
             }, titleForHeaderInSection: { dataSource, index in
                 let section = dataSource[index]
                 return section.title
