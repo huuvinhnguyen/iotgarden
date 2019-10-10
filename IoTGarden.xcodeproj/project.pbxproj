@@ -15,6 +15,10 @@
 		04468820233F5B0C0074CF75 /* TopicSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0446881F233F5B0C0074CF75 /* TopicSwitchCell.xib */; };
 		04468822233F64360074CF75 /* TopicQosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04468821233F64360074CF75 /* TopicQosCell.swift */; };
 		04468824233F65D70074CF75 /* TopicQosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04468823233F65D70074CF75 /* TopicQosCell.xib */; };
+		047390B1234F9564005567CE /* Selection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047390B0234F9564005567CE /* Selection.storyboard */; };
+		047390B3234F961B005567CE /* SelectionServerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047390B2234F961B005567CE /* SelectionServerCell.xib */; };
+		047390B5234F962A005567CE /* SelectionServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047390B4234F962A005567CE /* SelectionServerCell.swift */; };
+		047390B7234F9756005567CE /* SelectionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047390B6234F9756005567CE /* SelectionSection.swift */; };
 		04F247FC23378B80003239B6 /* ItemTopic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F247FB23378B80003239B6 /* ItemTopic.storyboard */; };
 		04F247FE23378B9B003239B6 /* ItemTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F247FD23378B9B003239B6 /* ItemTopicViewController.swift */; };
 		04F2480023378C53003239B6 /* ItemTopicSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F247FF23378C53003239B6 /* ItemTopicSection.swift */; };
@@ -170,6 +174,10 @@
 		0446881F233F5B0C0074CF75 /* TopicSwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicSwitchCell.xib; sourceTree = "<group>"; };
 		04468821233F64360074CF75 /* TopicQosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicQosCell.swift; sourceTree = "<group>"; };
 		04468823233F65D70074CF75 /* TopicQosCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicQosCell.xib; sourceTree = "<group>"; };
+		047390B0234F9564005567CE /* Selection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Selection.storyboard; sourceTree = "<group>"; };
+		047390B2234F961B005567CE /* SelectionServerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionServerCell.xib; sourceTree = "<group>"; };
+		047390B4234F962A005567CE /* SelectionServerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionServerCell.swift; sourceTree = "<group>"; };
+		047390B6234F9756005567CE /* SelectionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSection.swift; sourceTree = "<group>"; };
 		04F247FB23378B80003239B6 /* ItemTopic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemTopic.storyboard; sourceTree = "<group>"; };
 		04F247FD23378B9B003239B6 /* ItemTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicViewController.swift; sourceTree = "<group>"; };
 		04F247FF23378C53003239B6 /* ItemTopicSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicSection.swift; sourceTree = "<group>"; };
@@ -339,6 +347,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		048EC43B234F8F2C00FCACB2 /* Selection */ = {
+			isa = PBXGroup;
+			children = (
+				047390B0234F9564005567CE /* Selection.storyboard */,
+				1803377521CBF5480098F944 /* SelectionViewController.swift */,
+				1803377721CBF6CC0098F944 /* SelectionCell.xib */,
+				1803377921CBF7310098F944 /* SelectionCell.swift */,
+				047390B2234F961B005567CE /* SelectionServerCell.xib */,
+				047390B4234F962A005567CE /* SelectionServerCell.swift */,
+				047390B6234F9756005567CE /* SelectionSection.swift */,
+			);
+			path = Selection;
+			sourceTree = "<group>";
+		};
 		04F248092337DCBE003239B6 /* ItemTopic */ = {
 			isa = PBXGroup;
 			children = (
@@ -476,9 +498,6 @@
 				1852DBA521931FA5002E1946 /* AddItemSavingView.swift */,
 				1846AB58218AA3E100F46053 /* AddItemViewController.storyboard */,
 				1846AB56218AA3B800F46053 /* AddItemViewController.swift */,
-				1803377521CBF5480098F944 /* SelectionViewController.swift */,
-				1803377721CBF6CC0098F944 /* SelectionCell.xib */,
-				1803377921CBF7310098F944 /* SelectionCell.swift */,
 				186AB61C23328EE80017F935 /* AddItem.storyboard */,
 				186AB61E23328F120017F935 /* AddItemTopicViewController.swift */,
 				186AB62023328FB30017F935 /* AddItemTopicCell.swift */,
@@ -597,6 +616,7 @@
 		18A0430621894CD2005E04D4 /* IoTGarden */ = {
 			isa = PBXGroup;
 			children = (
+				048EC43B234F8F2C00FCACB2 /* Selection */,
 				18A934CE2291727D009C6ADF /* R.generated.swift */,
 				18A0430721894CD2005E04D4 /* AppDelegate.swift */,
 				5B2CD58422896DB600EA8B25 /* UIColor+Extension.swift */,
@@ -806,6 +826,7 @@
 				04F2480423378DF6003239B6 /* ItemTopicCell.xib in Resources */,
 				04051B6A233E6F7600224600 /* TopicTypeCell.xib in Resources */,
 				1862B3DE21E32A7200CFD7F1 /* icon_humi.png in Resources */,
+				047390B3234F961B005567CE /* SelectionServerCell.xib in Resources */,
 				1862B3DC21E305D200CFD7F1 /* icon_temp.png in Resources */,
 				04F2480F2338EB18003239B6 /* ServerCell.xib in Resources */,
 				1803377821CBF6CC0098F944 /* SelectionCell.xib in Resources */,
@@ -819,6 +840,7 @@
 				186AB61D23328EE80017F935 /* AddItem.storyboard in Resources */,
 				189C813323113AA100E4BC95 /* ItemDetailTopicCell.xib in Resources */,
 				1803376721CBA9A20098F944 /* TemperatureCell.xib in Resources */,
+				047390B1234F9564005567CE /* Selection.storyboard in Resources */,
 				1803376B21CBAC900098F944 /* HumidityCell.xib in Resources */,
 				1854088021C40D0A00984268 /* ItemDetailTempViewController.storyboard in Resources */,
 				18EDCF5E2189A4AC00B233B9 /* ItemListViewController.storyboard in Resources */,
@@ -976,6 +998,7 @@
 				1803375B21CB3C070098F944 /* SwitchCellViewModel.swift in Sources */,
 				186AB61F23328F120017F935 /* AddItemTopicViewController.swift in Sources */,
 				189C813123113A8A00E4BC95 /* ItemDetailTopicCell.swift in Sources */,
+				047390B5234F962A005567CE /* SelectionServerCell.swift in Sources */,
 				18339BE321C9496100CC2269 /* ItemList.xcdatamodeld in Sources */,
 				1864B74122C7D1FD00B9DCE7 /* MQTTService.swift in Sources */,
 				18EDCF5C2189A46500B233B9 /* ItemListViewController.swift in Sources */,
@@ -997,6 +1020,7 @@
 				18D7C6D9220EB81000FF8529 /* MotionDevice.swift in Sources */,
 				5B2CD58722896E5400EA8B25 /* UIFont+Extension.swift in Sources */,
 				18A33DDC2324FAD800DFDBB6 /* ItemDetailTrashCell.swift in Sources */,
+				047390B7234F9756005567CE /* SelectionSection.swift in Sources */,
 				5B04F00C227AE9190096FBA1 /* LineChart3ViewController.swift in Sources */,
 				04F2480B2337DD5D003239B6 /* ServerViewController.swift in Sources */,
 				1852DBA22192960D002E1946 /* AddItemView.swift in Sources */,

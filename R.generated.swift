@@ -190,7 +190,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 26 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 27 nibs.
   struct nib {
     /// Nib `AddItemTopicCell`.
     static let addItemTopicCell = _R.nib._AddItemTopicCell()
@@ -232,6 +232,8 @@ struct R: Rswift.Validatable {
     static let positiveNegativeBarChartViewController = _R.nib._PositiveNegativeBarChartViewController()
     /// Nib `SelectionCell`.
     static let selectionCell = _R.nib._SelectionCell()
+    /// Nib `SelectionServerCell`.
+    static let selectionServerCell = _R.nib._SelectionServerCell()
     /// Nib `ServerCell`.
     static let serverCell = _R.nib._ServerCell()
     /// Nib `TemperatureCell`.
@@ -365,6 +367,12 @@ struct R: Rswift.Validatable {
       return UIKit.UINib(resource: R.nib.selectionCell)
     }
     
+    /// `UINib(name: "SelectionServerCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.selectionServerCell) instead")
+    static func selectionServerCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.selectionServerCell)
+    }
+    
     /// `UINib(name: "ServerCell", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.serverCell) instead")
     static func serverCell(_: Void = ()) -> UIKit.UINib {
@@ -481,6 +489,10 @@ struct R: Rswift.Validatable {
       return R.nib.selectionCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SelectionCell
     }
     
+    static func selectionServerCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SelectionServerCell? {
+      return R.nib.selectionServerCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SelectionServerCell
+    }
+    
     static func serverCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ServerCell? {
       return R.nib.serverCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ServerCell
     }
@@ -508,7 +520,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 21 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 22 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `AddItemTopicCell`.
     static let addItemTopicCell: Rswift.ReuseIdentifier<AddItemTopicCell> = Rswift.ReuseIdentifier(identifier: "AddItemTopicCell")
@@ -540,6 +552,8 @@ struct R: Rswift.Validatable {
     static let motionCell: Rswift.ReuseIdentifier<MotionCell> = Rswift.ReuseIdentifier(identifier: "MotionCell")
     /// Reuse identifier `SelectionCell`.
     static let selectionCell: Rswift.ReuseIdentifier<SelectionCell> = Rswift.ReuseIdentifier(identifier: "SelectionCell")
+    /// Reuse identifier `SelectionServerCell`.
+    static let selectionServerCell: Rswift.ReuseIdentifier<SelectionServerCell> = Rswift.ReuseIdentifier(identifier: "SelectionServerCell")
     /// Reuse identifier `ServerCell`.
     static let serverCell: Rswift.ReuseIdentifier<ServerCell> = Rswift.ReuseIdentifier(identifier: "ServerCell")
     /// Reuse identifier `TemperatureCell`.
@@ -556,7 +570,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.storyboard` struct is generated, and contains static references to 8 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 9 storyboards.
   struct storyboard {
     /// Storyboard `AddItemViewController`.
     static let addItemViewController = _R.storyboard.addItemViewController()
@@ -574,6 +588,8 @@ struct R: Rswift.Validatable {
     static let itemTopic = _R.storyboard.itemTopic()
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
+    /// Storyboard `Selection`.
+    static let selection = _R.storyboard.selection()
     
     /// `UIStoryboard(name: "AddItem", bundle: ...)`
     static func addItem(_: Void = ()) -> UIKit.UIStoryboard {
@@ -613,6 +629,11 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
     static func launchScreen(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.launchScreen)
+    }
+    
+    /// `UIStoryboard(name: "Selection", bundle: ...)`
+    static func selection(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.selection)
     }
     
     fileprivate init() {}
@@ -996,6 +1017,20 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
+    struct _SelectionServerCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = SelectionServerCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "SelectionServerCell"
+      let name = "SelectionServerCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SelectionServerCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SelectionServerCell
+      }
+      
+      fileprivate init() {}
+    }
+    
     struct _ServerCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
       typealias ReusableType = ServerCell
       
@@ -1119,6 +1154,7 @@ struct _R: Rswift.Validatable {
       try itemListViewController.validate()
       try itemTopic.validate()
       try launchScreen.validate()
+      try selection.validate()
     }
     
     struct addItem: Rswift.StoryboardResourceType, Rswift.Validatable {
@@ -1292,6 +1328,18 @@ struct _R: Rswift.Validatable {
       
       let bundle = R.hostingBundle
       let name = "LaunchScreen"
+      
+      static func validate() throws {
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct selection: Rswift.StoryboardResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "Selection"
       
       static func validate() throws {
         if #available(iOS 11.0, *) {
