@@ -6,10 +6,27 @@
 //
 
 import UIKit
+import RxDataSources
 
 class SelectionViewController:  UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
+    
+    private var dataSource: RxTableViewSectionedReloadDataSource<SelectionSection> {
+        
+        return RxTableViewSectionedReloadDataSource<SelectionSection>(configureCell: { _, tableView, indexPath, viewModel in
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.selectionServerCell, for: indexPath) else { return UITableViewCell() }
+            cell.viewModel = viewModel
+            
+            return cell
+        }, titleForHeaderInSection: { dataSource, index in
+            let section = dataSource[index]
+            return section.title
+        })
+    }
+    
     var configuration: Configuration?
     var sensorKinds = ["toggle", "temperature", "humidity", "value"]
     
