@@ -6,6 +6,12 @@
 //
 
 import UIKit
+<<<<<<< Updated upstream:IoTGarden/AddItem/SelectionViewController.swift
+
+class SelectionViewController:  UIViewController {
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+=======
 import RxDataSources
 import RxSwift
 
@@ -33,6 +39,7 @@ class SelectionViewController:  UIViewController {
         })
     }
     
+>>>>>>> Stashed changes:IoTGarden/Selection/SelectionViewController.swift
     var configuration: Configuration?
     var sensorKinds = ["toggle", "temperature", "humidity", "value"]
     
