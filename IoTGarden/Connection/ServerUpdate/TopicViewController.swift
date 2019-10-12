@@ -24,12 +24,10 @@ class TopicViewController: UIViewController {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.topicCell, for: indexPath) else { return UITableViewCell() }
                 //            cell.viewModel = viewModel
                 cell.didTapSelectAction = {
-                    
-                    let viewController = R.storyboard.connection.topicTypeViewController()!
+                    let viewController = R.storyboard.selection.selectionViewController()!
                     guard let weakSelf = self else { return }
-//                    weakSelf.present(viewController, animated: true, completion: nil)
-//                    weakSelf.modalPresentationStyle = .overFullScreen
-                    weakSelf.navigationController?.pushViewController(viewController, animated: true)
+                    weakSelf.modalPresentationStyle = .currentContext
+                    weakSelf.present(viewController, animated: true, completion: nil)
                     
                 }
                 
@@ -40,7 +38,7 @@ class TopicViewController: UIViewController {
                 
             case .topicQosItem(let viewModel):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.topicQosCell, for: indexPath) else { return UITableViewCell() }
-                return UITableViewCell()
+                return cell
             default:
                 return UITableViewCell()
             }

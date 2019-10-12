@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="266.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_eye" translatesAutoresizingMaskIntoConstraints="NO" id="R6O-Um-KRt">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_clock_o" translatesAutoresizingMaskIntoConstraints="NO" id="R6O-Um-KRt">
                         <rect key="frame" x="24" y="184" width="59" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="Ayz-bH-gfC"/>
@@ -56,13 +56,13 @@
                             <constraint firstAttribute="width" constant="46" id="Jlu-tH-tqa"/>
                             <constraint firstAttribute="width" secondItem="fA6-Pb-BRy" secondAttribute="height" multiplier="1:1" id="nkk-hL-RWT"/>
                         </constraints>
-                        <state key="normal" image="icon_info"/>
+                        <state key="normal" backgroundImage="icon_info"/>
                         <connections>
                             <action selector="infoButtonTapped:" destination="29b-aa-5tO" eventType="touchUpInside" id="1YD-1P-G5u"/>
                         </connections>
                     </button>
                 </subviews>
-                <color key="backgroundColor" red="0.24705882352941178" green="0.44705882352941173" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="R6O-Um-KRt" firstAttribute="leading" secondItem="Dln-Ja-qCP" secondAttribute="leading" constant="24" id="3R7-2W-ahH"/>
                     <constraint firstAttribute="bottom" secondItem="fA6-Pb-BRy" secondAttribute="bottom" constant="10.5" id="4s6-bN-h21"/>
@@ -78,12 +78,13 @@
                     <constraint firstItem="a9Q-EF-Nw0" firstAttribute="leading" secondItem="R6O-Um-KRt" secondAttribute="trailing" constant="8" id="use-JA-N8g"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.2470588235" green="0.44705882349999998" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <point key="canvasLocation" x="149.59999999999999" y="80.50974512743629"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="icon_angle_double" width="15" height="15"/>
-        <image name="icon_eye" width="25" height="16"/>
+        <image name="icon_clock_o" width="22" height="22"/>
         <image name="icon_info" width="22" height="22"/>
         <image name="icon_power_off" width="22" height="23"/>
     </resources>

@@ -30,13 +30,17 @@ class ServerViewController: UIViewController {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.serverCell, for: indexPath) else { return UITableViewCell() }
                 //            cell.viewModel = viewModel
                 cell.didTapSelectAction = {
-                    let viewController = R.storyboard.connection.connectionsViewController()!
+
+                    let viewController = R.storyboard.selection.selectionViewController()!
                     guard let weakSelf = self else { return }
-                    weakSelf.navigationController?.pushViewController(viewController, animated: true)
+                    weakSelf.modalPresentationStyle = .currentContext
+                    weakSelf.present(viewController, animated: true, completion: nil)
+                    
                 }
                 
                 cell.didTapSaveAction = {
                     guard let weakSelf = self else { return }
+                    
                     self?.navigationController?.popViewController(animated: true)
                 }
                 return cell

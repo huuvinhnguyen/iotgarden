@@ -7,10 +7,16 @@
 
 import UIKit
 import RxDataSources
+import RxSwift
 
 class SelectionViewController:  UIViewController {
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    private var disposeBag = DisposeBag()
+    
+    @IBAction func dismissButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    //    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     
     private var dataSource: RxTableViewSectionedReloadDataSource<SelectionSection> {
@@ -18,7 +24,7 @@ class SelectionViewController:  UIViewController {
         return RxTableViewSectionedReloadDataSource<SelectionSection>(configureCell: { _, tableView, indexPath, viewModel in
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.selectionServerCell, for: indexPath) else { return UITableViewCell() }
-            cell.viewModel = viewModel
+//            cell.viewModel = viewModel
             
             return cell
         }, titleForHeaderInSection: { dataSource, index in
@@ -34,11 +40,31 @@ class SelectionViewController:  UIViewController {
         
         super.viewDidLoad()
         prepareNibs()
+        loadData()
     }
     
     private func prepareNibs() {
         
-        collectionView.register(UINib(nibName: "SelectionCell", bundle: nil), forCellWithReuseIdentifier: "SelectionCell")
+//        collectionView.register(UINib(nibName: "SelectionCell", bundle: nil), forCellWithReuseIdentifier: "SelectionCell")
+        tableView.register(R.nib.selectionServerCell)
+    }
+    
+    private func loadData() {
+        
+        let sections: [SelectionSection] = [
+            SelectionSection(title: "", items: [
+                .serverItem(viewModel: ServerViewModel()),
+                .serverItem(viewModel: ServerViewModel()),
+                .serverItem(viewModel: ServerViewModel()),
+                .serverItem(viewModel: ServerViewModel()),
+
+                ])
+        ]
+        
+        Observable.just(sections)
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
     }
 }
 

@@ -16,7 +16,7 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
   
-  /// This `R.image` struct is generated, and contains static references to 24 images.
+  /// This `R.image` struct is generated, and contains static references to 25 images.
   struct image {
     /// Image `add_button`.
     static let add_button = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_button")
@@ -30,6 +30,8 @@ struct R: Rswift.Validatable {
     static let icon_circle_down = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_circle_down")
     /// Image `icon_circle_o`.
     static let icon_circle_o = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_circle_o")
+    /// Image `icon_clock_o`.
+    static let icon_clock_o = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_clock_o")
     /// Image `icon_dot_circle_o`.
     static let icon_dot_circle_o = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_dot_circle_o")
     /// Image `icon_edit`.
@@ -100,6 +102,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icon_circle_o", bundle: ..., traitCollection: ...)`
     static func icon_circle_o(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_circle_o, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_clock_o", bundle: ..., traitCollection: ...)`
+    static func icon_clock_o(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_clock_o, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "icon_dot_circle_o", bundle: ..., traitCollection: ...)`
@@ -671,6 +678,7 @@ struct _R: Rswift.Validatable {
       try _ItemListPlusCell.validate()
       try _ItemTopicCell.validate()
       try _ItemTopicServerCell.validate()
+      try _SelectionServerCell.validate()
       try _ServerCell.validate()
       try _TemperatureCell.validate()
       try _TopicCell.validate()
@@ -815,7 +823,7 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if UIKit.UIImage(named: "icon_angle_double", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_angle_double' is used in nib 'ItemDetailSwitchCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "icon_eye", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_eye' is used in nib 'ItemDetailSwitchCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_clock_o", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_clock_o' is used in nib 'ItemDetailSwitchCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_info", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_info' is used in nib 'ItemDetailSwitchCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_power_off", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_power_off' is used in nib 'ItemDetailSwitchCell', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
@@ -838,7 +846,7 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if UIKit.UIImage(named: "icon_angle_double", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_angle_double' is used in nib 'ItemDetailTopicCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "icon_eye", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_eye' is used in nib 'ItemDetailTopicCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_clock_o", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_clock_o' is used in nib 'ItemDetailTopicCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_info", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_info' is used in nib 'ItemDetailTopicCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_publish", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_publish' is used in nib 'ItemDetailTopicCell', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
@@ -1017,7 +1025,7 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    struct _SelectionServerCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+    struct _SelectionServerCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
       typealias ReusableType = SelectionServerCell
       
       let bundle = R.hostingBundle
@@ -1026,6 +1034,12 @@ struct _R: Rswift.Validatable {
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SelectionServerCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SelectionServerCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_dot_circle_o", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_dot_circle_o' is used in nib 'SelectionServerCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
       }
       
       fileprivate init() {}
@@ -1104,8 +1118,8 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if UIKit.UIImage(named: "button:Af0-yI-rx9:backgroundImage", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'button:Af0-yI-rx9:backgroundImage' is used in nib 'TopicQosCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "button:pc8-AI-Ygp:backgroundImage", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'button:pc8-AI-Ygp:backgroundImage' is used in nib 'TopicQosCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_circle_o", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_circle_o' is used in nib 'TopicQosCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_dot_circle_o", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_dot_circle_o' is used in nib 'TopicQosCell', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
       }
@@ -1340,10 +1354,17 @@ struct _R: Rswift.Validatable {
     struct selection: Rswift.StoryboardResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "Selection"
+      let selectionViewController = StoryboardViewControllerResource<SelectionViewController>(identifier: "SelectionViewController")
+      
+      func selectionViewController(_: Void = ()) -> SelectionViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: selectionViewController)
+      }
       
       static func validate() throws {
+        if UIKit.UIImage(named: "icon_save", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_save' is used in storyboard 'Selection', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
+        if _R.storyboard.selection().selectionViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'selectionViewController' could not be loaded from storyboard 'Selection' as 'SelectionViewController'.") }
       }
       
       fileprivate init() {}

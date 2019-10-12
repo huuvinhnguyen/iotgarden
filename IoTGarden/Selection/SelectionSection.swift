@@ -13,9 +13,14 @@ struct SelectionSection {
     var items: [Item]
 }
 
+enum SelectionSectionItem {
+    case serverItem(viewModel: ServerViewModel)
+    case topicItem(viewModel: TopicViewModel)
+}
+
 extension SelectionSection: SectionModelType {
     
-    typealias Item = SelectionViewModel
+    typealias Item = SelectionSectionItem
     
     init(original: SelectionSection, items: [Item]) {
         self = original

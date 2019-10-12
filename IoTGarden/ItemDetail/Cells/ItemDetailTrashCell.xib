@@ -27,13 +27,14 @@
                         <state key="normal" backgroundImage="icon_trash"/>
                     </button>
                 </subviews>
-                <color key="backgroundColor" red="0.2486996055" green="0.44706130030000002" blue="0.58785885569999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="BVg-SY-08x" firstAttribute="centerX" secondItem="3sk-rc-rdJ" secondAttribute="centerX" id="2BP-Ca-Tot"/>
                     <constraint firstItem="BVg-SY-08x" firstAttribute="top" secondItem="3sk-rc-rdJ" secondAttribute="top" constant="24.5" id="U1T-S8-AKn"/>
                     <constraint firstAttribute="bottom" secondItem="BVg-SY-08x" secondAttribute="bottom" constant="24" id="myB-RW-3KG"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.2470588235" green="0.44705882349999998" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <point key="canvasLocation" x="-2.3999999999999999" y="-3.5982008995502253"/>
         </tableViewCell>
     </objects>
