@@ -26,6 +26,13 @@ struct ItemListService {
 
     }
     
+    func addItem(item: ItemData, finished: (_ item: ItemData)->()) {
+        let interactor = ItemDataInteractor()
+        interactor.add(item: item) { itemData in
+            finished(itemData)
+        }
+    }
+    
     func loadSensors(finished: (_ sensors: [Sensor])->()) {
         
 //        finished([Sensor(uuid: "abc", name: "abc", value: "aaa", serverUUID: "123", kind: .temperature)])

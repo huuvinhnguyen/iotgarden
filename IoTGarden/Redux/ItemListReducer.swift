@@ -44,8 +44,12 @@ extension ListState {
                 state.sectionItems[index] = .inputSectionItem(cellUI: inputCellUI)
                 state.identifiableComponent.update()
             }
-
             
+        case .addItem():
+            
+            let itemListService = ItemListService()
+            
+
         case .loadItems():
             
             let itemListService = ItemListService()

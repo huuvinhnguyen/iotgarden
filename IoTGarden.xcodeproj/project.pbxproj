@@ -19,10 +19,10 @@
 		047390B3234F961B005567CE /* SelectionServerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047390B2234F961B005567CE /* SelectionServerCell.xib */; };
 		047390B5234F962A005567CE /* SelectionServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047390B4234F962A005567CE /* SelectionServerCell.swift */; };
 		047390B7234F9756005567CE /* SelectionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047390B6234F9756005567CE /* SelectionSection.swift */; };
+		047CCB992365FD920044B9F2 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CCB982365FD920044B9F2 /* Middleware.swift */; };
 		049A857E2364A8050038D247 /* ItemNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A857D2364A8050038D247 /* ItemNameViewController.swift */; };
 		049A85802364A8920038D247 /* ItemList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049A857F2364A8920038D247 /* ItemList.storyboard */; };
 		049A85822365A1A30038D247 /* TopicListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A85812365A1A30038D247 /* TopicListService.swift */; };
-		049A85842365A2760038D247 /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A85832365A2760038D247 /* ItemData.swift */; };
 		049A85862365A4DC0038D247 /* TopicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A85852365A4DC0038D247 /* TopicData.swift */; };
 		049A85882365B3010038D247 /* ItemDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A85872365B3010038D247 /* ItemDataInteractor.swift */; };
 		04F247FC23378B80003239B6 /* ItemTopic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F247FB23378B80003239B6 /* ItemTopic.storyboard */; };
@@ -184,10 +184,10 @@
 		047390B2234F961B005567CE /* SelectionServerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionServerCell.xib; sourceTree = "<group>"; };
 		047390B4234F962A005567CE /* SelectionServerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionServerCell.swift; sourceTree = "<group>"; };
 		047390B6234F9756005567CE /* SelectionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSection.swift; sourceTree = "<group>"; };
+		047CCB982365FD920044B9F2 /* Middleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
 		049A857D2364A8050038D247 /* ItemNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNameViewController.swift; sourceTree = "<group>"; };
 		049A857F2364A8920038D247 /* ItemList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemList.storyboard; sourceTree = "<group>"; };
 		049A85812365A1A30038D247 /* TopicListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicListService.swift; sourceTree = "<group>"; };
-		049A85832365A2760038D247 /* ItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemData.swift; sourceTree = "<group>"; };
 		049A85852365A4DC0038D247 /* TopicData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicData.swift; sourceTree = "<group>"; };
 		049A85872365B3010038D247 /* ItemDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataInteractor.swift; sourceTree = "<group>"; };
 		04F247FB23378B80003239B6 /* ItemTopic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemTopic.storyboard; sourceTree = "<group>"; };
@@ -418,7 +418,6 @@
 				049A85872365B3010038D247 /* ItemDataInteractor.swift */,
 				1803376221CB954D0098F944 /* ConfigurationsDataInteractor.swift */,
 				049A85812365A1A30038D247 /* TopicListService.swift */,
-				049A85832365A2760038D247 /* ItemData.swift */,
 				049A85852365A4DC0038D247 /* TopicData.swift */,
 			);
 			path = CoreData;
@@ -687,6 +686,7 @@
 				1864B73E22BE387B00B9DCE7 /* Stores */,
 				18E7A71D218EE4E800F7E689 /* ReactiveReSwiftBridge.swift */,
 				18E7A723218EFDF600F7E689 /* ItemListState.swift */,
+				047CCB982365FD920044B9F2 /* Middleware.swift */,
 				18E7A725218EFE5200F7E689 /* ItemListReducer.swift */,
 				18E7A727218EFEDD00F7E689 /* ItemListAction.swift */,
 				18E7A729218EFF9900F7E689 /* ItemListStore.swift */,
@@ -1050,7 +1050,6 @@
 				181F50A422F1FEAE00EA89D1 /* AppState.swift in Sources */,
 				186AB61823328A360017F935 /* ConnectionCell.swift in Sources */,
 				18E7A71E218EE4E800F7E689 /* ReactiveReSwiftBridge.swift in Sources */,
-				049A85842365A2760038D247 /* ItemData.swift in Sources */,
 				1846AB53218A9E7800F46053 /* ItemDetailViewController.swift in Sources */,
 				04051B68233E6F3400224600 /* TopicTypeCell.swift in Sources */,
 				18A33DE42326AAFA00DFDBB6 /* ItemListPlusCell.swift in Sources */,
@@ -1086,6 +1085,7 @@
 				181BAC72220DE57100A0D458 /* SensorRequest.swift in Sources */,
 				1803374C21C9EDC90098F944 /* SensorMapping.swift in Sources */,
 				1826C625218F51B700A5CE38 /* ItemListService.swift in Sources */,
+				047CCB992365FD920044B9F2 /* Middleware.swift in Sources */,
 				186AB616233289A20017F935 /* ConnectionViewModel.swift in Sources */,
 				04F2480623378E04003239B6 /* ItemTopicServerCell.swift in Sources */,
 				18E7A728218EFEDD00F7E689 /* ItemListAction.swift in Sources */,
