@@ -10,10 +10,12 @@ import UIKit
 class ItemListCell: UICollectionViewCell {
     
     var switchCellUI: SwitchCellUI?
+    var viewModel: ItemListViewModel?
     
     fileprivate(set) var cellViewModel: CellViewModel! {
         
         didSet {
+            
             
             guard let viewModel = cellViewModel as? SwitchCellViewModel else { return }
             nameLabel?.text = viewModel.name
@@ -29,6 +31,7 @@ class ItemListCell: UICollectionViewCell {
             }
         }
     }
+    
     
     @IBOutlet weak var nameLabel: UILabel?
     @IBOutlet weak var onOffSwitch: UISwitch?
@@ -84,4 +87,11 @@ struct SwitchCellUI: CellUI {
     var message: String
 
 }
+
+struct ItemListViewModel {
+    var uuid: String = ""
+    var name: String = ""
+    var imageUrlString = ""
+}
+
 

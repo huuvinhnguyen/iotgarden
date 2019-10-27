@@ -36,6 +36,14 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailHeaderCell, for: indexPath) else { return UITableViewCell() }
                 
                 cell.viewModel = viewModel
+                cell.didTapEditAction = {
+                    guard let weakSelf = self else { return }
+                    
+                    let viewController = R.storyboard.itemList.instantiateInitialViewController()!
+                    weakSelf.modalPresentationStyle = .currentContext
+                    weakSelf.present(viewController, animated: true, completion: nil)
+                 
+                }
                 return cell
                 
             case .topicItem(let viewModel):

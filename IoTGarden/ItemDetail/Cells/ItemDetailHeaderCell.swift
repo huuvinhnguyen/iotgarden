@@ -17,6 +17,12 @@ class ItemDetailHeaderCell: UITableViewCell {
             nameLabel.text = viewModel?.name 
         }
     }
+    
+    var didTapEditAction: (() -> Void)?
+    
+    @IBAction private func editButtonTapped(_ sender: UIButton) {
+        didTapEditAction?()
+    }
 }
 
 import RxDataSources

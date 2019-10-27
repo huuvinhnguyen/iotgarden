@@ -10,6 +10,22 @@ import PromiseKit
 
 struct ItemListService {
     
+    struct ItemData {
+        let uuid: String
+        let name: String
+        let imageUrlString: String
+        var topics: [String]?
+    }
+    
+    func loadItems(finished: (_ items: [ItemData])->()) {
+        let item1 = ItemData(uuid: "", name: "", imageUrlString: "http://", topics: [])
+        let item2 = ItemData(uuid: "", name: "", imageUrlString: "http://", topics: [])
+        let item3 = ItemData(uuid: "", name: "", imageUrlString: "http://", topics: [])
+        
+        finished([item1, item2, item3])
+
+    }
+    
     func loadSensors(finished: (_ sensors: [Sensor])->()) {
         
 //        finished([Sensor(uuid: "abc", name: "abc", value: "aaa", serverUUID: "123", kind: .temperature)])

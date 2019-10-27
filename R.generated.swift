@@ -16,7 +16,7 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
   
-  /// This `R.image` struct is generated, and contains static references to 25 images.
+  /// This `R.image` struct is generated, and contains static references to 27 images.
   struct image {
     /// Image `add_button`.
     static let add_button = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_button")
@@ -32,6 +32,8 @@ struct R: Rswift.Validatable {
     static let icon_circle_o = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_circle_o")
     /// Image `icon_clock_o`.
     static let icon_clock_o = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_clock_o")
+    /// Image `icon_close`.
+    static let icon_close = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_close")
     /// Image `icon_dot_circle_o`.
     static let icon_dot_circle_o = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_dot_circle_o")
     /// Image `icon_edit`.
@@ -60,6 +62,8 @@ struct R: Rswift.Validatable {
     static let icon_power_off = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_power_off")
     /// Image `icon_publish`.
     static let icon_publish = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_publish")
+    /// Image `icon_qrcode`.
+    static let icon_qrcode = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_qrcode")
     /// Image `icon_save`.
     static let icon_save = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_save")
     /// Image `icon_temp`.
@@ -107,6 +111,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icon_clock_o", bundle: ..., traitCollection: ...)`
     static func icon_clock_o(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_clock_o, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_close", bundle: ..., traitCollection: ...)`
+    static func icon_close(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_close, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "icon_dot_circle_o", bundle: ..., traitCollection: ...)`
@@ -177,6 +186,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icon_publish", bundle: ..., traitCollection: ...)`
     static func icon_publish(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_publish, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_qrcode", bundle: ..., traitCollection: ...)`
+    static func icon_qrcode(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_qrcode, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "icon_save", bundle: ..., traitCollection: ...)`
@@ -577,7 +591,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.storyboard` struct is generated, and contains static references to 9 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 10 storyboards.
   struct storyboard {
     /// Storyboard `AddItemViewController`.
     static let addItemViewController = _R.storyboard.addItemViewController()
@@ -591,6 +605,8 @@ struct R: Rswift.Validatable {
     static let itemDetail = _R.storyboard.itemDetail()
     /// Storyboard `ItemListViewController`.
     static let itemListViewController = _R.storyboard.itemListViewController()
+    /// Storyboard `ItemList`.
+    static let itemList = _R.storyboard.itemList()
     /// Storyboard `ItemTopic`.
     static let itemTopic = _R.storyboard.itemTopic()
     /// Storyboard `LaunchScreen`.
@@ -621,6 +637,11 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "ItemDetailTempViewController", bundle: ...)`
     static func itemDetailTempViewController(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.itemDetailTempViewController)
+    }
+    
+    /// `UIStoryboard(name: "ItemList", bundle: ...)`
+    static func itemList(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.itemList)
     }
     
     /// `UIStoryboard(name: "ItemListViewController", bundle: ...)`
@@ -1165,6 +1186,7 @@ struct _R: Rswift.Validatable {
       try connection.validate()
       try itemDetail.validate()
       try itemDetailTempViewController.validate()
+      try itemList.validate()
       try itemListViewController.validate()
       try itemTopic.validate()
       try launchScreen.validate()
@@ -1292,6 +1314,28 @@ struct _R: Rswift.Validatable {
         if #available(iOS 11.0, *) {
         }
         if _R.storyboard.itemDetailTempViewController().itemDetailTempViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'itemDetailTempViewController' could not be loaded from storyboard 'ItemDetailTempViewController' as 'ItemDetailTempViewController'.") }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct itemList: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = UIKit.UINavigationController
+      
+      let bundle = R.hostingBundle
+      let itemNameViewController = StoryboardViewControllerResource<ItemNameViewController>(identifier: "ItemNameViewController")
+      let name = "ItemList"
+      
+      func itemNameViewController(_: Void = ()) -> ItemNameViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: itemNameViewController)
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_camera", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_camera' is used in storyboard 'ItemList', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_close", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_close' is used in storyboard 'ItemList', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+        if _R.storyboard.itemList().itemNameViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'itemNameViewController' could not be loaded from storyboard 'ItemList' as 'ItemNameViewController'.") }
       }
       
       fileprivate init() {}

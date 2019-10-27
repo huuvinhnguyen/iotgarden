@@ -49,34 +49,11 @@ extension ListState {
         case .loadItems():
             
             let itemListService = ItemListService()
-            itemListService.loadSensors { sensors in
-                
-                let items: [SectionItem] = sensors.compactMap { sensor in
-                    
-                    switch sensor.kind {
-                    case "toggle":
-                        
-                        let task = SensorConnect2()
-                        task.connect(sensor: sensor)
-                        state.tasks[sensor.uuid] = task
-                        let switchCellUI = SwitchCellUI(uuid: sensor.uuid, name: sensor.name, stateString: "Updated", timeString: sensor.time, message: sensor.value )
-                        
-                        return .switchSectionItem(cellUI: switchCellUI)
-                        //                    case "temperature":
-                        //                        return TemperatureDevice(sensor: sensor)
-                        //                    case "humidity":
-                        //                        return HumidityDevice(sensor: sensor)
-                        //                    case "motion":
-                    //                        return MotionDevice(sensor: sensor)
-                    case "value":
-                        let task = SensorConnect2()
-                        task.connect(sensor: sensor)
-                        state.tasks[sensor.uuid] = task
-                        let inputCellUI = InputCellUI(uuid: sensor.uuid, name: sensor.name, stateString: "Updated", timeString: sensor.time, message: sensor.value)
-                        return .inputSectionItem(cellUI: inputCellUI)
-                    default:
-                        return nil
-                    }
+            
+            itemListService.loadItems { itemDatas in
+                let items: [SectionItem] = itemDatas.map { itemData in
+                    let viewModel = ItemListViewModel(uuid: UUID().uuidString, name: itemData.name, imageUrlString: "")
+                    return .itemListSectionItem(viewModel: viewModel)
                 }
                 
                 state.sectionItems = items
@@ -86,7 +63,47 @@ extension ListState {
                 let sections: [ItemSectionModel] = [ .itemSection(title: "", items: state.sectionItems)]
                 state.sections = sections
                 state.identifiableComponent.update()
+                
             }
+            
+//            itemListService.loadSensors { sensors in
+//
+//                let items: [SectionItem] = sensors.compactMap { sensor in
+//
+//                    switch sensor.kind {
+//                    case "toggle":
+//
+//                        let task = SensorConnect2()
+//                        task.connect(sensor: sensor)
+//                        state.tasks[sensor.uuid] = task
+//                        let switchCellUI = SwitchCellUI(uuid: sensor.uuid, name: sensor.name, stateString: "Updated", timeString: sensor.time, message: sensor.value )
+//
+//                        return .switchSectionItem(cellUI: switchCellUI)
+//                        //                    case "temperature":
+//                        //                        return TemperatureDevice(sensor: sensor)
+//                        //                    case "humidity":
+//                        //                        return HumidityDevice(sensor: sensor)
+//                        //                    case "motion":
+//                    //                        return MotionDevice(sensor: sensor)
+//                    case "value":
+//                        let task = SensorConnect2()
+//                        task.connect(sensor: sensor)
+//                        state.tasks[sensor.uuid] = task
+//                        let inputCellUI = InputCellUI(uuid: sensor.uuid, name: sensor.name, stateString: "Updated", timeString: sensor.time, message: sensor.value)
+//                        return .inputSectionItem(cellUI: inputCellUI)
+//                    default:
+//                        return nil
+//                    }
+//                }
+//
+//                state.sectionItems = items
+//                let tailItem = SectionItem.tailSectionItem()
+//                state.sectionItems.append(tailItem)
+//
+//                let sections: [ItemSectionModel] = [ .itemSection(title: "", items: state.sectionItems)]
+//                state.sections = sections
+//                state.identifiableComponent.update()
+//            }
             
         default: ()
         }

@@ -42,6 +42,7 @@ extension ListState {
         case updateInputItem(cellUI: InputCellUI)
 
         case loadItems()
+        case addItem()
         case loadDetail(id: String)
     }
 }
