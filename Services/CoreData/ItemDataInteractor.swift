@@ -18,7 +18,7 @@ struct ItemDataInteractor: DataInteractor {
         let items = NSManagedObject(entity: entity, insertInto: context)
         items.setValue(item.uuid, forKeyPath: "uuid")
         items.setValue(item.name, forKeyPath: "name")
-        items.setValue(item.topics, forKeyPath: "topics")
+        items.setValue(item.topics?.joined(separator: ","), forKeyPath: "topics")
         items.setValue(item.imageUrlString, forKeyPath: "imageUrlString")
         
         do {
@@ -29,10 +29,6 @@ struct ItemDataInteractor: DataInteractor {
             
             print("Could not save. \(error), \(error.userInfo)")
         }
-        
-    }
-    
-    func delete(item: ItemListService.ItemData) {
         
     }
     
@@ -83,7 +79,33 @@ struct ItemDataInteractor: DataInteractor {
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
+    }
+    
+    func delete(item: MappingData) {
         
+        let context = Storage.shared.context
+        
+        let request: NSFetchRequest<Items> = Items.fetchRequest()
+        
+        request.predicate = NSPredicate.init(format: "uuid == %@", item.uuid)
+        
+        if let result = try? context.fetch(request) {
+            
+            for object in result {
+                
+                print("#delete object")
+                context.delete(object)
+            }
+        }
+        
+        do {
+            
+            try context.save()
+            
+        } catch let error as NSError {
+            
+            print("Could not save. \(error), \(error.userInfo)")
+        }
     }
     
     

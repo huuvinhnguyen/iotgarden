@@ -18,12 +18,16 @@ struct ItemListService {
     }
     
     func loadItems(finished: (_ items: [ItemData])->()) {
-        let item1 = ItemData(uuid: "", name: "", imageUrlString: "http://", topics: [])
-        let item2 = ItemData(uuid: "", name: "", imageUrlString: "http://", topics: [])
-        let item3 = ItemData(uuid: "", name: "", imageUrlString: "http://", topics: [])
-        
-        finished([item1, item2, item3])
+//        let item1 = ItemData(uuid: "", name: "", imageUrlString: "http://", topics: [])
+//        let item2 = ItemData(uuid: "", name: "", imageUrlString: "http://", topics: [])
+//        let item3 = ItemData(uuid: "", name: "", imageUrlString: "http://", topics: [])
+//        finished([item1, item2, item3])
 
+        
+        let interactor = ItemDataInteractor()
+        interactor.getItems { items in
+            finished(items)
+        }
     }
     
     func addItem(item: ItemData, finished: (_ item: ItemData)->()) {
@@ -31,6 +35,11 @@ struct ItemListService {
         interactor.add(item: item) { itemData in
             finished(itemData)
         }
+    }
+    
+    func removeItem(item: ItemData) {
+        let interactor = ItemDataInteractor()
+        
     }
     
     func loadSensors(finished: (_ sensors: [Sensor])->()) {

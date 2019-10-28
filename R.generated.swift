@@ -16,12 +16,14 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
   
-  /// This `R.image` struct is generated, and contains static references to 27 images.
+  /// This `R.image` struct is generated, and contains static references to 28 images.
   struct image {
     /// Image `add_button`.
     static let add_button = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_button")
     /// Image `icon_angle_double`.
     static let icon_angle_double = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_angle_double")
+    /// Image `icon_arrow_cicle_o_right`.
+    static let icon_arrow_cicle_o_right = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_arrow_cicle_o_right")
     /// Image `icon_bookmark`.
     static let icon_bookmark = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_bookmark")
     /// Image `icon_camera`.
@@ -86,6 +88,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icon_angle_double", bundle: ..., traitCollection: ...)`
     static func icon_angle_double(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_angle_double, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_arrow_cicle_o_right", bundle: ..., traitCollection: ...)`
+    static func icon_arrow_cicle_o_right(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_arrow_cicle_o_right, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "icon_bookmark", bundle: ..., traitCollection: ...)`
@@ -1331,8 +1338,10 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
+        if UIKit.UIImage(named: "icon_arrow_cicle_o_right", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_arrow_cicle_o_right' is used in storyboard 'ItemList', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_camera", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_camera' is used in storyboard 'ItemList', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_close", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_close' is used in storyboard 'ItemList', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_save", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_save' is used in storyboard 'ItemList', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
         if _R.storyboard.itemList().itemNameViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'itemNameViewController' could not be loaded from storyboard 'ItemList' as 'ItemNameViewController'.") }

@@ -7,12 +7,12 @@
 
 import ReSwift
 
-let itemListMiddleware: ReSwift.Middleware<ItemDetailState> = {  dispatch, getState in
+let itemListMiddleware: ReSwift.Middleware<AppState> = {  dispatch, getState in
     
     return { next in
         print("enter detail middleware")
         return { action in
-            if case let ListState.Action.addItem() = action {
+            if case ListState.Action.addItem() = action {
                 let service = ItemListService()
                 service.addItem(item: ItemListService.ItemData(uuid: UUID().uuidString, name: "item1", imageUrlString: "http://", topics:[])) { item in
                     
