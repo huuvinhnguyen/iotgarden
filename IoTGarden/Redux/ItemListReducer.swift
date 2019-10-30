@@ -45,18 +45,13 @@ extension ListState {
                 state.identifiableComponent.update()
             }
             
-        case .addItem():
-            
-            let itemListService = ItemListService()
-            
-
         case .loadItems():
             
             let itemListService = ItemListService()
             
             itemListService.loadItems { itemDatas in
                 let items: [SectionItem] = itemDatas.map { itemData in
-                    let viewModel = ItemListViewModel(uuid: UUID().uuidString, name: itemData.name, imageUrlString: "")
+                    let viewModel = ItemListViewModel(uuid: itemData.uuid, name: itemData.name, imageUrlString: "")
                     return .itemListSectionItem(viewModel: viewModel)
                 }
                 

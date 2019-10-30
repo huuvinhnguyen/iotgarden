@@ -76,6 +76,14 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                 if viewModel.kind == "trash" {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailTrashCell, for: indexPath) else { return UITableViewCell() }
                     //                cell.viewModel = viewModel
+                    cell.didTapTrashAction = {
+                        guard let weakSelf = self else { return }
+
+                        let action = ListState.Action.removeItem(id: weakSelf.identifier)
+                        appStore.dispatch(action)
+                        weakSelf.navigationController?.popViewController(animated: true)
+                        
+                    }
                     return cell
                 } else if viewModel.kind == "plus" {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailPlusCell, for: indexPath) else { return UITableViewCell() }

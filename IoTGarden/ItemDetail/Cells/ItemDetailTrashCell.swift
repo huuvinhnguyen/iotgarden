@@ -8,5 +8,9 @@
 import UIKit
 
 class ItemDetailTrashCell: UITableViewCell {
+    var didTapTrashAction: (() -> Void)?
     
+    @IBAction private func trashButtonTapped(_ sender: UIButton) {
+        didTapTrashAction?()
+    }
 }

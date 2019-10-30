@@ -37,8 +37,9 @@ struct ItemListService {
         }
     }
     
-    func removeItem(item: ItemData) {
+    func removeItem(id: String, finished: (_ id: String)->()) {
         let interactor = ItemDataInteractor()
+        interactor.delete(id: id) { finished($0) }
         
     }
     
@@ -83,7 +84,9 @@ struct ItemListService {
     func removeSensor(sensor: Sensor) {
         
         let sensors = SensorsDataInteractor()
-        sensors.delete(item: sensor)
+        sensors.delete(id: sensor.uuid) { id in
+            
+        }
     }
     
     func addLocalConfiguration(configuration: Configuration) {

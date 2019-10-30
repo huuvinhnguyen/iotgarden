@@ -8,6 +8,7 @@ import CoreData
 
 struct ConfigurationsDataInteractor: DataInteractor {
     
+    
     typealias MappingData = Configuration
     
     func add(item: Configuration, finished: (Configuration) -> ()) {
@@ -32,7 +33,7 @@ struct ConfigurationsDataInteractor: DataInteractor {
         
     }
     
-    func delete(item: Configuration) {
+    func delete(id: String, finished: (String) -> ()) {
         
     }
     

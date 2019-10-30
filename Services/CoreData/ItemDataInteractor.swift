@@ -76,18 +76,19 @@ struct ItemDataInteractor: DataInteractor {
             }
             
             finished(items)
+            
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
     
-    func delete(item: MappingData) {
+    func delete(id: String, finished: (_ id: String) ->()) {
         
         let context = Storage.shared.context
         
         let request: NSFetchRequest<Items> = Items.fetchRequest()
         
-        request.predicate = NSPredicate.init(format: "uuid == %@", item.uuid)
+        request.predicate = NSPredicate.init(format: "uuid == %@", id)
         
         if let result = try? context.fetch(request) {
             
@@ -99,7 +100,7 @@ struct ItemDataInteractor: DataInteractor {
         }
         
         do {
-            
+            finished(id)
             try context.save()
             
         } catch let error as NSError {

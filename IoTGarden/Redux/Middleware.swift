@@ -18,7 +18,13 @@ let itemListMiddleware: ReSwift.Middleware<AppState> = {  dispatch, getState in
                     
                     dispatch(ListState.Action.loadItems())
                 }
-                
+            }
+            
+            if case ListState.Action.removeItem(let id ) = action {
+                let itemListService = ItemListService()
+                itemListService.removeItem(id: id) { _ in
+                    dispatch(ListState.Action.loadItems())
+                }
             }
 
             next(action)

@@ -43,6 +43,7 @@ extension ListState {
 
         case loadItems()
         case addItem()
+        case removeItem(id: String)
         case loadDetail(id: String)
     }
 }

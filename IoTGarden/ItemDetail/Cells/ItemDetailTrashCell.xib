@@ -25,6 +25,9 @@
                             <constraint firstAttribute="height" constant="80" id="Xjy-Y5-9bh"/>
                         </constraints>
                         <state key="normal" backgroundImage="icon_trash"/>
+                        <connections>
+                            <action selector="trashButtonTapped:" destination="W2S-Zb-mIj" eventType="touchUpInside" id="E5m-hW-0Wx"/>
+                        </connections>
                     </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
