@@ -12,20 +12,21 @@ protocol  DataInteractor {
     associatedtype MappingData
     
     func add(item: MappingData, finished:(_ item: MappingData)->()) -> ()
-    func delete(item: MappingData) -> ()
+    func delete(id: String, finished: (_ id: String)->()) -> ()
     func update(item: MappingData) -> ()
     func getItem(uuid: String) -> MappingData?
 }
 
 struct SensorsDataInteractor : DataInteractor {
+   
     
-    func delete(item: MappingData) {
+    func delete(id: String, finished: (String) -> ()) {
         
         let context = Storage.shared.context
         
         let request: NSFetchRequest<Sensors> = Sensors.fetchRequest()
         
-        request.predicate = NSPredicate.init(format: "uuid == %@", item.uuid)
+        request.predicate = NSPredicate.init(format: "uuid == %@", id)
         
         if let result = try? context.fetch(request) {
             

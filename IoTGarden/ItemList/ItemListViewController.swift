@@ -157,6 +157,7 @@ extension ItemSectionModel: SectionModelType {
 }
 
 enum SectionItem {
+    case itemListSectionItem(viewModel: ItemListViewModel)
     case switchSectionItem(cellUI: SwitchCellUI)
     case inputSectionItem(cellUI: InputCellUI)
     case temperatureSectionItem(name: TemperatureDevice)
@@ -192,6 +193,8 @@ extension SectionItem: IdentifiableType, Equatable {
     
     var identity: String {
         switch self {
+        case .itemListSectionItem(let viewModel):
+            return viewModel.uuid
         case .switchSectionItem(let viewModel):
             return viewModel.uuid
         case .inputSectionItem(let viewModel):
@@ -224,10 +227,14 @@ extension ItemListViewController {
             print("rendering cells")
 
             switch dataSource[indexPath] {
+            case let .itemListSectionItem(viewModel):
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemListCell", for: indexPath) as! ItemListCell
+                //                cell.configure(cellUI: cellUI)
+                return cell
                 
             case let .switchSectionItem(cellUI):
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemListCell", for: indexPath) as! ItemListCell
-                cell.configure(cellUI: cellUI)
+//                cell.configure(cellUI: cellUI)
                 return cell
                 
             case let .inputSectionItem(cellUI):

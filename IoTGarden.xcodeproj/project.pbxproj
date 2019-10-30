@@ -19,6 +19,12 @@
 		047390B3234F961B005567CE /* SelectionServerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047390B2234F961B005567CE /* SelectionServerCell.xib */; };
 		047390B5234F962A005567CE /* SelectionServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047390B4234F962A005567CE /* SelectionServerCell.swift */; };
 		047390B7234F9756005567CE /* SelectionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047390B6234F9756005567CE /* SelectionSection.swift */; };
+		047CCB992365FD920044B9F2 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CCB982365FD920044B9F2 /* Middleware.swift */; };
+		049A857E2364A8050038D247 /* ItemNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A857D2364A8050038D247 /* ItemNameViewController.swift */; };
+		049A85802364A8920038D247 /* ItemList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049A857F2364A8920038D247 /* ItemList.storyboard */; };
+		049A85822365A1A30038D247 /* TopicListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A85812365A1A30038D247 /* TopicListService.swift */; };
+		049A85862365A4DC0038D247 /* TopicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A85852365A4DC0038D247 /* TopicData.swift */; };
+		049A85882365B3010038D247 /* ItemDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A85872365B3010038D247 /* ItemDataInteractor.swift */; };
 		04F247FC23378B80003239B6 /* ItemTopic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F247FB23378B80003239B6 /* ItemTopic.storyboard */; };
 		04F247FE23378B9B003239B6 /* ItemTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F247FD23378B9B003239B6 /* ItemTopicViewController.swift */; };
 		04F2480023378C53003239B6 /* ItemTopicSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F247FF23378C53003239B6 /* ItemTopicSection.swift */; };
@@ -178,6 +184,12 @@
 		047390B2234F961B005567CE /* SelectionServerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionServerCell.xib; sourceTree = "<group>"; };
 		047390B4234F962A005567CE /* SelectionServerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionServerCell.swift; sourceTree = "<group>"; };
 		047390B6234F9756005567CE /* SelectionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSection.swift; sourceTree = "<group>"; };
+		047CCB982365FD920044B9F2 /* Middleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
+		049A857D2364A8050038D247 /* ItemNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNameViewController.swift; sourceTree = "<group>"; };
+		049A857F2364A8920038D247 /* ItemList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemList.storyboard; sourceTree = "<group>"; };
+		049A85812365A1A30038D247 /* TopicListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicListService.swift; sourceTree = "<group>"; };
+		049A85852365A4DC0038D247 /* TopicData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicData.swift; sourceTree = "<group>"; };
+		049A85872365B3010038D247 /* ItemDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataInteractor.swift; sourceTree = "<group>"; };
 		04F247FB23378B80003239B6 /* ItemTopic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemTopic.storyboard; sourceTree = "<group>"; };
 		04F247FD23378B9B003239B6 /* ItemTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicViewController.swift; sourceTree = "<group>"; };
 		04F247FF23378C53003239B6 /* ItemTopicSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicSection.swift; sourceTree = "<group>"; };
@@ -403,7 +415,10 @@
 				1826C624218F51B700A5CE38 /* ItemListService.swift */,
 				1803374B21C9EDC90098F944 /* SensorMapping.swift */,
 				1803375321CA2A6B0098F944 /* DataInteractor.swift */,
+				049A85872365B3010038D247 /* ItemDataInteractor.swift */,
 				1803376221CB954D0098F944 /* ConfigurationsDataInteractor.swift */,
+				049A85812365A1A30038D247 /* TopicListService.swift */,
+				049A85852365A4DC0038D247 /* TopicData.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -463,6 +478,8 @@
 				18EDCF5B2189A46500B233B9 /* ItemListViewController.swift */,
 				18A33DE12326AAE400DFDBB6 /* ItemListPlusCell.xib */,
 				18A33DE32326AAFA00DFDBB6 /* ItemListPlusCell.swift */,
+				049A857D2364A8050038D247 /* ItemNameViewController.swift */,
+				049A857F2364A8920038D247 /* ItemList.storyboard */,
 			);
 			path = ItemList;
 			sourceTree = "<group>";
@@ -669,6 +686,7 @@
 				1864B73E22BE387B00B9DCE7 /* Stores */,
 				18E7A71D218EE4E800F7E689 /* ReactiveReSwiftBridge.swift */,
 				18E7A723218EFDF600F7E689 /* ItemListState.swift */,
+				047CCB982365FD920044B9F2 /* Middleware.swift */,
 				18E7A725218EFE5200F7E689 /* ItemListReducer.swift */,
 				18E7A727218EFEDD00F7E689 /* ItemListAction.swift */,
 				18E7A729218EFF9900F7E689 /* ItemListStore.swift */,
@@ -849,6 +867,7 @@
 				18A33DDA2324FAAE00DFDBB6 /* ItemDetailTrashCell.xib in Resources */,
 				04F247FC23378B80003239B6 /* ItemTopic.storyboard in Resources */,
 				04468824233F65D70074CF75 /* TopicQosCell.xib in Resources */,
+				049A85802364A8920038D247 /* ItemList.storyboard in Resources */,
 				186AB6122332875F0017F935 /* Connection.storyboard in Resources */,
 				1836B9D5227D916200CF6F66 /* CandleStickChartViewController.xib in Resources */,
 			);
@@ -1009,6 +1028,7 @@
 				18E7A72A218EFF9900F7E689 /* ItemListStore.swift in Sources */,
 				186AB62123328FB30017F935 /* AddItemTopicCell.swift in Sources */,
 				183A920122EB53FC00EBDC4A /* ItemDetailTopicViewController.swift in Sources */,
+				049A85882365B3010038D247 /* ItemDataInteractor.swift in Sources */,
 				18EDCF5221899EC500B233B9 /* Configuration.swift in Sources */,
 				18339BE021C9493E00CC2269 /* IoTGarden.xcdatamodeld in Sources */,
 				18EDCF5021899E3900B233B9 /* Item.swift in Sources */,
@@ -1036,12 +1056,15 @@
 				18A0430821894CD2005E04D4 /* AppDelegate.swift in Sources */,
 				1803376D21CBBA660098F944 /* CellCreator.swift in Sources */,
 				1864B73822B7F45B00B9DCE7 /* ItemDetailReducer.swift in Sources */,
+				049A857E2364A8050038D247 /* ItemNameViewController.swift in Sources */,
+				049A85822365A1A30038D247 /* TopicListService.swift in Sources */,
 				186AB614233289470017F935 /* ConnectionSection.swift in Sources */,
 				185FF15622ABB5B3003C0DDF /* InputDevice.swift in Sources */,
 				5B04F00E227AEEAF0096FBA1 /* PositiveNegativeBarChartViewController.swift in Sources */,
 				18577AA9228816C6007FB9E4 /* BarChartViewController.swift in Sources */,
 				18EDCF5421899F3100B233B9 /* GroupItem.swift in Sources */,
 				1803376521CBA9860098F944 /* TemperatureCell.swift in Sources */,
+				049A85862365A4DC0038D247 /* TopicData.swift in Sources */,
 				1803376F21CBED960098F944 /* HumidityDevice.swift in Sources */,
 				18B5506521C55A14004EC438 /* ItemReducer.swift in Sources */,
 				1854087A21C40BF000984268 /* ItemDetailTempViewController.swift in Sources */,
@@ -1062,6 +1085,7 @@
 				181BAC72220DE57100A0D458 /* SensorRequest.swift in Sources */,
 				1803374C21C9EDC90098F944 /* SensorMapping.swift in Sources */,
 				1826C625218F51B700A5CE38 /* ItemListService.swift in Sources */,
+				047CCB992365FD920044B9F2 /* Middleware.swift in Sources */,
 				186AB616233289A20017F935 /* ConnectionViewModel.swift in Sources */,
 				04F2480623378E04003239B6 /* ItemTopicServerCell.swift in Sources */,
 				18E7A728218EFEDD00F7E689 /* ItemListAction.swift in Sources */,

@@ -10,6 +10,39 @@ import PromiseKit
 
 struct ItemListService {
     
+    struct ItemData {
+        let uuid: String
+        let name: String
+        let imageUrlString: String
+        var topics: [String]?
+    }
+    
+    func loadItems(finished: (_ items: [ItemData])->()) {
+//        let item1 = ItemData(uuid: "", name: "", imageUrlString: "http://", topics: [])
+//        let item2 = ItemData(uuid: "", name: "", imageUrlString: "http://", topics: [])
+//        let item3 = ItemData(uuid: "", name: "", imageUrlString: "http://", topics: [])
+//        finished([item1, item2, item3])
+
+        
+        let interactor = ItemDataInteractor()
+        interactor.getItems { items in
+            finished(items)
+        }
+    }
+    
+    func addItem(item: ItemData, finished: (_ item: ItemData)->()) {
+        let interactor = ItemDataInteractor()
+        interactor.add(item: item) { itemData in
+            finished(itemData)
+        }
+    }
+    
+    func removeItem(id: String, finished: (_ id: String)->()) {
+        let interactor = ItemDataInteractor()
+        interactor.delete(id: id) { finished($0) }
+        
+    }
+    
     func loadSensors(finished: (_ sensors: [Sensor])->()) {
         
 //        finished([Sensor(uuid: "abc", name: "abc", value: "aaa", serverUUID: "123", kind: .temperature)])
@@ -51,7 +84,9 @@ struct ItemListService {
     func removeSensor(sensor: Sensor) {
         
         let sensors = SensorsDataInteractor()
-        sensors.delete(item: sensor)
+        sensors.delete(id: sensor.uuid) { id in
+            
+        }
     }
     
     func addLocalConfiguration(configuration: Configuration) {
