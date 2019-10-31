@@ -27,4 +27,10 @@ class ItemNameViewController: UIViewController {
         appStore.dispatch(action)
     }
     
+    @IBAction func pictureButtonTapped(_ sender: Any) {
+        let vc = R.storyboard.itemList.itemImageViewController()!
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+
+    
 }

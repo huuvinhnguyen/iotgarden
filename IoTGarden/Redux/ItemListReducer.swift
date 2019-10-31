@@ -103,6 +103,11 @@ extension ListState {
 //                state.sections = sections
 //                state.identifiableComponent.update()
 //            }
+        case .loadImages():
+            let service = FirebaseService()
+            service.getItems { items in
+                
+            }
             
         default: ()
         }

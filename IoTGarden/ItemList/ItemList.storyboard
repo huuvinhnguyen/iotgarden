@@ -22,6 +22,9 @@
                                 <rect key="frame" x="116" y="134" width="111" height="112"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="icon_camera"/>
+                                <connections>
+                                    <action selector="pictureButtonTapped:" destination="pmi-tN-IjJ" eventType="touchUpInside" id="ZuP-ob-qca"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q41-qn-7vj">
                                 <rect key="frame" x="84" y="280" width="72" height="65"/>
@@ -63,6 +66,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SCW-Cc-Zix" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="900" y="206.44677661169416"/>
+        </scene>
+        <!--Item Image View Controller-->
+        <scene sceneID="nDu-Iu-czr">
+            <objects>
+                <viewController storyboardIdentifier="ItemImageViewController" id="gHo-64-hVE" customClass="ItemImageViewController" customModule="IoTGarden" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aNO-6M-ujr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aoI-FE-gCl">
+                                <rect key="frame" x="67" y="108" width="240" height="451"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wsp-7k-4fK">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jsM-nV-O3w">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.2470588235" green="0.44705882349999998" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="bD0-Zx-tmd" firstAttribute="trailing" secondItem="aoI-FE-gCl" secondAttribute="trailing" constant="68" id="gPp-64-Q7i"/>
+                            <constraint firstItem="aoI-FE-gCl" firstAttribute="top" secondItem="bD0-Zx-tmd" secondAttribute="top" constant="88" id="gZC-io-VkS"/>
+                            <constraint firstItem="aoI-FE-gCl" firstAttribute="leading" secondItem="bD0-Zx-tmd" secondAttribute="leading" constant="67" id="not-wM-TLf"/>
+                            <constraint firstItem="bD0-Zx-tmd" firstAttribute="bottom" secondItem="aoI-FE-gCl" secondAttribute="bottom" constant="108" id="xrs-A5-MI6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bD0-Zx-tmd"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="aoI-FE-gCl" id="pC8-eY-CdU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ij3-uM-lLY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1618.4000000000001" y="213.64317841079463"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vce-a3-zXz">

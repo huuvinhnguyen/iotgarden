@@ -31,6 +31,7 @@ struct ListState: ReSwift.StateType, Identifiable {
     var sections: [ItemSectionModel] = []
     var sectionItems: [SectionItem] = []
     var tasks: [String: SensorConnect2] = [:]
+    var imageList: [String] = []
     
 }
 
@@ -45,6 +46,7 @@ extension ListState {
         case addItem()
         case removeItem(id: String)
         case loadDetail(id: String)
+        case loadImages()
     }
 }
 
