@@ -59,7 +59,7 @@ class TemperatureDevice: CellViewModel {
             weakSelf.timeString = dateString
 
             
-            sensorStore.dispatch(UpdateSensorAction(sensor: newItem))
+//            sensorStore.dispatch(UpdateSensorAction(sensor: newItem))
             let itemListService = ItemListService()
             itemListService.updateSensor(sensor: newItem)
         }

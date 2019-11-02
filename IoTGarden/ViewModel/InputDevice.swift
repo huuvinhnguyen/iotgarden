@@ -59,7 +59,7 @@ class InputDevice: CellViewModel {
             newItem.value = message.string ?? "0"
             print("item.name = \(newItem.name)")
             weakSelf.stateString = "Updated"
-            sensorStore.dispatch(UpdateSensorAction(sensor: newItem))
+//            sensorStore.dispatch(UpdateSensorAction(sensor: newItem))
             
             if message.string == "done" {
                 

@@ -16,7 +16,7 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
   
-  /// This `R.image` struct is generated, and contains static references to 28 images.
+  /// This `R.image` struct is generated, and contains static references to 30 images.
   struct image {
     /// Image `add_button`.
     static let add_button = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_button")
@@ -28,6 +28,8 @@ struct R: Rswift.Validatable {
     static let icon_bookmark = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_bookmark")
     /// Image `icon_camera`.
     static let icon_camera = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_camera")
+    /// Image `icon_check_square_o`.
+    static let icon_check_square_o = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_check_square_o")
     /// Image `icon_circle_down`.
     static let icon_circle_down = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_circle_down")
     /// Image `icon_circle_o`.
@@ -68,6 +70,8 @@ struct R: Rswift.Validatable {
     static let icon_qrcode = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_qrcode")
     /// Image `icon_save`.
     static let icon_save = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_save")
+    /// Image `icon_square_o`.
+    static let icon_square_o = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_square_o")
     /// Image `icon_temp`.
     static let icon_temp = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_temp")
     /// Image `icon_trash`.
@@ -103,6 +107,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icon_camera", bundle: ..., traitCollection: ...)`
     static func icon_camera(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_camera, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_check_square_o", bundle: ..., traitCollection: ...)`
+    static func icon_check_square_o(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_check_square_o, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "icon_circle_down", bundle: ..., traitCollection: ...)`
@@ -203,6 +212,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icon_save", bundle: ..., traitCollection: ...)`
     static func icon_save(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_save, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_square_o", bundle: ..., traitCollection: ...)`
+    static func icon_square_o(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_square_o, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "icon_temp", bundle: ..., traitCollection: ...)`
@@ -715,6 +729,7 @@ struct _R: Rswift.Validatable {
       try _ItemDetailSwitchCell.validate()
       try _ItemDetailTopicCell.validate()
       try _ItemDetailTrashCell.validate()
+      try _ItemImageCell.validate()
       try _ItemInputValueCell.validate()
       try _ItemListCell.validate()
       try _ItemListPlusCell.validate()
@@ -918,7 +933,7 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    struct _ItemImageCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+    struct _ItemImageCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
       typealias ReusableType = ItemImageCell
       
       let bundle = R.hostingBundle
@@ -927,6 +942,14 @@ struct _R: Rswift.Validatable {
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemImageCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemImageCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_camera", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_camera' is used in nib 'ItemImageCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_check_square_o", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_check_square_o' is used in nib 'ItemImageCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_square_o", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_square_o' is used in nib 'ItemImageCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
       }
       
       fileprivate init() {}

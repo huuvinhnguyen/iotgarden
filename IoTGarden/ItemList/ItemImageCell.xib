@@ -19,18 +19,37 @@
                 <rect key="frame" x="0.0" y="0.0" width="287" height="227"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ItemImageCell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BY1-oK-Oyq">
-                        <rect key="frame" x="88" y="103" width="110" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_camera" translatesAutoresizingMaskIntoConstraints="NO" id="Mp7-0J-XHg">
+                        <rect key="frame" x="10" y="10" width="267" height="162"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SuY-rU-D9L">
+                        <rect key="frame" x="219" y="180" width="48" height="35"/>
+                        <state key="normal" image="icon_square_o"/>
+                        <state key="selected" image="icon_check_square_o"/>
+                    </button>
                 </subviews>
             </view>
+            <color key="backgroundColor" red="0.1354269317" green="0.75040155649999996" blue="0.27612946640000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="mgx-nH-oVD" firstAttribute="trailing" secondItem="Mp7-0J-XHg" secondAttribute="trailing" constant="10" id="3BT-jq-cLq"/>
+                <constraint firstItem="mgx-nH-oVD" firstAttribute="bottom" secondItem="SuY-rU-D9L" secondAttribute="bottom" constant="12" id="Vt8-6F-SFO"/>
+                <constraint firstItem="Mp7-0J-XHg" firstAttribute="leading" secondItem="mgx-nH-oVD" secondAttribute="leading" constant="10" id="hL0-To-Fhp"/>
+                <constraint firstItem="mgx-nH-oVD" firstAttribute="bottom" secondItem="Mp7-0J-XHg" secondAttribute="bottom" constant="55" id="mFE-Es-M5F"/>
+                <constraint firstItem="mgx-nH-oVD" firstAttribute="trailing" secondItem="SuY-rU-D9L" secondAttribute="trailing" constant="20" id="qqP-p6-uzk"/>
+                <constraint firstItem="Mp7-0J-XHg" firstAttribute="top" secondItem="mgx-nH-oVD" secondAttribute="top" constant="10" id="tYx-h2-C6u"/>
+                <constraint firstItem="SuY-rU-D9L" firstAttribute="top" secondItem="Mp7-0J-XHg" secondAttribute="bottom" constant="8" id="wzc-u1-Bkx"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="mgx-nH-oVD"/>
             <size key="customSize" width="287" height="227"/>
-            <point key="canvasLocation" x="34" y="76"/>
+            <connections>
+                <outlet property="checkButton" destination="SuY-rU-D9L" id="emv-a9-NHR"/>
+            </connections>
+            <point key="canvasLocation" x="32.799999999999997" y="74.212893553223395"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="icon_camera" width="25" height="22"/>
+        <image name="icon_check_square_o" width="23" height="20"/>
+        <image name="icon_square_o" width="20" height="20"/>
+    </resources>
 </document>

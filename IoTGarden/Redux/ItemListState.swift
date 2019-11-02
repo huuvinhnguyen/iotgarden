@@ -8,20 +8,6 @@
 import ReactiveReSwift
 import CocoaMQTT
 
-struct ItemState {
-    
-    var item: ToggleItem
-}
-
-struct SensorListState {
-    
-    let sensors: [Sensor]
-}
-
-struct SensorState {
-    
-    var sensor: Sensor
-}
 
 import ReSwift
 struct ListState: ReSwift.StateType, Identifiable {
@@ -31,7 +17,7 @@ struct ListState: ReSwift.StateType, Identifiable {
     var sections: [ItemSectionModel] = []
     var sectionItems: [SectionItem] = []
     var tasks: [String: SensorConnect2] = [:]
-    var imageList: [String] = []
+    var imageList: [ItemImageViewModel] = []
     
 }
 
@@ -46,7 +32,10 @@ extension ListState {
         case addItem()
         case removeItem(id: String)
         case loadDetail(id: String)
-        case loadImages()
+        
+        case loadImages(viewModels: [ItemImageViewModel])
+        case selectImage(id: String)
+        case fetchImages()
     }
 }
 
@@ -61,7 +50,6 @@ let switchingMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
                 let state = getState()?.listState ?? ListState()
                 let task = state.tasks[switchCellUI.uuid]
                 
-
                 task?.publish(message: message)
                 task?.didReceiveMessage = {  mqtt, message, id in
                     print("#mqtt message: \(message)")
@@ -158,5 +146,33 @@ let inputMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
         }
     }
 }
+
+let imageMiddleware: ReSwift.Middleware<AppState> = {  dispatch, getState in
+    
+    return { next in
+        print("enter detail middleware")
+        return { action in
+            if case let ListState.Action.selectImage(id) = action {
+                
+                let state = getState()
+                state?.listState
+                
+            }
+            
+            if case ListState.Action.fetchImages() = action {
+                
+                let service = FirebaseService()
+                service.getItems { items in
+                    
+                    let list = [ ItemImageViewModel(id: "0", isSelected: true, imageUrl: "")]
+                    
+                    dispatch(ListState.Action.loadImages(viewModels: list))
+                }
+            }
+            next(action)
+        }
+    }
+}
+
 
 
