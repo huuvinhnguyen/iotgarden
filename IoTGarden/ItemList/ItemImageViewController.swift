@@ -13,12 +13,13 @@ import ReSwift
 class ItemImageViewController: UIViewController,  StoreSubscriber {
     
     func newState(state: ListState) {
-        
+        sections.accept(state.imageList)
     }
     
     private let disposeBag = DisposeBag()
 
-    
+    private var sections = PublishRelay<[SectionModel]>()
+
     @IBOutlet weak var collectionView: UICollectionView!
     
     let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel>(configureCell: { dataSource, collectionView, indexPath, _ in
@@ -36,20 +37,13 @@ class ItemImageViewController: UIViewController,  StoreSubscriber {
         
         appStore.subscribe(self) { $0.select { $0.listState }.skipRepeats() }
         
+        sections.asObservable()
+            .bind(to: collectionView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
         let action = ListState.Action.fetchImages()
         appStore.dispatch(action)
 
-        let sections: [SectionModel] = [
-        .itemSection(title: "1", items: [
-            .imageSectionItem(viewModel: ItemImageViewModel(id: "0", isSelected: true, imageUrl: "")),
-            .imageSectionItem(viewModel: ItemImageViewModel(id: "1", isSelected: false, imageUrl: "")),
-            .imageSectionItem(viewModel: ItemImageViewModel(id: "2", isSelected: false, imageUrl: ""))
-            ])
-        ]
-        
-        Observable.just(sections)
-            .bind(to: collectionView.rx.items(dataSource: dataSource))
-            .disposed(by: disposeBag)
         
         collectionView.rx.modelSelected(SectionItem.self).subscribe(onNext: { sectionItem in
             if case  SectionItem.imageSectionItem(let viewModel) = sectionItem {
@@ -63,7 +57,6 @@ class ItemImageViewController: UIViewController,  StoreSubscriber {
     private func prepareNibs() {
         collectionView.register(UINib(nibName: "ItemImageCell", bundle: nil), forCellWithReuseIdentifier: "ItemImageCell")
     }
-    
 }
 
 import RxDataSources
