@@ -232,7 +232,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 28 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 29 nibs.
   struct nib {
     /// Nib `AddItemTopicCell`.
     static let addItemTopicCell = _R.nib._AddItemTopicCell()
@@ -286,6 +286,8 @@ struct R: Rswift.Validatable {
     static let topicCell = _R.nib._TopicCell()
     /// Nib `TopicQosCell`.
     static let topicQosCell = _R.nib._TopicQosCell()
+    /// Nib `TopicSaveCell`.
+    static let topicSaveCell = _R.nib._TopicSaveCell()
     /// Nib `TopicSwitchCell`.
     static let topicSwitchCell = _R.nib._TopicSwitchCell()
     /// Nib `TopicTypeCell`.
@@ -447,6 +449,12 @@ struct R: Rswift.Validatable {
       return UIKit.UINib(resource: R.nib.topicQosCell)
     }
     
+    /// `UINib(name: "TopicSaveCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.topicSaveCell) instead")
+    static func topicSaveCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.topicSaveCell)
+    }
+    
     /// `UINib(name: "TopicSwitchCell", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.topicSwitchCell) instead")
     static func topicSwitchCell(_: Void = ()) -> UIKit.UINib {
@@ -563,6 +571,10 @@ struct R: Rswift.Validatable {
       return R.nib.topicQosCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? TopicQosCell
     }
     
+    static func topicSaveCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> TopicSaveCell? {
+      return R.nib.topicSaveCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? TopicSaveCell
+    }
+    
     static func topicSwitchCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> TopicSwitchCell? {
       return R.nib.topicSwitchCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? TopicSwitchCell
     }
@@ -574,7 +586,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 23 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 24 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `AddItemTopicCell`.
     static let addItemTopicCell: Rswift.ReuseIdentifier<AddItemTopicCell> = Rswift.ReuseIdentifier(identifier: "AddItemTopicCell")
@@ -618,6 +630,8 @@ struct R: Rswift.Validatable {
     static let topicCell: Rswift.ReuseIdentifier<TopicCell> = Rswift.ReuseIdentifier(identifier: "TopicCell")
     /// Reuse identifier `TopicQosCell`.
     static let topicQosCell: Rswift.ReuseIdentifier<TopicQosCell> = Rswift.ReuseIdentifier(identifier: "TopicQosCell")
+    /// Reuse identifier `TopicSaveCell`.
+    static let topicSaveCell: Rswift.ReuseIdentifier<TopicSaveCell> = Rswift.ReuseIdentifier(identifier: "TopicSaveCell")
     /// Reuse identifier `TopicSwitchCell`.
     static let topicSwitchCell: Rswift.ReuseIdentifier<TopicSwitchCell> = Rswift.ReuseIdentifier(identifier: "TopicSwitchCell")
     /// Reuse identifier `TopicTypeCell`.
@@ -740,6 +754,7 @@ struct _R: Rswift.Validatable {
       try _TemperatureCell.validate()
       try _TopicCell.validate()
       try _TopicQosCell.validate()
+      try _TopicSaveCell.validate()
     }
     
     struct _AddItemTopicCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
@@ -1199,6 +1214,26 @@ struct _R: Rswift.Validatable {
       static func validate() throws {
         if UIKit.UIImage(named: "icon_circle_o", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_circle_o' is used in nib 'TopicQosCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_dot_circle_o", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_dot_circle_o' is used in nib 'TopicQosCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _TopicSaveCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = TopicSaveCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "TopicSaveCell"
+      let name = "TopicSaveCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> TopicSaveCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? TopicSaveCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_save", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_save' is used in nib 'TopicSaveCell', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
       }
