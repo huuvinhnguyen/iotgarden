@@ -64,8 +64,11 @@ class ItemListViewController: UIViewController, StoreSubscriber {
             guard let weakSelf = self else { return }
             
             if case  SectionItem.tailSectionItem() = sectionItem {
-                let addItemViewController = R.storyboard.addItemViewController.addItemViewController()!
-                self?.navigationController?.pushViewController(addItemViewController, animated: true)
+                
+                let viewController = R.storyboard.itemList.instantiateInitialViewController()!
+                weakSelf.modalPresentationStyle = .currentContext
+                weakSelf.present(viewController, animated: true, completion: nil)
+                
                 
             } else {
                 
@@ -157,6 +160,7 @@ extension ItemSectionModel: SectionModelType {
 }
 
 enum SectionItem {
+    case headerSectionItem()
     case itemListSectionItem(viewModel: ItemListViewModel)
     case switchSectionItem(cellUI: SwitchCellUI)
     case inputSectionItem(cellUI: InputCellUI)

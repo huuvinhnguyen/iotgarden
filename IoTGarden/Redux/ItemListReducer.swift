@@ -103,6 +103,9 @@ extension ListState {
 //                state.sections = sections
 //                state.identifiableComponent.update()
 //            }
+        case .loadImages(let list):
+            state.imageList = list
+            state.identifiableComponent.update()
             
         default: ()
         }
