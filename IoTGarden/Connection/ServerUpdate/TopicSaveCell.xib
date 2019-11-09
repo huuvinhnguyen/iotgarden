@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TopicSaveCell" rowHeight="122" id="dbP-4T-Qgc" customClass="TopicSaveCell" customModule="IoTGarden" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TopicSaveCell" rowHeight="122" id="dbP-4T-Qgc" customClass="TopicSaveCell" customModule="IoTGarden" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="122"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dbP-4T-Qgc" id="Ey0-Xb-JPO">
@@ -19,18 +19,22 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Tn-wq-2FW">
-                        <rect key="frame" x="16" y="43" width="22" height="50"/>
+                        <rect key="frame" x="292" y="35" width="49" height="50"/>
                         <constraints>
+                            <constraint firstAttribute="width" constant="49" id="FnM-wf-h09"/>
                             <constraint firstAttribute="height" constant="50" id="rGy-NB-Lhk"/>
                         </constraints>
-                        <state key="normal" image="icon_save"/>
+                        <state key="normal" backgroundImage="icon_save"/>
+                        <connections>
+                            <action selector="saveButtonTapped:" destination="dbP-4T-Qgc" eventType="touchUpInside" id="Wyi-1j-aOu"/>
+                        </connections>
                     </button>
                 </subviews>
                 <color key="backgroundColor" red="0.2486996055" green="0.44706130030000002" blue="0.58785885569999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstItem="8Tn-wq-2FW" firstAttribute="leading" secondItem="Ey0-Xb-JPO" secondAttribute="leading" constant="16" id="OEy-rz-DUs"/>
-                    <constraint firstAttribute="bottom" secondItem="8Tn-wq-2FW" secondAttribute="bottom" constant="28.5" id="Wg2-G0-veN"/>
-                    <constraint firstItem="8Tn-wq-2FW" firstAttribute="top" secondItem="Ey0-Xb-JPO" secondAttribute="top" constant="43" id="kWa-be-YGg"/>
+                    <constraint firstAttribute="trailing" secondItem="8Tn-wq-2FW" secondAttribute="trailing" constant="34" id="Baa-Ck-T3r"/>
+                    <constraint firstAttribute="bottom" secondItem="8Tn-wq-2FW" secondAttribute="bottom" constant="36.5" id="LVv-DF-T2W"/>
+                    <constraint firstItem="8Tn-wq-2FW" firstAttribute="top" secondItem="Ey0-Xb-JPO" secondAttribute="top" constant="35" id="i3z-zf-YCR"/>
                 </constraints>
             </tableViewCellContentView>
             <point key="canvasLocation" x="452" y="-32.383808095952027"/>

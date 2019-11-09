@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Sensor {
+struct Topic {
     
     var uuid: String = ""
     

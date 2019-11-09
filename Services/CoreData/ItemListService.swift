@@ -18,12 +18,6 @@ struct ItemListService {
     }
     
     func loadItems(finished: (_ items: [ItemData])->()) {
-//        let item1 = ItemData(uuid: "", name: "", imageUrlString: "http://", topics: [])
-//        let item2 = ItemData(uuid: "", name: "", imageUrlString: "http://", topics: [])
-//        let item3 = ItemData(uuid: "", name: "", imageUrlString: "http://", topics: [])
-//        finished([item1, item2, item3])
-
-        
         let interactor = ItemDataInteractor()
         interactor.getItems { items in
             finished(items)
@@ -43,7 +37,19 @@ struct ItemListService {
         
     }
     
-    func loadSensors(finished: (_ sensors: [Sensor])->()) {
+    
+    func loadTopics(finished: (_ topics: [Topic])-> ()) {
+        
+        let interactor = SensorsDataInteractor()
+        
+        interactor.getItems { sensors in
+            
+            finished([])
+        }
+        
+    }
+    
+    func loadSensors(finished: (_ sensors: [Topic])->()) {
         
 //        finished([Sensor(uuid: "abc", name: "abc", value: "aaa", serverUUID: "123", kind: .temperature)])
         
@@ -58,30 +64,29 @@ struct ItemListService {
         
         let sensors = SensorsDataInteractor()
         
-        sensors.add(item: Sensor()) { _ in }
+        sensors.add(item: Topic()) { _ in }
     }
     
-    func addSensor(sensor: Sensor) {
+    func addTopic(topic: Topic, finished: (_ id: String)->()) {
         
         let sensors = SensorsDataInteractor()
-        sensors.add(item: sensor) { _ in }
+        sensors.add(item: topic) { _ in }
+        finished(topic.uuid)
     }
     
-    func getSensor(uuid: String) -> Sensor? {
+    func getSensor(uuid: String) -> Topic? {
         let sensors = SensorsDataInteractor()
         return sensors.getItem(uuid: uuid)
-
     }
     
-    
-    func updateSensor(sensor: Sensor) {
+    func updateSensor(sensor: Topic) {
         
         let sensors = SensorsDataInteractor()
         sensors.update(item: sensor)
     }
     
     
-    func removeSensor(sensor: Sensor) {
+    func removeSensor(sensor: Topic) {
         
         let sensors = SensorsDataInteractor()
         sensors.delete(id: sensor.uuid) { id in

@@ -9,7 +9,7 @@ import Foundation
 
 class InputDevice: CellViewModel {
     
-    var sensor: Sensor {
+    var sensor: Topic {
         
         didSet {
             
@@ -22,7 +22,7 @@ class InputDevice: CellViewModel {
     
     internal var sensorConnect: SensorConnect
     
-    init(sensor: Sensor) {
+    init(sensor: Topic) {
         
         self.sensor = sensor
         self.sensorConnect = SensorConnect()
@@ -32,7 +32,7 @@ class InputDevice: CellViewModel {
         configure(sensor: sensor)
     }
     
-    private func configure(sensor: Sensor) {
+    private func configure(sensor: Topic) {
         
         name = sensor.name
         isOn = (sensor.value == "0") ? false : true

@@ -9,7 +9,7 @@ import Foundation
 class TemperatureDevice: CellViewModel {
     
     
-    var sensor: Sensor {
+    var sensor: Topic {
         
         didSet {
             
@@ -20,7 +20,7 @@ class TemperatureDevice: CellViewModel {
     var timeString  = ""
     internal var sensorConnect: SensorConnect
     
-    init(sensor: Sensor) {
+    init(sensor: Topic) {
         
         self.sensor = sensor
         self.sensorConnect = SensorConnect()
@@ -29,7 +29,7 @@ class TemperatureDevice: CellViewModel {
         configure(sensor: sensor)
     }
     
-    func configure(sensor: Sensor) {
+    func configure(sensor: Topic) {
         
         sensorConnect.connect(sensor: sensor)
         

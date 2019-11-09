@@ -20,8 +20,8 @@ enum ItemTopicSection {
 enum ItemTopicSectionItem {
     
     case headerItem(viewModel: SectionItemViewModel?)
-    case topicItem(viewModel: ItemTopicViewModel)
-    case serverItem(viewModel: ItemTopicServerViewModel)
+    case topicItem(viewModel: TopicViewModel)
+    case serverItem(viewModel: ConnectionViewModel)
     case footerItem(viewModel: SectionItemViewModel?)
 }
 

@@ -9,6 +9,11 @@ import UIKit
 
 class TopicSaveCell: UITableViewCell {
     
+    var didTapSaveAction: (() -> Void)?
+    
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
+        didTapSaveAction?()
+    }
     var viewModel: TopicSaveViewModel? {
         didSet {
             

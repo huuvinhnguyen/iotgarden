@@ -106,6 +106,10 @@
                     <constraint firstItem="6uS-VK-XdL" firstAttribute="leading" secondItem="mqN-bX-XdP" secondAttribute="leading" constant="49" id="Snx-dF-4zt"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="nameLabel" destination="BtN-eh-Naf" id="tJu-yz-snY"/>
+                <outlet property="topicLabel" destination="U0L-fv-G2W" id="jjc-Et-Jkz"/>
+            </connections>
             <point key="canvasLocation" x="-180" y="-14.392803598200901"/>
         </tableViewCell>
     </objects>

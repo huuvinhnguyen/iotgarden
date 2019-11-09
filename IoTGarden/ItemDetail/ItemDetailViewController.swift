@@ -10,11 +10,12 @@ import CoreData
 import ReSwift
 import RxDataSources
 import RxSwift
+import RxCocoa
 
 struct ItemDetailViewModel {
     
     var sensorConnect: SensorConnect? = SensorConnect()
-    init(sensor: Sensor) {
+    init(sensor: Topic) {
         sensorConnect?.connect(sensor: sensor)
     }
 }
@@ -26,6 +27,9 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     private var viewModel: ItemDetailViewModel?
     private var serverUUID = ""
     private let disposeBag = DisposeBag()
+    
+    var sectionItems = PublishRelay<[ItemDetailSectionModel]>()
+
 
     private var dataSource: RxTableViewSectionedReloadDataSource<ItemDetailSectionModel> {
         
@@ -102,31 +106,21 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         })
     }
 
-    func newState(state: ItemDetailState) {
+    func newState(state: TopicState) {
         
-//        nameLabel.text = state.name
-//        valueLabel.text = state.value
-//        kindLabel.text = state.kind
-//        topicLabel.text = state.topic
-//        timeLabel.text = state.time
-        serverUUID = state.serverUUID
-        
-//        var timer: Timer?
+//        serverUUID = state.serverUUID
+        sectionItems.accept(state.topicItems)
 
-//        timer?.invalidate()
-//        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
-//            guard let weakSelf = self else { return }
-//            weakSelf.timeLabel?.text = state.time.toDate()?.timeAgoDisplay()
-//        }
+
     }
     
     
-    typealias StoreSubscriberStateType = ItemDetailState
+    typealias StoreSubscriberStateType = TopicState
     
-    var sensor: Sensor? {
+    var sensor: Topic? {
         didSet {
-            viewModel = ItemDetailViewModel(sensor: sensor ?? Sensor())
-        }
+            viewModel = ItemDetailViewModel(sensor: sensor ?? Topic())
+        }   
     }
     
     var identifier = ""
@@ -134,7 +128,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         appStore.subscribe(self) { subcription in
-            subcription.select { state in state.detailState }.skipRepeats()
+            subcription.select { state in state.topicState }.skipRepeats()
         }
         
     }
@@ -142,8 +136,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        let action = ItemDetailState.Action.loadDetail(id: identifier)
-        appStore.dispatch(action)
+        appStore.dispatch(TopicState.Action.loadTopics())
         configureTableView()
     }
     
@@ -157,22 +150,11 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
 
         tableView.register(R.nib.itemDetailTrashCell)
 
-        let sections: [ItemDetailSectionModel] = [
-            .headerSection(items: [.headerItem(viewModel: ItemDetailHeaderViewModel(name: "Header AAA"))]),
-            .topicSection(items: [
-                .topicItem(viewModel: ItemDetailTopicViewModel(name: "Topic switch", value: "ON", updated: "25-08-2019", type: "Switch")),
-                .topicItem(viewModel: ItemDetailTopicViewModel(name: "Topic switch", value: "ON", updated: "25-08-2019", type: "Normal"))
-                ]),
-            
-            .footerSection(items: [
-                .footerItem(viewModel: ItemDetailFooterViewModel(kind: "plus")),
-                .footerItem(viewModel: ItemDetailFooterViewModel(kind: "trash"))
-                ])
-        ]
-
-        Observable.just(sections)
+    
+        sectionItems.asObservable()
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+
     }
     
     @IBAction func switchButtonTapped(_ sender: UIButton) {
@@ -190,7 +172,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
         
         let itemListService = ItemListService()
-        itemListService.removeSensor(sensor: sensor ?? Sensor())
+        itemListService.removeSensor(sensor: sensor ?? Topic())
         let action = ListState.Action.loadItems()
         appStore.dispatch(action)
         navigationController?.popViewController(animated: true)

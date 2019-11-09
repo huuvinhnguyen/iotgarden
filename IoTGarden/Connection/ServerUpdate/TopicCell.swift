@@ -16,5 +16,10 @@ class TopicCell: UITableViewCell {
 }
 
 struct TopicViewModel {
-    
+    var id = ""
+    var name = ""
+    var topic = ""
+    var value = ""
+    var time = ""
+    var connectionId = ""
 }

@@ -8,7 +8,7 @@ import Foundation
 
 class HumidityDevice: CellViewModel {
     
-    var sensor: Sensor {
+    var sensor: Topic {
         
         didSet {
             
@@ -19,7 +19,7 @@ class HumidityDevice: CellViewModel {
     var timeString = ""
     internal var sensorConnect: SensorConnect
     
-    init(sensor: Sensor) {
+    init(sensor: Topic) {
         
         self.sensor = sensor
         self.sensorConnect = SensorConnect()
@@ -28,7 +28,7 @@ class HumidityDevice: CellViewModel {
         configure(sensor: sensor)
     }
     
-    func configure(sensor: Sensor) {
+    func configure(sensor: Topic) {
         
         sensorConnect.connect(sensor: sensor)
         

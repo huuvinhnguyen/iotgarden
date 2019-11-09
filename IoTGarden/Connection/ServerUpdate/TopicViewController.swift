@@ -41,7 +41,10 @@ class TopicViewController: UIViewController {
                 return cell
             case .topicSaveItem(let viewModel):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.topicSaveCell, for: indexPath) else { return UITableViewCell() }
-                
+                cell.didTapSaveAction = {
+                    guard let weakSelf = self else { return }
+                    weakSelf.navigationController?.popViewController(animated: true)
+                }
                 return cell
                 
             default:
