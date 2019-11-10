@@ -202,20 +202,13 @@ let imageMiddleware: ReSwift.Middleware<AppState> = {  dispatch, getState in
                             .imageSectionItem(viewModel: ItemImageViewModel(id: "1", isSelected: false, imageUrl: "")),
                             .imageSectionItem(viewModel: ItemImageViewModel(id: "2", isSelected: false, imageUrl: "")),
                             .imageSectionItem(viewModel: ItemImageViewModel(id: "3", isSelected: false, imageUrl: "")),
-                            .imageSectionItem(viewModel: ItemImageViewModel(id: "4", isSelected: false, imageUrl: "")),
-                            .imageSectionItem(viewModel: ItemImageViewModel(id: "5", isSelected: false, imageUrl: "")),
-                            .imageSectionItem(viewModel: ItemImageViewModel(id: "6", isSelected: false, imageUrl: "")),
-                            .imageSectionItem(viewModel: ItemImageViewModel(id: "7", isSelected: false, imageUrl: "")),
-                            .imageSectionItem(viewModel: ItemImageViewModel(id: "8", isSelected: false, imageUrl: "")),
-                            .imageSectionItem(viewModel: ItemImageViewModel(id: "9", isSelected: false, imageUrl: "")),
-                            .imageSectionItem(viewModel: ItemImageViewModel(id: "10", isSelected: false, imageUrl: "")),
-                            .imageSectionItem(viewModel: ItemImageViewModel(id: "11", isSelected: false, imageUrl: "")),
-                            .imageSectionItem(viewModel: ItemImageViewModel(id: "12", isSelected: false, imageUrl: "")),
-                            .imageSectionItem(viewModel: ItemImageViewModel(id: "13", isSelected: false, imageUrl: "")),
-                            .imageSectionItem(viewModel: ItemImageViewModel(id: "14", isSelected: false, imageUrl: "")),
                             
                             ])
                     ]
+                    
+//                    items.map {
+//                        .imageSectionItem(viewModel: ItemImageViewModel(id: "0", isSelected: true, imageUrl: ""))
+//                    }
                     
                     dispatch(ListState.Action.loadImages(list: list))
                 }

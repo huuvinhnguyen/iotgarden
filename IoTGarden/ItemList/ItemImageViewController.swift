@@ -19,6 +19,8 @@ class ItemImageViewController: UIViewController,  StoreSubscriber {
     private let disposeBag = DisposeBag()
 
     private var sections = PublishRelay<[SectionModel]>()
+    private var itemImageViewModels = PublishRelay<[ItemImageViewModel]>()
+
 
     @IBOutlet weak var collectionView: UICollectionView!
     

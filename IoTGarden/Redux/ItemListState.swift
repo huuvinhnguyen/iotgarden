@@ -21,6 +21,7 @@ struct ListState: ReSwift.StateType, Identifiable {
     var connectionViewModel = ConnectionViewModel(id:"", name: "hvm server", server: "https//icloud.com/", title: "", isSelected: true)
     var tasks: [String: SensorConnect2] = [:]
     var imageList: [ItemImageViewController.SectionModel] = []
+    var itemImageViewModels: [ItemImageViewModel] = []
     
 }
 
