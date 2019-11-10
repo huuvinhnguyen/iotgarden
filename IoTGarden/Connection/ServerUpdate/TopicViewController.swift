@@ -8,8 +8,17 @@
 import UIKit
 import RxSwift
 import RxDataSources
+import ReSwift
 
-class TopicViewController: UIViewController {
+class TopicViewController: UIViewController, StoreSubscriber {
+    
+    typealias StoreSubscriberStateType = TopicState
+
+    
+    func newState(state: TopicState) {
+        
+        
+    }
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -44,6 +53,7 @@ class TopicViewController: UIViewController {
                 cell.didTapSaveAction = {
                     guard let weakSelf = self else { return }
                     weakSelf.navigationController?.popViewController(animated: true)
+                    appStore.dispatch(TopicState.Action.addTopic())
                 }
                 return cell
                 

@@ -17,7 +17,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
         topicRelay.accept(state.topicViewModel)
         connectionRelay.accept(state.connectionViewModel)
     }
-    
+    var identifier: String?
     var topicRelay = PublishRelay<TopicViewModel>()
     var connectionRelay = PublishRelay<ConnectionViewModel>()
     
@@ -28,7 +28,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
     private var dataSource: RxTableViewSectionedReloadDataSource<ItemTopicSection> {
         
         return RxTableViewSectionedReloadDataSource<ItemTopicSection>(configureCell: { [weak self] dataSource, tableView, indexPath, _ in
-            
+            guard let weakSelf = self else { return UITableViewCell() }
             switch dataSource[indexPath] {
             case .headerItem(let viewModel):
                 
@@ -65,6 +65,11 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                 
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailTrashCell, for: indexPath) else { return UITableViewCell() }
                 //                cell.viewModel = viewModel
+                cell.didTapTrashAction = {
+                    weakSelf.navigationController?.popViewController(animated: true)
+                    let action = TopicState.Action.removeTopic(id: weakSelf.identifier ?? "")
+                    appStore.dispatch(action)
+                }
                 return cell
             }
         })

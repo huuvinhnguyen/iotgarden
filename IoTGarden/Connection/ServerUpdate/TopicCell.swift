@@ -22,4 +22,5 @@ struct TopicViewModel {
     var value = ""
     var time = ""
     var connectionId = ""
+    var type = ""
 }

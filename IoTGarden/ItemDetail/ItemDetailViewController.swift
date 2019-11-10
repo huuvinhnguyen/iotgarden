@@ -29,6 +29,8 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     private let disposeBag = DisposeBag()
     
     var sectionItems = PublishRelay<[ItemDetailSectionModel]>()
+    var topicsRelay = PublishRelay<[TopicViewModel]>()
+
 
 
     private var dataSource: RxTableViewSectionedReloadDataSource<ItemDetailSectionModel> {
@@ -60,6 +62,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                         guard let weakSelf = self else { return }
                         let viewController = R.storyboard.itemTopic.itemTopic()!
                         weakSelf.navigationController?.pushViewController(viewController, animated: true)
+                        viewController.identifier = viewModel.id
                     }
                     
 //                    cell.viewModel = viewModel
@@ -69,7 +72,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                     
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailTopicCell, for: indexPath) else { return UITableViewCell() }
                     
-                    cell.viewModel = viewModel
+//                    cell.viewModel = viewModel
                     return cell
                     
                 }
@@ -110,6 +113,9 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         
 //        serverUUID = state.serverUUID
         sectionItems.accept(state.topicItems)
+        topicsRelay.accept(state.topicViewModels)
+        
+
 
 
     }
@@ -131,6 +137,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
             subcription.select { state in state.topicState }.skipRepeats()
         }
         
+        appStore.dispatch(TopicState.Action.loadTopics())
     }
 
     override func viewDidLoad() {
@@ -150,11 +157,30 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
 
         tableView.register(R.nib.itemDetailTrashCell)
 
-    
-        sectionItems.asObservable()
+        topicsRelay
+            .map { $0.map { ItemDetailSectionItem.topicItem(viewModel: $0)} }
+            .map { sectionItems -> [ItemDetailSectionModel] in
+                
+                var sections: [ItemDetailSectionModel] = []
+                sections.append(
+                    .headerSection(items: [.headerItem(viewModel: ItemDetailHeaderViewModel(name: "Header AAA"))])
+                )
+                
+                sections.append(
+                    .topicSection(items: sectionItems)
+                )
+                
+                sections.append(
+                    .footerSection(items: [
+                        .footerItem(viewModel: ItemDetailFooterViewModel(kind: "plus")),
+                        .footerItem(viewModel: ItemDetailFooterViewModel(kind: "trash"))
+                        ])
+                )
+                return sections
+                
+            }
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-
     }
     
     @IBAction func switchButtonTapped(_ sender: UIButton) {
@@ -163,16 +189,13 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     }
     
     @IBAction func publishButtonTapped(_ sender: UIButton) {
-//        let message = publishTextField.text ?? ""
-//        viewModel?.sensorConnect?.publish(message: message)
-//        let action = ItemDetailState.Action.publish(message: message, id: identifier)
-//        appStore.dispatch(action)
+
     }
     
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
         
         let itemListService = ItemListService()
-        itemListService.removeSensor(sensor: sensor ?? Topic())
+        itemListService.removeTopic(id: sensor?.uuid ?? "")
         let action = ListState.Action.loadItems()
         appStore.dispatch(action)
         navigationController?.popViewController(animated: true)

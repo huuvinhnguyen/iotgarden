@@ -42,9 +42,9 @@ struct ItemListService {
         
         let interactor = SensorsDataInteractor()
         
-        interactor.getItems { sensors in
+        interactor.getItems { topics in
             
-            finished([])
+            finished(topics)
         }
         
     }
@@ -70,8 +70,9 @@ struct ItemListService {
     func addTopic(topic: Topic, finished: (_ id: String)->()) {
         
         let sensors = SensorsDataInteractor()
-        sensors.add(item: topic) { _ in }
-        finished(topic.uuid)
+        sensors.add(item: topic) { _ in
+            finished(topic.uuid)
+        }
     }
     
     func getSensor(uuid: String) -> Topic? {
@@ -86,10 +87,10 @@ struct ItemListService {
     }
     
     
-    func removeSensor(sensor: Topic) {
+    func removeTopic(id: String) {
         
         let sensors = SensorsDataInteractor()
-        sensors.delete(id: sensor.uuid) { id in
+        sensors.delete(id: id) { id in
             
         }
     }
