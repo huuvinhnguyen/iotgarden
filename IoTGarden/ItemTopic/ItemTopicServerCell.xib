@@ -125,6 +125,14 @@
                     <constraint firstItem="t5h-Up-7uy" firstAttribute="leading" secondItem="P0s-bs-dwp" secondAttribute="trailing" constant="17" id="uJ4-yR-Ivn"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="nameLabel" destination="t5h-Up-7uy" id="Ktr-vm-vU1"/>
+                <outlet property="passLabel" destination="8yB-8y-t1D" id="RK8-3k-iVf"/>
+                <outlet property="portLabel" destination="UJe-H4-Ukh" id="RA5-z8-n7v"/>
+                <outlet property="serverLabel" destination="Oi6-XJ-M9q" id="e8E-bO-T5Q"/>
+                <outlet property="sslPortLabel" destination="DB2-RT-NgF" id="pet-Xm-XJC"/>
+                <outlet property="userLabel" destination="Wbu-cm-Jyt" id="pJE-tk-Qf4"/>
+            </connections>
             <point key="canvasLocation" x="77.599999999999994" y="128.63568215892056"/>
         </tableViewCell>
     </objects>

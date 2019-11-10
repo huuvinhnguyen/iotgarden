@@ -10,11 +10,12 @@ import CoreData
 import ReSwift
 import RxDataSources
 import RxSwift
+import RxCocoa
 
 struct ItemDetailViewModel {
     
     var sensorConnect: SensorConnect? = SensorConnect()
-    init(sensor: Sensor) {
+    init(sensor: Topic) {
         sensorConnect?.connect(sensor: sensor)
     }
 }
@@ -26,6 +27,11 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     private var viewModel: ItemDetailViewModel?
     private var serverUUID = ""
     private let disposeBag = DisposeBag()
+    
+    var sectionItems = PublishRelay<[ItemDetailSectionModel]>()
+    var topicsRelay = PublishRelay<[TopicViewModel]>()
+
+
 
     private var dataSource: RxTableViewSectionedReloadDataSource<ItemDetailSectionModel> {
         
@@ -56,6 +62,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                         guard let weakSelf = self else { return }
                         let viewController = R.storyboard.itemTopic.itemTopic()!
                         weakSelf.navigationController?.pushViewController(viewController, animated: true)
+                        viewController.identifier = viewModel.id
                     }
                     
 //                    cell.viewModel = viewModel
@@ -65,7 +72,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                     
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailTopicCell, for: indexPath) else { return UITableViewCell() }
                     
-                    cell.viewModel = viewModel
+//                    cell.viewModel = viewModel
                     return cell
                     
                 }
@@ -102,31 +109,24 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         })
     }
 
-    func newState(state: ItemDetailState) {
+    func newState(state: TopicState) {
         
-//        nameLabel.text = state.name
-//        valueLabel.text = state.value
-//        kindLabel.text = state.kind
-//        topicLabel.text = state.topic
-//        timeLabel.text = state.time
-        serverUUID = state.serverUUID
+//        serverUUID = state.serverUUID
+        sectionItems.accept(state.topicItems)
+        topicsRelay.accept(state.topicViewModels)
         
-//        var timer: Timer?
 
-//        timer?.invalidate()
-//        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
-//            guard let weakSelf = self else { return }
-//            weakSelf.timeLabel?.text = state.time.toDate()?.timeAgoDisplay()
-//        }
+
+
     }
     
     
-    typealias StoreSubscriberStateType = ItemDetailState
+    typealias StoreSubscriberStateType = TopicState
     
-    var sensor: Sensor? {
+    var sensor: Topic? {
         didSet {
-            viewModel = ItemDetailViewModel(sensor: sensor ?? Sensor())
-        }
+            viewModel = ItemDetailViewModel(sensor: sensor ?? Topic())
+        }   
     }
     
     var identifier = ""
@@ -134,16 +134,16 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         appStore.subscribe(self) { subcription in
-            subcription.select { state in state.detailState }.skipRepeats()
+            subcription.select { state in state.topicState }.skipRepeats()
         }
         
+        appStore.dispatch(TopicState.Action.loadTopics())
     }
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        let action = ItemDetailState.Action.loadDetail(id: identifier)
-        appStore.dispatch(action)
+        appStore.dispatch(TopicState.Action.loadTopics())
         configureTableView()
     }
     
@@ -157,20 +157,28 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
 
         tableView.register(R.nib.itemDetailTrashCell)
 
-        let sections: [ItemDetailSectionModel] = [
-            .headerSection(items: [.headerItem(viewModel: ItemDetailHeaderViewModel(name: "Header AAA"))]),
-            .topicSection(items: [
-                .topicItem(viewModel: ItemDetailTopicViewModel(name: "Topic switch", value: "ON", updated: "25-08-2019", type: "Switch")),
-                .topicItem(viewModel: ItemDetailTopicViewModel(name: "Topic switch", value: "ON", updated: "25-08-2019", type: "Normal"))
-                ]),
-            
-            .footerSection(items: [
-                .footerItem(viewModel: ItemDetailFooterViewModel(kind: "plus")),
-                .footerItem(viewModel: ItemDetailFooterViewModel(kind: "trash"))
-                ])
-        ]
-
-        Observable.just(sections)
+        topicsRelay
+            .map { $0.map { ItemDetailSectionItem.topicItem(viewModel: $0)} }
+            .map { sectionItems -> [ItemDetailSectionModel] in
+                
+                var sections: [ItemDetailSectionModel] = []
+                sections.append(
+                    .headerSection(items: [.headerItem(viewModel: ItemDetailHeaderViewModel(name: "Header AAA"))])
+                )
+                
+                sections.append(
+                    .topicSection(items: sectionItems)
+                )
+                
+                sections.append(
+                    .footerSection(items: [
+                        .footerItem(viewModel: ItemDetailFooterViewModel(kind: "plus")),
+                        .footerItem(viewModel: ItemDetailFooterViewModel(kind: "trash"))
+                        ])
+                )
+                return sections
+                
+            }
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
@@ -181,16 +189,13 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     }
     
     @IBAction func publishButtonTapped(_ sender: UIButton) {
-//        let message = publishTextField.text ?? ""
-//        viewModel?.sensorConnect?.publish(message: message)
-//        let action = ItemDetailState.Action.publish(message: message, id: identifier)
-//        appStore.dispatch(action)
+
     }
     
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
         
         let itemListService = ItemListService()
-        itemListService.removeSensor(sensor: sensor ?? Sensor())
+        itemListService.removeTopic(id: sensor?.uuid ?? "")
         let action = ListState.Action.loadItems()
         appStore.dispatch(action)
         navigationController?.popViewController(animated: true)

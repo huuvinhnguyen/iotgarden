@@ -12,7 +12,7 @@ import Charts
 class BarChartViewController: UIViewController {
     
     @IBOutlet var chartView: BarChartView!
-    var sensor = Sensor()
+    var sensor = Topic()
 
     
     override func viewDidLoad() {

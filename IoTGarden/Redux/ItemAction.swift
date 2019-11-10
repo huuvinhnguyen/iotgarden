@@ -14,5 +14,5 @@ struct UpdateItemAction: Action {
 
 struct UpdateSensorAction: Action {
     
-    let sensor: Sensor
+    let sensor: Topic
 }

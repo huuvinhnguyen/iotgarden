@@ -8,16 +8,27 @@
 import UIKit
 import RxDataSources
 import RxSwift
+import RxCocoa
+import ReSwift
 
-class ItemTopicViewController: UIViewController {
+class ItemTopicViewController: UIViewController, StoreSubscriber {
+    
+    func newState(state: TopicState) {
+        topicRelay.accept(state.topicViewModel)
+        connectionRelay.accept(state.connectionViewModel)
+    }
+    var identifier: String?
+    var topicRelay = PublishRelay<TopicViewModel>()
+    var connectionRelay = PublishRelay<ConnectionViewModel>()
     
     @IBOutlet weak var tableView: UITableView!
     private let disposeBag = DisposeBag()
     
+    
     private var dataSource: RxTableViewSectionedReloadDataSource<ItemTopicSection> {
         
         return RxTableViewSectionedReloadDataSource<ItemTopicSection>(configureCell: { [weak self] dataSource, tableView, indexPath, _ in
-            
+            guard let weakSelf = self else { return UITableViewCell() }
             switch dataSource[indexPath] {
             case .headerItem(let viewModel):
                 
@@ -27,7 +38,7 @@ class ItemTopicViewController: UIViewController {
 
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemTopicCell, for: indexPath) else { return UITableViewCell() }
                 
-                //                    cell.viewModel = viewModel
+                cell.viewModel = viewModel
                 
                 cell.didTapEditAction = {
                     guard let weakSelf = self else { return }
@@ -41,7 +52,7 @@ class ItemTopicViewController: UIViewController {
                 
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemTopicServerCell, for: indexPath) else { return UITableViewCell() }
                 
-                //                    cell.viewModel = viewModel
+                cell.viewModel = viewModel
                 cell.didTapEditAction = {
                     guard let weakSelf = self else { return }
                     let viewController = R.storyboard.connection.serverViewController()!
@@ -54,6 +65,11 @@ class ItemTopicViewController: UIViewController {
                 
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailTrashCell, for: indexPath) else { return UITableViewCell() }
                 //                cell.viewModel = viewModel
+                cell.didTapTrashAction = {
+                    weakSelf.navigationController?.popViewController(animated: true)
+                    let action = TopicState.Action.removeTopic(id: weakSelf.identifier ?? "")
+                    appStore.dispatch(action)
+                }
                 return cell
             }
         })
@@ -64,24 +80,28 @@ class ItemTopicViewController: UIViewController {
         prepairNibs()
         loadData()
         
+        appStore.subscribe(self) { $0.select { $0.topicState }.skipRepeats() }
+        appStore.dispatch(TopicState.Action.loadTopic(id: "String"))
+        
     }
     
     private func loadData() {
         
-        let sections: [ItemTopicSection] = [
+        let tableRelay = Observable.combineLatest( topicRelay, connectionRelay).map { topic, connection in
+            [
+                ItemTopicSection.topicSection(items: [
+                .topicItem(viewModel: topic)]),
+                .serverSection(items: [
+                    .serverItem(viewModel: connection)
+                    ]),
+                .footerSection(items: [
+                    .footerItem(viewModel: nil)
+                    ])
+            ]
             
-            .topicSection(items: [
-                .topicItem(viewModel: ItemTopicViewModel()),
-                ]),
-            .serverSection(items: [
-                .serverItem(viewModel: ItemTopicServerViewModel())
-                ]),
-            .footerSection(items: [
-                .footerItem(viewModel: nil)
-                ])
-        ]
+        }
         
-        Observable.just(sections)
+        tableRelay.asObservable()
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         

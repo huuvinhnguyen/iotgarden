@@ -34,6 +34,7 @@
                                     <constraint firstAttribute="width" constant="30" id="aKZ-FL-3wU"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="icon_circle_o"/>
+                                <state key="selected" backgroundImage="icon_dot_circle_o"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pc8-AI-Ygp">
                                 <rect key="frame" x="124.5" y="0.0" width="30" height="30"/>
@@ -41,7 +42,8 @@
                                     <constraint firstAttribute="width" secondItem="pc8-AI-Ygp" secondAttribute="height" multiplier="1:1" id="IT4-Me-dJr"/>
                                     <constraint firstAttribute="width" constant="30" id="Qat-ZR-vTs"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="icon_dot_circle_o"/>
+                                <state key="normal" backgroundImage="icon_circle_o"/>
+                                <state key="selected" backgroundImage="icon_dot_circle_o"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x7I-y8-PtV">
                                 <rect key="frame" x="184.5" y="0.0" width="30" height="30"/>
@@ -50,6 +52,7 @@
                                     <constraint firstAttribute="width" secondItem="x7I-y8-PtV" secondAttribute="height" multiplier="1:1" id="scZ-5u-3yb"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="icon_circle_o"/>
+                                <state key="selected" backgroundImage="icon_dot_circle_o"/>
                             </button>
                         </subviews>
                         <constraints>
@@ -93,6 +96,11 @@
             <constraints>
                 <constraint firstItem="Ixk-Sm-E8X" firstAttribute="leading" secondItem="Rce-1b-wfg" secondAttribute="leading" constant="80" id="zWK-j0-c38"/>
             </constraints>
+            <connections>
+                <outlet property="radio0Button" destination="Af0-yI-rx9" id="PHq-0t-1EF"/>
+                <outlet property="radio1Button" destination="pc8-AI-Ygp" id="qtt-eJ-RXo"/>
+                <outlet property="radio2Button" destination="x7I-y8-PtV" id="rXO-fk-l6G"/>
+            </connections>
             <point key="canvasLocation" x="120.8" y="70.614692653673174"/>
         </tableViewCell>
     </objects>

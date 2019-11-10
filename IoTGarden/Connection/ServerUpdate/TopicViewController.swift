@@ -8,8 +8,17 @@
 import UIKit
 import RxSwift
 import RxDataSources
+import ReSwift
 
-class TopicViewController: UIViewController {
+class TopicViewController: UIViewController, StoreSubscriber {
+    
+    typealias StoreSubscriberStateType = TopicState
+
+    
+    func newState(state: TopicState) {
+        
+        
+    }
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -39,6 +48,15 @@ class TopicViewController: UIViewController {
             case .topicQosItem(let viewModel):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.topicQosCell, for: indexPath) else { return UITableViewCell() }
                 return cell
+            case .topicSaveItem(let viewModel):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.topicSaveCell, for: indexPath) else { return UITableViewCell() }
+                cell.didTapSaveAction = {
+                    guard let weakSelf = self else { return }
+                    weakSelf.navigationController?.popViewController(animated: true)
+                    appStore.dispatch(TopicState.Action.addTopic())
+                }
+                return cell
+                
             default:
                 return UITableViewCell()
             }
@@ -62,6 +80,7 @@ class TopicViewController: UIViewController {
         tableView.register(R.nib.topicCell)
         tableView.register(R.nib.topicSwitchCell)
         tableView.register(R.nib.topicQosCell)
+        tableView.register(R.nib.topicSaveCell)
     }
     
     private func loadData() {
@@ -71,7 +90,8 @@ class TopicViewController: UIViewController {
             ServerSection(title: "", items: [
                 .topicItem(viewModel: TopicViewModel()),
                 .topicSwitchItem(viewModel: TopicSwitchViewModel()),
-                .topicQosItem(viewModel: TopicQosViewModel())
+                .topicQosItem(viewModel: TopicQosViewModel()),
+                .topicSaveItem(viewModel: TopicSaveViewModel())
 
                 ])
         ]

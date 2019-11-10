@@ -25,7 +25,6 @@ class ItemListViewController: UIViewController, StoreSubscriber {
         sectionItems.accept(state.sectionItems)
     }
 
-    var listSection = PublishRelay<[ItemSectionModel]>()
     var sectionItems = PublishRelay<[SectionItem]>()
 
     typealias StoreSubscriberStateType = ListState

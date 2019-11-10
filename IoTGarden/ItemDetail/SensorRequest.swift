@@ -11,7 +11,7 @@ import Himotoki
 
 struct SensorRequest: Request {
     
-    typealias Response = Sensor
+    typealias Response = Topic
     
     var baseURL: URL {
         return URL(string: "http://alofirebase.herokuapp.com")!
@@ -25,12 +25,12 @@ struct SensorRequest: Request {
         return "/data"
     }
     
-    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Sensor {
-        return try Sensor(object: object)
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Topic {
+        return try Topic(object: object)
     }
 }
 
-extension Sensor {
+extension Topic {
     
     init(object: Any) throws {
         

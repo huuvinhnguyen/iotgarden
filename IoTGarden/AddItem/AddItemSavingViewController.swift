@@ -27,10 +27,9 @@ class AddItemSavingViewController:  UIViewController {
 
         guard let kind = self.kind else { return }
         
-        let sensor = Sensor(uuid: UUID().uuidString, name: name, value: "0", serverUUID: serverUUID, kind: kind, topic: topic, time: "waiting")
-        itemListService.addSensor(sensor: sensor)
-//        sensorListStore.dispatch(AddSensorAction())
-//        itemListStore.dispatch(ListItemsAction())
+        let sensor = Topic(uuid: UUID().uuidString, name: name, value: "0", serverUUID: serverUUID, kind: kind, topic: topic, time: "waiting")
+//        itemListService.addTopic(topic: sensor)
+
         let action = ListState.Action.loadItems()
         appStore.dispatch(action)
         navigationController?.popToRootViewController(animated: true)

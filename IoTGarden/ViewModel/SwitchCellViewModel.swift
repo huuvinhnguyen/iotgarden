@@ -24,7 +24,7 @@ class SwitchCellViewModel: CellViewModel, Equatable, IdentifiableType {
     }
 
     
-    var sensor: Sensor {
+    var sensor: Topic {
         
         didSet {
             
@@ -39,7 +39,7 @@ class SwitchCellViewModel: CellViewModel, Equatable, IdentifiableType {
 
     internal var sensorConnect: SensorConnect
     
-    init(sensor: Sensor) {
+    init(sensor: Topic) {
         
         self.sensor = sensor
         self.sensorConnect = SensorConnect()
@@ -56,7 +56,7 @@ class SwitchCellViewModel: CellViewModel, Equatable, IdentifiableType {
 
     }
     
-    private func configure(sensor: Sensor) {
+    private func configure(sensor: Topic) {
         
         
         name = sensor.name

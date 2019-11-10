@@ -7,6 +7,8 @@
 
 struct ConnectionViewModel {
     let id: String
+    let name: String
+    let server: String
     let title: String
     var isSelected: Bool
 }
