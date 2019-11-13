@@ -26,6 +26,8 @@ target 'IoTGarden' do
   pod 'ReSwift'
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
+  pod 'SDWebImage'  
+
 
   target 'IoTGardenTests' do
     inherit! :search_paths

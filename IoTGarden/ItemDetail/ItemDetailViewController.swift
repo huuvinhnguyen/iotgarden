@@ -28,7 +28,6 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     private var serverUUID = ""
     private let disposeBag = DisposeBag()
     
-    var sectionItems = PublishRelay<[ItemDetailSectionModel]>()
     var topicsRelay = PublishRelay<[TopicViewModel]>()
 
 
@@ -111,13 +110,8 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
 
     func newState(state: TopicState) {
         
-//        serverUUID = state.serverUUID
-        sectionItems.accept(state.topicItems)
         topicsRelay.accept(state.topicViewModels)
         
-
-
-
     }
     
     

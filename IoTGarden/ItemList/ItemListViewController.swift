@@ -233,6 +233,7 @@ extension ItemListViewController {
             case let .itemListSectionItem(viewModel):
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemListCell", for: indexPath) as! ItemListCell
                 //                cell.configure(cellUI: cellUI)
+                cell.viewModel = viewModel
                 return cell
                 
             case let .switchSectionItem(cellUI):

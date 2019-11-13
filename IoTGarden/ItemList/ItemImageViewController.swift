@@ -13,13 +13,19 @@ import ReSwift
 class ItemImageViewController: UIViewController,  StoreSubscriber {
     
     func newState(state: ListState) {
-        sections.accept(state.imageList)
+        imagesRelay.accept(state.itemImageViewModels)
     }
     
+    @IBAction func didSaveButtonTapped(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+        let viewModel = appStore.state.listState.itemImageViewModel
+        appStore.dispatch(ListState.Action.loadImage(viewModel: viewModel))
+        
+    }
     private let disposeBag = DisposeBag()
 
     private var sections = PublishRelay<[SectionModel]>()
-    private var itemImageViewModels = PublishRelay<[ItemImageViewModel]>()
+    private var imagesRelay = PublishRelay<[ItemImageViewModel]>()
 
 
     @IBOutlet weak var collectionView: UICollectionView!
@@ -39,9 +45,14 @@ class ItemImageViewController: UIViewController,  StoreSubscriber {
         
         appStore.subscribe(self) { $0.select { $0.listState }.skipRepeats() }
         
-        sections.asObservable()
+        imagesRelay.asObservable()
+            .map { $0.map { SectionItem.imageSectionItem(viewModel: $0) } }
+            .map { sectionItems -> [SectionModel]  in
+                return [SectionModel.itemSection(title: "1", items: sectionItems)]
+            }
             .bind(to: collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
         
         let action = ListState.Action.fetchImages()
         appStore.dispatch(action)

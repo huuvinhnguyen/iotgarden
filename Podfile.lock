@@ -176,6 +176,9 @@ PODS:
     - RxSwift (~> 4.0)
   - RxSwift (4.4.1):
     - RxAtomic (~> 4.4)
+  - SDWebImage (5.1.1):
+    - SDWebImage/Core (= 5.1.1)
+  - SDWebImage/Core (5.1.1)
   - SwiftLint (0.30.1)
   - TPKeyboardAvoiding (1.3.2)
 
@@ -196,6 +199,7 @@ DEPENDENCIES:
   - RxCocoa
   - RxDataSources
   - RxSwift
+  - SDWebImage
   - SwiftLint
   - TPKeyboardAvoiding
 
@@ -238,6 +242,7 @@ SPEC REPOS:
     - RxCocoa
     - RxDataSources
     - RxSwift
+    - SDWebImage
     - SwiftLint
     - TPKeyboardAvoiding
 
@@ -279,9 +284,10 @@ SPEC CHECKSUMS:
   RxCocoa: 2f35a76bf8887872e28a1914112395b11b8e0e64
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxSwift: 92fcf68dfef21f3e2ab1965363d9e7b3d787597e
+  SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
   SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: e9a652711f4905bd46484215dfd9eb12f77b0e20
+PODFILE CHECKSUM: 9c18e3935cba02947801464b3b4e99307cde5d6f
 
 COCOAPODS: 1.7.5

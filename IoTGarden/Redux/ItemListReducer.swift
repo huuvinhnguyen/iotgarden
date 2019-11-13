@@ -51,7 +51,7 @@ extension ListState {
             
             itemListService.loadItems { itemDatas in
                 let items: [SectionItem] = itemDatas.map { itemData in
-                    let viewModel = ItemListViewModel(uuid: itemData.uuid, name: itemData.name, imageUrlString: "")
+                    let viewModel = ItemListViewModel(uuid: itemData.uuid, name: itemData.name, imageUrlString: itemData.imageUrlString)
                     return .itemListSectionItem(viewModel: viewModel)
                 }
                 
@@ -66,8 +66,10 @@ extension ListState {
             }
             
         case .loadImages(let list):
-            state.imageList = list
+            state.itemImageViewModels = list
             state.identifiableComponent.update()
+        case .loadImage(let viewModel):
+            state.itemImageViewModel = viewModel
             
         default: ()
         }
