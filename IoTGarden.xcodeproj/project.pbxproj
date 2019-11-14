@@ -15,6 +15,7 @@
 		04468820233F5B0C0074CF75 /* TopicSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0446881F233F5B0C0074CF75 /* TopicSwitchCell.xib */; };
 		04468822233F64360074CF75 /* TopicQosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04468821233F64360074CF75 /* TopicQosCell.swift */; };
 		04468824233F65D70074CF75 /* TopicQosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04468823233F65D70074CF75 /* TopicQosCell.xib */; };
+		044CEDE62378594500585E20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 044CEDE52378594500585E20 /* GoogleService-Info.plist */; };
 		047390B1234F9564005567CE /* Selection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047390B0234F9564005567CE /* Selection.storyboard */; };
 		047390B3234F961B005567CE /* SelectionServerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047390B2234F961B005567CE /* SelectionServerCell.xib */; };
 		047390B5234F962A005567CE /* SelectionServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047390B4234F962A005567CE /* SelectionServerCell.swift */; };
@@ -186,6 +187,7 @@
 		0446881F233F5B0C0074CF75 /* TopicSwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicSwitchCell.xib; sourceTree = "<group>"; };
 		04468821233F64360074CF75 /* TopicQosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicQosCell.swift; sourceTree = "<group>"; };
 		04468823233F65D70074CF75 /* TopicQosCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicQosCell.xib; sourceTree = "<group>"; };
+		044CEDE52378594500585E20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		047390B0234F9564005567CE /* Selection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Selection.storyboard; sourceTree = "<group>"; };
 		047390B2234F961B005567CE /* SelectionServerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionServerCell.xib; sourceTree = "<group>"; };
 		047390B4234F962A005567CE /* SelectionServerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionServerCell.swift; sourceTree = "<group>"; };
@@ -571,6 +573,7 @@
 				1864B73F22C7D1C400B9DCE7 /* MQTT */,
 				1803375121C9EF430098F944 /* CoreData */,
 				04F314F6236B33C800184507 /* FirebaseService.swift */,
+				044CEDE52378594500585E20 /* GoogleService-Info.plist */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -858,6 +861,7 @@
 				18A33DE02325007300DFDBB6 /* ItemDetailPlusCell.xib in Resources */,
 				1846AB59218AA3E100F46053 /* AddItemViewController.storyboard in Resources */,
 				186AB61A23328A7D0017F935 /* ConnectionCell.xib in Resources */,
+				044CEDE62378594500585E20 /* GoogleService-Info.plist in Resources */,
 				18592A0E23216C1500DFB310 /* ItemDetailFooterCell.xib in Resources */,
 				04F2480423378DF6003239B6 /* ItemTopicCell.xib in Resources */,
 				04F314FD236B388C00184507 /* ItemImageCell.xib in Resources */,
@@ -1293,7 +1297,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ving.IoTGarden;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ving.kvxios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1312,7 +1316,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ving.IoTGarden;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ving.kvxios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

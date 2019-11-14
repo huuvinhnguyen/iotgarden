@@ -18,34 +18,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K12-lA-qBJ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K12-lA-qBJ">
                                 <rect key="frame" x="116" y="134" width="111" height="112"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="111" id="R0J-np-4JN"/>
+                                    <constraint firstAttribute="height" constant="112" id="rxo-fo-q0M"/>
+                                </constraints>
                                 <state key="normal" backgroundImage="icon_camera"/>
                                 <connections>
                                     <action selector="pictureButtonTapped:" destination="pmi-tN-IjJ" eventType="touchUpInside" id="ZuP-ob-qca"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q41-qn-7vj">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q41-qn-7vj">
                                 <rect key="frame" x="84" y="280" width="72" height="65"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="aJx-uu-1Uh"/>
+                                    <constraint firstAttribute="width" constant="72" id="aZW-gw-R0Q"/>
+                                </constraints>
                                 <state key="normal" backgroundImage="icon_save"/>
                                 <connections>
                                     <action selector="saveButtonTapped:" destination="pmi-tN-IjJ" eventType="touchUpInside" id="Bq1-FJ-DfS"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6JA-0g-HPC">
-                                <rect key="frame" x="36" y="85" width="271" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6JA-0g-HPC">
+                                <rect key="frame" x="36" y="85" width="319" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DP8-WF-LT7">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DP8-WF-LT7">
                                 <rect key="frame" x="198" y="276" width="75" height="69"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="3gM-kN-1KC"/>
+                                    <constraint firstAttribute="height" constant="69" id="oY6-F2-UDc"/>
+                                </constraints>
                                 <state key="normal" backgroundImage="icon_arrow_cicle_o_right"/>
                                 <connections>
                                     <action selector="nextButtonTapped:" destination="pmi-tN-IjJ" eventType="touchUpInside" id="ZcP-P6-k3e"/>
@@ -53,6 +61,17 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.2470588235" green="0.44705882349999998" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="0xu-aQ-Ann" firstAttribute="trailing" secondItem="6JA-0g-HPC" secondAttribute="trailing" constant="20" id="6og-Ft-O8G"/>
+                            <constraint firstItem="DP8-WF-LT7" firstAttribute="top" secondItem="K12-lA-qBJ" secondAttribute="bottom" constant="30" id="Ian-1c-k0z"/>
+                            <constraint firstItem="Q41-qn-7vj" firstAttribute="top" secondItem="K12-lA-qBJ" secondAttribute="bottom" constant="34" id="NWu-lb-Pmx"/>
+                            <constraint firstItem="6JA-0g-HPC" firstAttribute="leading" secondItem="0xu-aQ-Ann" secondAttribute="leading" constant="36" id="QYd-mz-hq2"/>
+                            <constraint firstItem="Q41-qn-7vj" firstAttribute="leading" secondItem="0xu-aQ-Ann" secondAttribute="leading" constant="84" id="S1e-KM-ZB6"/>
+                            <constraint firstItem="6JA-0g-HPC" firstAttribute="top" secondItem="0xu-aQ-Ann" secondAttribute="top" constant="21" id="U4J-zU-Aih"/>
+                            <constraint firstItem="K12-lA-qBJ" firstAttribute="top" secondItem="6JA-0g-HPC" secondAttribute="bottom" constant="19" id="cRy-Pz-hPE"/>
+                            <constraint firstItem="K12-lA-qBJ" firstAttribute="leading" secondItem="0xu-aQ-Ann" secondAttribute="leading" constant="116" id="qRB-Ds-0vc"/>
+                            <constraint firstItem="DP8-WF-LT7" firstAttribute="leading" secondItem="Q41-qn-7vj" secondAttribute="trailing" constant="42" id="xyd-b9-vmx"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="0xu-aQ-Ann"/>
                     </view>
                     <navigationItem key="navigationItem" id="Avg-8R-mCx">
@@ -63,6 +82,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="imageButton" destination="K12-lA-qBJ" id="ol3-H6-NFD"/>
                         <segue destination="gHo-64-hVE" kind="show" id="vZG-XP-u8r"/>
                     </connections>
                 </viewController>
@@ -109,7 +129,11 @@
                         <viewLayoutGuide key="safeArea" id="bD0-Zx-tmd"/>
                     </view>
                     <navigationItem key="navigationItem" id="aUM-LG-i6k">
-                        <barButtonItem key="rightBarButtonItem" title="I" image="icon_save" id="UxL-7K-NJ0"/>
+                        <barButtonItem key="rightBarButtonItem" title="I" image="icon_save" id="UxL-7K-NJ0">
+                            <connections>
+                                <action selector="didSaveButtonTapped:" destination="gHo-64-hVE" id="l0K-2P-M1Q"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="aoI-FE-gCl" id="pC8-eY-CdU"/>

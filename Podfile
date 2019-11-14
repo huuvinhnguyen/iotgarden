@@ -24,6 +24,10 @@ target 'IoTGarden' do
 #  pod 'IHKeyboardAvoiding'
   pod 'TPKeyboardAvoiding'
   pod 'ReSwift'
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
+  pod 'SDWebImage'  
+
 
   target 'IoTGardenTests' do
     inherit! :search_paths

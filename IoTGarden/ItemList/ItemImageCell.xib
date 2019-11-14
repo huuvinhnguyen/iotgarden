@@ -43,6 +43,7 @@
             <size key="customSize" width="287" height="227"/>
             <connections>
                 <outlet property="checkButton" destination="SuY-rU-D9L" id="emv-a9-NHR"/>
+                <outlet property="itemImageView" destination="Mp7-0J-XHg" id="Nua-P0-b1z"/>
             </connections>
             <point key="canvasLocation" x="32.799999999999997" y="74.212893553223395"/>
         </collectionViewCell>

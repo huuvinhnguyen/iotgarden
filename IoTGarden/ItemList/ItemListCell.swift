@@ -9,8 +9,14 @@ import UIKit
 
 class ItemListCell: UICollectionViewCell {
     
+    @IBOutlet weak var itemImageView: UIImageView!
     var switchCellUI: SwitchCellUI?
-    var viewModel: ItemListViewModel?
+    var viewModel: ItemListViewModel? {
+        didSet {
+            itemImageView.sd_setImage(with: URL(string: viewModel?.imageUrlString ?? ""), placeholderImage: R.image.icon_camera())
+            
+        }
+    }
     
     fileprivate(set) var cellViewModel: CellViewModel! {
         
@@ -92,6 +98,7 @@ struct ItemListViewModel {
     var uuid: String = ""
     var name: String = ""
     var imageUrlString = ""
+    
 }
 
 

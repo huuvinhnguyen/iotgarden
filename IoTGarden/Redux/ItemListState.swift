@@ -21,6 +21,8 @@ struct ListState: ReSwift.StateType, Identifiable {
     var connectionViewModel = ConnectionViewModel(id:"", name: "hvm server", server: "https//icloud.com/", title: "", isSelected: true)
     var tasks: [String: SensorConnect2] = [:]
     var imageList: [ItemImageViewController.SectionModel] = []
+    var itemImageViewModels: [ItemImageViewModel] = []
+    var itemImageViewModel = ItemImageViewModel(id: "", isSelected: true, imageUrl: "")
     
 }
 
@@ -31,11 +33,13 @@ extension ListState {
         case updateSwitchItem(viewModel: SwitchCellUI)
         case updateInputItem(cellUI: InputCellUI)
         case loadItems()
-        case addItem()
+        case addItem(item: ItemListViewModel)
         case removeItem(id: String)
         case loadDetail(id: String)
-        case loadImages(list: [ItemImageViewController.SectionModel])
+//        case loadImages(list: [ItemImageViewController.SectionModel])
+        case loadImages(list: [ItemImageViewModel])
         case selectImage(id: String)
         case fetchImages()
+        case loadImage(viewModel: ItemImageViewModel)
     }
 }
