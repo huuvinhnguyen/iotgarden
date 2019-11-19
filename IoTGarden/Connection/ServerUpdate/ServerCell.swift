@@ -25,5 +25,5 @@ class ServerCell: UITableViewCell {
 }
 
 struct ServerViewModel {
-    
+    let name: String
 }

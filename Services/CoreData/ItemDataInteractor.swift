@@ -8,7 +8,7 @@
 import CoreData
 
 struct ItemDataInteractor: DataInteractor {
-    
+  
     typealias MappingData = ItemListService.ItemData
     
     func add(item: ItemListService.ItemData, finished: (ItemListService.ItemData) -> ()) {
@@ -32,8 +32,29 @@ struct ItemDataInteractor: DataInteractor {
         
     }
     
-    func update(item: ItemListService.ItemData) {
+    func update(item: ItemListService.ItemData, finished: (_ id: String) ->()) {
         
+        let context = Storage.shared.context
+        
+        let request: NSFetchRequest<Items> = Items.fetchRequest()
+        request.predicate = NSPredicate.init(format: "uuid == %@", item.uuid)
+        
+        if let result = try? context.fetch(request) {
+            let object = result[0] as NSManagedObject
+            object.setValue(item.uuid, forKeyPath: "uuid")
+            object.setValue(item.name, forKeyPath: "name")
+            object.setValue(item.topics?.joined(separator: ","), forKeyPath: "topics")
+            object.setValue(item.imageUrlString, forKeyPath: "imageUrlString")
+        }
+        
+        do {
+            
+            finished(item.uuid)
+            try context.save()
+        } catch let error as NSError {
+            
+            print("Could not save. \(error), \(error.userInfo)")
+        }
     }
     
     func getItem(uuid: String) -> ItemListService.ItemData? {

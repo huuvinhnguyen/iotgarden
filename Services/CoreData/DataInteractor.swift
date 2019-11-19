@@ -13,7 +13,7 @@ protocol  DataInteractor {
     
     func add(item: MappingData, finished:(_ item: MappingData)->()) -> ()
     func delete(id: String, finished: (_ id: String)->()) -> ()
-    func update(item: MappingData) -> ()
+    func update(item: MappingData, finished: (_ id: String)->()) -> ()
     func getItem(uuid: String) -> MappingData?
 }
 
@@ -84,7 +84,7 @@ struct SensorsDataInteractor : DataInteractor {
         
     }
     
-    func update(item: MappingData) {
+    func update(item: MappingData, finished: (_ id: String)->()) {
         
         let context = Storage.shared.context
         

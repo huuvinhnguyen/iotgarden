@@ -40,8 +40,10 @@ class ServerViewController: UIViewController {
                 
                 cell.didTapSaveAction = {
                     guard let weakSelf = self else { return }
+                    let action = ConnectionState.Action.addConnection(viewModel: ConnectionViewModel(id: UUID().uuidString, name: "Name 1", server: "ABCD server", title: "", isSelected: true))
+                    appStore.dispatch(action)
                     
-                    self?.navigationController?.popViewController(animated: true)
+                    weakSelf.navigationController?.popViewController(animated: true)
                 }
                 return cell
                 
@@ -72,7 +74,7 @@ class ServerViewController: UIViewController {
         
         let sections: [ServerSection] = [
             
-            ServerSection(title: "", items: [.serverItem(viewModel: ServerViewModel())
+            ServerSection(title: "", items: [.serverItem(viewModel: ServerViewModel(name: "server abc"))
                 ])
         ]
         

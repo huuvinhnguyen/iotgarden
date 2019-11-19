@@ -203,3 +203,27 @@ let topicMiddleware: ReSwift.Middleware<AppState> = {  dispatch, getState in
         }
     }
 }
+
+let connectionMiddleware: ReSwift.Middleware<AppState> = {  dispatch, getState in
+    
+    return { next in
+        print("enter detail middleware")
+        return { action in
+            if case ConnectionState.Action.addConnection(let viewModel) = action {
+                let service = ItemListService()
+                service.addConfiguration(configuration: ItemListService.Configuration(uuid: viewModel.id, name: viewModel.name, server: viewModel.server, username: "", password: "", port: ""), finished: { id in
+                    
+                    dispatch(ConnectionState.Action.loadConnections())
+                })
+            }
+            
+            if case ConnectionState.Action.removeConnection(let id) = action {
+                let service = ItemListService()
+//                service.removeTopic(id: id)
+//                dispatch(TopicState.Action.loadTopics())
+            }
+            
+            next(action)
+        }
+    }
+}

@@ -11,6 +11,7 @@
 		04051B66233E6E2D00224600 /* TopicTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04051B65233E6E2D00224600 /* TopicTypeViewController.swift */; };
 		04051B68233E6F3400224600 /* TopicTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04051B67233E6F3300224600 /* TopicTypeCell.swift */; };
 		04051B6A233E6F7600224600 /* TopicTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04051B69233E6F7600224600 /* TopicTypeCell.xib */; };
+		043009E4237DB682004FA341 /* ConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043009E3237DB682004FA341 /* ConnectionState.swift */; };
 		0446881E233F5AD00074CF75 /* TopicSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0446881D233F5AD00074CF75 /* TopicSwitchCell.swift */; };
 		04468820233F5B0C0074CF75 /* TopicSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0446881F233F5B0C0074CF75 /* TopicSwitchCell.xib */; };
 		04468822233F64360074CF75 /* TopicQosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04468821233F64360074CF75 /* TopicQosCell.swift */; };
@@ -183,6 +184,7 @@
 		04051B65233E6E2D00224600 /* TopicTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTypeViewController.swift; sourceTree = "<group>"; };
 		04051B67233E6F3300224600 /* TopicTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTypeCell.swift; sourceTree = "<group>"; };
 		04051B69233E6F7600224600 /* TopicTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicTypeCell.xib; sourceTree = "<group>"; };
+		043009E3237DB682004FA341 /* ConnectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionState.swift; sourceTree = "<group>"; };
 		0446881D233F5AD00074CF75 /* TopicSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicSwitchCell.swift; sourceTree = "<group>"; };
 		0446881F233F5B0C0074CF75 /* TopicSwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicSwitchCell.xib; sourceTree = "<group>"; };
 		04468821233F64360074CF75 /* TopicQosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicQosCell.swift; sourceTree = "<group>"; };
@@ -435,6 +437,7 @@
 				1803376221CB954D0098F944 /* ConfigurationsDataInteractor.swift */,
 				049A85812365A1A30038D247 /* TopicListService.swift */,
 				049A85852365A4DC0038D247 /* TopicData.swift */,
+				18EDCF5121899EC500B233B9 /* Configuration.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -467,7 +470,6 @@
 		1803375E21CB3C760098F944 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				18EDCF5121899EC500B233B9 /* Configuration.swift */,
 				1803375521CA9B130098F944 /* Topic.swift */,
 				18EDCF4F21899E3800B233B9 /* Item.swift */,
 				1803375F21CB41640098F944 /* SensorConnect.swift */,
@@ -708,6 +710,7 @@
 				18E7A723218EFDF600F7E689 /* ItemListState.swift */,
 				047CCB982365FD920044B9F2 /* Middleware.swift */,
 				04F315022376C6D700184507 /* TopicState.swift */,
+				043009E3237DB682004FA341 /* ConnectionState.swift */,
 				18E7A725218EFE5200F7E689 /* ItemListReducer.swift */,
 				18E7A727218EFEDD00F7E689 /* ItemListAction.swift */,
 				18E7A729218EFF9900F7E689 /* ItemListStore.swift */,
@@ -1068,6 +1071,7 @@
 				5B2CD58722896E5400EA8B25 /* UIFont+Extension.swift in Sources */,
 				18A33DDC2324FAD800DFDBB6 /* ItemDetailTrashCell.swift in Sources */,
 				047390B7234F9756005567CE /* SelectionSection.swift in Sources */,
+				043009E4237DB682004FA341 /* ConnectionState.swift in Sources */,
 				5B04F00C227AE9190096FBA1 /* LineChart3ViewController.swift in Sources */,
 				04F2480B2337DD5D003239B6 /* ServerViewController.swift in Sources */,
 				1852DBA22192960D002E1946 /* AddItemView.swift in Sources */,

@@ -19,7 +19,7 @@ struct TopicState: ReSwift.StateType, Identifiable {
 extension TopicState {
     enum Action: ReSwift.Action {
         case loadTopics()
-        case loadCoonection()
+        case loadConection()
         case addTopic()
         case removeTopic(id: String)
         case loadTopic(id: String)

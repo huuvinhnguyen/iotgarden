@@ -83,7 +83,10 @@ struct ItemListService {
     func updateSensor(sensor: Topic) {
         
         let sensors = SensorsDataInteractor()
-        sensors.update(item: sensor)
+        
+        sensors.update(item: sensor) { id in
+            
+        }
     }
     
     
@@ -94,16 +97,43 @@ struct ItemListService {
             
         }
     }
+}
+
+extension ItemListService {
     
-    func addLocalConfiguration(configuration: Configuration) {
+    struct Configuration {
         
-        let configurations = ConfigurationsDataInteractor()
-        configurations.add(item: configuration) { _ in}
+        var uuid: String = ""
+        var name: String = ""
+        var server: String = ""
+        var username: String = ""
+        var password: String = ""
+        var port: String = ""
+    }
+    
+    func addConfiguration(configuration: Configuration, finished: (_ id: String)->()) {
+        
+        let interactor = ConfigurationsDataInteractor()
+        interactor.add(item: configuration) { _ in
+            finished(configuration.uuid)
+        }
     }
     
     func loadLocalConfiguration(uuid: String) -> Configuration? {
         
-        let configurations = ConfigurationsDataInteractor()
-        return configurations.getItem(uuid: uuid)
+        let interactor = ConfigurationsDataInteractor()
+        return interactor.getItem(uuid: uuid)
     }
+    
+    func loadConfigures(finished: (_ items: [Configuration])->()) {
+        let interactor = ConfigurationsDataInteractor()
+        interactor.getItems { items in
+            finished(items)
+        }
+    }
+    
+    func deleteConfigure(id: String) {
+        
+    }
+
 }

@@ -8,8 +8,21 @@
 import UIKit
 import RxDataSources
 import RxSwift
+import RxCocoa
+import ReSwift
 
-class SelectionViewController:  UIViewController {
+class SelectionViewController:  UIViewController, StoreSubscriber {
+    
+    typealias StoreSubscriberStateType = ListState
+    
+    func newState(state: ListState) {
+        
+        serversRelay.accept(state.servers)
+        
+    }
+    
+    var serversRelay = PublishRelay<[ServerViewModel]>()
+
     
     private var disposeBag = DisposeBag()
     
@@ -21,26 +34,37 @@ class SelectionViewController:  UIViewController {
     
     private var dataSource: RxTableViewSectionedReloadDataSource<SelectionSection> {
         
-        return RxTableViewSectionedReloadDataSource<SelectionSection>(configureCell: { _, tableView, indexPath, viewModel in
+        return RxTableViewSectionedReloadDataSource<SelectionSection>(configureCell: { dataSource, tableView, indexPath, viewModel in
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.selectionServerCell, for: indexPath) else { return UITableViewCell() }
-//            cell.viewModel = viewModel
-            
-            return cell
+            switch dataSource[indexPath] {
+            case let .serverItem(viewModel):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.selectionServerCell, for: indexPath) else { return UITableViewCell() }
+                cell.viewModel = viewModel
+                return cell
+            default: return UITableViewCell()
+            }
         }, titleForHeaderInSection: { dataSource, index in
             let section = dataSource[index]
             return section.title
         })
     }
     
-    var configuration: Configuration?
     var sensorKinds = ["toggle", "temperature", "humidity", "value"]
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         prepareNibs()
+        
         loadData()
+
+        
+        appStore.subscribe(self) { subcription in
+            subcription.select { state in state.listState }.skipRepeats()
+        }
+        
+        appStore.dispatch(ListState.Action.loadConnections())
+
     }
     
     private func prepareNibs() {
@@ -51,17 +75,15 @@ class SelectionViewController:  UIViewController {
     
     private func loadData() {
         
-        let sections: [SelectionSection] = [
-            SelectionSection(title: "", items: [
-                .serverItem(viewModel: ServerViewModel()),
-                .serverItem(viewModel: ServerViewModel()),
-                .serverItem(viewModel: ServerViewModel()),
-                .serverItem(viewModel: ServerViewModel()),
-
-                ])
-        ]
-        
-        Observable.just(sections)
+        serversRelay
+            .map { $0.map { SelectionSectionItem.serverItem(viewModel: $0)} }
+            .map {  sectionItems -> [SelectionSection] in
+                var sections: [SelectionSection] = []
+                sections.append(
+                    SelectionSection(title: "", items: sectionItems)
+                )
+                return sections
+            }
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
@@ -92,7 +114,7 @@ extension SelectionViewController: UICollectionViewDelegate, UICollectionViewDat
         if let vc = self.storyboard?.instantiateViewController(withIdentifier :"AddItemSavingViewController") as? AddItemSavingViewController {
             
             let sensorKind = sensorKinds[indexPath.row]
-            vc.configuration = configuration
+//            vc.configuration = configuration
             vc.kind = sensorKind
             self.navigationController?.pushViewController(vc, animated: true)
         }

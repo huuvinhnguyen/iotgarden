@@ -9,9 +9,12 @@ import UIKit
 
 class SelectionServerCell: UITableViewCell {
     
-    var viewModel: SelectionViewModel? {
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var userLabel: UILabel!
+    
+    var viewModel: ServerViewModel? {
         didSet {
-            
+            nameLabel.text = viewModel?.name ?? ""
         }
     }
     
