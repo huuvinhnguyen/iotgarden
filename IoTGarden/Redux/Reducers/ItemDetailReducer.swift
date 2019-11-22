@@ -14,12 +14,14 @@ let itemDetailReducer: Reducer<ItemDetailState> = { action, state in
     if let action = action as? LoadItemDetail {
         
         let itemListService = ItemListService()
-        let sensor = itemListService.getSensor(uuid: action.sensorUUID)
-        state.name = sensor?.name ?? ""
-        state.value = sensor?.value ?? ""
-        state.kind = sensor?.kind ?? ""
-        state.topic = sensor?.topic ?? ""
-        state.time = sensor?.time ?? ""
+        itemListService.loadTopic(uuid: action.sensorUUID) { sensor in
+            state.name = sensor?.name ?? ""
+            state.value = sensor?.value ?? ""
+            state.kind = sensor?.kind ?? ""
+            state.topic = sensor?.topic ?? ""
+            state.time = sensor?.time ?? ""
+        }
+        
     }
     
     return state
@@ -36,19 +38,19 @@ extension ItemDetailState {
         case .loadDetail(id: let uuid):
             
             let itemListService = ItemListService()
-            let sensor = itemListService.getSensor(uuid: uuid)
-            state.name = sensor?.name ?? ""
-            state.value = sensor?.value ?? ""
-            state.kind = sensor?.kind ?? ""
-            state.topic = sensor?.topic ?? ""
-            state.time = sensor?.time ?? ""
-            state.serverUUID = sensor?.serverUUID ?? ""
+//            let sensor = itemListService.getSensor(uuid: uuid)
+//            state.name = sensor?.name ?? ""
+//            state.value = sensor?.value ?? ""
+//            state.kind = sensor?.kind ?? ""
+//            state.topic = sensor?.topic ?? ""
+//            state.time = sensor?.time ?? ""
+//            state.serverUUID = sensor?.serverUUID ?? ""
             state.identifiableComponent.update()
         case .publish(message: let message, id: let uuid):
             let itemListService = ItemListService()
-            guard let sensor = itemListService.getSensor(uuid: uuid) else { break }
-            state.sensorConnect.connect(sensor: sensor)
-            state.sensorConnect.publish(message: message)
+//            guard let sensor = itemListService.getSensor(uuid: uuid) else { break }
+//            state.sensorConnect.connect(sensor: sensor)
+//            state.sensorConnect.publish(message: message)
         }
         
         return state

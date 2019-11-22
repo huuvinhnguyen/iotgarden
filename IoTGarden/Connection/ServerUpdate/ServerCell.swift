@@ -25,5 +25,7 @@ class ServerCell: UITableViewCell {
 }
 
 struct ServerViewModel {
+    let id: String
     let name: String
+    let url: String
 }

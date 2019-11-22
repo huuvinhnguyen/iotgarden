@@ -17,34 +17,34 @@ class SensorConnect {
     func connect(sensor: Topic) {
         self.sensor = sensor
         
-        let itemListService = ItemListService()
-        guard let configuration = itemListService.loadLocalConfiguration(uuid: sensor.serverUUID) else { return }
-        
-        guard let port = UInt16(configuration.port) else { return }
-        let clientID = "CocoaMQTT-" + configuration.uuid
-        mqtt = CocoaMQTT(clientID: clientID, host: configuration.server, port: port)
-        mqtt.username = configuration.username
-        mqtt.password = configuration.password
-        mqtt.keepAlive = 60
-        mqtt.autoReconnectTimeInterval = 1
-        mqtt.autoReconnect = true
-        mqtt.connect()
-        
-        mqtt.didReceiveMessage = { [weak self] mqtt, message, id in
-            
-            guard let weakSelf = self else { return }
-            print("#didReceiveMessage: \(message)")
-            weakSelf.didReceiveMessage(mqtt, message, id)
-            
-        }
-        
-        mqtt.didConnectAck = { mqtt, ack in
-            
-            if ack == .accept {
-                
-                mqtt.subscribe(sensor.topic, qos: CocoaMQTTQOS.qos2)
-            }
-        }
+//        let itemListService = ItemListService()
+//        guard let configuration = itemListService.loadLocalConfiguration(uuid: sensor.serverUUID, finished: { _ in  return }) else { return }
+//        
+//        guard let port = UInt16(configuration.port) else { return }
+//        let clientID = "CocoaMQTT-" + configuration.uuid
+//        mqtt = CocoaMQTT(clientID: clientID, host: configuration.server, port: port)
+//        mqtt.username = configuration.username
+//        mqtt.password = configuration.password
+//        mqtt.keepAlive = 60
+//        mqtt.autoReconnectTimeInterval = 1
+//        mqtt.autoReconnect = true
+//        mqtt.connect()
+//        
+//        mqtt.didReceiveMessage = { [weak self] mqtt, message, id in
+//            
+//            guard let weakSelf = self else { return }
+//            print("#didReceiveMessage: \(message)")
+//            weakSelf.didReceiveMessage(mqtt, message, id)
+//            
+//        }
+//        
+//        mqtt.didConnectAck = { mqtt, ack in
+//            
+//            if ack == .accept {
+//                
+//                mqtt.subscribe(sensor.topic, qos: CocoaMQTTQOS.qos2)
+//            }
+//        }
     }
     
     func publish(message: String) {

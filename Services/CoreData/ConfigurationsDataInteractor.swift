@@ -88,7 +88,7 @@ struct ConfigurationsDataInteractor: DataInteractor {
         }
     }
     
-    func getItem(uuid: String) -> ItemListService.Configuration? {
+    func getItem(uuid: String, finished: (ItemListService.Configuration?)->()) {
         
         let context = Storage.shared.context
         
@@ -99,15 +99,16 @@ struct ConfigurationsDataInteractor: DataInteractor {
             
             for object in result {
                 
-                return ItemListService.Configuration(uuid: String(describing: object.value(forKeyPath: "uuid") ?? ""), name: String(describing: object.value(forKeyPath: "name") ?? ""),
+                let configuration =  ItemListService.Configuration(uuid: String(describing: object.value(forKeyPath: "uuid") ?? ""), name: String(describing: object.value(forKeyPath: "name") ?? ""),
                                      server: String(describing: object.value(forKeyPath: "server") ?? ""),
                                      username: String(describing: object.value(forKeyPath: "username") ?? ""),
                                      password: String(describing: object.value(forKeyPath: "password") ?? ""),
                                      port: String(describing: object.value(forKeyPath: "port") ?? ""))
+                finished(configuration)
             }
         }
         
-        return nil
+        return finished(nil)
     }
     
     func getItems(finished: (_ items: [MappingData]) ->()) {

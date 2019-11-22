@@ -75,9 +75,11 @@ struct ItemListService {
         }
     }
     
-    func getSensor(uuid: String) -> Topic? {
+    func loadTopic(uuid: String, finished: (Topic?) -> ()) {
         let sensors = SensorsDataInteractor()
-        return sensors.getItem(uuid: uuid)
+        sensors.getItem(uuid: uuid) { topic in
+            finished(topic)
+        }
     }
     
     func updateSensor(sensor: Topic) {
@@ -119,10 +121,13 @@ extension ItemListService {
         }
     }
     
-    func loadLocalConfiguration(uuid: String) -> Configuration? {
+    func loadLocalConfiguration(uuid: String, finished: (_ configuration: Configuration?)->()) {
         
         let interactor = ConfigurationsDataInteractor()
-        return interactor.getItem(uuid: uuid)
+        interactor.getItem(uuid: uuid) { configuration in
+            finished(configuration)
+            
+        }
     }
     
     func loadConfigures(finished: (_ items: [Configuration])->()) {
@@ -132,8 +137,12 @@ extension ItemListService {
         }
     }
     
-    func deleteConfigure(id: String) {
-        
+    func deleteConfigure(id: String, finished: (_ id: String)->()) {
+        let interactor = ConfigurationsDataInteractor()
+        interactor.delete(id: id) { id in
+            finished(id)
+        }
+
     }
 
 }

@@ -72,15 +72,13 @@ extension ListState {
             state.itemImageViewModel = viewModel
             state.identifiableComponent.update()
             
-        case .loadConnections():
-            let list = [
-                ServerViewModel(name: "server1"),
-                ServerViewModel(name: "server12"),
-                ServerViewModel(name: "server13"),
-                ServerViewModel(name: "server14"),
-                ServerViewModel(name: "server15")]
-            state.servers = list
-            state.identifiableComponent.update()
+//        case .loadConnections():
+//        
+//            let service = ItemListService()
+//            service.loadConfigures { configurations in
+//                state.servers = configurations.map { ServerViewModel(id: $0.uuid ,name: $0.name) }
+//            }
+//            state.identifiableComponent.update()
 
         default: ()
         }

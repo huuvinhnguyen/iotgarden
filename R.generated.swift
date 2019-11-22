@@ -1076,6 +1076,7 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "icon_edit", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_edit' is used in nib 'ItemTopicServerCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_eye", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_eye' is used in nib 'ItemTopicServerCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_link", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_link' is used in nib 'ItemTopicServerCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_trash", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_trash' is used in nib 'ItemTopicServerCell', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
       }

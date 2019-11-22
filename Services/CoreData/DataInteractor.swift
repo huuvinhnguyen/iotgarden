@@ -14,7 +14,7 @@ protocol  DataInteractor {
     func add(item: MappingData, finished:(_ item: MappingData)->()) -> ()
     func delete(id: String, finished: (_ id: String)->()) -> ()
     func update(item: MappingData, finished: (_ id: String)->()) -> ()
-    func getItem(uuid: String) -> MappingData?
+    func getItem(uuid: String, finished: (MappingData?) -> ())
 }
 
 struct SensorsDataInteractor : DataInteractor {
@@ -121,7 +121,7 @@ struct SensorsDataInteractor : DataInteractor {
         }
     }
     
-    func getItem(uuid: String) -> MappingData? {
+    func getItem(uuid: String, finished: (_ id: MappingData?)->()) {
         
         let context = Storage.shared.context
         
@@ -132,7 +132,7 @@ struct SensorsDataInteractor : DataInteractor {
             
             for object in result {
                 
-                return Topic(
+                let topic =  Topic(
                     uuid: String(describing: object.value(forKeyPath: "uuid") ?? ""),
                               name: String(describing: object.value(forKeyPath: "name") ?? ""),
                               value:   String(describing:object.value(forKeyPath: "value") ?? "") ,
@@ -140,10 +140,11 @@ struct SensorsDataInteractor : DataInteractor {
                               kind: String(describing: object.value(forKeyPath: "kind") ?? ""),
                               topic: String(describing: object.value(forKeyPath: "topic") ?? ""),
                               time: String(describing: object.value(forKeyPath: "time") ?? ""))
+                finished(topic)
             }
         }
         
-        return nil
+        finished(nil)
     }
     
     func getItems(finished: (_ items: [Topic]) ->()) {

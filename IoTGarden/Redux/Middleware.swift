@@ -181,29 +181,6 @@ let imageMiddleware: ReSwift.Middleware<AppState> = {  dispatch, getState in
     }
 }
 
-let topicMiddleware: ReSwift.Middleware<AppState> = {  dispatch, getState in
-    
-    return { next in
-        print("enter detail middleware")
-        return { action in
-            if case TopicState.Action.addTopic() = action {
-                let service = ItemListService()
-                service.addTopic(topic: Topic(uuid: UUID().uuidString, name: "name", value: "0", serverUUID: "serverUUID", kind: "kind", topic: "topic", time: "waiting")) { item in
-                    dispatch(TopicState.Action.loadTopics())
-                }
-            }
-            
-            if case TopicState.Action.removeTopic(let id) = action {
-                let service = ItemListService()
-                service.removeTopic(id: id)
-                dispatch(TopicState.Action.loadTopics())
-            }
-        
-            next(action)
-        }
-    }
-}
-
 let connectionMiddleware: ReSwift.Middleware<AppState> = {  dispatch, getState in
     
     return { next in

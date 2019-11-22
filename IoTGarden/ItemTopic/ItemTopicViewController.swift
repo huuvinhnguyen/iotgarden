@@ -15,11 +15,11 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
     
     func newState(state: TopicState) {
         topicRelay.accept(state.topicViewModel)
-        connectionRelay.accept(state.connectionViewModel)
+        connectionRelay.accept(state.serverViewModel)
     }
     var identifier: String?
-    var topicRelay = PublishRelay<TopicViewModel>()
-    var connectionRelay = PublishRelay<ConnectionViewModel>()
+    var topicRelay = PublishRelay<TopicViewModel?>()
+    var connectionRelay = PublishRelay<ServerViewModel?>()
     
     @IBOutlet weak var tableView: UITableView!
     private let disposeBag = DisposeBag()
@@ -59,6 +59,12 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                     weakSelf.navigationController?.pushViewController(viewController, animated: true)
                     
                 }
+                cell.didTapTrashAction = {
+                    guard let weakSelf = self else { return }
+                    weakSelf.navigationController?.popViewController(animated: true)
+                    appStore.dispatch(ConnectionState.Action.removeConnection(id: viewModel?.id ?? ""))
+
+                }
                 return cell
 
             case .footerItem(let viewModel):
@@ -81,8 +87,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
         loadData()
         
         appStore.subscribe(self) { $0.select { $0.topicState }.skipRepeats() }
-        appStore.dispatch(TopicState.Action.loadTopic(id: "String"))
-        
+        appStore.dispatch(TopicState.Action.loadTopic(id: identifier ?? ""))
     }
     
     private func loadData() {

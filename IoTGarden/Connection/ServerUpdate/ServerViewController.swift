@@ -73,8 +73,8 @@ class ServerViewController: UIViewController {
     private func loadData() {
         
         let sections: [ServerSection] = [
-            
-            ServerSection(title: "", items: [.serverItem(viewModel: ServerViewModel(name: "server abc"))
+        
+            ServerSection(title: "", items: [.serverItem(viewModel: ServerViewModel(id: "", name: "server abc", url: "http://"))
                 ])
         ]
         

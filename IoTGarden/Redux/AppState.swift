@@ -11,4 +11,5 @@ struct AppState: ReSwift.StateType {
     var listState = ListState()
     var topicState = TopicState()
     var detailState = ItemDetailState()
+    var connectionState = ConnectionState()
 }

@@ -13,9 +13,9 @@ import ReSwift
 
 class SelectionViewController:  UIViewController, StoreSubscriber {
     
-    typealias StoreSubscriberStateType = ListState
+    typealias StoreSubscriberStateType = ConnectionState
     
-    func newState(state: ListState) {
+    func newState(state: ConnectionState) {
         
         serversRelay.accept(state.servers)
         
@@ -60,10 +60,10 @@ class SelectionViewController:  UIViewController, StoreSubscriber {
 
         
         appStore.subscribe(self) { subcription in
-            subcription.select { state in state.listState }.skipRepeats()
+            subcription.select { state in state.connectionState }.skipRepeats()
         }
         
-        appStore.dispatch(ListState.Action.loadConnections())
+        appStore.dispatch(ConnectionState.Action.loadConnections())
 
     }
     

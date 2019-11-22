@@ -48,11 +48,11 @@ class ItemDetailServerViewController:  UIViewController {
         super.viewDidLoad()
         
         let itemListService = ItemListService()
-        guard let configuration = itemListService.loadLocalConfiguration(uuid: serverUUID ?? "") else { return }
-        serverTextField?.text = configuration.server
-        portTextField?.text = configuration.port
-        userTextField?.text = configuration.username
-        passTextField?.text = configuration.password
+//        guard let configuration = itemListService.loadLocalConfiguration(uuid: serverUUID ?? "") else { return }
+//        serverTextField?.text = configuration.server
+//        portTextField?.text = configuration.port
+//        userTextField?.text = configuration.username
+//        passTextField?.text = configuration.password
     }
 }
 

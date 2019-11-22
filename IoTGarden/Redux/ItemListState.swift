@@ -19,7 +19,6 @@ struct ListState: ReSwift.StateType, Identifiable {
     var topicItems: [ItemDetailSectionModel] = []
     var topicViewModel = TopicViewModel()
     var connectionViewModel = ConnectionViewModel(id:"", name: "hvm server", server: "https//icloud.com/", title: "", isSelected: true)
-    var servers: [ServerViewModel] = []
     var tasks: [String: SensorConnect2] = [:]
     var imageList: [ItemImageViewController.SectionModel] = []
     var itemImageViewModels: [ItemImageViewModel] = []
@@ -42,6 +41,5 @@ extension ListState {
         case selectImage(id: String)
         case fetchImages()
         case loadImage(viewModel: ItemImageViewModel)
-        case loadConnections()
     }
 }

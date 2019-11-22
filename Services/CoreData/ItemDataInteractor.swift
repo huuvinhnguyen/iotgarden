@@ -57,7 +57,7 @@ struct ItemDataInteractor: DataInteractor {
         }
     }
     
-    func getItem(uuid: String) -> ItemListService.ItemData? {
+    func getItem(uuid: String, finished: (ItemListService.ItemData?) -> ()) {
         
         let context = Storage.shared.context
         
@@ -68,15 +68,17 @@ struct ItemDataInteractor: DataInteractor {
             
             for object in result {
                 
-                return ItemListService.ItemData(uuid: String(describing: object.value(forKeyPath: "uuid") ?? ""),
+                let item =  ItemListService.ItemData(uuid: String(describing: object.value(forKeyPath: "uuid") ?? ""),
                                 name: String(describing: object.value(forKeyPath: "name") ?? ""),
                                 imageUrlString: String(describing: object.value(forKeyPath: "imageUrlString") ?? ""),
                                 topics: [])
                 
+                finished(item)
+                
             }
         }
         
-        return nil
+        return finished(nil)
     }
     
     func getItems(finished: (_ items: [ItemListService.ItemData]) ->()) {
