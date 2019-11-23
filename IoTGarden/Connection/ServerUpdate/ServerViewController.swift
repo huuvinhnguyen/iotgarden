@@ -7,10 +7,18 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import RxDataSources
+import ReSwift
 
-class ServerViewController: UIViewController {
+class ServerViewController: UIViewController, StoreSubscriber {
     
+    func newState(state: ConnectionState) {
+        connectionRelay.accept(state.serverViewModel)
+    }
+    
+    var connectionRelay = PublishRelay<ServerViewModel?>()
+
     @IBOutlet weak var tableView: UITableView!
     
     private let disposeBag = DisposeBag()
@@ -45,6 +53,13 @@ class ServerViewController: UIViewController {
                     
                     weakSelf.navigationController?.popViewController(animated: true)
                 }
+                
+                cell.didTapTrashAction = {
+                    appStore.dispatch(ConnectionState.Action.removeConnection(id: viewModel.id))
+                    guard let weakSelf = self else { return }
+                    weakSelf.navigationController?.popViewController(animated: true)
+
+                }
                 return cell
                 
             default:
@@ -61,7 +76,13 @@ class ServerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepairNibs()
+        
+        appStore.subscribe(self) { $0.select { $0.connectionState }.skipRepeats() }
+        appStore.dispatch(ConnectionState.Action.loadConnection(id: ""))
+        
         loadData()
+        
+        
     }
     
     private func prepairNibs() {

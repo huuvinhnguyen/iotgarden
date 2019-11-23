@@ -13,7 +13,8 @@ class ServerCell: UITableViewCell {
     
     var didTapSaveAction: (() -> Void)?
     
-    
+    var didTapTrashAction: (() -> Void)?
+
     @IBAction private func selectButtonTapped(_ sender: UIButton) {
         didTapSelectAction?()
     }
@@ -22,6 +23,9 @@ class ServerCell: UITableViewCell {
         didTapSaveAction?()
     }
     
+    @IBAction func trashButtonTapped(_ sender: Any) {
+        didTapTrashAction?()
+    }
 }
 
 struct ServerViewModel {

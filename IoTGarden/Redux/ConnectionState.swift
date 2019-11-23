@@ -11,6 +11,7 @@ struct ConnectionState: ReSwift.StateType, Identifiable {
     var identifiableComponent = IdentifiableComponent()
     var viewModels: [ConnectionViewModel] = []
     var servers: [ServerViewModel] = []
+    var serverViewModel: ServerViewModel?
 
 }
 
@@ -21,6 +22,7 @@ extension ConnectionState {
         case removeConnection(id: String)
         case loadConnection(id: String)
         case loadConnections()
+        case selectConnection(id: String)
     }
 }
 
@@ -43,6 +45,16 @@ extension ConnectionState {
             }
             
             state.identifiableComponent.update()
+            
+        case .loadConnection(let id):
+            let service = ItemListService()
+            service.loadLocalConfiguration(uuid: id) { configuration in
+                let viewModel = configuration.map {  ServerViewModel(id: $0.uuid , name: $0.name , url: $0.server )
+                    } ?? ServerViewModel(id: "", name: "", url: "")
+                
+                state.serverViewModel = viewModel
+                state.identifiableComponent.update()
+            }
             
         default: ()
         

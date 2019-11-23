@@ -13,7 +13,7 @@ import ReSwift
 
 class SelectionViewController:  UIViewController, StoreSubscriber {
     
-    typealias StoreSubscriberStateType = ConnectionState
+//    typealias StoreSubscriberStateType = ConnectionState
     
     func newState(state: ConnectionState) {
         
@@ -22,14 +22,15 @@ class SelectionViewController:  UIViewController, StoreSubscriber {
     }
     
     var serversRelay = PublishRelay<[ServerViewModel]>()
+    var selectedRelay = PublishRelay<String>()
 
     
     private var disposeBag = DisposeBag()
     
     @IBAction func dismissButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+        
     }
-    //    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     
     private var dataSource: RxTableViewSectionedReloadDataSource<SelectionSection> {
@@ -64,6 +65,7 @@ class SelectionViewController:  UIViewController, StoreSubscriber {
         }
         
         appStore.dispatch(ConnectionState.Action.loadConnections())
+        selectedRelay.accept("")
 
     }
     
@@ -75,17 +77,40 @@ class SelectionViewController:  UIViewController, StoreSubscriber {
     
     private func loadData() {
         
-        serversRelay
-            .map { $0.map { SelectionSectionItem.serverItem(viewModel: $0)} }
+        Observable.combineLatest( serversRelay, selectedRelay).map { servers, id in
+            servers.map { item -> SelectionSectionItem in
+                SelectionSectionItem.serverItem(viewModel: SelectionServerCell.ViewModel(id: item.id, name:item.name, server: item.url, isSelected: item.id == id))
+            }}
             .map {  sectionItems -> [SelectionSection] in
                 var sections: [SelectionSection] = []
                 sections.append(
                     SelectionSection(title: "", items: sectionItems)
                 )
                 return sections
-            }
-            .bind(to: tableView.rx.items(dataSource: dataSource))
+            }.bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
+//        serversRelay
+//            .map { $0.map { item in
+//
+//                SelectionSectionItem.serverItem(viewModel: SelectionServerCell.ViewModel(id: item.id, name:item.name, server: item.url, isSelected: true))} }
+//            .map {  sectionItems -> [SelectionSection] in
+//                var sections: [SelectionSection] = []
+//                sections.append(
+//                    SelectionSection(title: "", items: sectionItems)
+//                )
+//                return sections
+//            }
+//            .bind(to: tableView.rx.items(dataSource: dataSource))
+//            .disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(SelectionSectionItem.self).subscribe(onNext: { [weak self]  sectionItem in
+            
+            if case  SelectionSectionItem.serverItem(let viewModel) = sectionItem {
+                guard let weakSelf = self else { return }
+                weakSelf.selectedRelay.accept(viewModel.id)
+            }
+        }).disposed(by: disposeBag)
         
     }
 }

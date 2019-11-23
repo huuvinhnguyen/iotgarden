@@ -14,7 +14,7 @@ struct SelectionSection {
 }
 
 enum SelectionSectionItem {
-    case serverItem(viewModel: ServerViewModel)
+    case serverItem(viewModel: SelectionServerCell.ViewModel)
     case topicItem(viewModel: TopicViewModel)
 }
 

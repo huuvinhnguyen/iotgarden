@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kes-2y-Z3U">
-                        <rect key="frame" x="202.5" y="10" width="300" height="382.5"/>
+                        <rect key="frame" x="202.5" y="10" width="300" height="437.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dv3-MI-IUV">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="20.5"/>
@@ -146,6 +146,17 @@
                                     <action selector="saveButtonTapped:" destination="FAX-pb-LAP" eventType="touchUpInside" id="JNm-xq-5ef"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feN-Jy-Oy8">
+                                <rect key="frame" x="0.0" y="387.5" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="yGo-b1-YPa"/>
+                                </constraints>
+                                <state key="normal" image="icon_trash"/>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="FAX-pb-LAP" eventType="touchUpInside" id="2dh-wl-pN5"/>
+                                    <action selector="trashButtonTapped:" destination="FAX-pb-LAP" eventType="touchUpInside" id="d6m-0S-oNB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="width" constant="300" id="KPS-Rg-8qb"/>
@@ -165,5 +176,6 @@
     <resources>
         <image name="icon_circle_down" width="22" height="22"/>
         <image name="icon_save" width="22" height="22"/>
+        <image name="icon_trash" width="20" height="22"/>
     </resources>
 </document>

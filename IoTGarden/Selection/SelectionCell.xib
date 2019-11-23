@@ -28,6 +28,7 @@
                     </label>
                 </subviews>
             </view>
+            <color key="backgroundColor" red="0.2486996055" green="0.44706130030000002" blue="0.58785885569999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="gmA-iY-Dck"/>
             <size key="customSize" width="402" height="156"/>
             <connections>
