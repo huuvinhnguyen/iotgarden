@@ -143,7 +143,7 @@
                                 </constraints>
                                 <state key="normal" image="icon_save"/>
                                 <connections>
-                                    <action selector="saveButtonTapped:" destination="FAX-pb-LAP" eventType="touchUpInside" id="JNm-xq-5ef"/>
+                                    <action selector="saveButtonTapped:" destination="FAX-pb-LAP" eventType="touchUpInside" id="wtN-Vi-c4G"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feN-Jy-Oy8">
@@ -153,7 +153,6 @@
                                 </constraints>
                                 <state key="normal" image="icon_trash"/>
                                 <connections>
-                                    <action selector="saveButtonTapped:" destination="FAX-pb-LAP" eventType="touchUpInside" id="2dh-wl-pN5"/>
                                     <action selector="trashButtonTapped:" destination="FAX-pb-LAP" eventType="touchUpInside" id="d6m-0S-oNB"/>
                                 </connections>
                             </button>
@@ -170,6 +169,13 @@
                     <constraint firstItem="kes-2y-Z3U" firstAttribute="centerX" secondItem="s7X-LX-5Gd" secondAttribute="centerX" id="UDd-5f-nWG"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="nameTextField" destination="FmL-Sp-6v4" id="LRj-vT-7nm"/>
+                <outlet property="passwordTextField" destination="vCm-0u-b5H" id="fvV-Ne-GTg"/>
+                <outlet property="portTextField" destination="wPp-of-Sqv" id="zzq-gL-ere"/>
+                <outlet property="serverTextField" destination="BCD-Sh-he2" id="sbu-l1-Cdh"/>
+                <outlet property="userTextField" destination="smg-4C-d2v" id="vLB-j1-GDr"/>
+            </connections>
             <point key="canvasLocation" x="512.79999999999995" y="526.23688155922048"/>
         </tableViewCell>
     </objects>

@@ -141,6 +141,7 @@ struct SensorsDataInteractor : DataInteractor {
                               topic: String(describing: object.value(forKeyPath: "topic") ?? ""),
                               time: String(describing: object.value(forKeyPath: "time") ?? ""))
                 finished(topic)
+                return
             }
         }
         

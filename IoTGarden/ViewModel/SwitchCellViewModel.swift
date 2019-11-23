@@ -96,7 +96,7 @@ class SwitchCellViewModel: CellViewModel, Equatable, IdentifiableType {
             }
             
             let itemListService = ItemListService()
-            itemListService.updateSensor(sensor: newItem)
+            itemListService.updateTopic(topic: newItem)
         
 
         }

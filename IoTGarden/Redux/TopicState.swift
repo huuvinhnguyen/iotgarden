@@ -21,11 +21,12 @@ extension TopicState {
     enum Action: ReSwift.Action {
         case loadTopics()
         case loadConection()
-        case addTopic()
+        case addTopic(viewModel: TopicViewModel?)
         case removeTopic(id: String)
         case loadTopic(id: String)
         case loadConnection(id: String)
         case fetchTopic(topicViewModel: TopicViewModel?, serverViewModel: ServerViewModel?)
+        case updateTopic(topicViewModel: TopicViewModel?)
     }
 }
 
@@ -49,8 +50,11 @@ extension TopicState {
             state.identifiableComponent.update()
             
         case .loadTopic(let id):
-            state.topicViewModel = TopicViewModel(id:"", name: "light livi", topic: "switchab", value: "1", time: "22/12/2019", connectionId: "", type: "switch")
-            state.identifiableComponent.update()
+            let service = ItemListService()
+            service.loadTopic(uuid: id) { topic in
+                state.topicViewModel = TopicViewModel(id:topic?.uuid ?? "", name: topic?.name ?? "", topic: "switchab", value: "1", time: "22/12/2019", connectionId: topic?.serverUUID ?? "", type: "switch")
+                state.identifiableComponent.update()
+            }
             
         case .loadConnection(let id):
             let service = ItemListService()
@@ -68,7 +72,6 @@ extension TopicState {
             state.topicViewModel = topicViewModel
             state.serverViewModel = serverViewMode
             state.identifiableComponent.update()
-            
         default: ()
 
         }
@@ -85,9 +88,9 @@ extension TopicState {
         return { next in
             print("enter detail middleware")
             return { action in
-                if case TopicState.Action.addTopic() = action {
+                if case TopicState.Action.addTopic(let viewModel) = action {
                     let service = ItemListService()
-                    service.addTopic(topic: Topic(uuid: UUID().uuidString, name: "name", value: "0", serverUUID: "serverUUID", kind: "kind", topic: "topic", time: "waiting")) { item in
+                    service.addTopic(topic: Topic(uuid: UUID().uuidString, name: viewModel?.name ?? "", value: "0", serverUUID: viewModel?.connectionId ?? "", kind: "kind", topic: "topic", time: "waiting")) { item in
                         dispatch(TopicState.Action.loadTopics())
                     }
                 }
@@ -106,14 +109,18 @@ extension TopicState {
                                 TopicViewModel(id: topic?.uuid ?? "", name: topic?.name ?? "", topic: "", value: topic?.value ?? "", time: "", connectionId: "", type: "" )}
                             let serverViewModel = configuration.map { ServerViewModel(id: $0.uuid, name: $0.name, url: $0.server) }
                             dispatch(TopicState.Action.fetchTopic(topicViewModel: topicViewModel, serverViewModel: serverViewModel))
-
-                            
                         })
                     }
-                    service.removeTopic(id: id)
                     dispatch(TopicState.Action.loadTopics())
                 }
                 
+                if case TopicState.Action.updateTopic(let item) = action {
+                    guard let item = item else { return }
+                    let service = ItemListService()
+                    service.updateTopic(topic: Topic(uuid: item.id , name: item.name, value: "1", serverUUID: "", kind: "", topic: "", time: ""))
+                    dispatch(TopicState.Action.loadTopic(id: item.id))
+                }
+
                 next(action)
             }
         }

@@ -9,6 +9,16 @@ import UIKit
 
 class ServerCell: UITableViewCell {
     
+    @IBOutlet weak var nameTextField: UITextField!
+    
+    @IBOutlet weak var userTextField: UITextField!
+    
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    @IBOutlet weak var serverTextField: UITextField!
+    
+    @IBOutlet weak var portTextField: UITextField!
+    
     var didTapSelectAction: (() -> Void)?
     
     var didTapSaveAction: (() -> Void)?
@@ -25,6 +35,14 @@ class ServerCell: UITableViewCell {
     
     @IBAction func trashButtonTapped(_ sender: Any) {
         didTapTrashAction?()
+    }
+    
+    var viewModel: ServerViewModel? {
+        didSet {
+            nameTextField.text = viewModel?.name ?? ""
+            serverTextField.text = viewModel?.url ?? ""
+            
+        }
     }
 }
 

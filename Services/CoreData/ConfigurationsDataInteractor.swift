@@ -105,6 +105,7 @@ struct ConfigurationsDataInteractor: DataInteractor {
                                      password: String(describing: object.value(forKeyPath: "password") ?? ""),
                                      port: String(describing: object.value(forKeyPath: "port") ?? ""))
                 finished(configuration)
+                return
             }
         }
         

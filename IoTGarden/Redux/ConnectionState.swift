@@ -49,12 +49,13 @@ extension ConnectionState {
         case .loadConnection(let id):
             let service = ItemListService()
             service.loadLocalConfiguration(uuid: id) { configuration in
-                let viewModel = configuration.map {  ServerViewModel(id: $0.uuid , name: $0.name , url: $0.server )
-                    } ?? ServerViewModel(id: "", name: "", url: "")
+                let viewModel = configuration.map {  ServerViewModel(id: $0.uuid , name: $0.name , url: $0.server )} 
                 
                 state.serverViewModel = viewModel
                 state.identifiableComponent.update()
             }
+            
+        
             
         default: ()
         
@@ -74,6 +75,14 @@ extension ConnectionState {
                 if case ConnectionState.Action.removeConnection(let id) = action {
                     let service = ItemListService()
                     service.deleteConfigure(id: id, finished: { id in
+                        dispatch(ConnectionState.Action.loadConnections())
+                    })
+                }
+                
+                if case ConnectionState.Action.addConnection(let viewModel) = action {
+                    let service = ItemListService()
+                    service.addConfiguration(configuration: ItemListService.Configuration(uuid: viewModel.id, name: viewModel.name, server: viewModel.server, username: "", password: "", port: ""), finished: { id in
+                        
                         dispatch(ConnectionState.Action.loadConnections())
                     })
                 }

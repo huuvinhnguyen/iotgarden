@@ -74,6 +74,7 @@ struct ItemDataInteractor: DataInteractor {
                                 topics: [])
                 
                 finished(item)
+                return
                 
             }
         }

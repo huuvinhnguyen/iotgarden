@@ -2,7 +2,7 @@
 //  ServerSection.swift
 //  IoTGarden
 //
-//  Created by chuyendo on 9/23/19.
+//  Created by Vinh Nguyen on 9/23/19.
 //
 
 import RxDataSources
@@ -14,8 +14,8 @@ struct ServerSection {
 }
 
 enum ServerSectionItem {
-    case serverItem(viewModel: ServerViewModel)
-    case topicItem(viewModel: TopicViewModel)
+    case serverItem(viewModel: ServerViewModel?)
+    case topicItem(viewModel: TopicCell.ViewModel?)
     case topicSwitchItem(viewModel: TopicSwitchViewModel)
     case topicQosItem(viewModel: TopicQosViewModel)
     case topicSaveItem(viewModel: TopicSaveViewModel)

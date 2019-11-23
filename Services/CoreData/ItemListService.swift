@@ -82,11 +82,11 @@ struct ItemListService {
         }
     }
     
-    func updateSensor(sensor: Topic) {
+    func updateTopic(topic: Topic) {
         
         let sensors = SensorsDataInteractor()
         
-        sensors.update(item: sensor) { id in
+        sensors.update(item: topic) { id in
             
         }
     }

@@ -23,11 +23,14 @@ class SelectionViewController:  UIViewController, StoreSubscriber {
     
     var serversRelay = PublishRelay<[ServerViewModel]>()
     var selectedRelay = PublishRelay<String>()
+    var selectedId = ""
 
     
     private var disposeBag = DisposeBag()
     
     @IBAction func dismissButtonTapped(_ sender: Any) {
+        appStore.dispatch(ConnectionState.Action.loadConnection(id: selectedId))
+
         self.dismiss(animated: true, completion: nil)
         
     }
@@ -90,25 +93,12 @@ class SelectionViewController:  UIViewController, StoreSubscriber {
             }.bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
-//        serversRelay
-//            .map { $0.map { item in
-//
-//                SelectionSectionItem.serverItem(viewModel: SelectionServerCell.ViewModel(id: item.id, name:item.name, server: item.url, isSelected: true))} }
-//            .map {  sectionItems -> [SelectionSection] in
-//                var sections: [SelectionSection] = []
-//                sections.append(
-//                    SelectionSection(title: "", items: sectionItems)
-//                )
-//                return sections
-//            }
-//            .bind(to: tableView.rx.items(dataSource: dataSource))
-//            .disposed(by: disposeBag)
-        
         tableView.rx.modelSelected(SelectionSectionItem.self).subscribe(onNext: { [weak self]  sectionItem in
             
             if case  SelectionSectionItem.serverItem(let viewModel) = sectionItem {
                 guard let weakSelf = self else { return }
                 weakSelf.selectedRelay.accept(viewModel.id)
+                weakSelf.selectedId = viewModel.id
             }
         }).disposed(by: disposeBag)
         

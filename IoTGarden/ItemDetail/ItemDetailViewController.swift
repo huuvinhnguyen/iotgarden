@@ -127,18 +127,18 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        appStore.subscribe(self) { subcription in
-            subcription.select { state in state.topicState }.skipRepeats()
-        }
-        
-        appStore.dispatch(TopicState.Action.loadTopics())
+       
     }
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        appStore.dispatch(TopicState.Action.loadTopics())
         configureTableView()
+
+        appStore.subscribe(self) { subcription in
+            subcription.select { state in state.topicState }.skipRepeats()
+        }    
+        appStore.dispatch(TopicState.Action.loadTopics())
     }
     
     private func configureTableView() {

@@ -66,7 +66,7 @@ let switchingMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
                     switchCellUI.message = message.string ?? ""
                     if let sensor = task?.sensor {
                         let itemListService = ItemListService()
-                        itemListService.updateSensor(sensor: sensor)
+                        itemListService.updateTopic(topic: sensor)
                     }
                     let action2 = ListState.Action.updateSwitchItem(viewModel: switchCellUI)
                     appStore.dispatch(action2)
@@ -126,7 +126,7 @@ let inputMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
                     
                     if let sensor = task?.sensor {
                         let itemListService = ItemListService()
-                        itemListService.updateSensor(sensor: sensor)
+                        itemListService.updateTopic(topic: sensor)
                     }
                     
                     let action2 = ListState.Action.updateInputItem(cellUI: inputCellUI)
@@ -176,30 +176,6 @@ let imageMiddleware: ReSwift.Middleware<AppState> = {  dispatch, getState in
                     
                 }
             }
-            next(action)
-        }
-    }
-}
-
-let connectionMiddleware: ReSwift.Middleware<AppState> = {  dispatch, getState in
-    
-    return { next in
-        print("enter detail middleware")
-        return { action in
-            if case ConnectionState.Action.addConnection(let viewModel) = action {
-                let service = ItemListService()
-                service.addConfiguration(configuration: ItemListService.Configuration(uuid: viewModel.id, name: viewModel.name, server: viewModel.server, username: "", password: "", port: ""), finished: { id in
-                    
-                    dispatch(ConnectionState.Action.loadConnections())
-                })
-            }
-            
-            if case ConnectionState.Action.removeConnection(let id) = action {
-                let service = ItemListService()
-//                service.removeTopic(id: id)
-//                dispatch(TopicState.Action.loadTopics())
-            }
-            
             next(action)
         }
     }

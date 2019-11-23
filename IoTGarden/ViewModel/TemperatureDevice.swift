@@ -61,7 +61,7 @@ class TemperatureDevice: CellViewModel {
             
 //            sensorStore.dispatch(UpdateSensorAction(sensor: newItem))
             let itemListService = ItemListService()
-            itemListService.updateSensor(sensor: newItem)
+            itemListService.updateTopic(topic: newItem)
         }
     }
 }

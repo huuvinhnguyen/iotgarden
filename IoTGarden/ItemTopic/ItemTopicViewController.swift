@@ -43,6 +43,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                 cell.didTapEditAction = {
                     guard let weakSelf = self else { return }
                     let viewController = R.storyboard.connection.topicViewController()!
+                    viewController.identifier = viewModel?.id
                     weakSelf.navigationController?.pushViewController(viewController, animated: true)
                     
                 }
@@ -61,8 +62,8 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                 }
                 cell.didTapTrashAction = {
                     guard let weakSelf = self else { return }
-                    weakSelf.navigationController?.popViewController(animated: true)
-                    appStore.dispatch(ConnectionState.Action.removeConnection(id: viewModel?.id ?? ""))
+//                    weakSelf.navigationController?.popViewController(animated: true)
+//                    appStore.dispatch(ConnectionState.Action.removeConnection(id: viewModel?.id ?? ""))
 
                 }
                 return cell

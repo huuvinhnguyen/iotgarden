@@ -30,13 +30,13 @@ class ServerViewController: UIViewController, StoreSubscriber {
                 
             case .topicItem(let viewModel):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.topicCell, for: indexPath) else { return UITableViewCell() }
-                //            cell.viewModel = viewModel
+//                cell.viewModel = viewModel
               
                 return cell
                 
             case .serverItem(let viewModel):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.serverCell, for: indexPath) else { return UITableViewCell() }
-                //            cell.viewModel = viewModel
+                cell.viewModel = viewModel
                 cell.didTapSelectAction = {
 
                     let viewController = R.storyboard.selection.selectionViewController()!
@@ -48,16 +48,16 @@ class ServerViewController: UIViewController, StoreSubscriber {
                 
                 cell.didTapSaveAction = {
                     guard let weakSelf = self else { return }
-                    let action = ConnectionState.Action.addConnection(viewModel: ConnectionViewModel(id: UUID().uuidString, name: "Name 1", server: "ABCD server", title: "", isSelected: true))
+                    let action = ConnectionState.Action.addConnection(viewModel: ConnectionViewModel(id: UUID().uuidString, name: cell.nameTextField.text ?? "", server: cell.serverTextField.text ?? "", title: "", isSelected: true))
                     appStore.dispatch(action)
                     
                     weakSelf.navigationController?.popViewController(animated: true)
                 }
                 
                 cell.didTapTrashAction = {
-                    appStore.dispatch(ConnectionState.Action.removeConnection(id: viewModel.id))
                     guard let weakSelf = self else { return }
                     weakSelf.navigationController?.popViewController(animated: true)
+                    appStore.dispatch(ConnectionState.Action.removeConnection(id: viewModel?.id ?? ""))
 
                 }
                 return cell
@@ -78,11 +78,11 @@ class ServerViewController: UIViewController, StoreSubscriber {
         prepairNibs()
         
         appStore.subscribe(self) { $0.select { $0.connectionState }.skipRepeats() }
-        appStore.dispatch(ConnectionState.Action.loadConnection(id: ""))
-        
         loadData()
         
-        
+        appStore.dispatch(ConnectionState.Action.loadConnection(id: ""))
+
+    
     }
     
     private func prepairNibs() {
@@ -93,16 +93,11 @@ class ServerViewController: UIViewController, StoreSubscriber {
     
     private func loadData() {
         
-        let sections: [ServerSection] = [
-        
-            ServerSection(title: "", items: [.serverItem(viewModel: ServerViewModel(id: "", name: "server abc", url: "http://"))
-                ])
-        ]
-        
-        Observable.just(sections)
-            .bind(to: tableView.rx.items(dataSource: dataSource))
+        connectionRelay.map {
+            [ServerSection(title: "", items: [.serverItem(viewModel: $0)])]
+            }.bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-        
+
     }
     
 }
