@@ -70,7 +70,16 @@ extension ListState {
             state.identifiableComponent.update()
         case .loadImage(let viewModel):
             state.itemImageViewModel = viewModel
+            state.identifiableComponent.update()
             
+//        case .loadConnections():
+//        
+//            let service = ItemListService()
+//            service.loadConfigures { configurations in
+//                state.servers = configurations.map { ServerViewModel(id: $0.uuid ,name: $0.name) }
+//            }
+//            state.identifiableComponent.update()
+
         default: ()
         }
         

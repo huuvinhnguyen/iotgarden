@@ -7,10 +7,20 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import RxDataSources
+import ReSwift
 
-class ServerViewController: UIViewController {
+class ServerViewController: UIViewController, StoreSubscriber {
     
+    func newState(state: ConnectionState) {
+        connectionRelay.accept(state.serverViewModel)
+    }
+    
+    var serverIdentifier: String?
+    
+    var connectionRelay = PublishRelay<ServerViewModel?>()
+
     @IBOutlet weak var tableView: UITableView!
     
     private let disposeBag = DisposeBag()
@@ -22,13 +32,13 @@ class ServerViewController: UIViewController {
                 
             case .topicItem(let viewModel):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.topicCell, for: indexPath) else { return UITableViewCell() }
-                //            cell.viewModel = viewModel
+//                cell.viewModel = viewModel
               
                 return cell
                 
             case .serverItem(let viewModel):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.serverCell, for: indexPath) else { return UITableViewCell() }
-                //            cell.viewModel = viewModel
+                cell.viewModel = viewModel
                 cell.didTapSelectAction = {
 
                     let viewController = R.storyboard.selection.selectionViewController()!
@@ -39,9 +49,29 @@ class ServerViewController: UIViewController {
                 }
                 
                 cell.didTapSaveAction = {
-                    guard let weakSelf = self else { return }
+                    guard let self = self else { return }
+                    var topicViewModel = appStore.state.topicState.topicViewModel
+                    if let id = topicViewModel?.connectionId, id != "" {
+                        
+                        topicViewModel?.connectionId = viewModel?.id ?? ""
+                    } else {
+                        
+                        let connectionViewModel = ConnectionViewModel(id: UUID().uuidString, name: cell.nameTextField.text ?? "", server: cell.serverTextField.text ?? "", title: "", isSelected: true)
+                        let action = ConnectionState.Action.addConnection(viewModel: connectionViewModel)
+                        topicViewModel?.connectionId = connectionViewModel.id
+                        appStore.dispatch(action)
+                        
+                    }
                     
-                    self?.navigationController?.popViewController(animated: true)
+                    appStore.dispatch(TopicState.Action.updateTopic(topicViewModel: topicViewModel))
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
+                cell.didTapTrashAction = {
+                    guard let weakSelf = self else { return }
+                    weakSelf.navigationController?.popViewController(animated: true)
+                    appStore.dispatch(ConnectionState.Action.removeConnection(id: viewModel?.id ?? ""))
+
                 }
                 return cell
                 
@@ -59,7 +89,12 @@ class ServerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepairNibs()
+        
+        appStore.subscribe(self) { $0.select { $0.connectionState }.skipRepeats() }
         loadData()
+        
+        appStore.dispatch(ConnectionState.Action.loadConnection(id: serverIdentifier ?? ""))
+
     }
     
     private func prepairNibs() {
@@ -70,16 +105,12 @@ class ServerViewController: UIViewController {
     
     private func loadData() {
         
-        let sections: [ServerSection] = [
-            
-            ServerSection(title: "", items: [.serverItem(viewModel: ServerViewModel())
-                ])
-        ]
-        
-        Observable.just(sections)
+        connectionRelay.map {
+            [ServerSection(title: "", items: [.serverItem(viewModel: $0)])]
+            }
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-        
+
     }
     
 }

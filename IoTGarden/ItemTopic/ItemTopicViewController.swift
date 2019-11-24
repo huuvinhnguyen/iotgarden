@@ -15,11 +15,11 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
     
     func newState(state: TopicState) {
         topicRelay.accept(state.topicViewModel)
-        connectionRelay.accept(state.connectionViewModel)
+        connectionRelay.accept(state.serverViewModel)
     }
     var identifier: String?
-    var topicRelay = PublishRelay<TopicViewModel>()
-    var connectionRelay = PublishRelay<ConnectionViewModel>()
+    var topicRelay = PublishRelay<TopicViewModel?>()
+    var connectionRelay = PublishRelay<ServerViewModel?>()
     
     @IBOutlet weak var tableView: UITableView!
     private let disposeBag = DisposeBag()
@@ -28,7 +28,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
     private var dataSource: RxTableViewSectionedReloadDataSource<ItemTopicSection> {
         
         return RxTableViewSectionedReloadDataSource<ItemTopicSection>(configureCell: { [weak self] dataSource, tableView, indexPath, _ in
-            guard let weakSelf = self else { return UITableViewCell() }
+            guard let self = self else { return UITableViewCell() }
             switch dataSource[indexPath] {
             case .headerItem(let viewModel):
                 
@@ -41,9 +41,9 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                 cell.viewModel = viewModel
                 
                 cell.didTapEditAction = {
-                    guard let weakSelf = self else { return }
                     let viewController = R.storyboard.connection.topicViewController()!
-                    weakSelf.navigationController?.pushViewController(viewController, animated: true)
+                    viewController.identifier = viewModel?.id
+                    self.navigationController?.pushViewController(viewController, animated: true)
                     
                 }
                 return cell
@@ -54,10 +54,14 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                 
                 cell.viewModel = viewModel
                 cell.didTapEditAction = {
-                    guard let weakSelf = self else { return }
                     let viewController = R.storyboard.connection.serverViewController()!
-                    weakSelf.navigationController?.pushViewController(viewController, animated: true)
+                viewController.serverIdentifier = viewModel?.id
+                self.navigationController?.pushViewController(viewController, animated: true)
                     
+                }
+                cell.didTapTrashAction = {
+
+
                 }
                 return cell
 
@@ -66,8 +70,8 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailTrashCell, for: indexPath) else { return UITableViewCell() }
                 //                cell.viewModel = viewModel
                 cell.didTapTrashAction = {
-                    weakSelf.navigationController?.popViewController(animated: true)
-                    let action = TopicState.Action.removeTopic(id: weakSelf.identifier ?? "")
+                    self.navigationController?.popViewController(animated: true)
+                    let action = TopicState.Action.removeTopic(id: self.identifier ?? "")
                     appStore.dispatch(action)
                 }
                 return cell
@@ -81,8 +85,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
         loadData()
         
         appStore.subscribe(self) { $0.select { $0.topicState }.skipRepeats() }
-        appStore.dispatch(TopicState.Action.loadTopic(id: "String"))
-        
+        appStore.dispatch(TopicState.Action.loadTopic(id: identifier ?? ""))
     }
     
     private func loadData() {

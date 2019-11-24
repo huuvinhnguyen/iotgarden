@@ -111,6 +111,14 @@
                             </label>
                         </subviews>
                     </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TDN-cp-sKK">
+                        <rect key="frame" x="319" y="185" width="20" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" image="icon_trash"/>
+                        <connections>
+                            <action selector="didTapTrashAction:" destination="CHn-bs-7mn" eventType="touchUpInside" id="Mad-f8-OBZ"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" red="0.24705882352941178" green="0.44705882352941173" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
@@ -140,5 +148,6 @@
         <image name="icon_edit" width="25" height="20"/>
         <image name="icon_eye" width="25" height="16"/>
         <image name="icon_link" width="23" height="23"/>
+        <image name="icon_trash" width="20" height="22"/>
     </resources>
 </document>

@@ -2,23 +2,28 @@
 //  SelectionServerCell.swift
 //  IoTGarden
 //
-//  Created by chuyendo on 10/10/19.
+//  Created by Vinh Nguyen on 10/10/19.
 //
 
 import UIKit
 
 class SelectionServerCell: UITableViewCell {
     
-    var viewModel: SelectionViewModel? {
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var userLabel: UILabel!
+    @IBOutlet weak var selectButton: UIButton!
+    
+    var viewModel: ViewModel? {
         didSet {
-            
+            nameLabel.text = viewModel?.name ?? ""
+            selectButton.isSelected = viewModel?.isSelected ?? false
         }
     }
     
-}
-
-struct SelectionViewModel {
-    let id: String
-    let title: String
-    var isSelected: Bool
+    struct ViewModel {
+        let id: String
+        let name: String
+        let server: String
+        let isSelected: Bool
+    }
 }

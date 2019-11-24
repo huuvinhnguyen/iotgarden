@@ -20,7 +20,7 @@ class ItemDetailServerViewController:  UIViewController {
     
     var serverUUID: String?
     
-    fileprivate var configuration: Configuration?
+    fileprivate var configuration: ItemListService.Configuration?
     
     @IBAction func connectButtonTapped(sender: UIButton) {
         
@@ -36,7 +36,7 @@ class ItemDetailServerViewController:  UIViewController {
         //                    let password = "jtWqc7RiUsz-"
         //                    let port = "14985"
         
-        configuration = Configuration(uuid: uuid, server: server, username: username, password: password, port: port)
+//        configuration = Configuration(uuid: uuid, server: server, username: username, password: password, port: port)
         
         guard let configuration = configuration else { return }
         guard let portInt = UInt16(configuration.port) else { return }
@@ -48,11 +48,11 @@ class ItemDetailServerViewController:  UIViewController {
         super.viewDidLoad()
         
         let itemListService = ItemListService()
-        guard let configuration = itemListService.loadLocalConfiguration(uuid: serverUUID ?? "") else { return }
-        serverTextField?.text = configuration.server
-        portTextField?.text = configuration.port
-        userTextField?.text = configuration.username
-        passTextField?.text = configuration.password
+//        guard let configuration = itemListService.loadLocalConfiguration(uuid: serverUUID ?? "") else { return }
+//        serverTextField?.text = configuration.server
+//        portTextField?.text = configuration.port
+//        userTextField?.text = configuration.username
+//        passTextField?.text = configuration.password
     }
 }
 
@@ -76,12 +76,12 @@ extension ItemDetailServerViewController: CocoaMQTTDelegate {
             
             let itemListService = ItemListService()
             guard let configuration = self.configuration else { return }
-            itemListService.addLocalConfiguration(configuration: configuration)
+//            itemListService.addLocalConfiguration(configuration: configuration)
             
             
             if let vc = storyboard?.instantiateViewController(withIdentifier :"SelectionViewController") as? SelectionViewController {
                 
-                vc.configuration = configuration
+//                vc.configuration = configuration
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             

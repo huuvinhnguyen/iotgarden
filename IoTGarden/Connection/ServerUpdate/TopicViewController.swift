@@ -7,18 +7,21 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import RxDataSources
 import ReSwift
 
 class TopicViewController: UIViewController, StoreSubscriber {
     
-    typealias StoreSubscriberStateType = TopicState
-
-    
     func newState(state: TopicState) {
-        
-        
+        topicRelay.accept(state.topicViewModel)
+        topicViewModel = state.topicViewModel
     }
+    
+    var identifier: String?
+    
+    private var topicRelay = PublishRelay<TopicViewModel?>()
+    private var topicViewModel: TopicViewModel?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -27,16 +30,22 @@ class TopicViewController: UIViewController, StoreSubscriber {
         
         return RxTableViewSectionedReloadDataSource<ServerSection>(configureCell: { [weak self] dataSource, tableView, indexPath, viewModel in
             
+            guard let self = self else { return UITableViewCell() }
+
             switch dataSource[indexPath] {
                 
             case .topicItem(let viewModel):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.topicCell, for: indexPath) else { return UITableViewCell() }
-                //            cell.viewModel = viewModel
+                
+                cell.viewModel = viewModel
+                cell.nameTextField.rx.text.subscribe(onNext:{ text in
+                    self.topicViewModel?.name = text ?? ""
+                }).disposed(by: self.disposeBag)
+                
                 cell.didTapSelectAction = {
                     let viewController = R.storyboard.selection.selectionViewController()!
-                    guard let weakSelf = self else { return }
-                    weakSelf.modalPresentationStyle = .currentContext
-                    weakSelf.present(viewController, animated: true, completion: nil)
+                    self.modalPresentationStyle = .currentContext
+                    self.present(viewController, animated: true, completion: nil)
                     
                 }
                 
@@ -51,9 +60,15 @@ class TopicViewController: UIViewController, StoreSubscriber {
             case .topicSaveItem(let viewModel):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.topicSaveCell, for: indexPath) else { return UITableViewCell() }
                 cell.didTapSaveAction = {
-                    guard let weakSelf = self else { return }
-                    weakSelf.navigationController?.popViewController(animated: true)
-                    appStore.dispatch(TopicState.Action.addTopic())
+                    
+                    self.navigationController?.popViewController(animated: true)
+                    
+                    if let id = self.identifier {
+                        appStore.dispatch(TopicState.Action.updateTopic(topicViewModel: self.topicViewModel))
+                    } else {
+                        self.topicViewModel?.id = UUID().uuidString
+                        appStore.dispatch(TopicState.Action.addTopic(viewModel: self.topicViewModel))
+                    }
                 }
                 return cell
                 
@@ -72,6 +87,8 @@ class TopicViewController: UIViewController, StoreSubscriber {
         super.viewDidLoad()
         prepairNibs()
         loadData()
+        appStore.subscribe(self) { $0.select { $0.topicState }.skipRepeats() }
+        appStore.dispatch(TopicState.Action.loadTopic(id: identifier ?? ""))
     }
     
     private func prepairNibs() {
@@ -85,18 +102,15 @@ class TopicViewController: UIViewController, StoreSubscriber {
     
     private func loadData() {
         
-        let sections: [ServerSection] = [
-
+        topicRelay.map { [
             ServerSection(title: "", items: [
-                .topicItem(viewModel: TopicViewModel()),
+                .topicItem(viewModel: TopicCell.ViewModel(name: $0?.name , topic: $0?.topic, type: $0?.type)),
                 .topicSwitchItem(viewModel: TopicSwitchViewModel()),
                 .topicQosItem(viewModel: TopicQosViewModel()),
                 .topicSaveItem(viewModel: TopicSaveViewModel())
-
+                
                 ])
-        ]
-        
-        Observable.just(sections)
+            ]}
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         

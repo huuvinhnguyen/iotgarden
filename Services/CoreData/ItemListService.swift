@@ -75,15 +75,20 @@ struct ItemListService {
         }
     }
     
-    func getSensor(uuid: String) -> Topic? {
+    func loadTopic(uuid: String, finished: (Topic?) -> ()) {
         let sensors = SensorsDataInteractor()
-        return sensors.getItem(uuid: uuid)
+        sensors.getItem(uuid: uuid) { topic in
+            finished(topic)
+        }
     }
     
-    func updateSensor(sensor: Topic) {
+    func updateTopic(topic: Topic) {
         
         let sensors = SensorsDataInteractor()
-        sensors.update(item: sensor)
+        
+        sensors.update(item: topic) { id in
+            
+        }
     }
     
     
@@ -94,16 +99,50 @@ struct ItemListService {
             
         }
     }
+}
+
+extension ItemListService {
     
-    func addLocalConfiguration(configuration: Configuration) {
+    struct Configuration {
         
-        let configurations = ConfigurationsDataInteractor()
-        configurations.add(item: configuration) { _ in}
+        var uuid: String = ""
+        var name: String = ""
+        var server: String = ""
+        var username: String = ""
+        var password: String = ""
+        var port: String = ""
     }
     
-    func loadLocalConfiguration(uuid: String) -> Configuration? {
+    func addConfiguration(configuration: Configuration, finished: (_ id: String)->()) {
         
-        let configurations = ConfigurationsDataInteractor()
-        return configurations.getItem(uuid: uuid)
+        let interactor = ConfigurationsDataInteractor()
+        interactor.add(item: configuration) { _ in
+            finished(configuration.uuid)
+        }
     }
+    
+    func loadLocalConfiguration(uuid: String, finished: (_ configuration: Configuration?)->()) {
+        
+        let interactor = ConfigurationsDataInteractor()
+        interactor.getItem(uuid: uuid) { configuration in
+            finished(configuration)
+            
+        }
+    }
+    
+    func loadConfigures(finished: (_ items: [Configuration])->()) {
+        let interactor = ConfigurationsDataInteractor()
+        interactor.getItems { items in
+            finished(items)
+        }
+    }
+    
+    func deleteConfigure(id: String, finished: (_ id: String)->()) {
+        let interactor = ConfigurationsDataInteractor()
+        interactor.delete(id: id) { id in
+            finished(id)
+        }
+
+    }
+
 }

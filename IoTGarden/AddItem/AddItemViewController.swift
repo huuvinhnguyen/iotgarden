@@ -20,7 +20,7 @@ class AddItemViewController:  UIViewController {
     
     @IBOutlet weak var connectButton: UIButton?
     
-    fileprivate var configuration: Configuration?
+    fileprivate var configuration: ItemListService.Configuration?
     
     @IBAction func connectButtonTapped(sender: UIButton) {
         
@@ -36,7 +36,7 @@ class AddItemViewController:  UIViewController {
 //                    let password = "jtWqc7RiUsz-"
 //                    let port = "14985"
         
-        configuration = Configuration(uuid: uuid, server: server, username: username, password: password, port: port)
+        configuration = ItemListService.Configuration(uuid: uuid, name: "", server: server, username: username, password: password, port: port)
         
         guard let configuration = configuration else { return }
         guard let portInt = UInt16(configuration.port) else { return }
@@ -72,12 +72,12 @@ extension AddItemViewController: CocoaMQTTDelegate {
             
             let itemListService = ItemListService()
             guard let configuration = self.configuration else { return }
-            itemListService.addLocalConfiguration(configuration: configuration)
+//            itemListService.addLocalConfiguration(configuration: configuration)
             
             
             if let vc = storyboard?.instantiateViewController(withIdentifier :"SelectionViewController") as? SelectionViewController {
                 
-                vc.configuration = configuration
+//                vc.configuration = configuration
                 self.navigationController?.pushViewController(vc, animated: true)
             }
 

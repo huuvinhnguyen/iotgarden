@@ -113,6 +113,11 @@
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="otB-3t-LYb" secondAttribute="bottom" constant="10" id="Ptd-hN-s5H"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="nameTextField" destination="hbN-LL-QTJ" id="8BK-VN-BPk"/>
+                <outlet property="topicTextField" destination="XXg-kP-zgr" id="l8e-S8-68U"/>
+                <outlet property="typeTextField" destination="5fB-1S-ms3" id="4Zh-gV-O7v"/>
+            </connections>
             <point key="canvasLocation" x="512.79999999999995" y="526.23688155922048"/>
         </tableViewCell>
     </objects>

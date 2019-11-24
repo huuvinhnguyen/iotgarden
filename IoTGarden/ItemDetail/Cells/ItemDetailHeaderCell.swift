@@ -37,7 +37,7 @@ enum ItemDetailSectionModel {
 enum ItemDetailSectionItem {
     
     case headerItem(viewModel: ItemDetailHeaderViewModel)
-    case topicItem(viewModel: TopicViewModel)
+    case topicItem(viewModel: TopicViewModel?)
     case footerItem(viewModel: ItemDetailFooterViewModel)
 }
 

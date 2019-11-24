@@ -79,6 +79,9 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.2470588235" green="0.44705882349999998" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="nameLabel" destination="loV-lX-2ie" id="7Xu-tT-Ri6"/>
+            </connections>
             <point key="canvasLocation" x="149.59999999999999" y="80.50974512743629"/>
         </tableViewCell>
     </objects>

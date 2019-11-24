@@ -14,7 +14,7 @@ class ItemDetailTopicViewController:  UIViewController {
     @IBOutlet weak var topicTextField: UITextField?
     
     var mqtt: CocoaMQTT?
-    var configuration: Configuration?
+    var connection: ConnectionViewModel?
     var kind: String?
     
     @IBAction func saveButtonTapped(sender: UIButton) {

@@ -16,18 +16,24 @@ class ItemTopicServerCell: UITableViewCell {
     @IBOutlet weak var portLabel: UILabel!
     @IBOutlet weak var sslPortLabel: UILabel!
     
-    var viewModel: ConnectionViewModel? {
+    var viewModel: ServerViewModel? {
         didSet {
             nameLabel.text = viewModel?.name ?? ""
-            serverLabel.text = viewModel?.server ?? ""
+            serverLabel.text = viewModel?.url ?? ""
         }
     }
     
     var didTapEditAction: (() -> Void)?
-    
+    var didTapTrashAction: (() -> Void)?
+
     @IBAction private func editButtonTapped(_ sender: UIButton) {
         didTapEditAction?()
     }
+    
+    @IBAction func didTapTrashAction(_ sender: Any) {
+        didTapTrashAction?()
+    }
+    
     
     
 }
