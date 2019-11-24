@@ -53,7 +53,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                 
             case .topicItem(let viewModel):
                 
-                if viewModel.type == "Switch" {
+                if viewModel?.type == "Switch" {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailSwitchCell, for: indexPath) else { return UITableViewCell() }
                     
                     cell.didTapInfoAction = {
@@ -61,10 +61,10 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                         guard let weakSelf = self else { return }
                         let viewController = R.storyboard.itemTopic.itemTopic()!
                         weakSelf.navigationController?.pushViewController(viewController, animated: true)
-                        viewController.identifier = viewModel.id
+                        viewController.identifier = viewModel?.id
                     }
                     
-//                    cell.viewModel = viewModel
+                    cell.viewModel = viewModel
                     return cell
                     
                 } else {

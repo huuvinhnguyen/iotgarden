@@ -49,13 +49,7 @@ extension TopicState {
             }
             state.identifiableComponent.update()
             
-        case .loadTopic(let id):
-            let service = ItemListService()
-            service.loadTopic(uuid: id) { topic in
-                state.topicViewModel = TopicViewModel(id:topic?.uuid ?? "", name: topic?.name ?? "", topic: "switchab", value: "1", time: "22/12/2019", connectionId: topic?.serverUUID ?? "", type: "switch")
-                state.identifiableComponent.update()
-            }
-            
+        
         case .loadConnection(let id):
             let service = ItemListService()
             service.loadLocalConfiguration(uuid: id) { configuration in
@@ -106,7 +100,7 @@ extension TopicState {
                     service.loadTopic(uuid: id) { topic in
                         service.loadLocalConfiguration(uuid: topic?.serverUUID ?? "", finished: { configuration in
                             let topicViewModel = topic.map { _ in
-                                TopicViewModel(id: topic?.uuid ?? "", name: topic?.name ?? "", topic: "", value: topic?.value ?? "", time: "", connectionId: "", type: "" )}
+                                TopicViewModel(id: topic?.uuid ?? "", name: topic?.name ?? "", topic: "", value: topic?.value ?? "", time: "", connectionId: topic?.serverUUID ?? "", type: "switch" )}
                             let serverViewModel = configuration.map { ServerViewModel(id: $0.uuid, name: $0.name, url: $0.server) }
                             dispatch(TopicState.Action.fetchTopic(topicViewModel: topicViewModel, serverViewModel: serverViewModel))
                         })
@@ -117,7 +111,7 @@ extension TopicState {
                 if case TopicState.Action.updateTopic(let item) = action {
                     guard let item = item else { return }
                     let service = ItemListService()
-                    service.updateTopic(topic: Topic(uuid: item.id , name: item.name, value: "1", serverUUID: "", kind: "", topic: "", time: ""))
+                    service.updateTopic(topic: Topic(uuid: item.id , name: item.name, value: "1", serverUUID: item.connectionId, kind: "", topic: "", time: ""))
                     dispatch(TopicState.Action.loadTopic(id: item.id))
                 }
 

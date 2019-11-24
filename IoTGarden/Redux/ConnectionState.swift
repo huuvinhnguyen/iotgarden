@@ -55,8 +55,6 @@ extension ConnectionState {
                 state.identifiableComponent.update()
             }
             
-        
-            
         default: ()
         
         }
@@ -86,13 +84,6 @@ extension ConnectionState {
                         dispatch(ConnectionState.Action.loadConnections())
                     })
                 }
-                
-                if case TopicState.Action.removeTopic(let id) = action {
-                    let service = ItemListService()
-                    service.removeTopic(id: id)
-                    dispatch(TopicState.Action.loadTopics())
-                }
-                
                 next(action)
             }
         }
