@@ -138,7 +138,7 @@
 		18D7C6D9220EB81000FF8529 /* MotionDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7C6D8220EB81000FF8529 /* MotionDevice.swift */; };
 		18D9A05121C4109F008EFA72 /* ItemTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9A05021C4109F008EFA72 /* ItemTemp.swift */; };
 		18E7A71E218EE4E800F7E689 /* ReactiveReSwiftBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A71D218EE4E800F7E689 /* ReactiveReSwiftBridge.swift */; };
-		18E7A724218EFDF600F7E689 /* ItemListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A723218EFDF600F7E689 /* ItemListState.swift */; };
+		18E7A724218EFDF600F7E689 /* ItemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A723218EFDF600F7E689 /* ItemState.swift */; };
 		18E7A726218EFE5200F7E689 /* ItemListReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A725218EFE5200F7E689 /* ItemListReducer.swift */; };
 		18E7A728218EFEDD00F7E689 /* ItemListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A727218EFEDD00F7E689 /* ItemListAction.swift */; };
 		18E7A72A218EFF9900F7E689 /* ItemListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A729218EFF9900F7E689 /* ItemListStore.swift */; };
@@ -317,7 +317,7 @@
 		18D7C6D8220EB81000FF8529 /* MotionDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionDevice.swift; sourceTree = "<group>"; };
 		18D9A05021C4109F008EFA72 /* ItemTemp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTemp.swift; sourceTree = "<group>"; };
 		18E7A71D218EE4E800F7E689 /* ReactiveReSwiftBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveReSwiftBridge.swift; sourceTree = "<group>"; };
-		18E7A723218EFDF600F7E689 /* ItemListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListState.swift; sourceTree = "<group>"; };
+		18E7A723218EFDF600F7E689 /* ItemState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemState.swift; sourceTree = "<group>"; };
 		18E7A725218EFE5200F7E689 /* ItemListReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListReducer.swift; sourceTree = "<group>"; };
 		18E7A727218EFEDD00F7E689 /* ItemListAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListAction.swift; sourceTree = "<group>"; };
 		18E7A729218EFF9900F7E689 /* ItemListStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListStore.swift; sourceTree = "<group>"; };
@@ -707,7 +707,7 @@
 				1864B73422B7F14700B9DCE7 /* Actions */,
 				1864B73E22BE387B00B9DCE7 /* Stores */,
 				18E7A71D218EE4E800F7E689 /* ReactiveReSwiftBridge.swift */,
-				18E7A723218EFDF600F7E689 /* ItemListState.swift */,
+				18E7A723218EFDF600F7E689 /* ItemState.swift */,
 				047CCB982365FD920044B9F2 /* Middleware.swift */,
 				04F315022376C6D700184507 /* TopicState.swift */,
 				043009E3237DB682004FA341 /* ConnectionState.swift */,
@@ -1051,7 +1051,7 @@
 				1864B74122C7D1FD00B9DCE7 /* MQTTService.swift in Sources */,
 				18EDCF5C2189A46500B233B9 /* ItemListViewController.swift in Sources */,
 				1803376321CB954D0098F944 /* ConfigurationsDataInteractor.swift in Sources */,
-				18E7A724218EFDF600F7E689 /* ItemListState.swift in Sources */,
+				18E7A724218EFDF600F7E689 /* ItemState.swift in Sources */,
 				1803375D21CB3C350098F944 /* TemperatureDevice.swift in Sources */,
 				18CCFFFF21E84A0B0075BA6B /* Date+Extension.swift in Sources */,
 				18E7A72A218EFF9900F7E689 /* ItemListStore.swift in Sources */,

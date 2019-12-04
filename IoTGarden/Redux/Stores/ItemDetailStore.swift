@@ -5,9 +5,9 @@
 //  Created by Apple on 6/22/19.
 //
 
-import ReSwift
+//import ReSwift
 
-let itemDetailStore = Store<ItemDetailState>(
-    reducer: itemDetailReducer,
-    state: nil
-)
+//let itemDetailStore = Store<ItemDetailState>(
+//    reducer: itemDetailReducer,
+//    state: nil
+//)

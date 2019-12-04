@@ -34,7 +34,7 @@ class ItemInputValueCell: UICollectionViewCell {
         stateLabel?.text = "Requesting"
         let message =  inputTextField?.text ?? ""
 
-        let action = ListState.Action.inputItem(cellUI: cellUI, message: message)
+        let action = ItemState.Action.inputItem(cellUI: cellUI, message: message)
         appStore.dispatch(action)
     }
     

@@ -60,7 +60,6 @@ extension TopicState {
                 state.identifiableComponent.update()
 
             }
-//                ConnectionViewModel(id: "", name: "icloud server", server: "https://coulds.com", title: "tr", isSelected: true)
             
         case .fetchTopic(let topicViewModel, let serverViewMode):
             state.topicViewModel = topicViewModel

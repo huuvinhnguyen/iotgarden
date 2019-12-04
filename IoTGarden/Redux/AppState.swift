@@ -8,8 +8,7 @@
 import ReSwift
 
 struct AppState: ReSwift.StateType {
-    var listState = ListState()
+    var listState = ItemState()
     var topicState = TopicState()
-    var detailState = ItemDetailState()
     var connectionState = ConnectionState()
 }

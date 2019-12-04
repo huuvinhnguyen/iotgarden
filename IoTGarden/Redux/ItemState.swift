@@ -10,7 +10,7 @@ import CocoaMQTT
 
 
 import ReSwift
-struct ListState: ReSwift.StateType, Identifiable {
+struct ItemState: ReSwift.StateType, Identifiable {
     
     var identifiableComponent = IdentifiableComponent()
     
@@ -26,7 +26,7 @@ struct ListState: ReSwift.StateType, Identifiable {
     
 }
 
-extension ListState {
+extension ItemState {
     enum Action: ReSwift.Action {
         case switchItem(cellUI: SwitchCellUI, message: String)
         case inputItem(cellUI: InputCellUI, message: String)

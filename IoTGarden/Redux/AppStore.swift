@@ -15,8 +15,8 @@ var appStore = ReSwift.Store<AppState>(
 func appReduce(action: ReSwift.Action, state: AppState?) -> AppState {
     var state = state ?? AppState()
     state.topicState = TopicState.reducer(action: action, state: state.topicState)
-    state.listState = ListState.reducer(action: action,state: state.listState)
-    state.detailState = ItemDetailState.reducer(action: action, state: state.detailState)
+    state.listState = ItemState.reducer(action: action,state: state.listState)
+//    state.detailState = ItemDetailState.reducer(action: action, state: state.detailState)
     state.connectionState = ConnectionState.reducer(action: action, state: state.connectionState)
     
     return state
