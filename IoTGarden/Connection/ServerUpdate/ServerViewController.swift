@@ -28,6 +28,9 @@ class ServerViewController: UIViewController, StoreSubscriber {
         
         return RxTableViewSectionedReloadDataSource<ServerSection>(configureCell: { [weak self] dataSource, tableView, indexPath, viewModel in
             
+            guard let self = self else { return UITableViewCell() }
+
+            
             switch dataSource[indexPath] {
                 
             case .topicItem(let viewModel):
@@ -39,24 +42,29 @@ class ServerViewController: UIViewController, StoreSubscriber {
             case .serverItem(let viewModel):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.serverCell, for: indexPath) else { return UITableViewCell() }
                 cell.viewModel = viewModel
+                
+                cell.nameTextField.rx.text.subscribe(onNext:{ text in
+//                    var topicViewModel = appStore.state.topicState.topicViewModel
+//                    topicViewModel?.name = text ?? ""
+                }).disposed(by: self.disposeBag)
+                
                 cell.didTapSelectAction = {
 
                     let viewController = R.storyboard.selection.selectionViewController()!
-                    guard let weakSelf = self else { return }
-                    weakSelf.modalPresentationStyle = .currentContext
-                    weakSelf.present(viewController, animated: true, completion: nil)
+                    self.modalPresentationStyle = .currentContext
+                    self.present(viewController, animated: true, completion: nil)
                     
                 }
                 
                 cell.didTapSaveAction = {
-                    guard let self = self else { return }
+                    
                     var topicViewModel = appStore.state.topicState.topicViewModel
                     if let id = topicViewModel?.connectionId, id != "" {
                         
                         topicViewModel?.connectionId = viewModel?.id ?? ""
                     } else {
                         
-                        let connectionViewModel = ConnectionViewModel(id: UUID().uuidString, name: cell.nameTextField.text ?? "", server: cell.serverTextField.text ?? "", title: "", isSelected: true)
+                        let connectionViewModel = ConnectionViewModel(id: UUID().uuidString, name: cell.nameTextField.text ?? "", server: cell.serverTextField.text ?? "", title: "")
                         let action = ConnectionState.Action.addConnection(viewModel: connectionViewModel)
                         topicViewModel?.connectionId = connectionViewModel.id
                         appStore.dispatch(action)
@@ -68,8 +76,7 @@ class ServerViewController: UIViewController, StoreSubscriber {
                 }
                 
                 cell.didTapTrashAction = {
-                    guard let weakSelf = self else { return }
-                    weakSelf.navigationController?.popViewController(animated: true)
+                    self.navigationController?.popViewController(animated: true)
                     appStore.dispatch(ConnectionState.Action.removeConnection(id: viewModel?.id ?? ""))
 
                 }

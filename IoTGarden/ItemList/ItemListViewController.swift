@@ -21,13 +21,13 @@ private struct ItemDef {
 
 class ItemListViewController: UIViewController, StoreSubscriber {
     
-    func newState(state: ListState) {
+    func newState(state: ItemState) {
         sectionItems.accept(state.sectionItems)
     }
 
     var sectionItems = PublishRelay<[SectionItem]>()
 
-    typealias StoreSubscriberStateType = ListState
+    typealias StoreSubscriberStateType = ItemState
     
     @IBOutlet weak var itemListCollectionView: UICollectionView!
     private let itemListService = ItemListService()
@@ -47,7 +47,7 @@ class ItemListViewController: UIViewController, StoreSubscriber {
         super.viewDidLoad()
         prepareNibs()
 
-        let action = ListState.Action.loadItems()
+        let action = ItemState.Action.loadItems()
         appStore.dispatch(action)
     
         sectionItems.asObservable()
@@ -113,7 +113,7 @@ class ItemListViewController: UIViewController, StoreSubscriber {
     
     private func configureRefreshControl() {
         
-        let action = ListState.Action.loadItems()
+        let action = ItemState.Action.loadItems()
         appStore.dispatch(action)
     }
     

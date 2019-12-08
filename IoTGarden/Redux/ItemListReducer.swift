@@ -7,13 +7,13 @@
 
 import ReSwift
 
-extension ListState {
+extension ItemState {
     
-    public static func reducer(action: ReSwift.Action, state: ListState?) -> ListState {
+    public static func reducer(action: ReSwift.Action, state: ItemState?) -> ItemState {
         
-        var state = state ?? ListState()
+        var state = state ?? ItemState()
         
-        guard let action = action as? ListState.Action else { return state }
+        guard let action = action as? ItemState.Action else { return state }
         switch action {
             
         case .updateSwitchItem(let switchCellUI):

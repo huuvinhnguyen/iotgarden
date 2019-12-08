@@ -85,7 +85,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                     cell.didTapTrashAction = {
                         guard let weakSelf = self else { return }
 
-                        let action = ListState.Action.removeItem(id: weakSelf.identifier)
+                        let action = ItemState.Action.removeItem(id: weakSelf.identifier)
                         appStore.dispatch(action)
                         weakSelf.navigationController?.popViewController(animated: true)
                         
@@ -190,7 +190,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         
         let itemListService = ItemListService()
         itemListService.removeTopic(id: sensor?.uuid ?? "")
-        let action = ListState.Action.loadItems()
+        let action = ItemState.Action.loadItems()
         appStore.dispatch(action)
         navigationController?.popViewController(animated: true)
     }

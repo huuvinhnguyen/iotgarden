@@ -12,14 +12,14 @@ import ReSwift
 
 class ItemImageViewController: UIViewController,  StoreSubscriber {
     
-    func newState(state: ListState) {
+    func newState(state: ItemState) {
         imagesRelay.accept(state.itemImageViewModels)
     }
     
     @IBAction func didSaveButtonTapped(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
         let viewModel = appStore.state.listState.itemImageViewModel
-        appStore.dispatch(ListState.Action.loadImage(viewModel: viewModel))
+        appStore.dispatch(ItemState.Action.loadImage(viewModel: viewModel))
         
     }
     private let disposeBag = DisposeBag()
@@ -54,13 +54,13 @@ class ItemImageViewController: UIViewController,  StoreSubscriber {
             .disposed(by: disposeBag)
         
         
-        let action = ListState.Action.fetchImages()
+        let action = ItemState.Action.fetchImages()
         appStore.dispatch(action)
 
         
         collectionView.rx.modelSelected(SectionItem.self).subscribe(onNext: { sectionItem in
             if case  SectionItem.imageSectionItem(let viewModel) = sectionItem {
-                appStore.dispatch(ListState.Action.selectImage(id: viewModel.id))
+                appStore.dispatch(ItemState.Action.selectImage(id: viewModel.id))
             }
             
         }).disposed(by: disposeBag)

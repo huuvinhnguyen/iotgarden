@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemTopicSignInCell" rowHeight="117" id="Lkw-FW-3fZ" customClass="ItemTopicSignInCell" customModule="IoTGarden" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="117"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lkw-FW-3fZ" id="Taz-V0-uIg">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="116.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLM-5c-j9u">
+                        <rect key="frame" x="179" y="29" width="55" height="45"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="Ako-Qt-2Iv"/>
+                            <constraint firstAttribute="width" secondItem="CLM-5c-j9u" secondAttribute="height" multiplier="22:18" id="ffZ-tJ-Qv5"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="icon_sign_in"/>
+                        <connections>
+                            <action selector="signInButtonTapped:" destination="Lkw-FW-3fZ" eventType="touchUpInside" id="JgH-Q7-cZ8"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="CLM-5c-j9u" firstAttribute="top" secondItem="Taz-V0-uIg" secondAttribute="top" constant="29" id="8Wp-ca-kdS"/>
+                    <constraint firstItem="CLM-5c-j9u" firstAttribute="leading" secondItem="Taz-V0-uIg" secondAttribute="leading" constant="179" id="GFi-XT-Mf3"/>
+                    <constraint firstAttribute="bottom" secondItem="CLM-5c-j9u" secondAttribute="bottom" constant="42.5" id="TH5-VC-ZA4"/>
+                    <constraint firstAttribute="trailing" secondItem="CLM-5c-j9u" secondAttribute="trailing" constant="141" id="nR4-b9-d5p"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.2486996055" green="0.44706130030000002" blue="0.58785885569999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <point key="canvasLocation" x="-135.19999999999999" y="49.925037481259373"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_sign_in" width="22" height="18"/>
+    </resources>
+</document>

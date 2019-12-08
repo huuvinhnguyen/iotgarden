@@ -30,7 +30,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 30 images.
+  /// This `R.image` struct is generated, and contains static references to 31 images.
   struct image {
     /// Image `add_button`.
     static let add_button = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_button")
@@ -84,6 +84,8 @@ struct R: Rswift.Validatable {
     static let icon_qrcode = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_qrcode")
     /// Image `icon_save`.
     static let icon_save = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_save")
+    /// Image `icon_sign_in`.
+    static let icon_sign_in = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_sign_in")
     /// Image `icon_square_o`.
     static let icon_square_o = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_square_o")
     /// Image `icon_temp`.
@@ -228,6 +230,11 @@ struct R: Rswift.Validatable {
       return UIKit.UIImage(resource: R.image.icon_save, compatibleWith: traitCollection)
     }
     
+    /// `UIImage(named: "icon_sign_in", bundle: ..., traitCollection: ...)`
+    static func icon_sign_in(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_sign_in, compatibleWith: traitCollection)
+    }
+    
     /// `UIImage(named: "icon_square_o", bundle: ..., traitCollection: ...)`
     static func icon_square_o(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_square_o, compatibleWith: traitCollection)
@@ -254,8 +261,6 @@ struct R: Rswift.Validatable {
     static let barChartViewController = _R.nib._BarChartViewController()
     /// Nib `CandleStickChartViewController`.
     static let candleStickChartViewController = _R.nib._CandleStickChartViewController()
-    /// Nib `ConnectionCell`.
-    static let connectionCell = _R.nib._ConnectionCell()
     /// Nib `HumidityCell`.
     static let humidityCell = _R.nib._HumidityCell()
     /// Nib `ItemDetailFooterCell`.
@@ -282,6 +287,8 @@ struct R: Rswift.Validatable {
     static let itemTopicCell = _R.nib._ItemTopicCell()
     /// Nib `ItemTopicServerCell`.
     static let itemTopicServerCell = _R.nib._ItemTopicServerCell()
+    /// Nib `ItemTopicSignInCell`.
+    static let itemTopicSignInCell = _R.nib._ItemTopicSignInCell()
     /// Nib `LineChart3ViewController`.
     static let lineChart3ViewController = _R.nib._LineChart3ViewController()
     /// Nib `MotionCell`.
@@ -323,12 +330,6 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.candleStickChartViewController) instead")
     static func candleStickChartViewController(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.candleStickChartViewController)
-    }
-    
-    /// `UINib(name: "ConnectionCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.connectionCell) instead")
-    static func connectionCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.connectionCell)
     }
     
     /// `UINib(name: "HumidityCell", in: bundle)`
@@ -407,6 +408,12 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.itemTopicServerCell) instead")
     static func itemTopicServerCell(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.itemTopicServerCell)
+    }
+    
+    /// `UINib(name: "ItemTopicSignInCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.itemTopicSignInCell) instead")
+    static func itemTopicSignInCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.itemTopicSignInCell)
     }
     
     /// `UINib(name: "LineChart3ViewController", in: bundle)`
@@ -493,10 +500,6 @@ struct R: Rswift.Validatable {
       return R.nib.candleStickChartViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
     
-    static func connectionCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ConnectionCell? {
-      return R.nib.connectionCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ConnectionCell
-    }
-    
     static func humidityCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> HumidityCell? {
       return R.nib.humidityCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? HumidityCell
     }
@@ -547,6 +550,10 @@ struct R: Rswift.Validatable {
     
     static func itemTopicServerCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemTopicServerCell? {
       return R.nib.itemTopicServerCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemTopicServerCell
+    }
+    
+    static func itemTopicSignInCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemTopicSignInCell? {
+      return R.nib.itemTopicSignInCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemTopicSignInCell
     }
     
     static func lineChart3ViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
@@ -604,8 +611,6 @@ struct R: Rswift.Validatable {
   struct reuseIdentifier {
     /// Reuse identifier `AddItemTopicCell`.
     static let addItemTopicCell: Rswift.ReuseIdentifier<AddItemTopicCell> = Rswift.ReuseIdentifier(identifier: "AddItemTopicCell")
-    /// Reuse identifier `ConnectionCell`.
-    static let connectionCell: Rswift.ReuseIdentifier<ConnectionCell> = Rswift.ReuseIdentifier(identifier: "ConnectionCell")
     /// Reuse identifier `HumidityCell`.
     static let humidityCell: Rswift.ReuseIdentifier<HumidityCell> = Rswift.ReuseIdentifier(identifier: "HumidityCell")
     /// Reuse identifier `ItemDetailFooterCell`.
@@ -630,6 +635,8 @@ struct R: Rswift.Validatable {
     static let itemTopicCell: Rswift.ReuseIdentifier<ItemTopicCell> = Rswift.ReuseIdentifier(identifier: "ItemTopicCell")
     /// Reuse identifier `ItemTopicServerCell`.
     static let itemTopicServerCell: Rswift.ReuseIdentifier<ItemTopicServerCell> = Rswift.ReuseIdentifier(identifier: "ItemTopicServerCell")
+    /// Reuse identifier `ItemTopicSignInCell`.
+    static let itemTopicSignInCell: Rswift.ReuseIdentifier<ItemTopicSignInCell> = Rswift.ReuseIdentifier(identifier: "ItemTopicSignInCell")
     /// Reuse identifier `MotionCell`.
     static let motionCell: Rswift.ReuseIdentifier<MotionCell> = Rswift.ReuseIdentifier(identifier: "MotionCell")
     /// Reuse identifier `SelectionCell`.
@@ -763,6 +770,7 @@ struct _R: Rswift.Validatable {
       try _ItemListPlusCell.validate()
       try _ItemTopicCell.validate()
       try _ItemTopicServerCell.validate()
+      try _ItemTopicSignInCell.validate()
       try _SelectionServerCell.validate()
       try _ServerCell.validate()
       try _TemperatureCell.validate()
@@ -802,20 +810,6 @@ struct _R: Rswift.Validatable {
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
-      }
-      
-      fileprivate init() {}
-    }
-    
-    struct _ConnectionCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
-      typealias ReusableType = ConnectionCell
-      
-      let bundle = R.hostingBundle
-      let identifier = "ConnectionCell"
-      let name = "ConnectionCell"
-      
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ConnectionCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ConnectionCell
       }
       
       fileprivate init() {}
@@ -1077,6 +1071,26 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "icon_eye", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_eye' is used in nib 'ItemTopicServerCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_link", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_link' is used in nib 'ItemTopicServerCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_trash", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_trash' is used in nib 'ItemTopicServerCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _ItemTopicSignInCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = ItemTopicSignInCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "ItemTopicSignInCell"
+      let name = "ItemTopicSignInCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemTopicSignInCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemTopicSignInCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_sign_in", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_sign_in' is used in nib 'ItemTopicSignInCell', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
       }
@@ -1347,15 +1361,10 @@ struct _R: Rswift.Validatable {
     
     struct connection: Rswift.StoryboardResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
-      let connectionsViewController = StoryboardViewControllerResource<ConnectionsViewController>(identifier: "ConnectionsViewController")
       let name = "Connection"
       let serverViewController = StoryboardViewControllerResource<ServerViewController>(identifier: "ServerViewController")
       let topicTypeViewController = StoryboardViewControllerResource<TopicTypeViewController>(identifier: "TopicTypeViewController")
       let topicViewController = StoryboardViewControllerResource<TopicViewController>(identifier: "TopicViewController")
-      
-      func connectionsViewController(_: Void = ()) -> ConnectionsViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: connectionsViewController)
-      }
       
       func serverViewController(_: Void = ()) -> ServerViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: serverViewController)
@@ -1372,7 +1381,6 @@ struct _R: Rswift.Validatable {
       static func validate() throws {
         if #available(iOS 11.0, *) {
         }
-        if _R.storyboard.connection().connectionsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'connectionsViewController' could not be loaded from storyboard 'Connection' as 'ConnectionsViewController'.") }
         if _R.storyboard.connection().serverViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'serverViewController' could not be loaded from storyboard 'Connection' as 'ServerViewController'.") }
         if _R.storyboard.connection().topicTypeViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'topicTypeViewController' could not be loaded from storyboard 'Connection' as 'TopicTypeViewController'.") }
         if _R.storyboard.connection().topicViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'topicViewController' could not be loaded from storyboard 'Connection' as 'TopicViewController'.") }

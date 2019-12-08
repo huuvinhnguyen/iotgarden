@@ -15,11 +15,13 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
     
     func newState(state: TopicState) {
         topicRelay.accept(state.topicViewModel)
-        connectionRelay.accept(state.serverViewModel)
+        connectionRelay.accept(state.connectionViewModel)
+
     }
     var identifier: String?
     var topicRelay = PublishRelay<TopicViewModel?>()
-    var connectionRelay = PublishRelay<ServerViewModel?>()
+    var connectionRelay = PublishRelay<ConnectionViewModel?>()
+
     
     @IBOutlet weak var tableView: UITableView!
     private let disposeBag = DisposeBag()
@@ -30,10 +32,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
         return RxTableViewSectionedReloadDataSource<ItemTopicSection>(configureCell: { [weak self] dataSource, tableView, indexPath, _ in
             guard let self = self else { return UITableViewCell() }
             switch dataSource[indexPath] {
-            case .headerItem(let viewModel):
-                
-                return UITableViewCell()
-
+            
             case .topicItem(let viewModel):
 
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemTopicCell, for: indexPath) else { return UITableViewCell() }
@@ -48,22 +47,6 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                 }
                 return cell
 
-            case .serverItem(let viewModel):
-                
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemTopicServerCell, for: indexPath) else { return UITableViewCell() }
-                
-                cell.viewModel = viewModel
-                cell.didTapEditAction = {
-                    let viewController = R.storyboard.connection.serverViewController()!
-                viewController.serverIdentifier = viewModel?.id
-                self.navigationController?.pushViewController(viewController, animated: true)
-                    
-                }
-                cell.didTapTrashAction = {
-
-
-                }
-                return cell
 
             case .footerItem(let viewModel):
                 
@@ -75,6 +58,32 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                     appStore.dispatch(action)
                 }
                 return cell
+            case .footerSignInItem():
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemTopicSignInCell, for: indexPath) else { return UITableViewCell() }
+                cell.didTapSignInAction = {
+                    let viewController = R.storyboard.connection.serverViewController()!
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                }
+                return cell
+            case .connectionItem(let viewModel):
+                
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemTopicServerCell, for: indexPath) else { return UITableViewCell() }
+                
+                cell.viewModel3 = viewModel
+                cell.didTapEditAction = {
+                    let viewController = R.storyboard.connection.serverViewController()!
+                    viewController.serverIdentifier = viewModel?.id
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                    
+                }
+                cell.didTapTrashAction = {
+                
+                    appStore.dispatch(TopicState.Action.removeConnection())
+                }
+                return cell
+                
+            default:
+                return UITableViewCell()
             }
         })
     }
@@ -90,18 +99,16 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
     
     private func loadData() {
         
-        let tableRelay = Observable.combineLatest( topicRelay, connectionRelay).map { topic, connection in
-            [
+        let tableRelay = Observable.combineLatest(topicRelay, connectionRelay).map { topic, connection -> [ItemTopicSection] in
+            let footerItems = connection == nil ? [ItemTopicSectionItem.footerSignInItem(), ItemTopicSectionItem.footerItem(viewModel: nil)] :  [ItemTopicSectionItem.footerItem(viewModel: nil)]
+            let serverItems = connection == nil ? [] : [ItemTopicSectionItem.connectionItem(viewModel: ItemTopicServerCell.ViewModel(id: connection?.id ?? "", name: connection?.name ?? "", server: "", title: ""))]
+            
+            return [
                 ItemTopicSection.topicSection(items: [
                 .topicItem(viewModel: topic)]),
-                .serverSection(items: [
-                    .serverItem(viewModel: connection)
-                    ]),
-                .footerSection(items: [
-                    .footerItem(viewModel: nil)
-                    ])
+                .serverSection(items: serverItems),
+                .footerSection(items: footerItems)
             ]
-            
         }
         
         tableRelay.asObservable()
@@ -115,6 +122,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
         tableView.register(R.nib.itemTopicCell)
         tableView.register(R.nib.itemTopicServerCell)
         tableView.register(R.nib.itemDetailTrashCell)
+        tableView.register(R.nib.itemTopicSignInCell)
     }
     
 }

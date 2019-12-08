@@ -10,7 +10,7 @@ import CocoaMQTT
 
 
 import ReSwift
-struct ListState: ReSwift.StateType, Identifiable {
+struct ItemState: ReSwift.StateType, Identifiable {
     
     var identifiableComponent = IdentifiableComponent()
     
@@ -18,7 +18,7 @@ struct ListState: ReSwift.StateType, Identifiable {
     var sectionItems: [SectionItem] = []
     var topicItems: [ItemDetailSectionModel] = []
     var topicViewModel = TopicViewModel()
-    var connectionViewModel = ConnectionViewModel(id:"", name: "hvm server", server: "https//icloud.com/", title: "", isSelected: true)
+    var connectionViewModel = ConnectionViewModel(id:"", name: "hvm server", server: "https//icloud.com/", title: "")
     var tasks: [String: SensorConnect2] = [:]
     var imageList: [ItemImageViewController.SectionModel] = []
     var itemImageViewModels: [ItemImageViewModel] = []
@@ -26,7 +26,7 @@ struct ListState: ReSwift.StateType, Identifiable {
     
 }
 
-extension ListState {
+extension ItemState {
     enum Action: ReSwift.Action {
         case switchItem(cellUI: SwitchCellUI, message: String)
         case inputItem(cellUI: InputCellUI, message: String)

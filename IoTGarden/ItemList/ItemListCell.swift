@@ -51,7 +51,7 @@ class ItemListCell: UICollectionViewCell {
         
         guard let cellUI = switchCellUI else { return }
         stateLabel?.text = "Requesting"
-        let action = ListState.Action.switchItem(cellUI: cellUI, message: sender.isOn ? "1" : "0")
+        let action = ItemState.Action.switchItem(cellUI: cellUI, message: sender.isOn ? "1" : "0")
         appStore.dispatch(action)
 
         

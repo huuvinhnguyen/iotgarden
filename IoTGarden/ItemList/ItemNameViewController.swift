@@ -16,7 +16,7 @@ class ItemNameViewController: UIViewController, StoreSubscriber {
     
     @IBOutlet weak var imageButton: UIButton!
     private let disposeBag = DisposeBag()
-    func newState(state: ListState) {
+    func newState(state: ItemState) {
         itemRelay.accept(state.itemImageViewModel)
     }
     
@@ -52,7 +52,7 @@ class ItemNameViewController: UIViewController, StoreSubscriber {
     @IBAction func saveButtonTapped(_ sender: Any) {
         
         self.dismiss(animated: true, completion: nil)
-        let action = ListState.Action.addItem(item: ItemListViewModel(uuid: UUID().uuidString, name: itemListViewModel.name, imageUrlString: itemListViewModel.imageUrlString))
+        let action = ItemState.Action.addItem(item: ItemListViewModel(uuid: UUID().uuidString, name: itemListViewModel.name, imageUrlString: itemListViewModel.imageUrlString))
         appStore.dispatch(action)
     }
     
