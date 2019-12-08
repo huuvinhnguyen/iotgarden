@@ -64,7 +64,7 @@ class ServerViewController: UIViewController, StoreSubscriber {
                         topicViewModel?.connectionId = viewModel?.id ?? ""
                     } else {
                         
-                        let connectionViewModel = ConnectionViewModel(id: UUID().uuidString, name: cell.nameTextField.text ?? "", server: cell.serverTextField.text ?? "", title: "", isSelected: true)
+                        let connectionViewModel = ConnectionViewModel(id: UUID().uuidString, name: cell.nameTextField.text ?? "", server: cell.serverTextField.text ?? "", title: "")
                         let action = ConnectionState.Action.addConnection(viewModel: connectionViewModel)
                         topicViewModel?.connectionId = connectionViewModel.id
                         appStore.dispatch(action)

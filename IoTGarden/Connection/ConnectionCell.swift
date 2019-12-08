@@ -7,16 +7,16 @@
 
 import UIKit
 
-class ConnectionCell: UITableViewCell {
-    
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var markImageView: UIImageView!
-    
-    var viewModel: ConnectionViewModel? {
-        didSet {
-            titleLabel.text = viewModel?.title
-            let isSelected = viewModel?.isSelected ?? false
-            markImageView.isHidden = !isSelected
-        }
-    }
-}
+//class ConnectionCell: UITableViewCell {
+//    
+//    @IBOutlet private weak var titleLabel: UILabel!
+//    @IBOutlet private weak var markImageView: UIImageView!
+//    
+//    var viewModel: ConnectionViewModel? {
+//        didSet {
+//            titleLabel.text = viewModel?.title
+//            let isSelected = viewModel?.isSelected ?? false
+//            markImageView.isHidden = !isSelected
+//        }
+//    }
+//}

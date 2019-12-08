@@ -14,6 +14,8 @@ struct TopicState: ReSwift.StateType, Identifiable {
     var topicViewModel: TopicViewModel?
 //    var serverViewModel = ServerViewModel(id:"", name: "hvm server", server: "https//icloud.com/", title: "", isSelected: true)
     var serverViewModel: ServerViewModel?
+    var connectionViewModel: ConnectionViewModel?
+
 }
 
 
@@ -23,10 +25,13 @@ extension TopicState {
         case loadConection()
         case addTopic(viewModel: TopicViewModel?)
         case removeTopic(id: String)
-        case loadTopic(id: String)
+        case loadTopic2(id: String)
         case loadConnection(id: String)
+        case removeConnection()
         case fetchTopic(topicViewModel: TopicViewModel?, serverViewModel: ServerViewModel?)
+        case fetchTopic2(topicViewModel: TopicViewModel?, connectionViewModel: ConnectionViewModel?)
         case updateTopic(topicViewModel: TopicViewModel?)
+        case getTopic(id: String)
     }
 }
 
@@ -61,10 +66,11 @@ extension TopicState {
 
             }
             
-        case .fetchTopic(let topicViewModel, let serverViewMode):
+        case .fetchTopic2(let topicViewModel, let connectionViewModel):
             state.topicViewModel = topicViewModel
-            state.serverViewModel = serverViewMode
+            state.connectionViewModel = connectionViewModel
             state.identifiableComponent.update()
+            
         default: ()
 
         }
@@ -94,14 +100,14 @@ extension TopicState {
                     dispatch(TopicState.Action.loadTopics())
                 }
                 
-                if case TopicState.Action.loadTopic(let id) = action {
+                if case TopicState.Action.loadTopic2(let id) = action {
                     let service = ItemListService()
                     service.loadTopic(uuid: id) { topic in
                         service.loadLocalConfiguration(uuid: topic?.serverUUID ?? "", finished: { configuration in
                             let topicViewModel = topic.map { _ in
                                 TopicViewModel(id: topic?.uuid ?? "", name: topic?.name ?? "", topic: "", value: topic?.value ?? "", time: "", connectionId: topic?.serverUUID ?? "", type: "switch" )}
-                            let serverViewModel = configuration.map { ServerViewModel(id: $0.uuid, name: $0.name, url: $0.server) }
-                            dispatch(TopicState.Action.fetchTopic(topicViewModel: topicViewModel, serverViewModel: serverViewModel))
+                            let connectionViewModel = configuration.map { ConnectionViewModel(id: $0.uuid, name: $0.name, server: $0.server, title: "") }
+                            dispatch(TopicState.Action.fetchTopic2(topicViewModel: topicViewModel, connectionViewModel: connectionViewModel))
                         })
                     }
                     dispatch(TopicState.Action.loadTopics())
@@ -111,7 +117,15 @@ extension TopicState {
                     guard let item = item else { return }
                     let service = ItemListService()
                     service.updateTopic(topic: Topic(uuid: item.id , name: item.name, value: "1", serverUUID: item.connectionId, kind: "", topic: "", time: ""))
-                    dispatch(TopicState.Action.loadTopic(id: item.id))
+                    dispatch(TopicState.Action.loadTopic2(id: item.id))
+                }
+                
+                if case TopicState.Action.removeConnection(let id) = action {
+                    
+                    let state = getState()?.topicState ?? TopicState()
+                    var topicViewModel = state.topicViewModel
+                    topicViewModel?.connectionId = ""
+                    dispatch(TopicState.Action.updateTopic(topicViewModel: topicViewModel))
                 }
 
                 next(action)

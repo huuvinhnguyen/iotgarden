@@ -21,8 +21,11 @@ enum ItemTopicSectionItem {
     
     case headerItem(viewModel: SectionItemViewModel?)
     case topicItem(viewModel: TopicViewModel?)
-    case serverItem(viewModel: ServerViewModel?)
+    case connectionItem(viewModel: ItemTopicServerCell.ViewModel?)
     case footerItem(viewModel: SectionItemViewModel?)
+    case footerSignInItem()
+
+
 }
 
 extension ItemTopicSection: SectionModelType {

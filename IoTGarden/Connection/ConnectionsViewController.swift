@@ -17,7 +17,7 @@ class ConnectionsViewController: UIViewController {
         return RxTableViewSectionedReloadDataSource<ConnectionSection>(configureCell: { _, tableView, indexPath, viewModel in
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.connectionCell, for: indexPath) else { return UITableViewCell() }
-            cell.viewModel = viewModel
+//            cell.viewModel = viewModel
             
             return cell
         }, titleForHeaderInSection: { dataSource, index in

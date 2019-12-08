@@ -27,6 +27,8 @@
 		049A85822365A1A30038D247 /* TopicListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A85812365A1A30038D247 /* TopicListService.swift */; };
 		049A85862365A4DC0038D247 /* TopicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A85852365A4DC0038D247 /* TopicData.swift */; };
 		049A85882365B3010038D247 /* ItemDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A85872365B3010038D247 /* ItemDataInteractor.swift */; };
+		04CD3798239963990020A8B5 /* ItemTopicSignInCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD3797239963990020A8B5 /* ItemTopicSignInCell.swift */; };
+		04CD379A239963B30020A8B5 /* ItemTopicSignInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CD3799239963B30020A8B5 /* ItemTopicSignInCell.xib */; };
 		04F247FC23378B80003239B6 /* ItemTopic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F247FB23378B80003239B6 /* ItemTopic.storyboard */; };
 		04F247FE23378B9B003239B6 /* ItemTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F247FD23378B9B003239B6 /* ItemTopicViewController.swift */; };
 		04F2480023378C53003239B6 /* ItemTopicSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F247FF23378C53003239B6 /* ItemTopicSection.swift */; };
@@ -200,6 +202,8 @@
 		049A85812365A1A30038D247 /* TopicListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicListService.swift; sourceTree = "<group>"; };
 		049A85852365A4DC0038D247 /* TopicData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicData.swift; sourceTree = "<group>"; };
 		049A85872365B3010038D247 /* ItemDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataInteractor.swift; sourceTree = "<group>"; };
+		04CD3797239963990020A8B5 /* ItemTopicSignInCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicSignInCell.swift; sourceTree = "<group>"; };
+		04CD3799239963B30020A8B5 /* ItemTopicSignInCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTopicSignInCell.xib; sourceTree = "<group>"; };
 		04F247FB23378B80003239B6 /* ItemTopic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemTopic.storyboard; sourceTree = "<group>"; };
 		04F247FD23378B9B003239B6 /* ItemTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicViewController.swift; sourceTree = "<group>"; };
 		04F247FF23378C53003239B6 /* ItemTopicSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicSection.swift; sourceTree = "<group>"; };
@@ -399,6 +403,8 @@
 				04F2480323378DF6003239B6 /* ItemTopicCell.xib */,
 				04F2480523378E04003239B6 /* ItemTopicServerCell.swift */,
 				04F2480723378E25003239B6 /* ItemTopicServerCell.xib */,
+				04CD3797239963990020A8B5 /* ItemTopicSignInCell.swift */,
+				04CD3799239963B30020A8B5 /* ItemTopicSignInCell.xib */,
 			);
 			path = ItemTopic;
 			sourceTree = "<group>";
@@ -880,6 +886,7 @@
 				186AB62323328FFF0017F935 /* AddItemTopicCell.xib in Resources */,
 				18A33DE22326AAE400DFDBB6 /* ItemListPlusCell.xib in Resources */,
 				18A0431221894CD4005E04D4 /* Assets.xcassets in Resources */,
+				04CD379A239963B30020A8B5 /* ItemTopicSignInCell.xib in Resources */,
 				189C812F231139C800E4BC95 /* ItemDetailHeaderCell.xib in Resources */,
 				186AB61D23328EE80017F935 /* AddItem.storyboard in Resources */,
 				189C813323113AA100E4BC95 /* ItemDetailTopicCell.xib in Resources */,
@@ -1103,6 +1110,7 @@
 				1803375921CB3BAE0098F944 /* Device.swift in Sources */,
 				1803376021CB41640098F944 /* SensorConnect.swift in Sources */,
 				18D9A05121C4109F008EFA72 /* ItemTemp.swift in Sources */,
+				04CD3798239963990020A8B5 /* ItemTopicSignInCell.swift in Sources */,
 				1864B73622B7F22100B9DCE7 /* ItemDetailState.swift in Sources */,
 				04F247FE23378B9B003239B6 /* ItemTopicViewController.swift in Sources */,
 				18B5506721C56104004EC438 /* ItemStore.swift in Sources */,

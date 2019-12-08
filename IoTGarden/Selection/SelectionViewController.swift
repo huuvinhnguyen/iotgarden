@@ -57,7 +57,6 @@ class SelectionViewController:  UIViewController, StoreSubscriber {
         
         super.viewDidLoad()
         prepareNibs()
-        
         loadData()
 
         
@@ -93,9 +92,9 @@ class SelectionViewController:  UIViewController, StoreSubscriber {
         tableView.rx.modelSelected(SelectionSectionItem.self).subscribe(onNext: { [weak self]  sectionItem in
             
             if case  SelectionSectionItem.serverItem(let viewModel) = sectionItem {
-                guard let weakSelf = self else { return }
-                weakSelf.selectedRelay.accept(viewModel.id)
-                weakSelf.selectedId = viewModel.id
+                guard let self = self else { return }
+                self.selectedRelay.accept(viewModel.id)
+                self.selectedId = viewModel.id
             }
         }).disposed(by: disposeBag)
         
