@@ -253,7 +253,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 30 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 29 nibs.
   struct nib {
     /// Nib `AddItemTopicCell`.
     static let addItemTopicCell = _R.nib._AddItemTopicCell()
@@ -261,8 +261,6 @@ struct R: Rswift.Validatable {
     static let barChartViewController = _R.nib._BarChartViewController()
     /// Nib `CandleStickChartViewController`.
     static let candleStickChartViewController = _R.nib._CandleStickChartViewController()
-    /// Nib `ConnectionCell`.
-    static let connectionCell = _R.nib._ConnectionCell()
     /// Nib `HumidityCell`.
     static let humidityCell = _R.nib._HumidityCell()
     /// Nib `ItemDetailFooterCell`.
@@ -332,12 +330,6 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.candleStickChartViewController) instead")
     static func candleStickChartViewController(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.candleStickChartViewController)
-    }
-    
-    /// `UINib(name: "ConnectionCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.connectionCell) instead")
-    static func connectionCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.connectionCell)
     }
     
     /// `UINib(name: "HumidityCell", in: bundle)`
@@ -508,10 +500,6 @@ struct R: Rswift.Validatable {
       return R.nib.candleStickChartViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
     
-    static func connectionCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UITableViewCell? {
-      return R.nib.connectionCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UITableViewCell
-    }
-    
     static func humidityCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> HumidityCell? {
       return R.nib.humidityCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? HumidityCell
     }
@@ -619,12 +607,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 25 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 24 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `AddItemTopicCell`.
     static let addItemTopicCell: Rswift.ReuseIdentifier<AddItemTopicCell> = Rswift.ReuseIdentifier(identifier: "AddItemTopicCell")
-    /// Reuse identifier `ConnectionCell`.
-    static let connectionCell: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "ConnectionCell")
     /// Reuse identifier `HumidityCell`.
     static let humidityCell: Rswift.ReuseIdentifier<HumidityCell> = Rswift.ReuseIdentifier(identifier: "HumidityCell")
     /// Reuse identifier `ItemDetailFooterCell`.
@@ -824,20 +810,6 @@ struct _R: Rswift.Validatable {
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
-      }
-      
-      fileprivate init() {}
-    }
-    
-    struct _ConnectionCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
-      typealias ReusableType = UIKit.UITableViewCell
-      
-      let bundle = R.hostingBundle
-      let identifier = "ConnectionCell"
-      let name = "ConnectionCell"
-      
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UITableViewCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UITableViewCell
       }
       
       fileprivate init() {}
@@ -1389,15 +1361,10 @@ struct _R: Rswift.Validatable {
     
     struct connection: Rswift.StoryboardResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
-      let connectionsViewController = StoryboardViewControllerResource<ConnectionsViewController>(identifier: "ConnectionsViewController")
       let name = "Connection"
       let serverViewController = StoryboardViewControllerResource<ServerViewController>(identifier: "ServerViewController")
       let topicTypeViewController = StoryboardViewControllerResource<TopicTypeViewController>(identifier: "TopicTypeViewController")
       let topicViewController = StoryboardViewControllerResource<TopicViewController>(identifier: "TopicViewController")
-      
-      func connectionsViewController(_: Void = ()) -> ConnectionsViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: connectionsViewController)
-      }
       
       func serverViewController(_: Void = ()) -> ServerViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: serverViewController)
@@ -1414,7 +1381,6 @@ struct _R: Rswift.Validatable {
       static func validate() throws {
         if #available(iOS 11.0, *) {
         }
-        if _R.storyboard.connection().connectionsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'connectionsViewController' could not be loaded from storyboard 'Connection' as 'ConnectionsViewController'.") }
         if _R.storyboard.connection().serverViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'serverViewController' could not be loaded from storyboard 'Connection' as 'ServerViewController'.") }
         if _R.storyboard.connection().topicTypeViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'topicTypeViewController' could not be loaded from storyboard 'Connection' as 'TopicTypeViewController'.") }
         if _R.storyboard.connection().topicViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'topicViewController' could not be loaded from storyboard 'Connection' as 'TopicViewController'.") }

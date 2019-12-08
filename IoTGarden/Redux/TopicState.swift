@@ -25,7 +25,7 @@ extension TopicState {
         case loadConection()
         case addTopic(viewModel: TopicViewModel?)
         case removeTopic(id: String)
-        case loadTopic2(id: String)
+        case loadTopic(id: String)
         case loadConnection(id: String)
         case removeConnection()
         case fetchTopic(topicViewModel: TopicViewModel?, serverViewModel: ServerViewModel?)
@@ -100,7 +100,7 @@ extension TopicState {
                     dispatch(TopicState.Action.loadTopics())
                 }
                 
-                if case TopicState.Action.loadTopic2(let id) = action {
+                if case TopicState.Action.loadTopic(let id) = action {
                     let service = ItemListService()
                     service.loadTopic(uuid: id) { topic in
                         service.loadLocalConfiguration(uuid: topic?.serverUUID ?? "", finished: { configuration in
@@ -117,7 +117,7 @@ extension TopicState {
                     guard let item = item else { return }
                     let service = ItemListService()
                     service.updateTopic(topic: Topic(uuid: item.id , name: item.name, value: "1", serverUUID: item.connectionId, kind: "", topic: "", time: ""))
-                    dispatch(TopicState.Action.loadTopic2(id: item.id))
+                    dispatch(TopicState.Action.loadTopic(id: item.id))
                 }
                 
                 if case TopicState.Action.removeConnection(let id) = action {

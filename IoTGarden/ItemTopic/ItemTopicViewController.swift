@@ -94,7 +94,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
         loadData()
         
         appStore.subscribe(self) { $0.select { $0.topicState }.skipRepeats() }
-        appStore.dispatch(TopicState.Action.loadTopic2(id: identifier ?? ""))
+        appStore.dispatch(TopicState.Action.loadTopic(id: identifier ?? ""))
     }
     
     private func loadData() {

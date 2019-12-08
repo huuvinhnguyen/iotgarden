@@ -81,16 +81,6 @@ let switchingMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
     }
 }
 
-//let detailMiddleware: ReSwift.Middleware<ItemDetailState> = {  dispatch, getState in
-//    
-//    return { next in
-//        print("enter detail middleware")
-//        return { action in
-//            next(action)
-//        }
-//    }
-//}
-
 let inputMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
     return { next in
         return { action in

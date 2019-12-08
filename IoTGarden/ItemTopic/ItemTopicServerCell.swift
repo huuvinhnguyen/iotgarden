@@ -16,20 +16,6 @@ class ItemTopicServerCell: UITableViewCell {
     @IBOutlet weak var portLabel: UILabel!
     @IBOutlet weak var sslPortLabel: UILabel!
     
-//    var viewModel: ServerViewModel? {
-//        didSet {
-//            nameLabel.text = viewModel?.name ?? ""
-//            serverLabel.text = viewModel?.url ?? ""
-//        }
-//    }
-//    
-//    var viewModel2: ConnectionViewModel? {
-//        didSet {
-//            nameLabel.text = viewModel2?.name ?? ""
-//            serverLabel.text = viewModel2?.server ?? ""
-//        }
-//    }
-    
     var viewModel3: ViewModel? {
         didSet {
             nameLabel.text = viewModel3?.name ?? ""
