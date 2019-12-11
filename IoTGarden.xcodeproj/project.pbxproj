@@ -133,7 +133,6 @@
 		18D9A05121C4109F008EFA72 /* ItemTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9A05021C4109F008EFA72 /* ItemTemp.swift */; };
 		18E7A71E218EE4E800F7E689 /* ReactiveReSwiftBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A71D218EE4E800F7E689 /* ReactiveReSwiftBridge.swift */; };
 		18E7A724218EFDF600F7E689 /* ItemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A723218EFDF600F7E689 /* ItemState.swift */; };
-		18E7A726218EFE5200F7E689 /* ItemListReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A725218EFE5200F7E689 /* ItemListReducer.swift */; };
 		18E7A728218EFEDD00F7E689 /* ItemListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A727218EFEDD00F7E689 /* ItemListAction.swift */; };
 		18E7A72A218EFF9900F7E689 /* ItemListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7A729218EFF9900F7E689 /* ItemListStore.swift */; };
 		18EDCF5021899E3900B233B9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDCF4F21899E3800B233B9 /* Item.swift */; };
@@ -306,7 +305,6 @@
 		18D9A05021C4109F008EFA72 /* ItemTemp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTemp.swift; sourceTree = "<group>"; };
 		18E7A71D218EE4E800F7E689 /* ReactiveReSwiftBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveReSwiftBridge.swift; sourceTree = "<group>"; };
 		18E7A723218EFDF600F7E689 /* ItemState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemState.swift; sourceTree = "<group>"; };
-		18E7A725218EFE5200F7E689 /* ItemListReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListReducer.swift; sourceTree = "<group>"; };
 		18E7A727218EFEDD00F7E689 /* ItemListAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListAction.swift; sourceTree = "<group>"; };
 		18E7A729218EFF9900F7E689 /* ItemListStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListStore.swift; sourceTree = "<group>"; };
 		18EDCF4F21899E3800B233B9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -693,7 +691,6 @@
 				047CCB982365FD920044B9F2 /* Middleware.swift */,
 				04F315022376C6D700184507 /* TopicState.swift */,
 				043009E3237DB682004FA341 /* ConnectionState.swift */,
-				18E7A725218EFE5200F7E689 /* ItemListReducer.swift */,
 				18E7A727218EFEDD00F7E689 /* ItemListAction.swift */,
 				18E7A729218EFF9900F7E689 /* ItemListStore.swift */,
 				18B5506221C559FF004EC438 /* ItemAction.swift */,
@@ -1010,7 +1007,6 @@
 				181BAC6E220DD2D400A0D458 /* MotionCell.swift in Sources */,
 				18EDCF5A2189A0F900B233B9 /* ItemListCell.swift in Sources */,
 				04F2480D2338EAD6003239B6 /* ServerCell.swift in Sources */,
-				18E7A726218EFE5200F7E689 /* ItemListReducer.swift in Sources */,
 				18A33DDE2324FFCC00DFDBB6 /* ItemDetailPlusCell.swift in Sources */,
 				1803375421CA2A6B0098F944 /* DataInteractor.swift in Sources */,
 				18C832BE218ADAD500ED37A1 /* Storage.swift in Sources */,

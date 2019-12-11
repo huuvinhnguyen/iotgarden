@@ -83,6 +83,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="imageButton" destination="K12-lA-qBJ" id="ol3-H6-NFD"/>
+                        <outlet property="nameTextField" destination="6JA-0g-HPC" id="jP2-eO-L3o"/>
                         <segue destination="gHo-64-hVE" kind="show" id="vZG-XP-u8r"/>
                     </connections>
                 </viewController>

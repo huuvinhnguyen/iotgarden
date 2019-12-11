@@ -15,13 +15,14 @@ import SDWebImage
 class ItemNameViewController: UIViewController, StoreSubscriber {
     
     @IBOutlet weak var imageButton: UIButton!
+    @IBOutlet weak var nameTextField: UITextField!
     private let disposeBag = DisposeBag()
     func newState(state: ItemState) {
         itemRelay.accept(state.itemImageViewModel)
     }
     
     private let itemRelay = PublishRelay<ItemImageViewModel>()
-    private var itemListViewModel = ItemListViewModel()
+    private var itemListViewModel = ItemViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,7 @@ class ItemNameViewController: UIViewController, StoreSubscriber {
                 
                 weakSelf.imageButton.sd_setBackgroundImage(with: URL(string: viewModel.imageUrl), for: .normal, completed: nil)
                 weakSelf.itemListViewModel.imageUrlString = viewModel.imageUrl
+
             })
         .disposed(by: disposeBag)
         
@@ -50,9 +52,9 @@ class ItemNameViewController: UIViewController, StoreSubscriber {
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        
+        itemListViewModel.name = nameTextField.text ?? ""
         self.dismiss(animated: true, completion: nil)
-        let action = ItemState.Action.addItem(item: ItemListViewModel(uuid: UUID().uuidString, name: itemListViewModel.name, imageUrlString: itemListViewModel.imageUrlString))
+        let action = ItemState.Action.addItem(item: ItemViewModel(uuid: UUID().uuidString, name: itemListViewModel.name, imageUrlString: itemListViewModel.imageUrlString))
         appStore.dispatch(action)
     }
     

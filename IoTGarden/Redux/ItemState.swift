@@ -15,7 +15,8 @@ struct ItemState: ReSwift.StateType, Identifiable {
     var identifiableComponent = IdentifiableComponent()
     
     var sections: [ItemSectionModel] = []
-    var sectionItems: [SectionItem] = []
+//    var sectionItems: [SectionItem] = []
+    var itemViewModels: [ItemViewModel] = []
     var topicItems: [ItemDetailSectionModel] = []
     var topicViewModel = TopicViewModel()
     var connectionViewModel = ConnectionViewModel(id:"", name: "hvm server", server: "https//icloud.com/", title: "")
@@ -33,7 +34,7 @@ extension ItemState {
         case updateSwitchItem(viewModel: SwitchCellUI)
         case updateInputItem(cellUI: InputCellUI)
         case loadItems()
-        case addItem(item: ItemListViewModel)
+        case addItem(item: ItemViewModel)
         case removeItem(id: String)
         case loadDetail(id: String)
 //        case loadImages(list: [ItemImageViewController.SectionModel])

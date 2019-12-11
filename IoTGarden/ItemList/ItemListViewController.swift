@@ -22,10 +22,11 @@ private struct ItemDef {
 class ItemListViewController: UIViewController, StoreSubscriber {
     
     func newState(state: ItemState) {
-        sectionItems.accept(state.sectionItems)
+        itemRelay.accept(state.itemViewModels)
     }
+    
+    var itemRelay = PublishRelay<[ItemViewModel]>()
 
-    var sectionItems = PublishRelay<[SectionItem]>()
 
     typealias StoreSubscriberStateType = ItemState
     
@@ -49,16 +50,21 @@ class ItemListViewController: UIViewController, StoreSubscriber {
 
         let action = ItemState.Action.loadItems()
         appStore.dispatch(action)
-    
-        sectionItems.asObservable()
-            .map { [AnimatableSectionModel<String, SectionItem>(model: "", items: $0)] }
+        
+        itemRelay.asObservable()
+            .map { item -> [SectionItem] in
+                
+                let items: [SectionItem] = item.map { SectionItem.itemListSectionItem(viewModel: ItemListCell.ViewModel(uuid: $0.uuid, name: $0.name, imageUrl: $0.imageUrlString))}
+                let tailItem = SectionItem.tailSectionItem()
+                
+                var sectionItems: [SectionItem] = []
+                sectionItems.append(tailItem)
+                sectionItems += items
+                return sectionItems
+            }.map {[AnimatableSectionModel<String, SectionItem>(model: "", items: $0)]}
             .bind(to: itemListCollectionView.rx.items(dataSource: dataSource()))
             .disposed(by: disposeBag)
         
-        
-//        itemListCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
-        
-
         itemListCollectionView.rx.modelSelected(SectionItem.self).subscribe(onNext:{ [weak self] sectionItem in
             guard let weakSelf = self else { return }
             
@@ -83,8 +89,6 @@ class ItemListViewController: UIViewController, StoreSubscriber {
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
 
-//        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
-//        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
         let screenWidth = UIScreen.main.bounds.width
         
         layout.itemSize = CGSize(width: screenWidth/3, height: screenWidth/3)
@@ -125,18 +129,6 @@ class ItemListViewController: UIViewController, StoreSubscriber {
 
 }
 
-//extension ItemListViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-//
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-//
-//
-//
-//        return CGSize(width: collectionView.frame.width, height: 130)
-//    }
-//}
-
 enum ItemSectionModel {
     case itemSection(title: String, items: [SectionItem])
 }
@@ -160,27 +152,13 @@ extension ItemSectionModel: SectionModelType {
 
 enum SectionItem {
     case headerSectionItem()
-    case itemListSectionItem(viewModel: ItemListViewModel)
+    case itemListSectionItem(viewModel: ItemListCell.ViewModel?)
     case switchSectionItem(cellUI: SwitchCellUI)
     case inputSectionItem(cellUI: InputCellUI)
     case temperatureSectionItem(name: TemperatureDevice)
     case tailSectionItem()
 }
 
-//extension SectionItem {
-//    var cellViewModel: CellViewModel {
-//        switch self {
-//        case .switchSectionItem(let viewModel):
-//            return viewModel
-//        case .switchSectionItem2(let cellUI):
-//            return cellUI
-//        case .valueSectionItem(let viewModel):
-//            return viewModel
-//        case .temperatureSectionItem( let viewModel):
-//            return viewModel
-//        }
-//    }
-//}
 
 extension SectionItem: IdentifiableType, Equatable {
     
@@ -197,7 +175,7 @@ extension SectionItem: IdentifiableType, Equatable {
     var identity: String {
         switch self {
         case .itemListSectionItem(let viewModel):
-            return viewModel.uuid
+            return viewModel?.uuid ?? ""
         case .switchSectionItem(let viewModel):
             return viewModel.uuid
         case .inputSectionItem(let viewModel):
@@ -233,7 +211,7 @@ extension ItemListViewController {
             case let .itemListSectionItem(viewModel):
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemListCell", for: indexPath) as! ItemListCell
                 //                cell.configure(cellUI: cellUI)
-                cell.viewModel = viewModel
+                cell.viewModel2 = viewModel
                 return cell
                 
             case let .switchSectionItem(cellUI):

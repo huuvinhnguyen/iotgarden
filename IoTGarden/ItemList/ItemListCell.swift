@@ -11,10 +11,17 @@ class ItemListCell: UICollectionViewCell {
     
     @IBOutlet weak var itemImageView: UIImageView!
     var switchCellUI: SwitchCellUI?
-    var viewModel: ItemListViewModel? {
+    var viewModel: ItemViewModel? {
         didSet {
             itemImageView.sd_setImage(with: URL(string: viewModel?.imageUrlString ?? ""), placeholderImage: R.image.icon_camera())
             
+        }
+    }
+    
+    var viewModel2: ViewModel? {
+        didSet {
+            nameLabel?.text = viewModel2?.name
+            itemImageView.sd_setImage(with: URL(string: viewModel2?.imageUrl ?? ""), placeholderImage: R.image.icon_camera())
         }
     }
     
@@ -71,6 +78,12 @@ class ItemListCell: UICollectionViewCell {
         }
         
     }
+    
+    struct ViewModel {
+        var uuid = ""
+        var name = ""
+        var imageUrl = ""
+    }
 }
 
 extension ItemListCell: Display {
@@ -94,7 +107,7 @@ struct SwitchCellUI: CellUI {
 
 }
 
-struct ItemListViewModel {
+struct ItemViewModel {
     var uuid: String = ""
     var name: String = ""
     var imageUrlString = ""
