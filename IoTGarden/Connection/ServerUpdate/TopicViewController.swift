@@ -107,7 +107,7 @@ class TopicViewController: UIViewController, StoreSubscriber {
                 .topicItem(viewModel: TopicCell.ViewModel(name: $0?.name , topic: $0?.topic, type: $0?.type)),
                 .topicSwitchItem(viewModel: TopicSwitchViewModel()),
                 .topicQosItem(viewModel: TopicQosViewModel()),
-                .topicSaveItem(viewModel: TopicSaveViewModel())
+                .topicSaveItem(viewModel: TopicSaveCell.ViewModel())
                 
                 ])
             ]}

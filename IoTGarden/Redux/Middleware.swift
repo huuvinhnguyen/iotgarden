@@ -41,7 +41,7 @@ let switchingMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
             print("middleware action : \(action)")
             if case let ItemState.Action.switchItem(cellUI: switchCellUI, message: message) = action {
                 var switchCellUI = switchCellUI
-                let state = getState()?.listState ?? ItemState()
+                let state = getState()?.itemState ?? ItemState()
                 let task = state.tasks[switchCellUI.uuid]
                 
                 task?.publish(message: message)
@@ -89,7 +89,7 @@ let inputMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
             print("middleware action : \(action)")
             if case let ItemState.Action.inputItem(cellUI: inputCellUI, message: message) = action {
                 var inputCellUI = inputCellUI
-                let state = getState()?.listState ?? ItemState()
+                let state = getState()?.itemState ?? ItemState()
                 let task = state.tasks[inputCellUI.uuid]
                 
                 
@@ -138,7 +138,7 @@ let imageMiddleware: ReSwift.Middleware<AppState> = {  dispatch, getState in
         return { action in
             if case let ItemState.Action.selectImage(id) = action {
                 
-                 var viewModels: [ItemImageViewModel] = getState()?.listState.itemImageViewModels.compactMap {
+                 var viewModels: [ItemImageViewModel] = getState()?.itemState.itemImageViewModels.compactMap {
                     var viewModel = $0
                     viewModel.isSelected = false
                     return viewModel

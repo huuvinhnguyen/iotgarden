@@ -40,7 +40,7 @@ class ItemListViewController: UIViewController, StoreSubscriber {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        appStore.subscribe(self) { $0.select { $0.listState }.skipRepeats() }
+        appStore.subscribe(self) { $0.select { $0.itemState }.skipRepeats() }
     }
     
     override func viewDidLoad() {

@@ -253,7 +253,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 29 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 32 nibs.
   struct nib {
     /// Nib `AddItemTopicCell`.
     static let addItemTopicCell = _R.nib._AddItemTopicCell()
@@ -283,6 +283,12 @@ struct R: Rswift.Validatable {
     static let itemListCell = _R.nib._ItemListCell()
     /// Nib `ItemListPlusCell`.
     static let itemListPlusCell = _R.nib._ItemListPlusCell()
+    /// Nib `ItemNameCell`.
+    static let itemNameCell = _R.nib._ItemNameCell()
+    /// Nib `ItemNameHeaderCell`.
+    static let itemNameHeaderCell = _R.nib._ItemNameHeaderCell()
+    /// Nib `ItemSaveCell`.
+    static let itemSaveCell = _R.nib._ItemSaveCell()
     /// Nib `ItemTopicCell`.
     static let itemTopicCell = _R.nib._ItemTopicCell()
     /// Nib `ItemTopicServerCell`.
@@ -396,6 +402,24 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.itemListPlusCell) instead")
     static func itemListPlusCell(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.itemListPlusCell)
+    }
+    
+    /// `UINib(name: "ItemNameCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.itemNameCell) instead")
+    static func itemNameCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.itemNameCell)
+    }
+    
+    /// `UINib(name: "ItemNameHeaderCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.itemNameHeaderCell) instead")
+    static func itemNameHeaderCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.itemNameHeaderCell)
+    }
+    
+    /// `UINib(name: "ItemSaveCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.itemSaveCell) instead")
+    static func itemSaveCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.itemSaveCell)
     }
     
     /// `UINib(name: "ItemTopicCell", in: bundle)`
@@ -544,6 +568,18 @@ struct R: Rswift.Validatable {
       return R.nib.itemListPlusCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemListPlusCell
     }
     
+    static func itemNameCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemNameCell? {
+      return R.nib.itemNameCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemNameCell
+    }
+    
+    static func itemNameHeaderCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemNameHeaderCell? {
+      return R.nib.itemNameHeaderCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemNameHeaderCell
+    }
+    
+    static func itemSaveCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemSaveCell? {
+      return R.nib.itemSaveCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemSaveCell
+    }
+    
     static func itemTopicCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemTopicCell? {
       return R.nib.itemTopicCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemTopicCell
     }
@@ -607,7 +643,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 24 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 27 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `AddItemTopicCell`.
     static let addItemTopicCell: Rswift.ReuseIdentifier<AddItemTopicCell> = Rswift.ReuseIdentifier(identifier: "AddItemTopicCell")
@@ -631,6 +667,12 @@ struct R: Rswift.Validatable {
     static let itemInputValueCell: Rswift.ReuseIdentifier<ItemInputValueCell> = Rswift.ReuseIdentifier(identifier: "ItemInputValueCell")
     /// Reuse identifier `ItemListPlusCell`.
     static let itemListPlusCell: Rswift.ReuseIdentifier<ItemListPlusCell> = Rswift.ReuseIdentifier(identifier: "ItemListPlusCell")
+    /// Reuse identifier `ItemNameCell`.
+    static let itemNameCell: Rswift.ReuseIdentifier<ItemNameCell> = Rswift.ReuseIdentifier(identifier: "ItemNameCell")
+    /// Reuse identifier `ItemNameHeaderCell`.
+    static let itemNameHeaderCell: Rswift.ReuseIdentifier<ItemNameHeaderCell> = Rswift.ReuseIdentifier(identifier: "ItemNameHeaderCell")
+    /// Reuse identifier `ItemSaveCell`.
+    static let itemSaveCell: Rswift.ReuseIdentifier<ItemSaveCell> = Rswift.ReuseIdentifier(identifier: "ItemSaveCell")
     /// Reuse identifier `ItemTopicCell`.
     static let itemTopicCell: Rswift.ReuseIdentifier<ItemTopicCell> = Rswift.ReuseIdentifier(identifier: "ItemTopicCell")
     /// Reuse identifier `ItemTopicServerCell`.
@@ -768,6 +810,8 @@ struct _R: Rswift.Validatable {
       try _ItemInputValueCell.validate()
       try _ItemListCell.validate()
       try _ItemListPlusCell.validate()
+      try _ItemNameCell.validate()
+      try _ItemSaveCell.validate()
       try _ItemTopicCell.validate()
       try _ItemTopicServerCell.validate()
       try _ItemTopicSignInCell.validate()
@@ -1028,6 +1072,60 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if UIKit.UIImage(named: "icon_plus", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_plus' is used in nib 'ItemListPlusCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _ItemNameCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = ItemNameCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "ItemNameCell"
+      let name = "ItemNameCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemNameCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemNameCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_angle_double", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_angle_double' is used in nib 'ItemNameCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _ItemNameHeaderCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = ItemNameHeaderCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "ItemNameHeaderCell"
+      let name = "ItemNameHeaderCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemNameHeaderCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemNameHeaderCell
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _ItemSaveCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = ItemSaveCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "ItemSaveCell"
+      let name = "ItemSaveCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ItemSaveCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ItemSaveCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_save", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_save' is used in nib 'ItemSaveCell', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
       }
@@ -1454,7 +1552,6 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if UIKit.UIImage(named: "icon_arrow_cicle_o_right", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_arrow_cicle_o_right' is used in storyboard 'ItemList', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_camera", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_camera' is used in storyboard 'ItemList', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_close", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_close' is used in storyboard 'ItemList', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_save", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_save' is used in storyboard 'ItemList', but couldn't be loaded.") }

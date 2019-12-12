@@ -18,7 +18,7 @@ class ItemImageViewController: UIViewController,  StoreSubscriber {
     
     @IBAction func didSaveButtonTapped(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
-        let viewModel = appStore.state.listState.itemImageViewModel
+        let viewModel = appStore.state.itemState.itemImageViewModel
         appStore.dispatch(ItemState.Action.loadImage(viewModel: viewModel))
         
     }
@@ -43,7 +43,7 @@ class ItemImageViewController: UIViewController,  StoreSubscriber {
         super.viewDidLoad()
         prepareNibs()
         
-        appStore.subscribe(self) { $0.select { $0.listState }.skipRepeats() }
+        appStore.subscribe(self) { $0.select { $0.itemState }.skipRepeats() }
         
         imagesRelay.asObservable()
             .map { $0.map { SectionItem.imageSectionItem(viewModel: $0) } }

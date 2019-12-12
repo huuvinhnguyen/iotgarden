@@ -18,7 +18,7 @@ enum ServerSectionItem {
     case topicItem(viewModel: TopicCell.ViewModel?)
     case topicSwitchItem(viewModel: TopicSwitchViewModel)
     case topicQosItem(viewModel: TopicQosViewModel)
-    case topicSaveItem(viewModel: TopicSaveViewModel)
+    case topicSaveItem(viewModel: TopicSaveCell.ViewModel)
 }
 
 extension ServerSection: SectionModelType {
