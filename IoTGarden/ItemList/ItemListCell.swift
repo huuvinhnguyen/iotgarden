@@ -13,7 +13,7 @@ class ItemListCell: UICollectionViewCell {
     var switchCellUI: SwitchCellUI?
     var viewModel: ItemViewModel? {
         didSet {
-            itemImageView.sd_setImage(with: URL(string: viewModel?.imageUrlString ?? ""), placeholderImage: R.image.icon_camera())
+            itemImageView.sd_setImage(with: URL(string: viewModel?.imageUrl ?? ""), placeholderImage: R.image.icon_camera())
             
         }
     }
@@ -110,7 +110,7 @@ struct SwitchCellUI: CellUI {
 struct ItemViewModel {
     var uuid: String = ""
     var name: String = ""
-    var imageUrlString = ""
+    var imageUrl = ""
     
 }
 

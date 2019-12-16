@@ -467,7 +467,7 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		1803375E21CB3C760098F944 /* Model */ = {
+		1803375E21CB3C760098F944 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				1803375521CA9B130098F944 /* Topic.swift */,
@@ -475,7 +475,7 @@
 				1803375F21CB41640098F944 /* SensorConnect.swift */,
 				183A920222EC023D00EBDC4A /* SensorConnect2.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		1803377021CBF4400098F944 /* ItemList */ = {
@@ -551,27 +551,6 @@
 			path = AddItem;
 			sourceTree = "<group>";
 		};
-		1864B73222B7F10800B9DCE7 /* State */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = State;
-			sourceTree = "<group>";
-		};
-		1864B73322B7F11500B9DCE7 /* Reducers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Reducers;
-			sourceTree = "<group>";
-		};
-		1864B73422B7F14700B9DCE7 /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Actions;
-			sourceTree = "<group>";
-		};
 		1864B73922B7F8DF00B9DCE7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -581,13 +560,6 @@
 				044CEDE52378594500585E20 /* GoogleService-Info.plist */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		1864B73E22BE387B00B9DCE7 /* Stores */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Stores;
 			sourceTree = "<group>";
 		};
 		1864B73F22C7D1C400B9DCE7 /* MQTT */ = {
@@ -665,7 +637,7 @@
 				18A0431121894CD4005E04D4 /* Assets.xcassets */,
 				18A0431321894CD4005E04D4 /* LaunchScreen.storyboard */,
 				18A0431621894CD4005E04D4 /* Info.plist */,
-				1803375E21CB3C760098F944 /* Model */,
+				1803375E21CB3C760098F944 /* Models */,
 				1803375721CB3B910098F944 /* ViewModel */,
 				18D9A05021C4109F008EFA72 /* ItemTemp.swift */,
 				18EDCF5321899F3100B233B9 /* GroupItem.swift */,
@@ -700,10 +672,6 @@
 		18E7A71C218EE0F800F7E689 /* Redux */ = {
 			isa = PBXGroup;
 			children = (
-				1864B73222B7F10800B9DCE7 /* State */,
-				1864B73322B7F11500B9DCE7 /* Reducers */,
-				1864B73422B7F14700B9DCE7 /* Actions */,
-				1864B73E22BE387B00B9DCE7 /* Stores */,
 				18E7A71D218EE4E800F7E689 /* ReactiveReSwiftBridge.swift */,
 				18E7A723218EFDF600F7E689 /* ItemState.swift */,
 				047CCB982365FD920044B9F2 /* Middleware.swift */,

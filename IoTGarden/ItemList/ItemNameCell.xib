@@ -24,6 +24,9 @@
                             <constraint firstAttribute="height" constant="202" id="AUB-ev-CLM"/>
                         </constraints>
                         <state key="normal" backgroundImage="icon_angle_double"/>
+                        <connections>
+                            <action selector="selectImageTapped:" destination="kV5-Fw-b3p" eventType="touchUpInside" id="4lO-dh-r4d"/>
+                        </connections>
                     </button>
                 </subviews>
                 <color key="backgroundColor" red="0.2486996055" green="0.44706130030000002" blue="0.58785885569999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -35,7 +38,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="imageButton" destination="ZvK-Yh-MGV" id="hPP-u6-vD0"/>
+                <outlet property="imageButton" destination="ZvK-Yh-MGV" id="gNQ-Y5-qNg"/>
             </connections>
             <point key="canvasLocation" x="-292" y="112.44377811094454"/>
         </tableViewCell>

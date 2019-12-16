@@ -18,50 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K12-lA-qBJ">
-                                <rect key="frame" x="116" y="134" width="111" height="112"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="111" id="R0J-np-4JN"/>
-                                    <constraint firstAttribute="height" constant="112" id="rxo-fo-q0M"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="icon_camera"/>
-                                <connections>
-                                    <action selector="pictureButtonTapped:" destination="pmi-tN-IjJ" eventType="touchUpInside" id="ZuP-ob-qca"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6JA-0g-HPC">
-                                <rect key="frame" x="36" y="85" width="319" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cph-Li-4jj">
-                                <rect key="frame" x="29" y="399" width="326" height="240"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cph-Li-4jj">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q41-qn-7vj">
-                                <rect key="frame" x="142" y="308" width="72" height="65"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="aJx-uu-1Uh"/>
-                                    <constraint firstAttribute="width" constant="72" id="aZW-gw-R0Q"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="icon_save"/>
-                                <connections>
-                                    <action selector="saveButtonTapped:" destination="pmi-tN-IjJ" eventType="touchUpInside" id="Bq1-FJ-DfS"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.2470588235" green="0.44705882349999998" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="0xu-aQ-Ann" firstAttribute="trailing" secondItem="6JA-0g-HPC" secondAttribute="trailing" constant="20" id="6og-Ft-O8G"/>
-                            <constraint firstItem="Q41-qn-7vj" firstAttribute="top" secondItem="K12-lA-qBJ" secondAttribute="bottom" constant="62" id="NWu-lb-Pmx"/>
-                            <constraint firstItem="6JA-0g-HPC" firstAttribute="leading" secondItem="0xu-aQ-Ann" secondAttribute="leading" constant="36" id="QYd-mz-hq2"/>
-                            <constraint firstItem="Q41-qn-7vj" firstAttribute="leading" secondItem="0xu-aQ-Ann" secondAttribute="leading" constant="142" id="S1e-KM-ZB6"/>
-                            <constraint firstItem="6JA-0g-HPC" firstAttribute="top" secondItem="0xu-aQ-Ann" secondAttribute="top" constant="21" id="U4J-zU-Aih"/>
-                            <constraint firstItem="K12-lA-qBJ" firstAttribute="top" secondItem="6JA-0g-HPC" secondAttribute="bottom" constant="19" id="cRy-Pz-hPE"/>
-                            <constraint firstItem="K12-lA-qBJ" firstAttribute="leading" secondItem="0xu-aQ-Ann" secondAttribute="leading" constant="116" id="qRB-Ds-0vc"/>
+                            <constraint firstItem="0xu-aQ-Ann" firstAttribute="bottom" secondItem="cph-Li-4jj" secondAttribute="bottom" id="076-X5-1WD"/>
+                            <constraint firstItem="0xu-aQ-Ann" firstAttribute="trailing" secondItem="cph-Li-4jj" secondAttribute="trailing" id="IvX-x4-p4P"/>
+                            <constraint firstItem="cph-Li-4jj" firstAttribute="leading" secondItem="0xu-aQ-Ann" secondAttribute="leading" id="Jsz-en-Ns8"/>
+                            <constraint firstItem="cph-Li-4jj" firstAttribute="top" secondItem="0xu-aQ-Ann" secondAttribute="top" id="qBJ-3N-Cep"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0xu-aQ-Ann"/>
                     </view>
@@ -73,8 +40,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="imageButton" destination="K12-lA-qBJ" id="ol3-H6-NFD"/>
-                        <outlet property="nameTextField" destination="6JA-0g-HPC" id="jP2-eO-L3o"/>
                         <outlet property="tableView" destination="cph-Li-4jj" id="c2c-di-iTf"/>
                         <segue destination="gHo-64-hVE" kind="show" id="vZG-XP-u8r"/>
                     </connections>
@@ -156,7 +121,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_camera" width="25" height="22"/>
         <image name="icon_close" width="20" height="17"/>
         <image name="icon_save" width="22" height="22"/>
     </resources>

@@ -54,7 +54,7 @@ class ItemListViewController: UIViewController, StoreSubscriber {
         itemRelay.asObservable()
             .map { item -> [SectionItem] in
                 
-                let items: [SectionItem] = item.map { SectionItem.itemListSectionItem(viewModel: ItemListCell.ViewModel(uuid: $0.uuid, name: $0.name, imageUrl: $0.imageUrlString))}
+                let items: [SectionItem] = item.map { SectionItem.itemListSectionItem(viewModel: ItemListCell.ViewModel(uuid: $0.uuid, name: $0.name, imageUrl: $0.imageUrl))}
                 let tailItem = SectionItem.tailSectionItem()
                 
                 var sectionItems: [SectionItem] = []

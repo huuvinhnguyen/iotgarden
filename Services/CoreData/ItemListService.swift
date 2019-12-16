@@ -24,6 +24,13 @@ struct ItemListService {
         }
     }
     
+    func loadItem(id: String, finished: (_ item: ItemData?)->()) {
+        let interactor = ItemDataInteractor()
+        interactor.getItem(uuid: id) { item in
+            finished(item)
+        }
+    }
+    
     func addItem(item: ItemData, finished: (_ item: ItemData)->()) {
         let interactor = ItemDataInteractor()
         interactor.add(item: item) { itemData in

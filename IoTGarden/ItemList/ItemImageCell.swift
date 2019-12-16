@@ -21,8 +21,20 @@ class ItemImageCell: UICollectionViewCell {
             itemImageView.sd_setImage(with: URL(string: viewModel.imageUrl), placeholderImage: R.image.icon_camera())
         }
     }
-
     
+    var viewModel2: ViewModel! {
+        
+        didSet {
+            checkButton?.isSelected = viewModel2.isSelected
+            itemImageView.sd_setImage(with: URL(string: viewModel2.imageUrl), placeholderImage: R.image.icon_camera())
+        }
+    }
+    
+    struct ViewModel {
+        var id = ""
+        var isSelected = false
+        var imageUrl = ""
+    }
 }
 
 struct ItemImageViewModel {

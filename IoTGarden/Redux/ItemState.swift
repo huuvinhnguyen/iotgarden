@@ -17,6 +17,7 @@ struct ItemState: ReSwift.StateType, Identifiable {
     var sections: [ItemSectionModel] = []
 //    var sectionItems: [SectionItem] = []
     var itemViewModels: [ItemViewModel] = []
+    var itemViewModel = ItemViewModel()
     var topicItems: [ItemDetailSectionModel] = []
     var topicViewModel = TopicViewModel()
     var connectionViewModel = ConnectionViewModel(id:"", name: "hvm server", server: "https//icloud.com/", title: "")
@@ -42,5 +43,7 @@ extension ItemState {
         case selectImage(id: String)
         case fetchImages()
         case loadImage(viewModel: ItemImageViewModel)
+        case loadItem(id: String)
+        case updateItem(imageUrl: String)
     }
 }
