@@ -20,7 +20,7 @@ class ItemNameCell: UITableViewCell {
                 guard let self = self else { return }
                 
                 if (error != nil) {
-                    self.imageButton.setBackgroundImage(R.image.icon_arrow_cicle_o_right(), for: .normal)
+                    self.imageButton.setBackgroundImage(R.image.icon_camera(), for: .normal)
                 }
             }
         }
