@@ -167,6 +167,8 @@ PODS:
   - ReactiveReSwift (4.0.0)
   - Result (4.1.0)
   - ReSwift (4.0.1)
+  - ReSwiftRouter (0.6.0):
+    - ReSwift (~> 4.0.0)
   - RxAtomic (4.4.1)
   - RxCocoa (4.4.1):
     - RxSwift (~> 4.0)
@@ -196,6 +198,7 @@ DEPENDENCIES:
   - R.swift
   - ReactiveReSwift
   - ReSwift
+  - ReSwiftRouter
   - RxCocoa
   - RxDataSources
   - RxSwift
@@ -238,6 +241,7 @@ SPEC REPOS:
     - ReactiveReSwift
     - Result
     - ReSwift
+    - ReSwiftRouter
     - RxAtomic
     - RxCocoa
     - RxDataSources
@@ -280,6 +284,7 @@ SPEC CHECKSUMS:
   ReactiveReSwift: b6187229efcc5ec819fb1d3d19716c231bcc0456
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   ReSwift: f4012c613e13da7398827fe5aebdb938eaed40a3
+  ReSwiftRouter: 81f41b37a5dd1c88e1d3d10a660ff2dcc939ba7c
   RxAtomic: f8d6adc1ccb87a767811269e4875887bc74dbf19
   RxCocoa: 2f35a76bf8887872e28a1914112395b11b8e0e64
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
@@ -288,6 +293,6 @@ SPEC CHECKSUMS:
   SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: 9c18e3935cba02947801464b3b4e99307cde5d6f
+PODFILE CHECKSUM: 26825d1ff84b4c2129a1fdbe69067633f5e9641e
 
 COCOAPODS: 1.7.5

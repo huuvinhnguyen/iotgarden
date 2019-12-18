@@ -8,16 +8,34 @@
 import UIKit
 import CoreData
 import Firebase
+import ReSwift
+import ReSwiftRouter
 
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var router: Router<AppState>!
+    var rootViewController: Routable!
+
 
 
     func application(_ application: UIApplication,   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = UIViewController()
+        let rootRoutable = RootRoutable(window: window!)
+        
+        router = Router(store: appStore, rootRoutable: rootRoutable) { state in
+            state.select { $0.navigationState }
+        }
+        
+        appStore.dispatch(ReSwiftRouter.SetRouteAction([mainViewRoute]))
+        
+        window?.makeKeyAndVisible()
+
+        
         FirebaseApp.configure()
         return true
     }
@@ -92,4 +110,79 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
+let mainViewRoute: RouteElementIdentifier = "Main"
+let itemDetailRoute: RouteElementIdentifier = "ItemDetail"
+
+let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+
+
+class RootRoutable: Routable {
+    
+    let window: UIWindow
+    
+    init(window: UIWindow) {
+        self.window = window
+    }
+    
+    func setToItemListViewController() -> Routable {
+        self.window.rootViewController = R.storyboard.itemListViewController.instantiateInitialViewController()
+        
+        return ItemListRoutable(self.window.rootViewController!)
+    }
+    
+    
+    func pushRouteSegment(
+        _ routeElementIdentifier: RouteElementIdentifier,
+        animated: Bool,
+        completionHandler: @escaping RoutingCompletionHandler) -> Routable
+    {
+        return setToItemListViewController()
+
+        
+    }
+    
+    func popRouteSegment(
+        _ routeElementIdentifier: RouteElementIdentifier,
+        animated: Bool,
+        completionHandler: @escaping RoutingCompletionHandler)
+    {
+        // TODO: this should technically never be called -> bug in router
+        completionHandler()
+    }
+    
+}
+
+
+class ItemListRoutable: Routable {
+    
+    let viewController: UIViewController
+    
+    init(_ viewController: UIViewController) {
+        self.viewController = viewController
+    }
+    
+    func pushRouteSegment(
+        _ routeElementIdentifier: RouteElementIdentifier,
+        animated: Bool,
+        completionHandler: @escaping RoutingCompletionHandler) -> Routable
+    {
+        if routeElementIdentifier == itemDetailRoute {
+            let vc = R.storyboard.itemDetail.itemDetailViewController()!
+            (self.viewController as! UINavigationController).pushViewController(
+                vc,
+                animated: false
+            )
+            completionHandler()
+
+            return ItemDetailRoutable()
+        }
+
+        fatalError("Cannot handle this route change!")
+
+    }
+}
+
+class ItemDetailRoutable: Routable {}
 

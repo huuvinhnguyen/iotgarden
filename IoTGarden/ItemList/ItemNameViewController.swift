@@ -11,6 +11,7 @@ import RxCocoa
 import RxSwift
 import SDWebImage
 import RxDataSources
+import ReSwiftRouter
 
 class ItemNameViewController: UIViewController, StoreSubscriber {
     
@@ -117,6 +118,8 @@ class ItemNameViewController: UIViewController, StoreSubscriber {
         self.dismiss(animated: true, completion: nil)
         let action = ItemState.Action.addItem(item: ItemViewModel(uuid: UUID().uuidString, name: itemViewModel.name, imageUrl: itemViewModel.imageUrl))
         appStore.dispatch(action)
+        appStore.dispatch(ReSwiftRouter.SetRouteAction([mainViewRoute, itemDetailRoute]))
+
     }
     
     @IBAction func pictureButtonTapped(_ sender: Any) {
