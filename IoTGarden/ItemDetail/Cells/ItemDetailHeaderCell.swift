@@ -11,7 +11,7 @@ class ItemDetailHeaderCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     
-    var viewModel: ItemDetailHeaderViewModel? {
+    var viewModel: ViewModel? {
         
         didSet {
             nameLabel.text = viewModel?.name 
@@ -22,6 +22,11 @@ class ItemDetailHeaderCell: UITableViewCell {
     
     @IBAction private func editButtonTapped(_ sender: UIButton) {
         didTapEditAction?()
+    }
+    
+    struct ViewModel {
+        
+        let name: String
     }
 }
 
@@ -36,7 +41,7 @@ enum ItemDetailSectionModel {
 
 enum ItemDetailSectionItem {
     
-    case headerItem(viewModel: ItemDetailHeaderViewModel)
+    case headerItem(viewModel: ItemDetailHeaderCell.ViewModel)
     case topicItem(viewModel: TopicViewModel?)
     case footerItem(viewModel: ItemDetailFooterViewModel)
 }
@@ -69,5 +74,11 @@ extension ItemDetailSectionModel: SectionModelType {
 
 struct ItemDetailHeaderViewModel {
     
-    let name: String
+    enum SectionItem {
+        
+        case headerItem(viewModel: ItemDetailHeaderCell.ViewModel)
+        case topicItem(viewModel: TopicViewModel?)
+        case footerItem(viewModel: ItemDetailFooterViewModel)
+    }
+
 }

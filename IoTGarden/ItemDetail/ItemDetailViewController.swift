@@ -10,6 +10,7 @@ import CoreData
 import ReSwift
 import RxDataSources
 import RxSwift
+import ReSwiftRouter
 import RxCocoa
 
 struct ItemDetailViewModel {
@@ -21,16 +22,14 @@ struct ItemDetailViewModel {
 }
 
 class ItemDetailViewController: UIViewController, StoreSubscriber {
+   
     
     @IBOutlet weak var tableView: UITableView!
 
     private var viewModel: ItemDetailViewModel?
-    private var serverUUID = ""
     private let disposeBag = DisposeBag()
     
     var topicsRelay = PublishRelay<[TopicViewModel]>()
-
-
 
     private var dataSource: RxTableViewSectionedReloadDataSource<ItemDetailSectionModel> {
         
@@ -42,12 +41,13 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                 
                 cell.viewModel = viewModel
                 cell.didTapEditAction = {
-                    guard let weakSelf = self else { return }
+                    guard let self = self else { return }
                     
-                    let viewController = R.storyboard.itemList.instantiateInitialViewController()!
-                    weakSelf.modalPresentationStyle = .currentContext
-                    weakSelf.present(viewController, animated: true, completion: nil)
-                 
+                    let setDataAction = ReSwiftRouter.SetRouteSpecificData(route: [mainViewRoute, itemDetailRoute, itemNameRoute], data: self.identifier)
+                    appStore.dispatch(setDataAction)
+
+                    appStore.dispatch(ReSwiftRouter.SetRouteAction([mainViewRoute, itemDetailRoute, itemNameRoute]))
+                
                 }
                 return cell
                 
@@ -76,7 +76,6 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                     
                 }
                 
-                return UITableViewCell()
                 
             case .footerItem(let viewModel):
                 if viewModel.kind == "trash" {
@@ -108,14 +107,13 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         })
     }
 
-    func newState(state: TopicState) {
+    func newState(state: (identifier :String, topicState: TopicState)) {
         
-        topicsRelay.accept(state.topicViewModels)
+        topicsRelay.accept(state.topicState.topicViewModels)
+        print("#detail identifier: \(identifier) ")
+        self.identifier = state.identifier
         
     }
-    
-    
-    typealias StoreSubscriberStateType = TopicState
     
     var sensor: Topic? {
         didSet {
@@ -125,9 +123,14 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     
     var identifier = ""
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-       
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.isMovingFromParent {
+            appStore.dispatch(ReSwiftRouter.SetRouteAction([mainViewRoute]))
+
+        }
     }
 
     override func viewDidLoad() {
@@ -136,7 +139,13 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         configureTableView()
 
         appStore.subscribe(self) { subcription in
-            subcription.select { state in state.topicState }.skipRepeats()
+            subcription.select { state in
+                let identifier: String = state.navigationState.getRouteSpecificState(
+                    state.navigationState.route
+                ) ?? ""
+                return (identifier, state.topicState)
+                
+                }
         }    
         appStore.dispatch(TopicState.Action.loadTopics())
     }
@@ -156,8 +165,9 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
             .map { sectionItems -> [ItemDetailSectionModel] in
                 
                 var sections: [ItemDetailSectionModel] = []
+                let item = appStore.state.itemState.itemViewModels.filter {$0.uuid == self.identifier }.first
                 sections.append(
-                    .headerSection(items: [.headerItem(viewModel: ItemDetailHeaderViewModel(name: "Header AAA"))])
+                    .headerSection(items: [.headerItem(viewModel: ItemDetailHeaderCell.ViewModel(name: item?.name ?? ""))])
                 )
                 
                 sections.append(
@@ -177,14 +187,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
             .disposed(by: disposeBag)
     }
     
-    @IBAction func switchButtonTapped(_ sender: UIButton) {
-        
-        print("Value changed")
-    }
-    
-    @IBAction func publishButtonTapped(_ sender: UIButton) {
 
-    }
     
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
         
@@ -193,13 +196,6 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         let action = ItemState.Action.loadItems()
         appStore.dispatch(action)
         navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func seeMoreDetail(_ sender: UIButton) {
-        let vc = R.storyboard.itemDetail.serverViewController()!
-        vc.serverUUID = sensor?.serverUUID
-        vc.serverUUID = serverUUID
-        navigationController?.pushViewController(vc, animated: true)
     }
 
     @IBAction func editTopicTapped(_ sender: UIButton) {

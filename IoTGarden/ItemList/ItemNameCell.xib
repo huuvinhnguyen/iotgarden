@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ItemNameCell" rowHeight="338" id="kV5-Fw-b3p" customClass="ItemNameCell" customModule="IoTGarden" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="338"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kV5-Fw-b3p" id="6GC-bs-tYx">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="337.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZvK-Yh-MGV">
+                        <rect key="frame" x="84" y="64" width="224" height="202"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="202" id="AUB-ev-CLM"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="icon_angle_double"/>
+                        <connections>
+                            <action selector="selectImageTapped:" destination="kV5-Fw-b3p" eventType="touchUpInside" id="4lO-dh-r4d"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" red="0.2486996055" green="0.44706130030000002" blue="0.58785885569999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="ZvK-Yh-MGV" firstAttribute="top" secondItem="6GC-bs-tYx" secondAttribute="top" constant="64" id="P3L-2p-hpY"/>
+                    <constraint firstItem="ZvK-Yh-MGV" firstAttribute="leading" secondItem="6GC-bs-tYx" secondAttribute="leading" constant="84" id="QgU-hD-2WF"/>
+                    <constraint firstAttribute="bottom" secondItem="ZvK-Yh-MGV" secondAttribute="bottom" constant="71.5" id="Zsc-xY-PD0"/>
+                    <constraint firstAttribute="trailing" secondItem="ZvK-Yh-MGV" secondAttribute="trailing" constant="67" id="kkd-8R-eKI"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imageButton" destination="ZvK-Yh-MGV" id="gNQ-Y5-qNg"/>
+            </connections>
+            <point key="canvasLocation" x="-292" y="112.44377811094454"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_angle_double" width="15" height="15"/>
+    </resources>
+</document>

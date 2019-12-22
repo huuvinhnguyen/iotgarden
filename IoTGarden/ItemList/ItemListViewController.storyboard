@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Things-->
+        <!--Dashboard-->
         <scene sceneID="zLJ-C9-ja5">
             <objects>
                 <viewController storyboardIdentifier="ItemListViewController" id="CQR-4j-oQI" customClass="ItemListViewController" customModule="IoTGarden" customModuleProvider="target" sceneMemberID="viewController">
@@ -48,7 +48,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hel-gM-k65"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Things" id="Ldg-qt-sfz"/>
+                    <navigationItem key="navigationItem" title="Dashboard" id="Ldg-qt-sfz"/>
                     <connections>
                         <outlet property="itemListCollectionView" destination="uvd-kI-Ikv" id="5Po-t9-m3q"/>
                     </connections>

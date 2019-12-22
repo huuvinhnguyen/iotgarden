@@ -24,6 +24,13 @@ struct ItemListService {
         }
     }
     
+    func loadItem(id: String, finished: (_ item: ItemData?)->()) {
+        let interactor = ItemDataInteractor()
+        interactor.getItem(uuid: id) { item in
+            finished(item)
+        }
+    }
+    
     func addItem(item: ItemData, finished: (_ item: ItemData)->()) {
         let interactor = ItemDataInteractor()
         interactor.add(item: item) { itemData in
@@ -34,6 +41,14 @@ struct ItemListService {
     func removeItem(id: String, finished: (_ id: String)->()) {
         let interactor = ItemDataInteractor()
         interactor.delete(id: id) { finished($0) }
+        
+    }
+    
+    func updateItem(item: ItemData, finished: (_ item: ItemData)->()) {
+        let interactor = ItemDataInteractor()
+        interactor.update(item: item) { _ in
+            finished(item)
+        }
         
     }
     

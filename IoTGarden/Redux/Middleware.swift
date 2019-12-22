@@ -7,30 +7,6 @@
 
 import ReSwift
 
-let itemListMiddleware: ReSwift.Middleware<AppState> = {  dispatch, getState in
-    
-    return { next in
-        print("enter detail middleware")
-        return { action in
-            if case ItemState.Action.addItem(let viewModel) = action {
-                    let service = ItemListService()
-                service.addItem(item: ItemListService.ItemData(uuid: viewModel.uuid, name: viewModel.name, imageUrlString: viewModel.imageUrlString, topics:[])) { item in
-                    
-                    dispatch(ItemState.Action.loadItems())
-                }
-            }
-            
-            if case ItemState.Action.removeItem(let id ) = action {
-                let itemListService = ItemListService()
-                itemListService.removeItem(id: id) { _ in
-                    dispatch(ItemState.Action.loadItems())
-                }
-            }
-
-            next(action)
-        }
-    }
-}
 
 
 let switchingMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
@@ -41,7 +17,7 @@ let switchingMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
             print("middleware action : \(action)")
             if case let ItemState.Action.switchItem(cellUI: switchCellUI, message: message) = action {
                 var switchCellUI = switchCellUI
-                let state = getState()?.listState ?? ItemState()
+                let state = getState()?.itemState ?? ItemState()
                 let task = state.tasks[switchCellUI.uuid]
                 
                 task?.publish(message: message)
@@ -89,7 +65,7 @@ let inputMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
             print("middleware action : \(action)")
             if case let ItemState.Action.inputItem(cellUI: inputCellUI, message: message) = action {
                 var inputCellUI = inputCellUI
-                let state = getState()?.listState ?? ItemState()
+                let state = getState()?.itemState ?? ItemState()
                 let task = state.tasks[inputCellUI.uuid]
                 
                 
@@ -138,7 +114,7 @@ let imageMiddleware: ReSwift.Middleware<AppState> = {  dispatch, getState in
         return { action in
             if case let ItemState.Action.selectImage(id) = action {
                 
-                 var viewModels: [ItemImageViewModel] = getState()?.listState.itemImageViewModels.compactMap {
+                 var viewModels: [ItemImageViewModel] = getState()?.itemState.itemImageViewModels.compactMap {
                     var viewModel = $0
                     viewModel.isSelected = false
                     return viewModel

@@ -6,16 +6,18 @@
 //
 
 import ReSwift
+import ReSwiftRouter
 
 var appStore = ReSwift.Store<AppState>(
     reducer: appReduce,
     state: nil,
-    middleware: [switchingMiddleware, inputMiddleware, itemListMiddleware, imageMiddleware, TopicState.middleware, ConnectionState.middleware])
+    middleware: [switchingMiddleware, inputMiddleware, ItemState.middleware, imageMiddleware, TopicState.middleware, ConnectionState.middleware])
 
 func appReduce(action: ReSwift.Action, state: AppState?) -> AppState {
     var state = state ?? AppState()
+    state.navigationState = NavigationReducer.handleAction(action, state: state.navigationState)
     state.topicState = TopicState.reducer(action: action, state: state.topicState)
-    state.listState = ItemState.reducer(action: action,state: state.listState)
+    state.itemState = ItemState.reducer(action: action,state: state.itemState)
     state.connectionState = ConnectionState.reducer(action: action, state: state.connectionState)
     
     return state

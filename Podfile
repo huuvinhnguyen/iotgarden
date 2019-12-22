@@ -24,6 +24,7 @@ target 'IoTGarden' do
 #  pod 'IHKeyboardAvoiding'
   pod 'TPKeyboardAvoiding'
   pod 'ReSwift'
+  pod 'ReSwiftRouter'
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'SDWebImage'  

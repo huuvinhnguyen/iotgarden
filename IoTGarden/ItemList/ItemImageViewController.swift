@@ -18,9 +18,9 @@ class ItemImageViewController: UIViewController,  StoreSubscriber {
     
     @IBAction func didSaveButtonTapped(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
-        let viewModel = appStore.state.listState.itemImageViewModel
-        appStore.dispatch(ItemState.Action.loadImage(viewModel: viewModel))
-        
+        let viewModel = appStore.state.itemState.itemImageViewModel
+        appStore.dispatch(ItemState.Action.updateItemImage(imageUrl: viewModel.imageUrl))
+
     }
     private let disposeBag = DisposeBag()
 
@@ -43,10 +43,10 @@ class ItemImageViewController: UIViewController,  StoreSubscriber {
         super.viewDidLoad()
         prepareNibs()
         
-        appStore.subscribe(self) { $0.select { $0.listState }.skipRepeats() }
+        appStore.subscribe(self) { $0.select { $0.itemState }.skipRepeats() }
         
         imagesRelay.asObservable()
-            .map { $0.map { SectionItem.imageSectionItem(viewModel: $0) } }
+            .map { $0.map { SectionItem.imageSectionItem(viewModel: ItemImageCell.ViewModel(id: $0.id, isSelected: $0.isSelected, imageUrl: $0.imageUrl)) } }
             .map { sectionItems -> [SectionModel]  in
                 return [SectionModel.itemSection(title: "1", items: sectionItems)]
             }
@@ -76,30 +76,26 @@ import RxDataSources
 
 extension ItemImageViewController {
     
-    enum SectionModel {
+    enum SectionModel: SectionModelType {
         case itemSection(title: String, items: [SectionItem])
+        
+        typealias Item = ItemImageViewController.SectionItem
+        init(original: ItemImageViewController.SectionModel, items: [Item]) {
+            switch original {
+            case let .itemSection(title: title, items: items):
+                self = .itemSection(title: title, items: items)
+            }
+        }
+        
+        var items: [ItemImageViewController.SectionItem] {
+            switch self {
+            case .itemSection(title: _, items: let items):
+                return items.map {$0}
+            }
+        }
     }
     
     enum SectionItem {
-        case imageSectionItem(viewModel: ItemImageViewModel)
+        case imageSectionItem(viewModel: ItemImageCell.ViewModel)
     }
 }
-
-extension ItemImageViewController.SectionModel: SectionModelType {
-    
-    typealias Item = ItemImageViewController.SectionItem
-    init(original: ItemImageViewController.SectionModel, items: [Item]) {
-        switch original {
-        case let .itemSection(title: title, items: items):
-            self = .itemSection(title: title, items: items)
-        }
-    }
-    
-    var items: [ItemImageViewController.SectionItem] {
-        switch self {
-        case .itemSection(title: _, items: let items):
-            return items.map {$0}
-        }
-    }
-}
-

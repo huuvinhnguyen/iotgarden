@@ -14,15 +14,19 @@ class ItemImageCell: UICollectionViewCell {
     
     @IBOutlet weak var itemImageView: UIImageView!
     
-    var viewModel: ItemImageViewModel! {
+    var viewModel: ViewModel! {
         
         didSet {
             checkButton?.isSelected = viewModel.isSelected
             itemImageView.sd_setImage(with: URL(string: viewModel.imageUrl), placeholderImage: R.image.icon_camera())
         }
     }
-
     
+    struct ViewModel {
+        var id = ""
+        var isSelected = false
+        var imageUrl = ""
+    }
 }
 
 struct ItemImageViewModel {

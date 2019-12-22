@@ -1,13 +1,13 @@
 //
-//  TopicSaveCell.swift
+//  ItemSaveCell.swift
 //  IoTGarden
 //
-//  Created by Vinh Nguyen on 11/6/19.
+//  Created by Vinh Nguyen on 12/12/19.
 //
 
 import UIKit
 
-class TopicSaveCell: UITableViewCell {
+class ItemSaveCell: UITableViewCell {
     
     var didTapSaveAction: (() -> Void)?
     
@@ -23,7 +23,4 @@ class TopicSaveCell: UITableViewCell {
     struct ViewModel {
         
     }
-    
 }
-
-

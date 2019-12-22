@@ -93,7 +93,6 @@ class TopicViewController: UIViewController, StoreSubscriber {
     
     private func prepairNibs() {
         
-//        tableView.register(R.nib.serverCell)
         tableView.register(R.nib.topicCell)
         tableView.register(R.nib.topicSwitchCell)
         tableView.register(R.nib.topicQosCell)
@@ -107,7 +106,7 @@ class TopicViewController: UIViewController, StoreSubscriber {
                 .topicItem(viewModel: TopicCell.ViewModel(name: $0?.name , topic: $0?.topic, type: $0?.type)),
                 .topicSwitchItem(viewModel: TopicSwitchViewModel()),
                 .topicQosItem(viewModel: TopicQosViewModel()),
-                .topicSaveItem(viewModel: TopicSaveViewModel())
+                .topicSaveItem(viewModel: TopicSaveCell.ViewModel())
                 
                 ])
             ]}

@@ -6,9 +6,11 @@
 //
 
 import ReSwift
+import ReSwiftRouter
 
 struct AppState: ReSwift.StateType {
-    var listState = ItemState()
+    var navigationState: NavigationState = NavigationState()
+    var itemState = ItemState()
     var topicState = TopicState()
     var connectionState = ConnectionState()
 }

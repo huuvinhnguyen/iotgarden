@@ -10,38 +10,114 @@ import ReSwift
 import RxCocoa
 import RxSwift
 import SDWebImage
-
+import RxDataSources
+import ReSwiftRouter
 
 class ItemNameViewController: UIViewController, StoreSubscriber {
     
-    @IBOutlet weak var imageButton: UIButton!
+    @IBOutlet weak private var tableView: UITableView!
     private let disposeBag = DisposeBag()
-    func newState(state: ItemState) {
-        itemRelay.accept(state.itemImageViewModel)
+
+    func newState(state: (identifier :String, itemState: ItemState)) {
+        itemRelay.accept(state.itemState.itemViewModel)
+        self.identifier = state.identifier
+        print("#item name identifier: \(identifier)")
+
     }
     
-    private let itemRelay = PublishRelay<ItemImageViewModel>()
-    private var itemListViewModel = ItemListViewModel()
+    var identifier = ""
+    
+    private let itemRelay = PublishRelay<ItemViewModel>()
+    private var itemViewModel = ItemViewModel()
+    
+    private var dataSource: RxTableViewSectionedReloadDataSource<Section> {
+        
+        return RxTableViewSectionedReloadDataSource<Section>(configureCell: { [weak self] dataSource, tableView, indexPath, viewModel in
+            guard let self = self else { return UITableViewCell() }
+            switch dataSource[indexPath] {
+            case .headerItem(let viewModel):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemNameHeaderCell, for: indexPath) else { return UITableViewCell() }
+                cell.viewModel = viewModel
+                cell.nameTextField.rx.text.subscribe(onNext:{ text in
+                    self.itemViewModel.name = text ?? ""
+                }).disposed(by: self.disposeBag)
+                return cell
+            case .item(let viewModel):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemNameCell, for: indexPath) else { return UITableViewCell() }
+                cell.viewModel = viewModel
+                self.itemViewModel.imageUrl = viewModel?.imageUrl ?? ""
+                cell.didTapSelectAction = {
+                    let vc = R.storyboard.itemList.itemImageViewController()!
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+                return cell
+            case .footerItem():
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemSaveCell, for: indexPath) else { return UITableViewCell() }
+                cell.didTapSaveAction = {
+                    self.saveButtonTapped("")
+                }
+                
+                return cell
+            }
+        })
+        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        appStore.subscribe(self) { $0.select { $0.listState }.skipRepeats() }
-        itemRelay.asObservable()
-            .subscribe(onNext: { [weak self] viewModel in
-                guard let weakSelf = self else { return }
+        prepareNibs()
+
+        appStore.subscribe(self) { subcription in
+            subcription.select { state in
+                let identifier: String = state.navigationState.getRouteSpecificState(
+                    state.navigationState.route
+                    ) ?? ""
+                return (identifier, state.itemState)
                 
-                weakSelf.imageButton.sd_setBackgroundImage(with: URL(string: viewModel.imageUrl), for: .normal, completed: nil)
-                weakSelf.itemListViewModel.imageUrlString = viewModel.imageUrl
-            })
-        .disposed(by: disposeBag)
+            }
+        }
         
+        itemRelay.map { viewModel in
+            [
+                
+                                    Section(title: "", items: [
+                                        .headerItem(viewModel: ItemNameHeaderCell.ViewModel(name: viewModel.name)),
+                                        .item(viewModel: ItemNameCell.ViewModel(imageUrl: viewModel.imageUrl)),
+                                        .footerItem()
+                                        ])
+                                ]
+            }.bind(to: tableView.rx.items(dataSource: dataSource))
+                .disposed(by: disposeBag)
+        
+        appStore.dispatch(ItemState.Action.loadItem(id: identifier))
+        
+    }
     
+    private func prepareNibs() {
+        tableView.register(R.nib.itemNameCell)
+        tableView.register(R.nib.itemNameHeaderCell)
+        tableView.register(R.nib.itemSaveCell)
+    }
+    
+    private func loadData() {
+        
+                let sections: [Section] = [
+        
+                    Section(title: "", items: [
+                        .headerItem(viewModel: ItemNameHeaderCell.ViewModel(name: "abc")),
+                        .item(viewModel: ItemNameCell.ViewModel()),
+                        .footerItem()
+                        ])
+                ]
+        
+                Observable.just(sections)
+                    .bind(to: tableView.rx.items(dataSource: dataSource))
+                    .disposed(by: disposeBag)
     }
     
     @IBAction func dismissButtonTapped(_ sender: Any) {
-
-        self.dismiss(animated: true, completion: nil)
-       
+        
+        let routes =  identifier == "" ? [mainViewRoute] : [mainViewRoute, itemDetailRoute]
+        appStore.dispatch(ReSwiftRouter.SetRouteAction(routes))
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
@@ -51,13 +127,51 @@ class ItemNameViewController: UIViewController, StoreSubscriber {
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         
-        self.dismiss(animated: true, completion: nil)
-        let action = ItemState.Action.addItem(item: ItemListViewModel(uuid: UUID().uuidString, name: itemListViewModel.name, imageUrlString: itemListViewModel.imageUrlString))
-        appStore.dispatch(action)
+        let id = self.identifier == "" ?  UUID().uuidString : self.identifier
+        
+        if self.identifier == "" {
+            let action = ItemState.Action.addItem(item: ItemViewModel(uuid: id, name: itemViewModel.name, imageUrl: itemViewModel.imageUrl))
+            appStore.dispatch(action)
+        } else {
+            let action = ItemState.Action.updateItem(item: ItemViewModel(uuid: id, name: itemViewModel.name, imageUrl: itemViewModel.imageUrl))
+            appStore.dispatch(action)
+        }
+        
+        let routes = [mainViewRoute, itemDetailRoute]
+        let setDataAction = ReSwiftRouter.SetRouteSpecificData(route: routes, data: id )
+        appStore.dispatch(setDataAction)
+        appStore.dispatch(ReSwiftRouter.SetRouteAction(routes))
+
     }
     
     @IBAction func pictureButtonTapped(_ sender: Any) {
         let vc = R.storyboard.itemList.itemImageViewController()!
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension ItemNameViewController {
+    
+    struct Section: SectionModelType {
+        
+        var title: String
+        var items: [Item]
+        typealias Item = SectionItem
+        
+        init(title: String, items: [Item]) {
+            self.title = title
+            self.items = items
+        }
+
+        init(original: Section, items: [Item]) {
+            self = original
+            self.items = items
+        }
+    }
+    
+    enum SectionItem {
+        case headerItem(viewModel: ItemNameHeaderCell.ViewModel?)
+        case item(viewModel: ItemNameCell.ViewModel?)
+        case footerItem()
     }
 }
