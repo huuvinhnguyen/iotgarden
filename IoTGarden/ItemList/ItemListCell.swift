@@ -11,17 +11,11 @@ class ItemListCell: UICollectionViewCell {
     
     @IBOutlet weak var itemImageView: UIImageView!
     var switchCellUI: SwitchCellUI?
-    var viewModel: ItemViewModel? {
-        didSet {
-            itemImageView.sd_setImage(with: URL(string: viewModel?.imageUrl ?? ""), placeholderImage: R.image.icon_camera())
-            
-        }
-    }
     
-    var viewModel2: ViewModel? {
+    var viewModel: ViewModel? {
         didSet {
-            nameLabel?.text = viewModel2?.name
-            itemImageView.sd_setImage(with: URL(string: viewModel2?.imageUrl ?? ""), placeholderImage: R.image.icon_camera())
+            nameLabel?.text = viewModel?.name
+            itemImageView.sd_setImage(with: URL(string: viewModel?.imageUrl ?? ""), placeholderImage: R.image.icon_camera())
         }
     }
     

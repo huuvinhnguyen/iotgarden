@@ -2,7 +2,7 @@
 //  ItemSaveCell.swift
 //  IoTGarden
 //
-//  Created by chuyendo on 12/12/19.
+//  Created by Vinh Nguyen on 12/12/19.
 //
 
 import UIKit

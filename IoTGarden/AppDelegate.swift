@@ -16,7 +16,7 @@ import ReSwiftRouter
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var router: Router<AppState>!
+    private var router: Router<AppState>!
 
     func application(_ application: UIApplication,   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         

@@ -43,14 +43,6 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                 cell.didTapEditAction = {
                     guard let self = self else { return }
                     
-                    let viewController = R.storyboard.itemList.instantiateInitialViewController()!
-                    
-
-//                    self.modalPresentationStyle = .currentContext
-//                    self.present(viewController, animated: true, completion: {
-//                        appStore.dispatch(ItemState.Action.loadItem(id: self.identifier))
-//                    })
-                    
                     let setDataAction = ReSwiftRouter.SetRouteSpecificData(route: [mainViewRoute, itemDetailRoute, itemNameRoute], data: self.identifier)
                     appStore.dispatch(setDataAction)
 

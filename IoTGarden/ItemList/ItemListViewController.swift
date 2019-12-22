@@ -71,14 +71,8 @@ class ItemListViewController: UIViewController, StoreSubscriber {
             guard let weakSelf = self else { return }
             
             if case  SectionItem.tailSectionItem() = sectionItem {
-                
-//                let viewController = R.storyboard.itemList.instantiateInitialViewController()!
-//                weakSelf.modalPresentationStyle = .currentContext
-//                weakSelf.present(viewController, animated: true, completion: nil)
                 appStore.dispatch(ReSwiftRouter.SetRouteAction([mainViewRoute, itemNameRoute], animated: true))
 
-                
-                
             } else {
                 
 
@@ -215,7 +209,7 @@ extension ItemListViewController {
             case let .itemListSectionItem(viewModel):
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemListCell", for: indexPath) as! ItemListCell
                 //                cell.configure(cellUI: cellUI)
-                cell.viewModel2 = viewModel
+                cell.viewModel = viewModel
                 return cell
                 
             case let .switchSectionItem(cellUI):

@@ -93,7 +93,6 @@ class TopicViewController: UIViewController, StoreSubscriber {
     
     private func prepairNibs() {
         
-//        tableView.register(R.nib.serverCell)
         tableView.register(R.nib.topicCell)
         tableView.register(R.nib.topicSwitchCell)
         tableView.register(R.nib.topicQosCell)

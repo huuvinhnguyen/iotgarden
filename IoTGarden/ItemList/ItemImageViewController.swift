@@ -34,7 +34,7 @@ class ItemImageViewController: UIViewController,  StoreSubscriber {
         switch dataSource[indexPath] {
         case .imageSectionItem(let viewModel):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemImageCell", for: indexPath) as! ItemImageCell
-            cell.viewModel2 = viewModel
+            cell.viewModel = viewModel
             return cell
         }
     })
