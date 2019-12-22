@@ -33,6 +33,7 @@
 		049A85822365A1A30038D247 /* TopicListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A85812365A1A30038D247 /* TopicListService.swift */; };
 		049A85862365A4DC0038D247 /* TopicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A85852365A4DC0038D247 /* TopicData.swift */; };
 		049A85882365B3010038D247 /* ItemDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A85872365B3010038D247 /* ItemDataInteractor.swift */; };
+		049C7DB823AF621900B047E7 /* Routers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049C7DB723AF621900B047E7 /* Routers.swift */; };
 		04CD3798239963990020A8B5 /* ItemTopicSignInCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD3797239963990020A8B5 /* ItemTopicSignInCell.swift */; };
 		04CD379A239963B30020A8B5 /* ItemTopicSignInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CD3799239963B30020A8B5 /* ItemTopicSignInCell.xib */; };
 		04F247FC23378B80003239B6 /* ItemTopic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F247FB23378B80003239B6 /* ItemTopic.storyboard */; };
@@ -205,6 +206,7 @@
 		049A85812365A1A30038D247 /* TopicListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicListService.swift; sourceTree = "<group>"; };
 		049A85852365A4DC0038D247 /* TopicData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicData.swift; sourceTree = "<group>"; };
 		049A85872365B3010038D247 /* ItemDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataInteractor.swift; sourceTree = "<group>"; };
+		049C7DB723AF621900B047E7 /* Routers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routers.swift; sourceTree = "<group>"; };
 		04CD3797239963990020A8B5 /* ItemTopicSignInCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicSignInCell.swift; sourceTree = "<group>"; };
 		04CD3799239963B30020A8B5 /* ItemTopicSignInCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTopicSignInCell.xib; sourceTree = "<group>"; };
 		04F247FB23378B80003239B6 /* ItemTopic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemTopic.storyboard; sourceTree = "<group>"; };
@@ -674,16 +676,17 @@
 			children = (
 				18E7A71D218EE4E800F7E689 /* ReactiveReSwiftBridge.swift */,
 				18E7A723218EFDF600F7E689 /* ItemState.swift */,
+				18B5506421C55A14004EC438 /* ItemReducer.swift */,
 				047CCB982365FD920044B9F2 /* Middleware.swift */,
 				04F315022376C6D700184507 /* TopicState.swift */,
 				043009E3237DB682004FA341 /* ConnectionState.swift */,
 				18E7A727218EFEDD00F7E689 /* ItemListAction.swift */,
 				18E7A729218EFF9900F7E689 /* ItemListStore.swift */,
 				18B5506221C559FF004EC438 /* ItemAction.swift */,
-				18B5506421C55A14004EC438 /* ItemReducer.swift */,
 				18B5506621C56104004EC438 /* ItemStore.swift */,
 				181F50A322F1FEAE00EA89D1 /* AppState.swift */,
 				18B975C722FE945700E7DD8D /* AppStore.swift */,
+				049C7DB723AF621900B047E7 /* Routers.swift */,
 			);
 			path = Redux;
 			sourceTree = "<group>";
@@ -1021,6 +1024,7 @@
 				1803375D21CB3C350098F944 /* TemperatureDevice.swift in Sources */,
 				18CCFFFF21E84A0B0075BA6B /* Date+Extension.swift in Sources */,
 				18E7A72A218EFF9900F7E689 /* ItemListStore.swift in Sources */,
+				049C7DB823AF621900B047E7 /* Routers.swift in Sources */,
 				186AB62123328FB30017F935 /* AddItemTopicCell.swift in Sources */,
 				183A920122EB53FC00EBDC4A /* ItemDetailTopicViewController.swift in Sources */,
 				049A85882365B3010038D247 /* ItemDataInteractor.swift in Sources */,

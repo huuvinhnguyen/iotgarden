@@ -18,8 +18,11 @@ class ItemNameViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak private var tableView: UITableView!
     private let disposeBag = DisposeBag()
 
-    func newState(state: ItemState) {
-        itemRelay.accept(state.itemViewModel)
+    func newState(state: (identifier :String, itemState: ItemState)) {
+        itemRelay.accept(state.itemState.itemViewModel)
+        self.identifier = state.identifier
+        print("#item name identifier: \(identifier)")
+
     }
     
     var identifier = ""
@@ -63,7 +66,15 @@ class ItemNameViewController: UIViewController, StoreSubscriber {
         super.viewDidLoad()
         prepareNibs()
 
-        appStore.subscribe(self) { $0.select { $0.itemState }.skipRepeats() }
+        appStore.subscribe(self) { subcription in
+            subcription.select { state in
+                let identifier: String = state.navigationState.getRouteSpecificState(
+                    state.navigationState.route
+                    ) ?? ""
+                return (identifier, state.itemState)
+                
+            }
+        }
         
         itemRelay.map { viewModel in
             [
@@ -104,9 +115,9 @@ class ItemNameViewController: UIViewController, StoreSubscriber {
     }
     
     @IBAction func dismissButtonTapped(_ sender: Any) {
-
-        self.dismiss(animated: true, completion: nil)
-       
+        
+        let routes =  identifier == "" ? [mainViewRoute] : [mainViewRoute, itemDetailRoute]
+        appStore.dispatch(ReSwiftRouter.SetRouteAction(routes))
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
@@ -115,10 +126,21 @@ class ItemNameViewController: UIViewController, StoreSubscriber {
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-        let action = ItemState.Action.addItem(item: ItemViewModel(uuid: UUID().uuidString, name: itemViewModel.name, imageUrl: itemViewModel.imageUrl))
-        appStore.dispatch(action)
-        appStore.dispatch(ReSwiftRouter.SetRouteAction([mainViewRoute, itemDetailRoute]))
+        
+        let id = self.identifier == "" ?  UUID().uuidString : self.identifier
+        
+        if self.identifier == "" {
+            let action = ItemState.Action.addItem(item: ItemViewModel(uuid: id, name: itemViewModel.name, imageUrl: itemViewModel.imageUrl))
+            appStore.dispatch(action)
+        } else {
+            let action = ItemState.Action.updateItem(item: ItemViewModel(uuid: id, name: itemViewModel.name, imageUrl: itemViewModel.imageUrl))
+            appStore.dispatch(action)
+        }
+        
+        let routes = [mainViewRoute, itemDetailRoute]
+        let setDataAction = ReSwiftRouter.SetRouteSpecificData(route: routes, data: id )
+        appStore.dispatch(setDataAction)
+        appStore.dispatch(ReSwiftRouter.SetRouteAction(routes))
 
     }
     

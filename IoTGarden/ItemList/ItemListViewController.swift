@@ -12,6 +12,7 @@ import RxDataSources
 import RxSwift
 import RxCocoa
 import ReSwift
+import ReSwiftRouter
 
 private struct ItemDef {
     let title: String
@@ -43,6 +44,7 @@ class ItemListViewController: UIViewController, StoreSubscriber {
         appStore.subscribe(self) { $0.select { $0.itemState }.skipRepeats() }
     }
     
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -70,18 +72,20 @@ class ItemListViewController: UIViewController, StoreSubscriber {
             
             if case  SectionItem.tailSectionItem() = sectionItem {
                 
-                let viewController = R.storyboard.itemList.instantiateInitialViewController()!
-                weakSelf.modalPresentationStyle = .currentContext
-                weakSelf.present(viewController, animated: true, completion: nil)
+//                let viewController = R.storyboard.itemList.instantiateInitialViewController()!
+//                weakSelf.modalPresentationStyle = .currentContext
+//                weakSelf.present(viewController, animated: true, completion: nil)
+                appStore.dispatch(ReSwiftRouter.SetRouteAction([mainViewRoute, itemNameRoute], animated: true))
+
                 
                 
             } else {
                 
-                let vc = R.storyboard.itemDetail.itemDetailViewController()!
-                weakSelf.navigationController?.pushViewController(vc, animated: true)
+
+                let setDataAction = ReSwiftRouter.SetRouteSpecificData(route: [mainViewRoute, itemDetailRoute], data: sectionItem.identity )
                 
-                vc.identifier = sectionItem.identity
-                
+                appStore.dispatch(setDataAction)
+                appStore.dispatch(ReSwiftRouter.SetRouteAction([mainViewRoute, itemDetailRoute], animated: true))
             }
             
             

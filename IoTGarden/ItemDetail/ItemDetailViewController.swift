@@ -10,6 +10,7 @@ import CoreData
 import ReSwift
 import RxDataSources
 import RxSwift
+import ReSwiftRouter
 import RxCocoa
 
 struct ItemDetailViewModel {
@@ -21,6 +22,7 @@ struct ItemDetailViewModel {
 }
 
 class ItemDetailViewController: UIViewController, StoreSubscriber {
+   
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -44,10 +46,16 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                     let viewController = R.storyboard.itemList.instantiateInitialViewController()!
                     
 
-                    self.modalPresentationStyle = .currentContext
-                    self.present(viewController, animated: true, completion: {
-                        appStore.dispatch(ItemState.Action.loadItem(id: self.identifier))
-                    })
+//                    self.modalPresentationStyle = .currentContext
+//                    self.present(viewController, animated: true, completion: {
+//                        appStore.dispatch(ItemState.Action.loadItem(id: self.identifier))
+//                    })
+                    
+                    let setDataAction = ReSwiftRouter.SetRouteSpecificData(route: [mainViewRoute, itemDetailRoute, itemNameRoute], data: self.identifier)
+                    appStore.dispatch(setDataAction)
+
+                    appStore.dispatch(ReSwiftRouter.SetRouteAction([mainViewRoute, itemDetailRoute, itemNameRoute]))
+                
                 }
                 return cell
                 
@@ -107,14 +115,13 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         })
     }
 
-    func newState(state: TopicState) {
+    func newState(state: (identifier :String, topicState: TopicState)) {
         
-        topicsRelay.accept(state.topicViewModels)
+        topicsRelay.accept(state.topicState.topicViewModels)
+        print("#detail identifier: \(identifier) ")
+        self.identifier = state.identifier
         
     }
-    
-    
-    typealias StoreSubscriberStateType = TopicState
     
     var sensor: Topic? {
         didSet {
@@ -124,9 +131,14 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     
     var identifier = ""
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-       
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.isMovingFromParent {
+            appStore.dispatch(ReSwiftRouter.SetRouteAction([mainViewRoute]))
+
+        }
     }
 
     override func viewDidLoad() {
@@ -135,7 +147,13 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         configureTableView()
 
         appStore.subscribe(self) { subcription in
-            subcription.select { state in state.topicState }.skipRepeats()
+            subcription.select { state in
+                let identifier: String = state.navigationState.getRouteSpecificState(
+                    state.navigationState.route
+                ) ?? ""
+                return (identifier, state.topicState)
+                
+                }
         }    
         appStore.dispatch(TopicState.Action.loadTopics())
     }

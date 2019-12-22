@@ -20,6 +20,8 @@ struct ItemDataInteractor: DataInteractor {
         items.setValue(item.name, forKeyPath: "name")
         items.setValue(item.topics?.joined(separator: ","), forKeyPath: "topics")
         items.setValue(item.imageUrlString, forKeyPath: "imageUrlString")
+        items.setValue(Date(), forKeyPath: "date")
+
         
         do {
             
@@ -86,6 +88,11 @@ struct ItemDataInteractor: DataInteractor {
         
         let context = Storage.shared.context
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Items")
+        
+        let sort = NSSortDescriptor(key: "date", ascending: false)
+
+        let sortDescriptors = [sort]
+        fetchRequest.sortDescriptors = sortDescriptors
         
         do {
             let result = try context.fetch(fetchRequest)

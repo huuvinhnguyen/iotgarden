@@ -19,7 +19,7 @@ class ItemImageViewController: UIViewController,  StoreSubscriber {
     @IBAction func didSaveButtonTapped(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
         let viewModel = appStore.state.itemState.itemImageViewModel
-        appStore.dispatch(ItemState.Action.updateItem(imageUrl: viewModel.imageUrl))
+        appStore.dispatch(ItemState.Action.updateItemImage(imageUrl: viewModel.imageUrl))
 
     }
     private let disposeBag = DisposeBag()

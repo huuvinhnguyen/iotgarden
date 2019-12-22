@@ -7,30 +7,6 @@
 
 import ReSwift
 
-let itemListMiddleware: ReSwift.Middleware<AppState> = {  dispatch, getState in
-    
-    return { next in
-        print("enter detail middleware")
-        return { action in
-            if case ItemState.Action.addItem(let viewModel) = action {
-                    let service = ItemListService()
-                service.addItem(item: ItemListService.ItemData(uuid: viewModel.uuid, name: viewModel.name, imageUrlString: viewModel.imageUrl, topics:[])) { item in
-                    
-                    dispatch(ItemState.Action.loadItems())
-                }
-            }
-            
-            if case ItemState.Action.removeItem(let id ) = action {
-                let itemListService = ItemListService()
-                itemListService.removeItem(id: id) { _ in
-                    dispatch(ItemState.Action.loadItems())
-                }
-            }
-
-            next(action)
-        }
-    }
-}
 
 
 let switchingMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in

@@ -44,6 +44,14 @@ struct ItemListService {
         
     }
     
+    func updateItem(item: ItemData, finished: (_ item: ItemData)->()) {
+        let interactor = ItemDataInteractor()
+        interactor.update(item: item) { _ in
+            finished(item)
+        }
+        
+    }
+    
     
     func loadTopics(finished: (_ topics: [Topic])-> ()) {
         

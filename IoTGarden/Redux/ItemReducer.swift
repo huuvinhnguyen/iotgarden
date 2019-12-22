@@ -43,11 +43,12 @@ extension ItemState {
                 state.identifiableComponent.update()
             }
             
-        case .updateItem(let imageUrl):
+        case .updateItemImage(let imageUrl):
             var item = state.itemViewModel
             item.imageUrl = imageUrl
             state.itemViewModel = item
             state.identifiableComponent.update()
+
 
         default: ()
         }
