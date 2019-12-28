@@ -14,11 +14,12 @@ struct ServerSection {
 }
 
 enum ServerSectionItem {
-    case serverItem(viewModel: ServerViewModel?)
+    case serverItem(viewModel: ServerCell.ViewModel?)
     case topicItem(viewModel: TopicCell.ViewModel?)
     case topicSwitchItem(viewModel: TopicSwitchViewModel)
     case topicQosItem(viewModel: TopicQosViewModel)
     case topicSaveItem(viewModel: TopicSaveCell.ViewModel)
+    case trashItem(id: String)
 }
 
 extension ServerSection: SectionModelType {

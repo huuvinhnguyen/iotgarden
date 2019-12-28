@@ -14,7 +14,7 @@ class AddItemSavingViewController:  UIViewController {
     @IBOutlet weak var topicTextField: UITextField?
 
     var mqtt: CocoaMQTT?
-    var configuration: ItemListService.Configuration?
+    var configuration: ItemListService.Server?
     var kind: String?
     
     @IBAction func saveButtonTapped(sender: UIButton) {

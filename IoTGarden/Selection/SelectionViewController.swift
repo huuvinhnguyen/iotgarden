@@ -21,7 +21,7 @@ class SelectionViewController:  UIViewController, StoreSubscriber {
         
     }
     
-    var serversRelay = PublishRelay<[ServerViewModel]>()
+    var serversRelay = PublishRelay<[Server]>()
     var selectedRelay = PublishRelay<String>()
     var selectedId = ""
 

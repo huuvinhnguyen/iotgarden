@@ -12,6 +12,7 @@
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="port" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="server" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sslPort" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -26,7 +27,7 @@
     </entity>
     <elements>
         <element name="Items" positionX="-27" positionY="90" width="128" height="120"/>
-        <element name="LocalConfiguration" positionX="-36" positionY="27" width="128" height="135"/>
+        <element name="LocalConfiguration" positionX="-36" positionY="27" width="128" height="150"/>
         <element name="Sensors" positionX="-27" positionY="45" width="128" height="150"/>
     </elements>
 </model>

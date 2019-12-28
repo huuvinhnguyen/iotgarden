@@ -40,26 +40,12 @@ class TopicTypeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepairNibs()
-        loadData()
+        
     }
     
     private func prepairNibs() {
         
-        //        tableView.register(R.nib.serverCell)
         tableView.register(R.nib.topicCell)
         tableView.register(R.nib.topicTypeCell)
-    }
-    
-    private func loadData() {
-        
-//        let sections: [ServerSection] = [
-//            
-//            ServerSection(title: "", items: [ .topicItem(viewModel: TopicViewModel())
-//                ])
-//        ]
-//        
-//        Observable.just(sections)
-//            .bind(to: tableView.rx.items(dataSource: dataSource))
-//            .disposed(by: disposeBag)
     }
 }

@@ -20,7 +20,7 @@ class ItemDetailServerViewController:  UIViewController {
     
     var serverUUID: String?
     
-    fileprivate var configuration: ItemListService.Configuration?
+    fileprivate var configuration: ItemListService.Server?
     
     @IBAction func connectButtonTapped(sender: UIButton) {
         

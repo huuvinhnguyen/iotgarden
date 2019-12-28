@@ -6,48 +6,92 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ServerCell: UITableViewCell {
     
-    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet private weak var nameTextField: UITextField!
     
-    @IBOutlet weak var userTextField: UITextField!
+    @IBOutlet private weak var userTextField: UITextField!
     
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
     
-    @IBOutlet weak var serverTextField: UITextField!
+    @IBOutlet private weak var serverTextField: UITextField!
     
-    @IBOutlet weak var portTextField: UITextField!
+    @IBOutlet private weak var portTextField: UITextField!
+    
+    @IBOutlet private weak var sslPortTextField: UITextField!
+    
+    var viewModelRelay = PublishRelay<ViewModel?>()
     
     var didTapSelectAction: (() -> Void)?
     
-    var didTapSaveAction: (() -> Void)?
+    var didTapSaveAction: ((_ viewModel: ViewModel?) -> Void)?
     
-    var didTapTrashAction: (() -> Void)?
+    private let disposeBag = DisposeBag()
 
     @IBAction private func selectButtonTapped(_ sender: UIButton) {
         didTapSelectAction?()
     }
     
     @IBAction private func saveButtonTapped(_ sender: UIButton) {
-        didTapSaveAction?()
+        didTapSaveAction?(viewModel)
     }
     
-    @IBAction func trashButtonTapped(_ sender: Any) {
-        didTapTrashAction?()
-    }
-    
-    var viewModel: ServerViewModel? {
+    var viewModel: ViewModel? {
         didSet {
-            nameTextField.text = viewModel?.name ?? ""
-            serverTextField.text = viewModel?.url ?? ""
             
+            nameTextField.text = viewModel?.name ?? ""
+            serverTextField.text = viewModel?.serverUrl ?? ""
+            userTextField.text = viewModel?.user ?? ""
+            passwordTextField.text = viewModel?.password ?? ""
+            portTextField.text = viewModel?.port ?? ""
+            sslPortTextField.text = viewModel?.sslPort ?? ""
+            viewModelRelay.accept(viewModel)
         }
     }
-}
-
-struct ServerViewModel {
-    let id: String
-    let name: String
-    let url: String
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        configure()
+    }
+    
+    struct ViewModel {
+        var id = ""
+        var name = ""
+        var user = ""
+        var password = ""
+        var serverUrl = ""
+        var port = ""
+        var sslPort = ""
+    }
+    
+    private func configure() {
+        
+        nameTextField.rx.text.subscribe(onNext:{ [weak self] text in
+            guard let self = self else { return }
+            self.viewModel?.name = text ?? ""
+            self.viewModelRelay.accept(self.viewModel)
+        }).disposed(by: self.disposeBag)
+        
+        serverTextField.rx.text.subscribe(onNext:{ [weak self] text in
+            guard let self = self else { return }
+            self.viewModel?.serverUrl = text ?? ""
+            self.viewModelRelay.accept(self.viewModel)
+        }).disposed(by: self.disposeBag)
+        
+        userTextField.rx.text.subscribe(onNext:{ [weak self] text in
+            guard let self = self else { return }
+            self.viewModel?.user = text ?? ""
+            self.viewModelRelay.accept(self.viewModel)
+        }).disposed(by: self.disposeBag)
+        
+        passwordTextField.rx.text.subscribe(onNext:{ [weak self] text in
+            guard let self = self else { return }
+            self.viewModel?.password = text ?? ""
+            self.viewModelRelay.accept(self.viewModel)
+        }).disposed(by: self.disposeBag)
+        
+    }
 }

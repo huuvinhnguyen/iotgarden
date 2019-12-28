@@ -9,7 +9,7 @@ import CoreData
 struct ConfigurationsDataInteractor: DataInteractor {
     
     
-    typealias MappingData = ItemListService.Configuration
+    typealias MappingData = ItemListService.Server
     
     func add(item: MappingData, finished: (MappingData) -> ()) {
         
@@ -18,10 +18,12 @@ struct ConfigurationsDataInteractor: DataInteractor {
         let localConfiguration = NSManagedObject(entity: entity, insertInto: context)
         localConfiguration.setValue(item.uuid, forKeyPath: "uuid")
         localConfiguration.setValue(item.name, forKeyPath: "name")
-        localConfiguration.setValue(item.server, forKeyPath: "server")
+        localConfiguration.setValue(item.url, forKeyPath: "server")
         localConfiguration.setValue(item.username, forKeyPath: "username")
         localConfiguration.setValue(item.password, forKeyPath: "password")
         localConfiguration.setValue(item.port, forKeyPath: "port")
+        localConfiguration.setValue(item.sslPort, forKeyPath: "sslPort")
+
         
         do {
             
@@ -60,7 +62,7 @@ struct ConfigurationsDataInteractor: DataInteractor {
         }
     }
     
-    func update(item: ItemListService.Configuration, finished: (_ id: String)->()) {
+    func update(item: ItemListService.Server, finished: (_ id: String)->()) {
         
         let context = Storage.shared.context
         
@@ -72,10 +74,12 @@ struct ConfigurationsDataInteractor: DataInteractor {
                 
                 object.setValue(item.uuid, forKeyPath: "uuid")
                 object.setValue(item.name, forKeyPath: "name")
-                object.setValue(item.server, forKeyPath: "server")
+                object.setValue(item.url, forKeyPath: "server")
                 object.setValue(item.username, forKeyPath: "username")
                 object.setValue(item.password, forKeyPath: "password")
                 object.setValue(item.port, forKeyPath: "port")
+                object.setValue(item.sslPort, forKeyPath: "sslPort")
+
             }
         }
         
@@ -88,7 +92,7 @@ struct ConfigurationsDataInteractor: DataInteractor {
         }
     }
     
-    func getItem(uuid: String, finished: (ItemListService.Configuration?)->()) {
+    func getItem(uuid: String, finished: (ItemListService.Server?)->()) {
         
         let context = Storage.shared.context
         
@@ -99,11 +103,14 @@ struct ConfigurationsDataInteractor: DataInteractor {
             
             for object in result {
                 
-                let configuration =  ItemListService.Configuration(uuid: String(describing: object.value(forKeyPath: "uuid") ?? ""), name: String(describing: object.value(forKeyPath: "name") ?? ""),
-                                     server: String(describing: object.value(forKeyPath: "server") ?? ""),
-                                     username: String(describing: object.value(forKeyPath: "username") ?? ""),
-                                     password: String(describing: object.value(forKeyPath: "password") ?? ""),
-                                     port: String(describing: object.value(forKeyPath: "port") ?? ""))
+                let configuration =  ItemListService.Server(
+                    uuid: String(describing: object.value(forKeyPath: "uuid") ?? ""),
+                    name: String(describing:object.value(forKeyPath: "name") ?? ""),
+                    url: String(describing: object.value(forKeyPath: "server") ?? ""),
+                    username: String(describing: object.value(forKeyPath: "username") ?? ""),
+                    password: String(describing: object.value(forKeyPath: "password") ?? ""),
+                    port: String(describing: object.value(forKeyPath: "port") ?? ""),
+                    sslPort: String(describing: object.value(forKeyPath: "sslPort") ?? ""))
                 finished(configuration)
                 return
             }
@@ -122,11 +129,13 @@ struct ConfigurationsDataInteractor: DataInteractor {
             let items = result.compactMap {
                 
                 
-                ItemListService.Configuration(uuid: String(describing: $0.value(forKeyPath: "uuid") ?? ""), name: String(describing: $0.value(forKeyPath: "name") ?? ""),
-                                              server: String(describing: $0.value(forKeyPath: "server") ?? ""),
+                ItemListService.Server(uuid: String(describing: $0.value(forKeyPath: "uuid") ?? ""), name: String(describing: $0.value(forKeyPath: "name") ?? ""),
+                                              url: String(describing: $0.value(forKeyPath: "server") ?? ""),
                                               username: String(describing: $0.value(forKeyPath: "username") ?? ""),
                                               password: String(describing: $0.value(forKeyPath: "password") ?? ""),
-                                              port: String(describing: $0.value(forKeyPath: "port") ?? ""))
+                                              port: String(describing: $0.value(forKeyPath: "port") ?? ""),
+                                              sslPort: String(describing: $0.value(forKeyPath: "sslPort") ?? "")
+                )
             }
             
             finished(items)

@@ -118,17 +118,18 @@ struct ItemListService {
 
 extension ItemListService {
     
-    struct Configuration {
+    struct Server {
         
         var uuid: String = ""
         var name: String = ""
-        var server: String = ""
+        var url: String = ""
         var username: String = ""
         var password: String = ""
         var port: String = ""
+        var sslPort: String = ""
     }
     
-    func addConfiguration(configuration: Configuration, finished: (_ id: String)->()) {
+    func addConfiguration(configuration: Server, finished: (_ id: String)->()) {
         
         let interactor = ConfigurationsDataInteractor()
         interactor.add(item: configuration) { _ in
@@ -136,7 +137,15 @@ extension ItemListService {
         }
     }
     
-    func loadLocalConfiguration(uuid: String, finished: (_ configuration: Configuration?)->()) {
+    func updateConfiguration(configuration: Server, finished: (_ id: String)->()) {
+        
+        let interactor = ConfigurationsDataInteractor()
+        interactor.update(item: configuration) { _ in
+            finished(configuration.uuid)
+        }
+    }
+    
+    func loadLocalConfiguration(uuid: String, finished: (_ configuration: Server?)->()) {
         
         let interactor = ConfigurationsDataInteractor()
         interactor.getItem(uuid: uuid) { configuration in
@@ -145,7 +154,7 @@ extension ItemListService {
         }
     }
     
-    func loadConfigures(finished: (_ items: [Configuration])->()) {
+    func loadConfigures(finished: (_ items: [Server])->()) {
         let interactor = ConfigurationsDataInteractor()
         interactor.getItems { items in
             finished(items)

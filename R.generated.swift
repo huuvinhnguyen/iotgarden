@@ -1281,7 +1281,6 @@ struct _R: Rswift.Validatable {
       static func validate() throws {
         if UIKit.UIImage(named: "icon_circle_down", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_circle_down' is used in nib 'ServerCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_save", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_save' is used in nib 'ServerCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "icon_trash", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_trash' is used in nib 'ServerCell', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
       }

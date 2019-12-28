@@ -20,7 +20,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
     }
     var identifier: String?
     var topicRelay = PublishRelay<TopicViewModel?>()
-    var connectionRelay = PublishRelay<ConnectionViewModel?>()
+    var connectionRelay = PublishRelay<Server?>()
 
     
     @IBOutlet weak var tableView: UITableView!
@@ -62,6 +62,8 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemTopicSignInCell, for: indexPath) else { return UITableViewCell() }
                 cell.didTapSignInAction = {
                     let viewController = R.storyboard.connection.serverViewController()!
+                    guard let topicId = self.identifier else { return }
+                    viewController.mode = .add(topicId: topicId)
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }
                 return cell
@@ -73,6 +75,9 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                 cell.didTapEditAction = {
                     let viewController = R.storyboard.connection.serverViewController()!
                     viewController.serverIdentifier = viewModel?.id
+                    guard let topicId = self.identifier else { return }
+                    viewController.mode = .edit(topicId: topicId)
+                    
                     self.navigationController?.pushViewController(viewController, animated: true)
                     
                 }
