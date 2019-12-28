@@ -26,9 +26,9 @@ class TopicViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak var tableView: UITableView!
     
     private let disposeBag = DisposeBag()
-    private var dataSource: RxTableViewSectionedReloadDataSource<ServerSection> {
+    private var dataSource: RxTableViewSectionedReloadDataSource<ServerViewController.Section> {
         
-        return RxTableViewSectionedReloadDataSource<ServerSection>(configureCell: { [weak self] dataSource, tableView, indexPath, viewModel in
+        return RxTableViewSectionedReloadDataSource<ServerViewController.Section>(configureCell: { [weak self] dataSource, tableView, indexPath, viewModel in
             
             guard let self = self else { return UITableViewCell() }
 
@@ -102,7 +102,7 @@ class TopicViewController: UIViewController, StoreSubscriber {
     private func loadData() {
         
         topicRelay.map { [
-            ServerSection(title: "", items: [
+            ServerViewController.Section(title: "", items: [
                 .topicItem(viewModel: TopicCell.ViewModel(name: $0?.name , topic: $0?.topic, type: $0?.type)),
                 .topicSwitchItem(viewModel: TopicSwitchViewModel()),
                 .topicQosItem(viewModel: TopicQosViewModel()),

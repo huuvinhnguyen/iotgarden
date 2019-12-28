@@ -42,9 +42,9 @@ class ServerViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak var tableView: UITableView!
     
     private let disposeBag = DisposeBag()
-    private var dataSource: RxTableViewSectionedReloadDataSource<ServerSection> {
+    private var dataSource: RxTableViewSectionedReloadDataSource<Section> {
         
-        return RxTableViewSectionedReloadDataSource<ServerSection>(configureCell: { [weak self] dataSource, tableView, indexPath, viewModel in
+        return RxTableViewSectionedReloadDataSource<Section>(configureCell: { [weak self] dataSource, tableView, indexPath, viewModel in
             
             guard let self = self else { return UITableViewCell() }
 
@@ -160,9 +160,9 @@ class ServerViewController: UIViewController, StoreSubscriber {
     private func loadData() {
         
         connectionRelay.map {
-            [ServerSection(title: "", items: [
-                ServerSectionItem.serverItem(viewModel: ServerCell.ViewModel(id: $0?.id ?? "", name: $0?.name ?? "", user: $0?.user ?? "", password: $0?.password ?? "", serverUrl: $0?.url ?? "", port: $0?.port ?? "", sslPort: $0?.sslPort ?? "" )),
-                ServerSectionItem.trashItem(id: $0?.id ?? "")
+            [Section(title: "", items: [
+                SectionItem.serverItem(viewModel: ServerCell.ViewModel(id: $0?.id ?? "", name: $0?.name ?? "", user: $0?.user ?? "", password: $0?.password ?? "", serverUrl: $0?.url ?? "", port: $0?.port ?? "", sslPort: $0?.sslPort ?? "" )),
+                SectionItem.trashItem(id: $0?.id ?? "")
                                               ])]
             }
             .bind(to: tableView.rx.items(dataSource: dataSource))

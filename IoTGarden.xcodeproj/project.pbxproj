@@ -47,7 +47,7 @@
 		04F2480B2337DD5D003239B6 /* ServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2480A2337DD5D003239B6 /* ServerViewController.swift */; };
 		04F2480D2338EAD6003239B6 /* ServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2480C2338EAD6003239B6 /* ServerCell.swift */; };
 		04F2480F2338EB18003239B6 /* ServerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F2480E2338EB18003239B6 /* ServerCell.xib */; };
-		04F248112338EE62003239B6 /* ServerSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F248102338EE62003239B6 /* ServerSection.swift */; };
+		04F248112338EE62003239B6 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F248102338EE62003239B6 /* Section.swift */; };
 		04F248162339285B003239B6 /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F248152339285B003239B6 /* TopicCell.swift */; };
 		04F248182339286D003239B6 /* TopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F248172339286D003239B6 /* TopicCell.xib */; };
 		04F314F7236B33C800184507 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F314F6236B33C800184507 /* FirebaseService.swift */; };
@@ -220,7 +220,7 @@
 		04F2480A2337DD5D003239B6 /* ServerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerViewController.swift; sourceTree = "<group>"; };
 		04F2480C2338EAD6003239B6 /* ServerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCell.swift; sourceTree = "<group>"; };
 		04F2480E2338EB18003239B6 /* ServerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServerCell.xib; sourceTree = "<group>"; };
-		04F248102338EE62003239B6 /* ServerSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSection.swift; sourceTree = "<group>"; };
+		04F248102338EE62003239B6 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		04F248152339285B003239B6 /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
 		04F248172339286D003239B6 /* TopicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicCell.xib; sourceTree = "<group>"; };
 		04F314F6236B33C800184507 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
@@ -409,7 +409,7 @@
 			isa = PBXGroup;
 			children = (
 				04F2480A2337DD5D003239B6 /* ServerViewController.swift */,
-				04F248102338EE62003239B6 /* ServerSection.swift */,
+				04F248102338EE62003239B6 /* Section.swift */,
 				04F2480C2338EAD6003239B6 /* ServerCell.swift */,
 				04F2480E2338EB18003239B6 /* ServerCell.xib */,
 				04F248152339285B003239B6 /* TopicCell.swift */,
@@ -1090,7 +1090,7 @@
 				18E7A728218EFEDD00F7E689 /* ItemListAction.swift in Sources */,
 				1803375621CA9B130098F944 /* Topic.swift in Sources */,
 				04F314F9236B36AE00184507 /* ItemImageViewController.swift in Sources */,
-				04F248112338EE62003239B6 /* ServerSection.swift in Sources */,
+				04F248112338EE62003239B6 /* Section.swift in Sources */,
 				1803377A21CBF7310098F944 /* SelectionCell.swift in Sources */,
 				5B2CD589228973A400EA8B25 /* UIView+Extension.swift in Sources */,
 				18D74DA321C8DA7900612351 /* EnumCollection.swift in Sources */,
