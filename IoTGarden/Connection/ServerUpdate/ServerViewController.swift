@@ -13,7 +13,7 @@ import ReSwift
 
 class ServerViewController: UIViewController, StoreSubscriber {
 
-    func newState(state: ConnectionState) {
+    func newState(state: ServerState ) {
         connectionRelay.accept(state.server)
     }
     
@@ -68,13 +68,6 @@ class ServerViewController: UIViewController, StoreSubscriber {
                     self.present(viewController, animated: true, completion: nil)
                     
                 }
-                
-                
-                cell.didTapSaveAction = { _ in
-                    
-                    self.saveServer()
-                    
-                }
             
                 return cell
                 
@@ -83,11 +76,18 @@ class ServerViewController: UIViewController, StoreSubscriber {
                 
                 cell.didTapTrashAction = {
                     self.navigationController?.popViewController(animated: true)
-                    appStore.dispatch(ConnectionState.Action.removeConnection(id: id))
+                    appStore.dispatch(ServerState.Action.removeConnection(id: id))
                     appStore.dispatch(TopicState.Action.loadTopic(id: self.mode?.topicId ?? ""))
 
                 }
+            
+                return cell
                 
+            case .topicSaveItem(_):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.topicSaveCell, for: indexPath) else { return UITableViewCell() }
+                cell.didTapSaveAction = {
+                    self.saveServer()
+                }
                 return cell
                 
             default:
@@ -103,7 +103,7 @@ class ServerViewController: UIViewController, StoreSubscriber {
         appStore.subscribe(self) { $0.select { $0.connectionState }.skipRepeats() }
         loadData()
         
-        appStore.dispatch(ConnectionState.Action.loadConnection(id: serverIdentifier ?? ""))
+        appStore.dispatch(ServerState.Action.loadConnection(id: serverIdentifier ?? ""))
 
     }
     
@@ -112,6 +112,8 @@ class ServerViewController: UIViewController, StoreSubscriber {
         tableView.register(R.nib.serverCell)
         tableView.register(R.nib.topicCell)
         tableView.register(R.nib.itemDetailTrashCell)
+        tableView.register(R.nib.topicSaveCell)
+
     }
     
     private func saveServer() {
@@ -131,7 +133,7 @@ class ServerViewController: UIViewController, StoreSubscriber {
             
             topic?.serverId = server.id
             
-            appStore.dispatch(ConnectionState.Action.addServer(server))
+            appStore.dispatch(ServerState.Action.addServer(server))
             appStore.dispatch(TopicState.Action.updateTopic(topicViewModel: topic))
             
         case .edit(let topicId):
@@ -147,7 +149,7 @@ class ServerViewController: UIViewController, StoreSubscriber {
             
             topic?.serverId = server.id
             
-            appStore.dispatch(ConnectionState.Action.updateServer(server))
+            appStore.dispatch(ServerState.Action.updateServer(server))
             appStore.dispatch(TopicState.Action.updateTopic(topicViewModel: topic))
             
             
@@ -162,6 +164,7 @@ class ServerViewController: UIViewController, StoreSubscriber {
         connectionRelay.map {
             [Section(title: "", items: [
                 SectionItem.serverItem(viewModel: ServerCell.ViewModel(id: $0?.id ?? "", name: $0?.name ?? "", user: $0?.user ?? "", password: $0?.password ?? "", serverUrl: $0?.url ?? "", port: $0?.port ?? "", sslPort: $0?.sslPort ?? "" )),
+                SectionItem.topicSaveItem(viewModel: TopicSaveCell.ViewModel()),
                 SectionItem.trashItem(id: $0?.id ?? "")
                                               ])]
             }

@@ -1280,7 +1280,6 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if UIKit.UIImage(named: "icon_circle_down", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_circle_down' is used in nib 'ServerCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "icon_save", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_save' is used in nib 'ServerCell', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
       }
@@ -1491,7 +1490,6 @@ struct _R: Rswift.Validatable {
       let itemDetailViewController = StoryboardViewControllerResource<IoTGarden.ItemDetailViewController>(identifier: "ItemDetailViewController")
       let name = "ItemDetail"
       let serverViewController = StoryboardViewControllerResource<ItemDetailServerViewController>(identifier: "ServerViewController")
-      let topicViewController = StoryboardViewControllerResource<ItemDetailTopicViewController>(identifier: "TopicViewController")
       
       func itemDetailViewController(_: Void = ()) -> IoTGarden.ItemDetailViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: itemDetailViewController)
@@ -1501,16 +1499,11 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: serverViewController)
       }
       
-      func topicViewController(_: Void = ()) -> ItemDetailTopicViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: topicViewController)
-      }
-      
       static func validate() throws {
         if #available(iOS 11.0, *) {
         }
         if _R.storyboard.itemDetail().itemDetailViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'itemDetailViewController' could not be loaded from storyboard 'ItemDetail' as 'IoTGarden.ItemDetailViewController'.") }
         if _R.storyboard.itemDetail().serverViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'serverViewController' could not be loaded from storyboard 'ItemDetail' as 'ItemDetailServerViewController'.") }
-        if _R.storyboard.itemDetail().topicViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'topicViewController' could not be loaded from storyboard 'ItemDetail' as 'ItemDetailTopicViewController'.") }
       }
       
       fileprivate init() {}

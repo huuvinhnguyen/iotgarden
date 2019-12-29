@@ -18,7 +18,7 @@
 		04161F5423A1122B00BAB4B3 /* ItemNameHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04161F5323A1122B00BAB4B3 /* ItemNameHeaderCell.xib */; };
 		04161F5623A29E3600BAB4B3 /* ItemSaveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04161F5523A29E3600BAB4B3 /* ItemSaveCell.swift */; };
 		04161F5823A29E4700BAB4B3 /* ItemSaveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04161F5723A29E4700BAB4B3 /* ItemSaveCell.xib */; };
-		043009E4237DB682004FA341 /* ConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043009E3237DB682004FA341 /* ConnectionState.swift */; };
+		043009E4237DB682004FA341 /* ServerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043009E3237DB682004FA341 /* ServerState.swift */; };
 		0446881E233F5AD00074CF75 /* TopicSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0446881D233F5AD00074CF75 /* TopicSwitchCell.swift */; };
 		04468820233F5B0C0074CF75 /* TopicSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0446881F233F5B0C0074CF75 /* TopicSwitchCell.xib */; };
 		04468822233F64360074CF75 /* TopicQosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04468821233F64360074CF75 /* TopicQosCell.swift */; };
@@ -84,7 +84,6 @@
 		1836B9D5227D916200CF6F66 /* CandleStickChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1836B9D4227D916200CF6F66 /* CandleStickChartViewController.xib */; };
 		183A91FD22EAFEA600EBDC4A /* ItemDetailServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183A91FC22EAFEA600EBDC4A /* ItemDetailServerViewController.swift */; };
 		183A91FF22EAFFAB00EBDC4A /* ItemDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 183A91FE22EAFFAB00EBDC4A /* ItemDetail.storyboard */; };
-		183A920122EB53FC00EBDC4A /* ItemDetailTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183A920022EB53FC00EBDC4A /* ItemDetailTopicViewController.swift */; };
 		183A920322EC023D00EBDC4A /* SensorConnect2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183A920222EC023D00EBDC4A /* SensorConnect2.swift */; };
 		1846AB53218A9E7800F46053 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846AB52218A9E7800F46053 /* ItemDetailViewController.swift */; };
 		1846AB57218AA3B800F46053 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846AB56218AA3B800F46053 /* AddItemViewController.swift */; };
@@ -191,7 +190,7 @@
 		04161F5323A1122B00BAB4B3 /* ItemNameHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemNameHeaderCell.xib; sourceTree = "<group>"; };
 		04161F5523A29E3600BAB4B3 /* ItemSaveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSaveCell.swift; sourceTree = "<group>"; };
 		04161F5723A29E4700BAB4B3 /* ItemSaveCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemSaveCell.xib; sourceTree = "<group>"; };
-		043009E3237DB682004FA341 /* ConnectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionState.swift; sourceTree = "<group>"; };
+		043009E3237DB682004FA341 /* ServerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerState.swift; sourceTree = "<group>"; };
 		0446881D233F5AD00074CF75 /* TopicSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicSwitchCell.swift; sourceTree = "<group>"; };
 		0446881F233F5B0C0074CF75 /* TopicSwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicSwitchCell.xib; sourceTree = "<group>"; };
 		04468821233F64360074CF75 /* TopicQosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicQosCell.swift; sourceTree = "<group>"; };
@@ -257,7 +256,6 @@
 		1836B9D4227D916200CF6F66 /* CandleStickChartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CandleStickChartViewController.xib; sourceTree = "<group>"; };
 		183A91FC22EAFEA600EBDC4A /* ItemDetailServerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailServerViewController.swift; sourceTree = "<group>"; };
 		183A91FE22EAFFAB00EBDC4A /* ItemDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemDetail.storyboard; sourceTree = "<group>"; };
-		183A920022EB53FC00EBDC4A /* ItemDetailTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailTopicViewController.swift; sourceTree = "<group>"; };
 		183A920222EC023D00EBDC4A /* SensorConnect2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorConnect2.swift; sourceTree = "<group>"; };
 		1846AB52218A9E7800F46053 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		1846AB56218AA3B800F46053 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
@@ -522,7 +520,6 @@
 				183A91FC22EAFEA600EBDC4A /* ItemDetailServerViewController.swift */,
 				183A91FE22EAFFAB00EBDC4A /* ItemDetail.storyboard */,
 				1854087921C40BF000984268 /* ItemDetailTempViewController.swift */,
-				183A920022EB53FC00EBDC4A /* ItemDetailTopicViewController.swift */,
 				181BAC71220DE57100A0D458 /* SensorRequest.swift */,
 				5B04F009227AE8F80096FBA1 /* LineChart3ViewController.xib */,
 				5B04F00B227AE9190096FBA1 /* LineChart3ViewController.swift */,
@@ -679,7 +676,7 @@
 				18B5506421C55A14004EC438 /* ItemReducer.swift */,
 				047CCB982365FD920044B9F2 /* Middleware.swift */,
 				04F315022376C6D700184507 /* TopicState.swift */,
-				043009E3237DB682004FA341 /* ConnectionState.swift */,
+				043009E3237DB682004FA341 /* ServerState.swift */,
 				18E7A727218EFEDD00F7E689 /* ItemListAction.swift */,
 				18E7A729218EFF9900F7E689 /* ItemListStore.swift */,
 				18B5506221C559FF004EC438 /* ItemAction.swift */,
@@ -1026,7 +1023,6 @@
 				18E7A72A218EFF9900F7E689 /* ItemListStore.swift in Sources */,
 				049C7DB823AF621900B047E7 /* Routers.swift in Sources */,
 				186AB62123328FB30017F935 /* AddItemTopicCell.swift in Sources */,
-				183A920122EB53FC00EBDC4A /* ItemDetailTopicViewController.swift in Sources */,
 				049A85882365B3010038D247 /* ItemDataInteractor.swift in Sources */,
 				18EDCF5221899EC500B233B9 /* Configuration.swift in Sources */,
 				18339BE021C9493E00CC2269 /* IoTGarden.xcdatamodeld in Sources */,
@@ -1040,7 +1036,7 @@
 				5B2CD58722896E5400EA8B25 /* UIFont+Extension.swift in Sources */,
 				18A33DDC2324FAD800DFDBB6 /* ItemDetailTrashCell.swift in Sources */,
 				047390B7234F9756005567CE /* SelectionSection.swift in Sources */,
-				043009E4237DB682004FA341 /* ConnectionState.swift in Sources */,
+				043009E4237DB682004FA341 /* ServerState.swift in Sources */,
 				5B04F00C227AE9190096FBA1 /* LineChart3ViewController.swift in Sources */,
 				04F2480B2337DD5D003239B6 /* ServerViewController.swift in Sources */,
 				1852DBA22192960D002E1946 /* AddItemView.swift in Sources */,

@@ -15,7 +15,7 @@ class SelectionViewController:  UIViewController, StoreSubscriber {
     
 //    typealias StoreSubscriberStateType = ConnectionState
     
-    func newState(state: ConnectionState) {
+    func newState(state: ServerState) {
         
         serversRelay.accept(state.servers)
         
@@ -29,7 +29,7 @@ class SelectionViewController:  UIViewController, StoreSubscriber {
     private var disposeBag = DisposeBag()
     
     @IBAction func dismissButtonTapped(_ sender: Any) {
-        appStore.dispatch(ConnectionState.Action.loadConnection(id: selectedId))
+        appStore.dispatch(ServerState.Action.loadConnection(id: selectedId))
 
         self.dismiss(animated: true, completion: nil)
         
@@ -64,7 +64,7 @@ class SelectionViewController:  UIViewController, StoreSubscriber {
             subcription.select { state in state.connectionState }.skipRepeats()
         }
         
-        appStore.dispatch(ConnectionState.Action.loadConnections())
+        appStore.dispatch(ServerState.Action.loadConnections())
         selectedRelay.accept("")
 
     }

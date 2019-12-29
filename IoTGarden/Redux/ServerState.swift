@@ -7,7 +7,7 @@
 
 import ReSwift
 
-struct ConnectionState: ReSwift.StateType, Identifiable {
+struct ServerState: ReSwift.StateType, Identifiable {
     var identifiableComponent = IdentifiableComponent()
     var viewModels: [Server] = []
     var servers: [Server] = []
@@ -15,7 +15,7 @@ struct ConnectionState: ReSwift.StateType, Identifiable {
 
 }
 
-extension ConnectionState {
+extension ServerState {
     enum Action: ReSwift.Action {
         case addServer(_ model: Server)
         case updateServer(Server)
@@ -26,13 +26,13 @@ extension ConnectionState {
     }
 }
 
-extension ConnectionState {
+extension ServerState {
     
-    public static func reducer(action: ReSwift.Action, state: ConnectionState?) -> ConnectionState {
+    public static func reducer(action: ReSwift.Action, state: ServerState?) -> ServerState {
         
-        var state = state ?? ConnectionState()
+        var state = state ?? ServerState()
         
-        guard let action = action as? ConnectionState.Action else { return state }
+        guard let action = action as? ServerState.Action else { return state }
 
         
         switch action {
@@ -64,32 +64,32 @@ extension ConnectionState {
     
 }
 
-extension ConnectionState {
+extension ServerState {
     static let middleware: ReSwift.Middleware<AppState> = {  dispatch, getState in
         
         return { next in
             print("enter detail middleware")
             return { action in
-                if case ConnectionState.Action.removeConnection(let id) = action {
+                if case ServerState.Action.removeConnection(let id) = action {
                     let service = ItemListService()
                     service.deleteConfigure(id: id, finished: { id in
-                        dispatch(ConnectionState.Action.loadConnections())
+                        dispatch(ServerState.Action.loadConnections())
                     })
                 }
                 
-                if case ConnectionState.Action.addServer(let server) = action {
+                if case ServerState.Action.addServer(let server) = action {
                     let service = ItemListService()
                     service.addConfiguration(configuration: ItemListService.Server(uuid: server.id, name: server.name, url: server.url, username: server.user, password: server.password, port: server.password, sslPort: server.sslPort), finished: { id in
                         
-                        dispatch(ConnectionState.Action.loadConnections())
+                        dispatch(ServerState.Action.loadConnections())
                     })
                 }
                 
-                if case ConnectionState.Action.updateServer(let server) = action {
+                if case ServerState.Action.updateServer(let server) = action {
                     let service = ItemListService()
                     service.updateConfiguration(configuration: ItemListService.Server(uuid: server.id, name: server.name, url: server.url, username: server.user, password: server.password, port: server.password, sslPort: server.sslPort), finished: { id in
                         
-                        dispatch(ConnectionState.Action.loadConnections())
+                        dispatch(ServerState.Action.loadConnections())
                     })
                 }
                 

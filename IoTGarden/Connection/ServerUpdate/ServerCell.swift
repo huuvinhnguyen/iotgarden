@@ -27,16 +27,10 @@ class ServerCell: UITableViewCell {
     
     var didTapSelectAction: (() -> Void)?
     
-    var didTapSaveAction: ((_ viewModel: ViewModel?) -> Void)?
-    
     private let disposeBag = DisposeBag()
 
     @IBAction private func selectButtonTapped(_ sender: UIButton) {
         didTapSelectAction?()
-    }
-    
-    @IBAction private func saveButtonTapped(_ sender: UIButton) {
-        didTapSaveAction?(viewModel)
     }
     
     var viewModel: ViewModel? {

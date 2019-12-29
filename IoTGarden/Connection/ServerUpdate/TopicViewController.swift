@@ -77,10 +77,7 @@ class TopicViewController: UIViewController, StoreSubscriber {
             }
             
             
-            }, titleForHeaderInSection: { dataSource, index in
-                let section = dataSource[index]
-                return section.title
-        })
+            })
     }
     
     override func viewDidLoad() {

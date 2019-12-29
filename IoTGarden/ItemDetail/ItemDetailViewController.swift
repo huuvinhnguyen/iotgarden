@@ -198,8 +198,4 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         navigationController?.popViewController(animated: true)
     }
 
-    @IBAction func editTopicTapped(_ sender: UIButton) {
-        let vc = R.storyboard.itemDetail.topicViewController()!
-        navigationController?.pushViewController(vc, animated: true)
-    }
 }
