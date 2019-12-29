@@ -40,8 +40,8 @@
                         <state key="normal" backgroundImage="icon_power_off"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDg-93-CDp">
-                        <rect key="frame" x="16" y="11" width="15" height="22"/>
-                        <state key="normal" image="icon_angle_double"/>
+                        <rect key="frame" x="16" y="11" width="22" height="22"/>
+                        <state key="normal" image="icon_tag"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Switch room 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="loV-lX-2ie">
                         <rect key="frame" x="55" y="12" width="115" height="21"/>
@@ -86,9 +86,9 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icon_angle_double" width="15" height="15"/>
         <image name="icon_clock_o" width="22" height="22"/>
         <image name="icon_info" width="22" height="22"/>
         <image name="icon_power_off" width="22" height="23"/>
+        <image name="icon_tag" width="22" height="21"/>
     </resources>
 </document>

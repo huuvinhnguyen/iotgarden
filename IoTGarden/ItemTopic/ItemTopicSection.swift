@@ -20,7 +20,7 @@ enum ItemTopicSection {
 enum ItemTopicSectionItem {
     
     case headerItem(viewModel: SectionItemViewModel?)
-    case topicItem(viewModel: TopicViewModel?)
+    case topicItem(viewModel: Topic?)
     case connectionItem(viewModel: ItemTopicServerCell.ViewModel?)
     case footerItem(viewModel: SectionItemViewModel?)
     case footerSignInItem()

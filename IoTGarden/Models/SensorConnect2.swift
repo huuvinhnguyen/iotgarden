@@ -10,11 +10,11 @@ import CocoaMQTT
 class SensorConnect2 {
     
     private var mqtt: CocoaMQTT?
-    var sensor: Topic!
+    var sensor: TopicToDo!
     
     open var didReceiveMessage: (CocoaMQTT, CocoaMQTTMessage, UInt16) -> Void = { _, _, _ in }
     
-    func connect(sensor: Topic) {
+    func connect(sensor: TopicToDo) {
         self.sensor = sensor
         
 //        let itemListService = ItemListService()

@@ -53,7 +53,7 @@ struct ItemListService {
     }
     
     
-    func loadTopics(finished: (_ topics: [Topic])-> ()) {
+    func loadTopics(finished: (_ topics: [TopicToDo])-> ()) {
         
         let interactor = SensorsDataInteractor()
         
@@ -64,7 +64,7 @@ struct ItemListService {
         
     }
     
-    func loadSensors(finished: (_ sensors: [Topic])->()) {
+    func loadSensors(finished: (_ sensors: [TopicToDo])->()) {
         
 //        finished([Sensor(uuid: "abc", name: "abc", value: "aaa", serverUUID: "123", kind: .temperature)])
         
@@ -79,10 +79,10 @@ struct ItemListService {
         
         let sensors = SensorsDataInteractor()
         
-        sensors.add(item: Topic()) { _ in }
+        sensors.add(item: TopicToDo()) { _ in }
     }
     
-    func addTopic(topic: Topic, finished: (_ id: String)->()) {
+    func addTopic(topic: TopicToDo, finished: (_ id: String)->()) {
         
         let sensors = SensorsDataInteractor()
         sensors.add(item: topic) { _ in
@@ -90,14 +90,14 @@ struct ItemListService {
         }
     }
     
-    func loadTopic(uuid: String, finished: (Topic?) -> ()) {
+    func loadTopic(uuid: String, finished: (TopicToDo?) -> ()) {
         let sensors = SensorsDataInteractor()
         sensors.getItem(uuid: uuid) { topic in
             finished(topic)
         }
     }
     
-    func updateTopic(topic: Topic) {
+    func updateTopic(topic: TopicToDo) {
         
         let sensors = SensorsDataInteractor()
         

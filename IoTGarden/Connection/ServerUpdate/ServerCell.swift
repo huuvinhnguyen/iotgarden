@@ -87,5 +87,17 @@ class ServerCell: UITableViewCell {
             self.viewModelRelay.accept(self.viewModel)
         }).disposed(by: self.disposeBag)
         
+        portTextField.rx.text.subscribe(onNext:{ [weak self] text in
+            guard let self = self else { return }
+            self.viewModel?.port = text ?? ""
+            self.viewModelRelay.accept(self.viewModel)
+        }).disposed(by: self.disposeBag)
+        
+        sslPortTextField.rx.text.subscribe(onNext:{ [weak self] text in
+            guard let self = self else { return }
+            self.viewModel?.sslPort = text ?? ""
+            self.viewModelRelay.accept(self.viewModel)
+        }).disposed(by: self.disposeBag)
+        
     }
 }

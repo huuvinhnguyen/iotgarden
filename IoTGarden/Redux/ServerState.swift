@@ -87,7 +87,7 @@ extension ServerState {
                 
                 if case ServerState.Action.updateServer(let server) = action {
                     let service = ItemListService()
-                    service.updateConfiguration(configuration: ItemListService.Server(uuid: server.id, name: server.name, url: server.url, username: server.user, password: server.password, port: server.password, sslPort: server.sslPort), finished: { id in
+                    service.updateConfiguration(configuration: ItemListService.Server(uuid: server.id, name: server.name, url: server.url, username: server.user, password: server.password, port: server.port, sslPort: server.sslPort), finished: { id in
                         
                         dispatch(ServerState.Action.loadConnections())
                     })

@@ -11,15 +11,19 @@ class ItemTopicServerCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var serverLabel: UILabel!
-    @IBOutlet weak var passLabel: UILabel!
     @IBOutlet weak var userLabel: UILabel!
+    @IBOutlet weak var passLabel: UILabel!
     @IBOutlet weak var portLabel: UILabel!
     @IBOutlet weak var sslPortLabel: UILabel!
     
-    var viewModel3: ViewModel? {
+    var viewModel: ViewModel? {
         didSet {
-            nameLabel.text = viewModel3?.name ?? ""
-            serverLabel.text = viewModel3?.server ?? ""
+            nameLabel.text = viewModel?.name ?? ""
+            serverLabel.text = viewModel?.server ?? ""
+            userLabel.text = viewModel?.user ?? ""
+            passLabel.text = viewModel?.password ?? ""
+            portLabel.text = viewModel?.port ?? ""
+            sslPortLabel.text = viewModel?.sslPort ?? ""
         }
     }
     
@@ -38,6 +42,9 @@ class ItemTopicServerCell: UITableViewCell {
         var id = ""
         var name = ""
         var server = ""
-        var title = ""
+        var user = ""
+        var password = ""
+        var port = ""
+        var sslPort = ""
     }
 }

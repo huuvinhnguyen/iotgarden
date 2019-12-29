@@ -2,10 +2,11 @@
 //  TopicCell.swift
 //  IoTGarden
 //
-//  Created by chuyendo on 9/23/19.
+//  Created by Vinh Nguyen on 9/23/19.
 //
 
-import UIKit
+import RxSwift
+import RxCocoa
 
 class TopicCell: UITableViewCell {
     var didTapSelectAction: (() -> Void)?
@@ -15,6 +16,8 @@ class TopicCell: UITableViewCell {
     @IBOutlet weak var topicTextField: UITextField!
     
     @IBOutlet weak var typeTextField: UITextField!
+    
+    var viewModelRelay = PublishRelay<ViewModel?>()
     
     @IBAction private func selectButtonTapped(_ sender: UIButton) {
         didTapSelectAction?()
@@ -33,14 +36,9 @@ class TopicCell: UITableViewCell {
         let topic: String?
         let type: String?
     }
-}
+    
+    private func configure() {
+        
+    }
 
-struct TopicViewModel {
-    var id = ""
-    var name = ""
-    var topic = ""
-    var value = ""
-    var time = ""
-    var serverId = ""
-    var type = ""
 }

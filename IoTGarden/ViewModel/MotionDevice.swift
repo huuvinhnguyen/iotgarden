@@ -9,11 +9,11 @@ import Foundation
 
 class MotionDevice: CellViewModel {
     
-    var sensor: Topic
+    var sensor: TopicToDo
     
     var sensorConnect: SensorConnect
     
-    init(sensor: Topic) {
+    init(sensor: TopicToDo) {
         
         self.sensor = sensor
         self.sensorConnect = SensorConnect()

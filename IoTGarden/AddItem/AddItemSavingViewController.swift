@@ -27,7 +27,7 @@ class AddItemSavingViewController:  UIViewController {
 
         guard let kind = self.kind else { return }
         
-        let sensor = Topic(uuid: UUID().uuidString, name: name, value: "0", serverUUID: serverUUID, kind: kind, topic: topic, time: "waiting")
+        let sensor = TopicToDo(uuid: UUID().uuidString, name: name, value: "0", serverUUID: serverUUID, kind: kind, topic: topic, time: "waiting")
 //        itemListService.addTopic(topic: sensor)
 
         let action = ItemState.Action.loadItems()

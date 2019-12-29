@@ -24,7 +24,7 @@ struct AddSensorAction: Action {
 
 struct RemoveSensorAction: Action {
     
-    let item: Topic
+    let item: TopicToDo
 }
 
 struct ListItemsAction: Action { }
@@ -45,7 +45,7 @@ struct ItemListPublishMQTTAction: Action {
     var sensorConnect = SensorConnect2()
 
 
-    init(sensor: Topic) {
+    init(sensor: TopicToDo) {
 //        print("#mqtt sensorConnect 5555")
 //
         sensorConnect.connect(sensor: sensor)

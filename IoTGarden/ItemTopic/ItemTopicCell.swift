@@ -12,7 +12,7 @@ class ItemTopicCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var topicLabel: UILabel!
     
-    var viewModel: TopicViewModel? {
+    var viewModel: Topic? {
         didSet {
             nameLabel.text = viewModel?.name ?? ""
             topicLabel.text = viewModel?.topic ?? ""

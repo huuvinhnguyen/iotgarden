@@ -20,8 +20,8 @@ class TopicViewController: UIViewController, StoreSubscriber {
     
     var identifier: String?
     
-    private var topicRelay = PublishRelay<TopicViewModel?>()
-    private var topicViewModel: TopicViewModel?
+    private var topicRelay = PublishRelay<Topic?>()
+    private var topicViewModel: Topic?
     
     @IBOutlet weak var tableView: UITableView!
     

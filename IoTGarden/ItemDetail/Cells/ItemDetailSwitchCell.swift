@@ -16,7 +16,7 @@ class ItemDetailSwitchCell: UITableViewCell {
         didTapInfoAction?()
     }
     
-    var viewModel: TopicViewModel? {
+    var viewModel: Topic? {
         didSet {
             nameLabel.text = viewModel?.name
         }

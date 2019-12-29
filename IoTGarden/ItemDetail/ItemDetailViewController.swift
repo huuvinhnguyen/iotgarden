@@ -16,7 +16,7 @@ import RxCocoa
 struct ItemDetailViewModel {
     
     var sensorConnect: SensorConnect? = SensorConnect()
-    init(sensor: Topic) {
+    init(sensor: TopicToDo) {
         sensorConnect?.connect(sensor: sensor)
     }
 }
@@ -29,7 +29,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     private var viewModel: ItemDetailViewModel?
     private let disposeBag = DisposeBag()
     
-    var topicsRelay = PublishRelay<[TopicViewModel]>()
+    var topicsRelay = PublishRelay<[Topic]>()
 
     private var dataSource: RxTableViewSectionedReloadDataSource<ItemDetailSectionModel> {
         
@@ -115,9 +115,9 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         
     }
     
-    var sensor: Topic? {
+    var sensor: TopicToDo? {
         didSet {
-            viewModel = ItemDetailViewModel(sensor: sensor ?? Topic())
+            viewModel = ItemDetailViewModel(sensor: sensor ?? TopicToDo())
         }   
     }
     

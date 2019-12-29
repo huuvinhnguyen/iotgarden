@@ -19,7 +19,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
 
     }
     var identifier: String?
-    var topicRelay = PublishRelay<TopicViewModel?>()
+    var topicRelay = PublishRelay<Topic?>()
     var connectionRelay = PublishRelay<Server?>()
 
     
@@ -71,7 +71,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                 
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemTopicServerCell, for: indexPath) else { return UITableViewCell() }
                 
-                cell.viewModel3 = viewModel
+                cell.viewModel = viewModel
                 cell.didTapEditAction = {
                     let viewController = R.storyboard.connection.serverViewController()!
                     viewController.serverIdentifier = viewModel?.id
@@ -82,7 +82,6 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                     
                 }
                 cell.didTapTrashAction = {
-                
                     appStore.dispatch(TopicState.Action.removeConnection())
                 }
                 return cell
@@ -104,9 +103,9 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
     
     private func loadData() {
         
-        let tableRelay = Observable.combineLatest(topicRelay, connectionRelay).map { topic, connection -> [ItemTopicSection] in
-            let footerItems = connection == nil ? [ItemTopicSectionItem.footerSignInItem(), ItemTopicSectionItem.footerItem(viewModel: nil)] :  [ItemTopicSectionItem.footerItem(viewModel: nil)]
-            let serverItems = connection == nil ? [] : [ItemTopicSectionItem.connectionItem(viewModel: ItemTopicServerCell.ViewModel(id: connection?.id ?? "", name: connection?.name ?? "", server: "", title: ""))]
+        let tableRelay = Observable.combineLatest(topicRelay, connectionRelay).map { topic, server -> [ItemTopicSection] in
+            let footerItems = server == nil ? [ItemTopicSectionItem.footerSignInItem(), ItemTopicSectionItem.footerItem(viewModel: nil)] :  [ItemTopicSectionItem.footerItem(viewModel: nil)]
+            let serverItems = server == nil ? [] : [ItemTopicSectionItem.connectionItem(viewModel: ItemTopicServerCell.ViewModel(id: server?.id ?? "", name: server?.name ?? "", server: server?.url ?? "", user: server?.user ?? "", password: server?.password ?? "", port: server?.port ?? "", sslPort: server?.sslPort ?? ""))]
             
             return [
                 ItemTopicSection.topicSection(items: [
