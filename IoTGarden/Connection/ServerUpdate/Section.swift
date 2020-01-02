@@ -12,8 +12,8 @@ extension ServerViewController {
     enum SectionItem {
         case serverItem(viewModel: ServerCell.ViewModel?)
         case topicItem(viewModel: TopicCell.ViewModel?)
-        case topicSwitchItem(viewModel: TopicSwitchViewModel)
-        case topicQosItem(viewModel: TopicQosViewModel)
+        case topicSwitchItem(viewModel: TopicSwitchCell.ViewModel)
+        case topicQosItem(viewModel: TopicQosCell.ViewModel)
         case topicSaveItem(viewModel: TopicSaveCell.ViewModel)
         case trashItem(id: String)
     }

@@ -35,7 +35,7 @@ class ServerViewController: UIViewController, StoreSubscriber {
     
     var serverIdentifier: String?
     
-    var serverViewModel: ServerCell.ViewModel?
+    private var serverViewModel: ServerCell.ViewModel?
     
     var connectionRelay = PublishRelay<Server?>()
 
@@ -100,10 +100,10 @@ class ServerViewController: UIViewController, StoreSubscriber {
         super.viewDidLoad()
         prepairNibs()
         
-        appStore.subscribe(self) { $0.select { $0.connectionState }.skipRepeats() }
+        appStore.subscribe(self) { $0.select { $0.serverState }.skipRepeats() }
         loadData()
         
-        appStore.dispatch(ServerState.Action.loadConnection(id: serverIdentifier ?? ""))
+        appStore.dispatch(ServerState.Action.loadServer(id: serverIdentifier ?? ""))
 
     }
     
@@ -121,7 +121,7 @@ class ServerViewController: UIViewController, StoreSubscriber {
         guard let mode = mode else { return }
         switch mode {
         case .add(let topicId):
-            var topic = appStore.state.topicState.topicViewModels.filter { $0.id == topicId}.first
+            var topic = appStore.state.topicState.topics.filter { $0.id == topicId}.first
             let serverId = serverIdentifier ?? UUID().uuidString
             let server = Server(
                 id: serverId, name: serverViewModel?.name ?? "",
@@ -137,7 +137,7 @@ class ServerViewController: UIViewController, StoreSubscriber {
             appStore.dispatch(TopicState.Action.updateTopic(topicViewModel: topic))
             
         case .edit(let topicId):
-            var topic = appStore.state.topicState.topicViewModels.filter { $0.id == topicId}.first
+            var topic = appStore.state.topicState.topics.filter { $0.id == topicId}.first
             guard let serverId = serverIdentifier else { return }
             let server = Server(
                 id: serverId, name: serverViewModel?.name ?? "",

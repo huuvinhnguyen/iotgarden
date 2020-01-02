@@ -42,7 +42,7 @@ let switchingMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
                     switchCellUI.message = message.string ?? ""
                     if let sensor = task?.sensor {
                         let itemListService = ItemListService()
-                        itemListService.updateTopic(topic: sensor)
+//                        itemListService.updateTopic(topic: sensor)
                     }
                     let action2 = ItemState.Action.updateSwitchItem(viewModel: switchCellUI)
                     appStore.dispatch(action2)
@@ -91,8 +91,8 @@ let inputMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
                     
                     
                     if let sensor = task?.sensor {
-                        let itemListService = ItemListService()
-                        itemListService.updateTopic(topic: sensor)
+//                        let itemListService = ItemListService()
+//                        itemListService.updateTopic(topic: sensor)
                     }
                     
                     let action2 = ItemState.Action.updateInputItem(cellUI: inputCellUI)

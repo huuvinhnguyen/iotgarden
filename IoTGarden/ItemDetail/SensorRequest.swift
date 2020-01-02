@@ -30,6 +30,25 @@ struct SensorRequest: Request {
     }
 }
 
+
+struct TopicToDo {
+    
+    var uuid: String = ""
+    
+    var name: String = ""
+    
+    var value: String = ""
+    
+    var serverUUID: String = ""
+    
+    var kind: String = ""
+    
+    var topic: String = ""
+    
+    var time: String = ""
+}
+
+
 extension TopicToDo {
     
     init(object: Any) throws {
@@ -53,7 +72,7 @@ extension SensorRequest {
 //    }
 }
 
-struct ListingResponse {
-    
-    let sensorValues: [SensorValue]
-}
+//struct ListingResponse {
+//
+//    let sensorValues: [SensorValue]
+//}

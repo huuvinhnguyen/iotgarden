@@ -12,5 +12,5 @@ struct AppState: ReSwift.StateType {
     var navigationState: NavigationState = NavigationState()
     var itemState = ItemState()
     var topicState = TopicState()
-    var connectionState = ServerState()
+    var serverState = ServerState()
 }

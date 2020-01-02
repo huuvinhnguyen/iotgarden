@@ -9,12 +9,9 @@ import ReSwift
 
 struct TopicState: ReSwift.StateType, Identifiable {
     var identifiableComponent = IdentifiableComponent()
-    var topicItems: [ItemDetailSectionModel] = []
-    var topicViewModels: [Topic] = []
-    var topicViewModel: Topic?
+    var topics: [Topic] = []
+    var topic: Topic?
     var server: Server?
-    var connectionViewModel: Server?
-
 }
 
 
@@ -27,8 +24,7 @@ extension TopicState {
         case loadTopic(id: String)
         case loadConnection(id: String)
         case removeConnection()
-        case fetchTopic(topicViewModel: Topic?, serverViewModel: Server?)
-        case fetchTopic2(topicViewModel: Topic?, connectionViewModel: Server?)
+        case fetchTopic(topicViewModel: Topic?, connectionViewModel: Server?)
         case updateTopic(topicViewModel: Topic?)
         case getTopic(id: String)
     }
@@ -47,8 +43,8 @@ extension TopicState {
 
             let service = ItemListService()
             service.loadTopics { topics in
-                state.topicViewModels = topics.map {
-                   Topic(id: $0.uuid, name: $0.name, topic: "switchab", value: "1", time: "22/12/2019", serverId: "", type: "Switch")
+                state.topics = topics.map {
+                    Topic(id: $0.uuid, name: $0.name, topic: $0.topic, value: $0.value, time: $0.time, serverId: $0.serverUUID, type: "Switch", qos: "0")
                 }
             }
             state.identifiableComponent.update()
@@ -65,9 +61,9 @@ extension TopicState {
 
             }
             
-        case .fetchTopic2(let topicViewModel, let connectionViewModel):
-            state.topicViewModel = topicViewModel
-            state.connectionViewModel = connectionViewModel
+        case .fetchTopic(let topicViewModel, let connectionViewModel):
+            state.topic = topicViewModel
+//            state.connectionViewModel = connectionViewModel
             state.identifiableComponent.update()
             
         default: ()
@@ -88,8 +84,11 @@ extension TopicState {
             return { action in
                 if case TopicState.Action.addTopic(let viewModel) = action {
                     let service = ItemListService()
-                    service.addTopic(topic: TopicToDo(uuid: UUID().uuidString, name: viewModel?.name ?? "", value: "0", serverUUID: viewModel?.serverId ?? "", kind: "kind", topic: "topic", time: "waiting")) { item in
+                    let id = viewModel?.id ?? ""
+                    service.addTopic(topic: ItemListService.TopicData(uuid: id, name: viewModel?.name ?? "", value: viewModel?.value ?? "", serverUUID: viewModel?.serverId ?? "", kind: viewModel?.type ?? "", topic: viewModel?.topic ?? "", time: viewModel?.time ?? "")) { item in
                         dispatch(TopicState.Action.loadTopics())
+                        dispatch(TopicState.Action.loadTopic(id: id))
+
                     }
                 }
                 
@@ -104,9 +103,10 @@ extension TopicState {
                     service.loadTopic(uuid: id) { topic in
                         service.loadLocalConfiguration(uuid: topic?.serverUUID ?? "", finished: { server in
                             let topicViewModel = topic.map { _ in
-                                Topic(id: topic?.uuid ?? "", name: topic?.name ?? "", topic: "", value: topic?.value ?? "", time: "", serverId: topic?.serverUUID ?? "", type: "switch" )}
+                                Topic(id: topic?.uuid ?? "", name: topic?.name ?? "", topic: topic?.topic ?? "", value: topic?.value ?? "", time: topic?.time ?? "", serverId: topic?.serverUUID ?? "", type: "switch", qos: "2")}
                             let connectionViewModel = server.map { Server(id: $0.uuid, name: $0.name, url: $0.url, user: $0.username, password: $0.password, port: $0.port, sslPort: $0.sslPort) }
-                            dispatch(TopicState.Action.fetchTopic2(topicViewModel: topicViewModel, connectionViewModel: connectionViewModel))
+                            dispatch(TopicState.Action.fetchTopic(topicViewModel: topicViewModel, connectionViewModel: connectionViewModel))
+                            dispatch(ServerState.Action.loadServer(id: topic?.serverUUID ?? ""))
                         })
                     }
                     dispatch(TopicState.Action.loadTopics())
@@ -115,14 +115,14 @@ extension TopicState {
                 if case TopicState.Action.updateTopic(let item) = action {
                     guard let item = item else { return }
                     let service = ItemListService()
-                    service.updateTopic(topic: TopicToDo(uuid: item.id , name: item.name, value: "1", serverUUID: item.serverId, kind: "", topic: "", time: ""))
+                    service.updateTopic(topic: ItemListService.TopicData(uuid: item.id , name: item.name, value: item.value, serverUUID: item.serverId, kind: item.type, topic: item.topic, time: item.time))
                     dispatch(TopicState.Action.loadTopic(id: item.id))
                 }
                 
                 if case TopicState.Action.removeConnection(let id) = action {
                     
                     let state = getState()?.topicState ?? TopicState()
-                    var topicViewModel = state.topicViewModel
+                    var topicViewModel = state.topic
                     topicViewModel?.serverId = ""
                     dispatch(TopicState.Action.updateTopic(topicViewModel: topicViewModel))
                 }

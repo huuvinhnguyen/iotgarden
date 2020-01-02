@@ -18,7 +18,7 @@ func appReduce(action: ReSwift.Action, state: AppState?) -> AppState {
     state.navigationState = NavigationReducer.handleAction(action, state: state.navigationState)
     state.topicState = TopicState.reducer(action: action, state: state.topicState)
     state.itemState = ItemState.reducer(action: action,state: state.itemState)
-    state.connectionState = ServerState.reducer(action: action, state: state.connectionState)
+    state.serverState = ServerState.reducer(action: action, state: state.serverState)
     
     return state
 }

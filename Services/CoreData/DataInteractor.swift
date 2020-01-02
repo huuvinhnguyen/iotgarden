@@ -47,7 +47,7 @@ struct SensorsDataInteractor : DataInteractor {
         }
     }
     
-    typealias MappingData = TopicToDo
+    typealias MappingData = ItemListService.TopicData
     
     func add(item: MappingData, finished:(_ item: MappingData)->()) {
         
@@ -132,7 +132,7 @@ struct SensorsDataInteractor : DataInteractor {
             
             for object in result {
                 
-                let topic =  TopicToDo(
+                let topic =  ItemListService.TopicData(
                     uuid: String(describing: object.value(forKeyPath: "uuid") ?? ""),
                               name: String(describing: object.value(forKeyPath: "name") ?? ""),
                               value:   String(describing:object.value(forKeyPath: "value") ?? "") ,
@@ -148,7 +148,7 @@ struct SensorsDataInteractor : DataInteractor {
         finished(nil)
     }
     
-    func getItems(finished: (_ items: [TopicToDo]) ->()) {
+    func getItems(finished: (_ items: [ItemListService.TopicData]) ->()) {
         
         let context = Storage.shared.context
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Sensors")
@@ -158,8 +158,7 @@ struct SensorsDataInteractor : DataInteractor {
             
             let items = result.compactMap {
                 
-//                            Sensor(uuid: String(describing: $0.value(forKeyPath: "uuid") ?? ""), name: String(describing: $0.value(forKeyPath: "name") ?? ""), value:   String(describing:$0.value(forKeyPath: "value") ?? "") , serverUUID: String(describing: $0.value(forKeyPath: "serverUUID") ?? ""), kind: Kind(rawValue: String(describing: $0.value(forKeyPath: "kind") ?? "toggle"))!)
-                TopicToDo(uuid:
+                ItemListService.TopicData(uuid:
                     String(describing: $0.value(forKeyPath: "uuid") ?? ""),
                        name: String(describing: $0.value(forKeyPath: "name") ?? ""),
                        value:   String(describing:$0.value(forKeyPath: "value") ?? "") ,

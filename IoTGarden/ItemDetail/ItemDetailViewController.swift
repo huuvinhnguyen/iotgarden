@@ -16,7 +16,7 @@ import RxCocoa
 struct ItemDetailViewModel {
     
     var sensorConnect: SensorConnect? = SensorConnect()
-    init(sensor: TopicToDo) {
+    init(sensor: TopicData) {
         sensorConnect?.connect(sensor: sensor)
     }
 }
@@ -96,6 +96,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                     cell.didTapPlusAction = {
                         guard let weakSelf = self else { return }
                         let viewController = R.storyboard.connection.topicViewController()!
+                        viewController.mode = .add
                         weakSelf.navigationController?.pushViewController(viewController, animated: true)
                     }
                     return cell
@@ -109,15 +110,15 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
 
     func newState(state: (identifier :String, topicState: TopicState)) {
         
-        topicsRelay.accept(state.topicState.topicViewModels)
+        topicsRelay.accept(state.topicState.topics)
         print("#detail identifier: \(identifier) ")
         self.identifier = state.identifier
         
     }
     
-    var sensor: TopicToDo? {
+    var sensor: TopicData? {
         didSet {
-            viewModel = ItemDetailViewModel(sensor: sensor ?? TopicToDo())
+            viewModel = ItemDetailViewModel(sensor: sensor ?? TopicData())
         }   
     }
     
