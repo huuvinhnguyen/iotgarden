@@ -1,32 +1,17 @@
 //
-//  Sensor.swift
+//  Topic.swift
 //  IoTGarden
 //
-//  Created by Apple on 12/19/18.
+//  Created by Vinh Nguyen on 12/29/19.
 //
 
-import Foundation
-
 struct Topic {
-    
-    var uuid: String = ""
-    
-    var name: String = ""
-    
-    var value: String = ""
-    
-    var serverUUID: String = ""
-    
-    var kind: String = ""
-    
-    var topic: String = ""
-    
-    var time: String = ""
-}
-
-struct SensorValue {
-    
-    var value: String = ""
-    
-    var time: String = ""
+    var id = ""
+    var name = ""
+    var topic = ""
+    var value = ""
+    var time = ""
+    var serverId = ""
+    var type = ""
+    var qos = ""
 }

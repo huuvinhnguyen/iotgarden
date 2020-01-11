@@ -14,9 +14,9 @@ class TopicTypeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private let disposeBag = DisposeBag()
-    private var dataSource: RxTableViewSectionedReloadDataSource<ServerSection> {
+    private var dataSource: RxTableViewSectionedReloadDataSource<ServerViewController.Section> {
         
-        return RxTableViewSectionedReloadDataSource<ServerSection>(configureCell: { [weak self] dataSource, tableView, indexPath, viewModel in
+        return RxTableViewSectionedReloadDataSource<ServerViewController.Section>(configureCell: { [weak self] dataSource, tableView, indexPath, viewModel in
             
             switch dataSource[indexPath] {
                 
@@ -40,26 +40,12 @@ class TopicTypeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepairNibs()
-        loadData()
+        
     }
     
     private func prepairNibs() {
         
-        //        tableView.register(R.nib.serverCell)
         tableView.register(R.nib.topicCell)
         tableView.register(R.nib.topicTypeCell)
-    }
-    
-    private func loadData() {
-        
-//        let sections: [ServerSection] = [
-//            
-//            ServerSection(title: "", items: [ .topicItem(viewModel: TopicViewModel())
-//                ])
-//        ]
-//        
-//        Observable.just(sections)
-//            .bind(to: tableView.rx.items(dataSource: dataSource))
-//            .disposed(by: disposeBag)
     }
 }

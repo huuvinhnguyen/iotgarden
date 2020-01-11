@@ -42,7 +42,7 @@ enum ItemDetailSectionModel {
 enum ItemDetailSectionItem {
     
     case headerItem(viewModel: ItemDetailHeaderCell.ViewModel)
-    case topicItem(viewModel: TopicViewModel?)
+    case topicItem(viewModel: Topic?)
     case footerItem(viewModel: ItemDetailFooterViewModel)
 }
 
@@ -77,7 +77,7 @@ struct ItemDetailHeaderViewModel {
     enum SectionItem {
         
         case headerItem(viewModel: ItemDetailHeaderCell.ViewModel)
-        case topicItem(viewModel: TopicViewModel?)
+        case topicItem(viewModel: Topic?)
         case footerItem(viewModel: ItemDetailFooterViewModel)
     }
 

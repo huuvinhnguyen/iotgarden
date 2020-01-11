@@ -30,7 +30,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 31 images.
+  /// This `R.image` struct is generated, and contains static references to 33 images.
   struct image {
     /// Image `add_button`.
     static let add_button = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_button")
@@ -88,6 +88,10 @@ struct R: Rswift.Validatable {
     static let icon_sign_in = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_sign_in")
     /// Image `icon_square_o`.
     static let icon_square_o = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_square_o")
+    /// Image `icon_tag`.
+    static let icon_tag = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_tag")
+    /// Image `icon_tags`.
+    static let icon_tags = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_tags")
     /// Image `icon_temp`.
     static let icon_temp = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_temp")
     /// Image `icon_trash`.
@@ -238,6 +242,16 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icon_square_o", bundle: ..., traitCollection: ...)`
     static func icon_square_o(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_square_o, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_tag", bundle: ..., traitCollection: ...)`
+    static func icon_tag(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_tag, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_tags", bundle: ..., traitCollection: ...)`
+    static func icon_tags(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_tags, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "icon_temp", bundle: ..., traitCollection: ...)`
@@ -905,8 +919,8 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if UIKit.UIImage(named: "icon_bookmark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_bookmark' is used in nib 'ItemDetailHeaderCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_edit", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_edit' is used in nib 'ItemDetailHeaderCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_tags", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_tags' is used in nib 'ItemDetailHeaderCell', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
       }
@@ -946,10 +960,10 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if UIKit.UIImage(named: "icon_angle_double", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_angle_double' is used in nib 'ItemDetailSwitchCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_clock_o", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_clock_o' is used in nib 'ItemDetailSwitchCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_info", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_info' is used in nib 'ItemDetailSwitchCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_power_off", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_power_off' is used in nib 'ItemDetailSwitchCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_tag", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_tag' is used in nib 'ItemDetailSwitchCell', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
       }
@@ -969,10 +983,10 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if UIKit.UIImage(named: "icon_angle_double", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_angle_double' is used in nib 'ItemDetailTopicCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_clock_o", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_clock_o' is used in nib 'ItemDetailTopicCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_info", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_info' is used in nib 'ItemDetailTopicCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_publish", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_publish' is used in nib 'ItemDetailTopicCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_tag", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_tag' is used in nib 'ItemDetailTopicCell', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
       }
@@ -1145,6 +1159,7 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
+        if UIKit.UIImage(named: "icon_bookmark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_bookmark' is used in nib 'ItemTopicCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_edit", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_edit' is used in nib 'ItemTopicCell', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
@@ -1280,8 +1295,6 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if UIKit.UIImage(named: "icon_circle_down", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_circle_down' is used in nib 'ServerCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "icon_save", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_save' is used in nib 'ServerCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "icon_trash", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_trash' is used in nib 'ServerCell', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
       }
@@ -1492,7 +1505,6 @@ struct _R: Rswift.Validatable {
       let itemDetailViewController = StoryboardViewControllerResource<IoTGarden.ItemDetailViewController>(identifier: "ItemDetailViewController")
       let name = "ItemDetail"
       let serverViewController = StoryboardViewControllerResource<ItemDetailServerViewController>(identifier: "ServerViewController")
-      let topicViewController = StoryboardViewControllerResource<ItemDetailTopicViewController>(identifier: "TopicViewController")
       
       func itemDetailViewController(_: Void = ()) -> IoTGarden.ItemDetailViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: itemDetailViewController)
@@ -1502,16 +1514,11 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: serverViewController)
       }
       
-      func topicViewController(_: Void = ()) -> ItemDetailTopicViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: topicViewController)
-      }
-      
       static func validate() throws {
         if #available(iOS 11.0, *) {
         }
         if _R.storyboard.itemDetail().itemDetailViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'itemDetailViewController' could not be loaded from storyboard 'ItemDetail' as 'IoTGarden.ItemDetailViewController'.") }
         if _R.storyboard.itemDetail().serverViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'serverViewController' could not be loaded from storyboard 'ItemDetail' as 'ItemDetailServerViewController'.") }
-        if _R.storyboard.itemDetail().topicViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'topicViewController' could not be loaded from storyboard 'ItemDetail' as 'ItemDetailTopicViewController'.") }
       }
       
       fileprivate init() {}

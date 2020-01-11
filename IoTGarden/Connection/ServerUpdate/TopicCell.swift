@@ -2,10 +2,11 @@
 //  TopicCell.swift
 //  IoTGarden
 //
-//  Created by chuyendo on 9/23/19.
+//  Created by Vinh Nguyen on 9/23/19.
 //
 
-import UIKit
+import RxSwift
+import RxCocoa
 
 class TopicCell: UITableViewCell {
     var didTapSelectAction: (() -> Void)?
@@ -16,6 +17,10 @@ class TopicCell: UITableViewCell {
     
     @IBOutlet weak var typeTextField: UITextField!
     
+    private let disposeBag = DisposeBag()
+    
+    var viewModelRelay = PublishRelay<ViewModel?>()
+    
     @IBAction private func selectButtonTapped(_ sender: UIButton) {
         didTapSelectAction?()
     }
@@ -25,22 +30,41 @@ class TopicCell: UITableViewCell {
             nameTextField.text  = viewModel?.name ?? ""
             topicTextField.text = viewModel?.topic ?? ""
             typeTextField.text = viewModel?.type ?? ""
+            viewModelRelay.accept(viewModel)
         }
     }
     
-    struct ViewModel {
-        let name: String?
-        let topic: String?
-        let type: String?
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        configure()
     }
-}
+    
+    struct ViewModel {
+        var id = ""
+        var name = ""
+        var topic = ""
+        var type = ""
+    }
+    
+    private func configure() {
+        nameTextField.rx.text.subscribe(onNext:{ [weak self] text in
+            guard let self = self else { return }
+            self.viewModel?.name = text ?? ""
+            self.viewModelRelay.accept(self.viewModel)
+        }).disposed(by: self.disposeBag)
+        
+        topicTextField.rx.text.subscribe(onNext:{ [weak self] text in
+            guard let self = self else { return }
+            self.viewModel?.topic = text ?? ""
+            self.viewModelRelay.accept(self.viewModel)
+        }).disposed(by: self.disposeBag)
+        
+        typeTextField.rx.text.subscribe(onNext:{ [weak self] text in
+            guard let self = self else { return }
+            self.viewModel?.type = text ?? ""
+            self.viewModelRelay.accept(self.viewModel)
+        }).disposed(by: self.disposeBag)
+        
+    }
 
-struct TopicViewModel {
-    var id = ""
-    var name = ""
-    var topic = ""
-    var value = ""
-    var time = ""
-    var connectionId = ""
-    var type = ""
 }

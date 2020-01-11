@@ -26,11 +26,11 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RjO-rr-bMq">
-                        <rect key="frame" x="30" y="25" width="18" height="21"/>
-                        <state key="normal" backgroundImage="icon_bookmark"/>
+                        <rect key="frame" x="30" y="25" width="27" height="21"/>
+                        <state key="normal" backgroundImage="icon_tags"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="light beg room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cX-c2-myz">
-                        <rect key="frame" x="70" y="18" width="187.5" height="33.5"/>
+                        <rect key="frame" x="79" y="18" width="187.5" height="33.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -55,7 +55,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icon_bookmark" width="18" height="21"/>
         <image name="icon_edit" width="25" height="20"/>
+        <image name="icon_tags" width="27" height="21"/>
     </resources>
 </document>

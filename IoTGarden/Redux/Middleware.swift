@@ -21,7 +21,7 @@ let switchingMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
                 let task = state.tasks[switchCellUI.uuid]
                 
                 task?.publish(message: message)
-                task?.didReceiveMessage = {  mqtt, message, id in
+                task?.didReceiveMessage = {  mqtt, message, id, clientId in
                     print("#mqtt message: \(message)")
                     print("#clienti = \(mqtt.clientID)")
                     
@@ -42,7 +42,7 @@ let switchingMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
                     switchCellUI.message = message.string ?? ""
                     if let sensor = task?.sensor {
                         let itemListService = ItemListService()
-                        itemListService.updateTopic(topic: sensor)
+//                        itemListService.updateTopic(topic: sensor)
                     }
                     let action2 = ItemState.Action.updateSwitchItem(viewModel: switchCellUI)
                     appStore.dispatch(action2)
@@ -70,7 +70,7 @@ let inputMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
                 
                 
                 task?.publish(message: message)
-                task?.didReceiveMessage = {  mqtt, message, id in
+                task?.didReceiveMessage = {  mqtt, message, id, clientId in
                     print("#mqtt message: \(message)")
                     print("#clienti = \(mqtt.clientID)")
                     
@@ -91,8 +91,8 @@ let inputMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
                     
                     
                     if let sensor = task?.sensor {
-                        let itemListService = ItemListService()
-                        itemListService.updateTopic(topic: sensor)
+//                        let itemListService = ItemListService()
+//                        itemListService.updateTopic(topic: sensor)
                     }
                     
                     let action2 = ItemState.Action.updateInputItem(cellUI: inputCellUI)

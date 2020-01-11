@@ -38,10 +38,13 @@
                             <constraint firstAttribute="width" constant="85" id="fG8-IW-9o0"/>
                         </constraints>
                         <state key="normal" backgroundImage="icon_power_off"/>
+                        <connections>
+                            <action selector="switchButtonTapped:" destination="29b-aa-5tO" eventType="touchUpInside" id="eQN-4H-pnG"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDg-93-CDp">
-                        <rect key="frame" x="16" y="11" width="15" height="22"/>
-                        <state key="normal" image="icon_angle_double"/>
+                        <rect key="frame" x="16" y="11" width="22" height="22"/>
+                        <state key="normal" image="icon_tag"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Switch room 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="loV-lX-2ie">
                         <rect key="frame" x="55" y="12" width="115" height="21"/>
@@ -61,6 +64,13 @@
                             <action selector="infoButtonTapped:" destination="29b-aa-5tO" eventType="touchUpInside" id="1YD-1P-G5u"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bb6-Fi-ZtO">
+                        <rect key="frame" x="41" y="229" width="42" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
@@ -81,14 +91,15 @@
             <color key="backgroundColor" red="0.2470588235" green="0.44705882349999998" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
                 <outlet property="nameLabel" destination="loV-lX-2ie" id="7Xu-tT-Ri6"/>
+                <outlet property="valueLabel" destination="bb6-Fi-ZtO" id="uZa-lZ-h1m"/>
             </connections>
             <point key="canvasLocation" x="149.59999999999999" y="80.50974512743629"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icon_angle_double" width="15" height="15"/>
         <image name="icon_clock_o" width="22" height="22"/>
         <image name="icon_info" width="22" height="22"/>
         <image name="icon_power_off" width="22" height="23"/>
+        <image name="icon_tag" width="22" height="21"/>
     </resources>
 </document>

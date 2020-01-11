@@ -18,9 +18,9 @@ struct ItemState: ReSwift.StateType, Identifiable {
     var itemViewModels: [ItemViewModel] = []
     var itemViewModel = ItemViewModel()
     var topicItems: [ItemDetailSectionModel] = []
-    var topicViewModel = TopicViewModel()
-    var connectionViewModel = ConnectionViewModel(id:"", name: "hvm server", server: "https//icloud.com/", title: "")
-    var tasks: [String: SensorConnect2] = [:]
+    var topicViewModel = Topic()
+    var connectionViewModel = Server(id:"", name: "hvm server", url: "", user: "", password: "", port: "", sslPort: "555")
+    var tasks: [String: TopicConnector] = [:]
     var imageList: [ItemImageViewController.SectionModel] = []
     var itemImageViewModels: [ItemImageViewModel] = []
     var itemImageViewModel = ItemImageViewModel(id: "", isSelected: true, imageUrl: "")

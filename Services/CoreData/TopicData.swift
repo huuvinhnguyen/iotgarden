@@ -7,4 +7,17 @@
 
 struct TopicData {
     
+    var uuid: String = ""
+    
+    var name: String = ""
+    
+    var value: String = ""
+    
+    var serverUUID: String = ""
+    
+    var kind: String = ""
+    
+    var topic: String = ""
+    
+    var time: String = ""
 }

@@ -20,7 +20,7 @@ class AddItemViewController:  UIViewController {
     
     @IBOutlet weak var connectButton: UIButton?
     
-    fileprivate var configuration: ItemListService.Configuration?
+    fileprivate var configuration: ItemListService.Server?
     
     @IBAction func connectButtonTapped(sender: UIButton) {
         
@@ -36,13 +36,13 @@ class AddItemViewController:  UIViewController {
 //                    let password = "jtWqc7RiUsz-"
 //                    let port = "14985"
         
-        configuration = ItemListService.Configuration(uuid: uuid, name: "", server: server, username: username, password: password, port: port)
+        configuration = ItemListService.Server(uuid: uuid, name: "", url: server, username: username, password: password, port: port, sslPort: "555")
         
         guard let configuration = configuration else { return }
         guard let portInt = UInt16(configuration.port) else { return }
 
         let clientID = "CocoaMQTT-" + configuration.uuid
-        mqtt = CocoaMQTT(clientID: clientID, host: configuration.server, port: portInt)
+        mqtt = CocoaMQTT(clientID: clientID, host: configuration.url, port: portInt)
         mqtt!.username = configuration.username
         mqtt!.password = configuration.password
 //        mqtt!.willMessage = CocoaMQTTWill(topic: "switch", message: "1")

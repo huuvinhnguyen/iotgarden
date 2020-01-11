@@ -35,7 +35,7 @@ enum CellType: String, EnumCollection {
 
 protocol CellViewModel {
     var uuid: String? { get }
-    var sensor: Topic { get set }
+    var sensor: TopicData { get set }
     var sensorConnect: SensorConnect { get set }
 }
 

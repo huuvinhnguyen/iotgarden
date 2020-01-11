@@ -79,6 +79,10 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="NWR-L3-K7D" secondAttribute="trailing" constant="289" id="vXD-pt-0iN"/>
             </constraints>
+            <connections>
+                <outlet property="offTextField" destination="SPd-jk-iaB" id="yAg-hF-c3G"/>
+                <outlet property="onTextField" destination="WxW-Uc-iDH" id="kIu-An-Lyg"/>
+            </connections>
             <point key="canvasLocation" x="116" y="103.44827586206897"/>
         </tableViewCell>
     </objects>

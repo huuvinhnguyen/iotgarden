@@ -16,7 +16,7 @@ import RxCocoa
 struct ItemDetailViewModel {
     
     var sensorConnect: SensorConnect? = SensorConnect()
-    init(sensor: Topic) {
+    init(sensor: TopicData) {
         sensorConnect?.connect(sensor: sensor)
     }
 }
@@ -29,7 +29,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     private var viewModel: ItemDetailViewModel?
     private let disposeBag = DisposeBag()
     
-    var topicsRelay = PublishRelay<[TopicViewModel]>()
+    var topicsRelay = PublishRelay<[Topic]>()
 
     private var dataSource: RxTableViewSectionedReloadDataSource<ItemDetailSectionModel> {
         
@@ -51,9 +51,9 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                 }
                 return cell
                 
-            case .topicItem(let viewModel):
+            case .topicItem(let topic):
                 
-                if viewModel?.type == "Switch" {
+                if topic?.type == "Switch" {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailSwitchCell, for: indexPath) else { return UITableViewCell() }
                     
                     cell.didTapInfoAction = {
@@ -61,10 +61,23 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                         guard let weakSelf = self else { return }
                         let viewController = R.storyboard.itemTopic.itemTopic()!
                         weakSelf.navigationController?.pushViewController(viewController, animated: true)
-                        viewController.identifier = viewModel?.id
+                        viewController.identifier = topic?.id
                     }
                     
-                    cell.viewModel = viewModel
+                    cell.didTapSwitchAction = {
+                        if topic?.value == "0" {
+                            appStore.dispatch(TopicState.Action.publish(topicId: topic?.id ?? "", message: "1"))
+                        } else if topic?.value == "1" {
+                            appStore.dispatch(TopicState.Action.publish(topicId: topic?.id ?? "", message: "0"))
+                        } else {
+                            appStore.dispatch(TopicState.Action.publish(topicId: topic?.id ?? "", message: "0"))
+                        }
+                        
+                    
+                        
+                    }
+                    
+                    cell.viewModel = topic
                     return cell
                     
                 } else {
@@ -96,6 +109,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                     cell.didTapPlusAction = {
                         guard let weakSelf = self else { return }
                         let viewController = R.storyboard.connection.topicViewController()!
+                        viewController.mode = .add
                         weakSelf.navigationController?.pushViewController(viewController, animated: true)
                     }
                     return cell
@@ -109,15 +123,15 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
 
     func newState(state: (identifier :String, topicState: TopicState)) {
         
-        topicsRelay.accept(state.topicState.topicViewModels)
+        topicsRelay.accept(state.topicState.topics)
         print("#detail identifier: \(identifier) ")
         self.identifier = state.identifier
         
     }
     
-    var sensor: Topic? {
+    var sensor: TopicData? {
         didSet {
-            viewModel = ItemDetailViewModel(sensor: sensor ?? Topic())
+            viewModel = ItemDetailViewModel(sensor: sensor ?? TopicData())
         }   
     }
     
@@ -147,7 +161,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                 
                 }
         }    
-        appStore.dispatch(TopicState.Action.loadTopics())
+        appStore.dispatch(TopicState.Action.loadTopics(itemId: ""))
     }
     
     private func configureTableView() {
@@ -159,6 +173,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         tableView.register(R.nib.itemDetailPlusCell)
 
         tableView.register(R.nib.itemDetailTrashCell)
+        tableView.remembersLastFocusedIndexPath = true
 
         topicsRelay
             .map { $0.map { ItemDetailSectionItem.topicItem(viewModel: $0)} }
@@ -198,8 +213,4 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         navigationController?.popViewController(animated: true)
     }
 
-    @IBAction func editTopicTapped(_ sender: UIButton) {
-        let vc = R.storyboard.itemDetail.topicViewController()!
-        navigationController?.pushViewController(vc, animated: true)
-    }
 }
