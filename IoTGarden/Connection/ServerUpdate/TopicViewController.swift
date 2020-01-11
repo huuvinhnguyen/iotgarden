@@ -163,7 +163,7 @@ class TopicViewController: UIViewController, StoreSubscriber {
             topic.id = UUID().uuidString
             appStore.dispatch(TopicState.Action.addTopic(viewModel: self.topic))
         case .edit(_):
-            appStore.dispatch(TopicState.Action.updateTopic(topicViewModel: self.topic))
+            appStore.dispatch(TopicState.Action.updateTopic(topic: self.topic))
         }
         
         navigationController?.popViewController(animated: true)

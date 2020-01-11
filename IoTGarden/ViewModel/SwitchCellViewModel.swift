@@ -35,7 +35,7 @@ class SwitchCellViewModel: CellViewModel, Equatable, IdentifiableType {
     var stateString: String = "Requesting"
     var timeString  = ""
     
-    var sensorConnect2: SensorConnect2
+    var sensorConnect2: TopicConnector
 
     internal var sensorConnect: SensorConnect
     
@@ -43,7 +43,7 @@ class SwitchCellViewModel: CellViewModel, Equatable, IdentifiableType {
         
         self.sensor = sensor
         self.sensorConnect = SensorConnect()
-        self.sensorConnect2 = SensorConnect2()
+        self.sensorConnect2 = TopicConnector()
 
 //        sensorConnect.connect(sensor: sensor)
 
@@ -52,7 +52,7 @@ class SwitchCellViewModel: CellViewModel, Equatable, IdentifiableType {
     }
     
     func connectSensor() {
-        self.sensorConnect2.connect(sensor: sensor)
+//        self.sensorConnect2.connect(sensor: sensor)
 
     }
     

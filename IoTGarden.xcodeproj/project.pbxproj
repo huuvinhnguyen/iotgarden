@@ -86,7 +86,7 @@
 		1836B9D5227D916200CF6F66 /* CandleStickChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1836B9D4227D916200CF6F66 /* CandleStickChartViewController.xib */; };
 		183A91FD22EAFEA600EBDC4A /* ItemDetailServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183A91FC22EAFEA600EBDC4A /* ItemDetailServerViewController.swift */; };
 		183A91FF22EAFFAB00EBDC4A /* ItemDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 183A91FE22EAFFAB00EBDC4A /* ItemDetail.storyboard */; };
-		183A920322EC023D00EBDC4A /* SensorConnect2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183A920222EC023D00EBDC4A /* SensorConnect2.swift */; };
+		183A920322EC023D00EBDC4A /* TopicConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183A920222EC023D00EBDC4A /* TopicConnector.swift */; };
 		1846AB53218A9E7800F46053 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846AB52218A9E7800F46053 /* ItemDetailViewController.swift */; };
 		1846AB57218AA3B800F46053 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846AB56218AA3B800F46053 /* AddItemViewController.swift */; };
 		1846AB59218AA3E100F46053 /* AddItemViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1846AB58218AA3E100F46053 /* AddItemViewController.storyboard */; };
@@ -260,7 +260,7 @@
 		1836B9D4227D916200CF6F66 /* CandleStickChartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CandleStickChartViewController.xib; sourceTree = "<group>"; };
 		183A91FC22EAFEA600EBDC4A /* ItemDetailServerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailServerViewController.swift; sourceTree = "<group>"; };
 		183A91FE22EAFFAB00EBDC4A /* ItemDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemDetail.storyboard; sourceTree = "<group>"; };
-		183A920222EC023D00EBDC4A /* SensorConnect2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorConnect2.swift; sourceTree = "<group>"; };
+		183A920222EC023D00EBDC4A /* TopicConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicConnector.swift; sourceTree = "<group>"; };
 		1846AB52218A9E7800F46053 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		1846AB56218AA3B800F46053 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		1846AB58218AA3E100F46053 /* AddItemViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddItemViewController.storyboard; sourceTree = "<group>"; };
@@ -478,7 +478,7 @@
 			children = (
 				18EDCF4F21899E3800B233B9 /* Item.swift */,
 				1803375F21CB41640098F944 /* SensorConnect.swift */,
-				183A920222EC023D00EBDC4A /* SensorConnect2.swift */,
+				183A920222EC023D00EBDC4A /* TopicConnector.swift */,
 				040345CA23B74F8600E2095A /* Server.swift */,
 				04FCF07723B8C5820070BDCE /* Topic.swift */,
 			);
@@ -1081,7 +1081,7 @@
 				1852DBA421931E16002E1946 /* AddItemSavingViewController.swift in Sources */,
 				04FCF07823B8C5820070BDCE /* Topic.swift in Sources */,
 				040345CB23B74F8600E2095A /* Server.swift in Sources */,
-				183A920322EC023D00EBDC4A /* SensorConnect2.swift in Sources */,
+				183A920322EC023D00EBDC4A /* TopicConnector.swift in Sources */,
 				185FF15222ABB0B7003C0DDF /* ItemInputValueCell.swift in Sources */,
 				04F2480223378DE7003239B6 /* ItemTopicCell.swift in Sources */,
 				186AB6272332913D0017F935 /* AddItemTopicViewModel.swift in Sources */,

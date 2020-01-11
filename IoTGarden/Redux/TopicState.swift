@@ -11,22 +11,27 @@ struct TopicState: ReSwift.StateType, Identifiable {
     var identifiableComponent = IdentifiableComponent()
     var topics: [Topic] = []
     var topic: Topic?
-    var server: Server?
+    var tasks: [String: TopicConnector] = [:]
+
 }
 
 
 extension TopicState {
     enum Action: ReSwift.Action {
-        case loadTopics()
+        case loadTopics(itemId: String)
+        case fetchTopics(topics: [Topic])
         case loadConection()
         case addTopic(viewModel: Topic?)
         case removeTopic(id: String)
         case loadTopic(id: String)
-        case loadConnection(id: String)
         case removeConnection()
-        case fetchTopic(topicViewModel: Topic?, connectionViewModel: Server?)
-        case updateTopic(topicViewModel: Topic?)
+        case fetchTopic(topic: Topic?)
+        case updateTopic(topic: Topic?)
         case getTopic(id: String)
+        case updateTask(topic: Topic)
+        case fetchTask(topicId: String, task: TopicConnector)
+        case publish(topicId: String, message: String)
+        case stopAllTasks()
     }
 }
 
@@ -39,32 +44,28 @@ extension TopicState {
         guard let action = action as? TopicState.Action else { return state }
         switch action {
             
-        case .loadTopics():
-
-            let service = ItemListService()
-            service.loadTopics { topics in
-                state.topics = topics.map {
-                    Topic(id: $0.uuid, name: $0.name, topic: $0.topic, value: $0.value, time: $0.time, serverId: $0.serverUUID, type: "Switch", qos: "0")
-                }
-            }
+        case .fetchTopics(let topics):
+            state.topics = topics
             state.identifiableComponent.update()
-            
-        
-        case .loadConnection(let id):
-            let service = ItemListService()
-            service.loadLocalConfiguration(uuid: id) { configuration in
-                let viewModel = configuration.map {  Server(id: $0.uuid , name: $0.name , url: $0.url, user: $0.username, password: $0.password, port: $0.port, sslPort: $0.sslPort)
-                    }
-                
-                state.server = viewModel
-                state.identifiableComponent.update()
 
-            }
-            
-        case .fetchTopic(let topicViewModel, let connectionViewModel):
+        case .fetchTopic(let topicViewModel):
             state.topic = topicViewModel
-//            state.connectionViewModel = connectionViewModel
             state.identifiableComponent.update()
+            
+        case Action.fetchTask(let topicId, let task):
+            if state.tasks[topicId] == nil {
+                task.connect()
+                state.tasks[topicId] = task
+//                state.identifiableComponent.update()
+            }
+            
+        case Action.publish(let topicId, let message):
+                let task = state.tasks[topicId]
+                task?.publish(message: message)
+            
+        case Action.stopAllTasks():
+            state.tasks.forEach { $0.value.disconnect() }
+            
             
         default: ()
 
@@ -86,7 +87,7 @@ extension TopicState {
                     let service = ItemListService()
                     let id = viewModel?.id ?? ""
                     service.addTopic(topic: ItemListService.TopicData(uuid: id, name: viewModel?.name ?? "", value: viewModel?.value ?? "", serverUUID: viewModel?.serverId ?? "", kind: viewModel?.type ?? "", topic: viewModel?.topic ?? "", time: viewModel?.time ?? "")) { item in
-                        dispatch(TopicState.Action.loadTopics())
+                        dispatch(TopicState.Action.loadTopics(itemId: ""))
                         dispatch(TopicState.Action.loadTopic(id: id))
 
                     }
@@ -95,21 +96,22 @@ extension TopicState {
                 if case TopicState.Action.removeTopic(let id) = action {
                     let service = ItemListService()
                     service.removeTopic(id: id)
-                    dispatch(TopicState.Action.loadTopics())
+                    dispatch(TopicState.Action.loadTopics(itemId: ""))
                 }
                 
                 if case TopicState.Action.loadTopic(let id) = action {
+                    
                     let service = ItemListService()
                     service.loadTopic(uuid: id) { topic in
-                        service.loadLocalConfiguration(uuid: topic?.serverUUID ?? "", finished: { server in
+                        service.loadServer(uuid: topic?.serverUUID ?? "", finished: { serverResult in
                             let topicViewModel = topic.map { _ in
                                 Topic(id: topic?.uuid ?? "", name: topic?.name ?? "", topic: topic?.topic ?? "", value: topic?.value ?? "", time: topic?.time ?? "", serverId: topic?.serverUUID ?? "", type: "switch", qos: "2")}
-                            let connectionViewModel = server.map { Server(id: $0.uuid, name: $0.name, url: $0.url, user: $0.username, password: $0.password, port: $0.port, sslPort: $0.sslPort) }
-                            dispatch(TopicState.Action.fetchTopic(topicViewModel: topicViewModel, connectionViewModel: connectionViewModel))
+                            let server = serverResult.map { Server(id: $0.uuid, name: $0.name, url: $0.url, user: $0.username, password: $0.password, port: $0.port, sslPort: $0.sslPort) }
+                            dispatch(TopicState.Action.fetchTopic(topic: topicViewModel))
                             dispatch(ServerState.Action.loadServer(id: topic?.serverUUID ?? ""))
                         })
                     }
-                    dispatch(TopicState.Action.loadTopics())
+                    dispatch(TopicState.Action.loadTopics(itemId: ""))
                 }
                 
                 if case TopicState.Action.updateTopic(let item) = action {
@@ -124,7 +126,48 @@ extension TopicState {
                     let state = getState()?.topicState ?? TopicState()
                     var topicViewModel = state.topic
                     topicViewModel?.serverId = ""
-                    dispatch(TopicState.Action.updateTopic(topicViewModel: topicViewModel))
+                    dispatch(TopicState.Action.updateTopic(topic: topicViewModel))
+                }
+                
+                if case Action.loadTopics(let itemId) = action {
+                    let service = ItemListService()
+                    service.loadTopics { topics in
+                        let topics = topics.map {
+                            Topic(id: $0.uuid, name: $0.name, topic: $0.topic, value: $0.value, time: $0.time, serverId: $0.serverUUID, type: "Switch", qos: "0")
+                        }
+                        
+                        topics.forEach {
+                            dispatch(TopicState.Action.updateTask(topic: $0))
+                        }
+                        
+                        dispatch(TopicState.Action.fetchTopics(topics: topics))
+                        
+                    }
+                }
+                
+                if case Action.updateTask(let topic) = action {
+                    let service = ItemListService()
+                    service.loadServer(uuid: topic.serverId) { configuration in
+                        let server = configuration.map {  Server(id: $0.uuid , name: $0.name , url: $0.url, user: $0.username, password: $0.password, port: $0.port, sslPort: $0.sslPort)
+                        }
+                        guard let result = server else { return }
+                        guard let state = getState()?.topicState else { return }
+
+                        if state.tasks[topic.id] != nil { return }
+                        
+                        let connector = TopicConnector()
+                        connector.configure(topic: topic, server: result)
+                        connector.didReceiveMessage = { mqtt, message, id, clientId in
+                            print("##message: \(message)")
+                           let value = message.string ?? ""
+                            if connector.topic.value != value {
+                               connector.topic.value = value
+                                dispatch(TopicState.Action.updateTopic(topic: connector.topic))
+                            }
+                        }
+                        dispatch(TopicState.Action.fetchTask(topicId: topic.id, task: connector))
+
+                    }
                 }
 
                 next(action)

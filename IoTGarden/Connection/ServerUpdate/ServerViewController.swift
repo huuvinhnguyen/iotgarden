@@ -134,7 +134,7 @@ class ServerViewController: UIViewController, StoreSubscriber {
             topic?.serverId = server.id
             
             appStore.dispatch(ServerState.Action.addServer(server))
-            appStore.dispatch(TopicState.Action.updateTopic(topicViewModel: topic))
+            appStore.dispatch(TopicState.Action.updateTopic(topic: topic))
             
         case .edit(let topicId):
             var topic = appStore.state.topicState.topics.filter { $0.id == topicId}.first
@@ -150,7 +150,7 @@ class ServerViewController: UIViewController, StoreSubscriber {
             topic?.serverId = server.id
             
             appStore.dispatch(ServerState.Action.updateServer(server))
-            appStore.dispatch(TopicState.Action.updateTopic(topicViewModel: topic))
+            appStore.dispatch(TopicState.Action.updateTopic(topic: topic))
             
             
         }

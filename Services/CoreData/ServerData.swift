@@ -34,7 +34,7 @@ extension ItemListService {
         }
     }
     
-    func loadLocalConfiguration(uuid: String, finished: (_ configuration: Server?)->()) {
+    func loadServer(uuid: String, finished: (_ configuration: Server?)->()) {
         
         let interactor = ConfigurationsDataInteractor()
         interactor.getItem(uuid: uuid) { configuration in

@@ -27,11 +27,6 @@ struct RemoveSensorAction: Action {
     let item: TopicData
 }
 
-struct ListItemsAction: Action { }
-
-struct ListItemsAction2: Action { }
-
-
 struct ItemListUpdateItemAction: Action {
     let item: CellViewModel
 }
@@ -42,13 +37,13 @@ struct ItemListPublishMQTTAction: Action {
     
     var message: String? = ""
     var mqtt: CocoaMQTT?
-    var sensorConnect = SensorConnect2()
+    var sensorConnect = TopicConnector()
 
 
     init(sensor: TopicData) {
 //        print("#mqtt sensorConnect 5555")
 //
-        sensorConnect.connect(sensor: sensor)
+//        sensorConnect.connect(sensor: sensor)
 //
 //
 //        let itemListService = ItemListService()

@@ -21,7 +21,7 @@ let switchingMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
                 let task = state.tasks[switchCellUI.uuid]
                 
                 task?.publish(message: message)
-                task?.didReceiveMessage = {  mqtt, message, id in
+                task?.didReceiveMessage = {  mqtt, message, id, clientId in
                     print("#mqtt message: \(message)")
                     print("#clienti = \(mqtt.clientID)")
                     
@@ -70,7 +70,7 @@ let inputMiddleware: ReSwift.Middleware<AppState> = { dispatch, getState in
                 
                 
                 task?.publish(message: message)
-                task?.didReceiveMessage = {  mqtt, message, id in
+                task?.didReceiveMessage = {  mqtt, message, id, clientId in
                     print("#mqtt message: \(message)")
                     print("#clienti = \(mqtt.clientID)")
                     
