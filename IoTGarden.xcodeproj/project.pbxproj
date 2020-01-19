@@ -14,6 +14,7 @@
 		04051B6A233E6F7600224600 /* TopicTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04051B69233E6F7600224600 /* TopicTypeCell.xib */; };
 		0412B96F23BDB2AC00F6B56B /* ServerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412B96E23BDB2AC00F6B56B /* ServerData.swift */; };
 		0412B97123BDB2FD00F6B56B /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412B97023BDB2FD00F6B56B /* ItemData.swift */; };
+		041463FB23C9EA5E001F922E /* ItemDetailViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041463FA23C9EA5E001F922E /* ItemDetailViewController+.swift */; };
 		04161F4E23A1104900BAB4B3 /* ItemNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04161F4D23A1104800BAB4B3 /* ItemNameCell.xib */; };
 		04161F5023A1105D00BAB4B3 /* ItemNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04161F4F23A1105D00BAB4B3 /* ItemNameCell.swift */; };
 		04161F5223A1121B00BAB4B3 /* ItemNameHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04161F5123A1121B00BAB4B3 /* ItemNameHeaderCell.swift */; };
@@ -39,6 +40,7 @@
 		049C7DB823AF621900B047E7 /* Routers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049C7DB723AF621900B047E7 /* Routers.swift */; };
 		04CD3798239963990020A8B5 /* ItemTopicSignInCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD3797239963990020A8B5 /* ItemTopicSignInCell.swift */; };
 		04CD379A239963B30020A8B5 /* ItemTopicSignInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CD3799239963B30020A8B5 /* ItemTopicSignInCell.xib */; };
+		04E56B8023D2172B001CFABC /* TopicTypeViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E56B7F23D2172B001CFABC /* TopicTypeViewController+.swift */; };
 		04F247FC23378B80003239B6 /* ItemTopic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F247FB23378B80003239B6 /* ItemTopic.storyboard */; };
 		04F247FE23378B9B003239B6 /* ItemTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F247FD23378B9B003239B6 /* ItemTopicViewController.swift */; };
 		04F2480023378C53003239B6 /* ItemTopicSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F247FF23378C53003239B6 /* ItemTopicSection.swift */; };
@@ -81,7 +83,6 @@
 		181F50A422F1FEAE00EA89D1 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181F50A322F1FEAE00EA89D1 /* AppState.swift */; };
 		18243663227D8DC80009F7EA /* CandleStickChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18243662227D8DC80009F7EA /* CandleStickChartViewController.swift */; };
 		1826C625218F51B700A5CE38 /* ItemListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1826C624218F51B700A5CE38 /* ItemListService.swift */; };
-		18339BE021C9493E00CC2269 /* IoTGarden.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18339BDE21C9493E00CC2269 /* IoTGarden.xcdatamodeld */; };
 		18339BE321C9496100CC2269 /* ItemList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18339BE121C9496100CC2269 /* ItemList.xcdatamodeld */; };
 		1836B9D5227D916200CF6F66 /* CandleStickChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1836B9D4227D916200CF6F66 /* CandleStickChartViewController.xib */; };
 		183A91FD22EAFEA600EBDC4A /* ItemDetailServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183A91FC22EAFEA600EBDC4A /* ItemDetailServerViewController.swift */; };
@@ -188,6 +189,7 @@
 		04051B69233E6F7600224600 /* TopicTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicTypeCell.xib; sourceTree = "<group>"; };
 		0412B96E23BDB2AC00F6B56B /* ServerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerData.swift; sourceTree = "<group>"; };
 		0412B97023BDB2FD00F6B56B /* ItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemData.swift; sourceTree = "<group>"; };
+		041463FA23C9EA5E001F922E /* ItemDetailViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemDetailViewController+.swift"; sourceTree = "<group>"; };
 		04161F4D23A1104800BAB4B3 /* ItemNameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemNameCell.xib; sourceTree = "<group>"; };
 		04161F4F23A1105D00BAB4B3 /* ItemNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNameCell.swift; sourceTree = "<group>"; };
 		04161F5123A1121B00BAB4B3 /* ItemNameHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNameHeaderCell.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 		049C7DB723AF621900B047E7 /* Routers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routers.swift; sourceTree = "<group>"; };
 		04CD3797239963990020A8B5 /* ItemTopicSignInCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicSignInCell.swift; sourceTree = "<group>"; };
 		04CD3799239963B30020A8B5 /* ItemTopicSignInCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTopicSignInCell.xib; sourceTree = "<group>"; };
+		04E56B7F23D2172B001CFABC /* TopicTypeViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopicTypeViewController+.swift"; sourceTree = "<group>"; };
 		04F247FB23378B80003239B6 /* ItemTopic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemTopic.storyboard; sourceTree = "<group>"; };
 		04F247FD23378B9B003239B6 /* ItemTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicViewController.swift; sourceTree = "<group>"; };
 		04F247FF23378C53003239B6 /* ItemTopicSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicSection.swift; sourceTree = "<group>"; };
@@ -255,7 +258,6 @@
 		181F50A322F1FEAE00EA89D1 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		18243662227D8DC80009F7EA /* CandleStickChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandleStickChartViewController.swift; sourceTree = "<group>"; };
 		1826C624218F51B700A5CE38 /* ItemListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListService.swift; sourceTree = "<group>"; };
-		18339BDF21C9493E00CC2269 /* IoTGarden.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IoTGarden.xcdatamodel; sourceTree = "<group>"; };
 		18339BE221C9496100CC2269 /* ItemList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ItemList.xcdatamodel; sourceTree = "<group>"; };
 		1836B9D4227D916200CF6F66 /* CandleStickChartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CandleStickChartViewController.xib; sourceTree = "<group>"; };
 		183A91FC22EAFEA600EBDC4A /* ItemDetailServerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailServerViewController.swift; sourceTree = "<group>"; };
@@ -420,6 +422,7 @@
 				0446881F233F5B0C0074CF75 /* TopicSwitchCell.xib */,
 				04051B63233BCE8800224600 /* TopicViewController.swift */,
 				04051B65233E6E2D00224600 /* TopicTypeViewController.swift */,
+				04E56B7F23D2172B001CFABC /* TopicTypeViewController+.swift */,
 				04051B67233E6F3300224600 /* TopicTypeCell.swift */,
 				04051B69233E6F7600224600 /* TopicTypeCell.xib */,
 				04468821233F64360074CF75 /* TopicQosCell.swift */,
@@ -522,6 +525,7 @@
 			children = (
 				1854087F21C40D0A00984268 /* ItemDetailTempViewController.storyboard */,
 				1846AB52218A9E7800F46053 /* ItemDetailViewController.swift */,
+				041463FA23C9EA5E001F922E /* ItemDetailViewController+.swift */,
 				189C81342311405D00E4BC95 /* Cells */,
 				183A91FC22EAFEA600EBDC4A /* ItemDetailServerViewController.swift */,
 				183A91FE22EAFFAB00EBDC4A /* ItemDetail.storyboard */,
@@ -637,7 +641,6 @@
 				5B2CD58622896E5400EA8B25 /* UIFont+Extension.swift */,
 				5B2CD588228973A400EA8B25 /* UIView+Extension.swift */,
 				1803375221C9EF810098F944 /* Libs */,
-				18339BDE21C9493E00CC2269 /* IoTGarden.xcdatamodeld */,
 				18E7A71C218EE0F800F7E689 /* Redux */,
 				18A0431121894CD4005E04D4 /* Assets.xcassets */,
 				18A0431321894CD4005E04D4 /* LaunchScreen.storyboard */,
@@ -1009,6 +1012,7 @@
 				04051B64233BCE8800224600 /* TopicViewController.swift in Sources */,
 				04F2480023378C53003239B6 /* ItemTopicSection.swift in Sources */,
 				0412B96F23BDB2AC00F6B56B /* ServerData.swift in Sources */,
+				041463FB23C9EA5E001F922E /* ItemDetailViewController+.swift in Sources */,
 				04F314FF23732D4700184507 /* TopicSaveCell.swift in Sources */,
 				18243663227D8DC80009F7EA /* CandleStickChartViewController.swift in Sources */,
 				1803377621CBF5480098F944 /* SelectionViewController.swift in Sources */,
@@ -1032,12 +1036,12 @@
 				186AB62123328FB30017F935 /* AddItemTopicCell.swift in Sources */,
 				049A85882365B3010038D247 /* ItemDataInteractor.swift in Sources */,
 				18EDCF5221899EC500B233B9 /* Configuration.swift in Sources */,
-				18339BE021C9493E00CC2269 /* IoTGarden.xcdatamodeld in Sources */,
 				04F314FB236B384100184507 /* ItemImageCell.swift in Sources */,
 				18EDCF5021899E3900B233B9 /* Item.swift in Sources */,
 				18A934CF2291727D009C6ADF /* R.generated.swift in Sources */,
 				18B975C822FE945700E7DD8D /* AppStore.swift in Sources */,
 				1803376921CBAC7D0098F944 /* HumidityCell.swift in Sources */,
+				04E56B8023D2172B001CFABC /* TopicTypeViewController+.swift in Sources */,
 				04051B66233E6E2D00224600 /* TopicTypeViewController.swift in Sources */,
 				18D7C6D9220EB81000FF8529 /* MotionDevice.swift in Sources */,
 				5B2CD58722896E5400EA8B25 /* UIFont+Extension.swift in Sources */,
@@ -1427,16 +1431,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		18339BDE21C9493E00CC2269 /* IoTGarden.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				18339BDF21C9493E00CC2269 /* IoTGarden.xcdatamodel */,
-			);
-			currentVersion = 18339BDF21C9493E00CC2269 /* IoTGarden.xcdatamodel */;
-			path = IoTGarden.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		18339BE121C9496100CC2269 /* ItemList.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

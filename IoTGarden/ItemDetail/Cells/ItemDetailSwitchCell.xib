@@ -76,7 +76,7 @@
                 <constraints>
                     <constraint firstItem="R6O-Um-KRt" firstAttribute="leading" secondItem="Dln-Ja-qCP" secondAttribute="leading" constant="24" id="3R7-2W-ahH"/>
                     <constraint firstAttribute="bottom" secondItem="fA6-Pb-BRy" secondAttribute="bottom" constant="10.5" id="4s6-bN-h21"/>
-                    <constraint firstAttribute="bottom" secondItem="R6O-Um-KRt" secondAttribute="bottom" constant="67.5" id="ILB-7j-XJ2"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="R6O-Um-KRt" secondAttribute="bottom" constant="67.5" id="ILB-7j-XJ2"/>
                     <constraint firstItem="jDg-93-CDp" firstAttribute="leading" secondItem="Dln-Ja-qCP" secondAttribute="leading" constant="16" id="LiY-ZJ-cGE"/>
                     <constraint firstAttribute="trailing" secondItem="fA6-Pb-BRy" secondAttribute="trailing" constant="16" id="O3C-wV-PHl"/>
                     <constraint firstItem="a9Q-EF-Nw0" firstAttribute="leading" secondItem="R6O-Um-KRt" secondAttribute="trailing" constant="8" id="T4P-wf-SJm"/>

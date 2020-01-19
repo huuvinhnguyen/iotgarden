@@ -13,27 +13,18 @@ import RxSwift
 import ReSwiftRouter
 import RxCocoa
 
-struct ItemDetailViewModel {
-    
-    var sensorConnect: SensorConnect? = SensorConnect()
-    init(sensor: TopicData) {
-        sensorConnect?.connect(sensor: sensor)
-    }
-}
-
 class ItemDetailViewController: UIViewController, StoreSubscriber {
    
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak private var tableView: UITableView!
 
-    private var viewModel: ItemDetailViewModel?
     private let disposeBag = DisposeBag()
     
     var topicsRelay = PublishRelay<[Topic]>()
 
-    private var dataSource: RxTableViewSectionedReloadDataSource<ItemDetailSectionModel> {
+    private var dataSource: RxTableViewSectionedAnimatedDataSource<AnimatableSectionModel<String, SectionItem>> {
         
-        return RxTableViewSectionedReloadDataSource<ItemDetailSectionModel>(configureCell: { [weak self] dataSource, tableView, indexPath, _ in
+        return RxTableViewSectionedAnimatedDataSource<AnimatableSectionModel<String, SectionItem>>(animationConfiguration: AnimationConfiguration(insertAnimation: .none, reloadAnimation: .none, deleteAnimation: .none),configureCell: { [weak self] dataSource, tableView, indexPath, _ in
             
             switch dataSource[indexPath] {
             case .headerItem(let viewModel):
@@ -51,73 +42,50 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                 }
                 return cell
                 
-            case .topicItem(let topic):
+            case .topicSwitchItem(let viewModel):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailSwitchCell, for: indexPath) else { return UITableViewCell() }
                 
-                if topic?.type == "Switch" {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailSwitchCell, for: indexPath) else { return UITableViewCell() }
+                cell.didTapInfoAction = {
                     
-                    cell.didTapInfoAction = {
-                        
-                        guard let weakSelf = self else { return }
-                        let viewController = R.storyboard.itemTopic.itemTopic()!
-                        weakSelf.navigationController?.pushViewController(viewController, animated: true)
-                        viewController.identifier = topic?.id
-                    }
-                    
-                    cell.didTapSwitchAction = {
-                        if topic?.value == "0" {
-                            appStore.dispatch(TopicState.Action.publish(topicId: topic?.id ?? "", message: "1"))
-                        } else if topic?.value == "1" {
-                            appStore.dispatch(TopicState.Action.publish(topicId: topic?.id ?? "", message: "0"))
-                        } else {
-                            appStore.dispatch(TopicState.Action.publish(topicId: topic?.id ?? "", message: "0"))
-                        }
-                        
-                    
-                        
-                    }
-                    
-                    cell.viewModel = topic
-                    return cell
-                    
-                } else {
-                    
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailTopicCell, for: indexPath) else { return UITableViewCell() }
-                    
-//                    cell.viewModel = viewModel
-                    return cell
-                    
+                    guard let weakSelf = self else { return }
+                    let viewController = R.storyboard.itemTopic.itemTopic()!
+                    weakSelf.navigationController?.pushViewController(viewController, animated: true)
+                    viewController.identifier = viewModel.id
                 }
                 
-                
-            case .footerItem(let viewModel):
-                if viewModel.kind == "trash" {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailTrashCell, for: indexPath) else { return UITableViewCell() }
-                    //                cell.viewModel = viewModel
-                    cell.didTapTrashAction = {
-                        guard let weakSelf = self else { return }
-
-                        let action = ItemState.Action.removeItem(id: weakSelf.identifier)
-                        appStore.dispatch(action)
-                        weakSelf.navigationController?.popViewController(animated: true)
-                        
-                    }
-                    return cell
-                } else if viewModel.kind == "plus" {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailPlusCell, for: indexPath) else { return UITableViewCell() }
-                    //                cell.viewModel = viewModel
-                    cell.didTapPlusAction = {
-                        guard let weakSelf = self else { return }
-                        let viewController = R.storyboard.connection.topicViewController()!
-                        viewController.mode = .add
-                        weakSelf.navigationController?.pushViewController(viewController, animated: true)
-                    }
-                    return cell
+                cell.didTapSwitchAction = { messageResult in
+                    
+                    appStore.dispatch(TopicState.Action.publish(topicId: viewModel.id, message: messageResult))
+                    
                 }
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailFooterCell, for: indexPath) else { return UITableViewCell() }
-//                cell.viewModel = viewModel
+                cell.viewModel = viewModel
                 return cell
+            case .plusItem():
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailPlusCell, for: indexPath) else { return UITableViewCell() }
+                //                cell.viewModel = viewModel
+                cell.didTapPlusAction = {
+                    guard let weakSelf = self else { return }
+                    let viewController = R.storyboard.connection.topicViewController()!
+                    viewController.mode = .add
+                    weakSelf.navigationController?.pushViewController(viewController, animated: true)
+                }
+                return cell
+            case .trashItem():
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailTrashCell, for: indexPath) else { return UITableViewCell() }
+                cell.didTapTrashAction = {
+                    guard let weakSelf = self else { return }
+                    
+                    let action = ItemState.Action.removeItem(id: weakSelf.identifier)
+                    appStore.dispatch(action)
+                    weakSelf.navigationController?.popViewController(animated: true)
+                    
+                }
+                return cell
+                
+            default: return UITableViewCell()
+
             }
+            
         })
     }
 
@@ -129,11 +97,6 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         
     }
     
-    var sensor: TopicData? {
-        didSet {
-            viewModel = ItemDetailViewModel(sensor: sensor ?? TopicData())
-        }   
-    }
     
     var identifier = ""
     
@@ -174,40 +137,60 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
 
         tableView.register(R.nib.itemDetailTrashCell)
         tableView.remembersLastFocusedIndexPath = true
+        
+        
 
         topicsRelay
-            .map { $0.map { ItemDetailSectionItem.topicItem(viewModel: $0)} }
-            .map { sectionItems -> [ItemDetailSectionModel] in
+            .map { $0.map { topic -> SectionItem in
+                return SectionItem.topicSwitchItem(viewModel:  ItemDetailSwitchCell.ViewModel(id: topic.id, name: topic.name, value: topic.value, message: topic.message))
+                if topic.type == "Switch" {
+                    return SectionItem.topicSwitchItem(viewModel:  ItemDetailSwitchCell.ViewModel(id: topic.id, name: topic.name, value: topic.value, message: topic.message))
+                }
+                return SectionItem.topicItem()
                 
-                var sections: [ItemDetailSectionModel] = []
+                }
+                
+            }
+            .map { sectionItems -> [AnimatableSectionModel<String, SectionItem>] in
+            
+                var sections: [Section] = []
                 let item = appStore.state.itemState.itemViewModels.filter {$0.uuid == self.identifier }.first
-                sections.append(
-                    .headerSection(items: [.headerItem(viewModel: ItemDetailHeaderCell.ViewModel(name: item?.name ?? ""))])
-                )
+//                sections.append(
+//                    .headerSection(items: [.headerItem(viewModel: ItemDetailHeaderCell.ViewModel(name: item?.name ?? ""))])
+//                )
+                var list = [SectionItem]()
+
+                list += [SectionItem.headerItem(viewModel: ItemDetailHeaderCell.ViewModel(name: item?.name ?? ""))]
                 
                 sections.append(
                     .topicSection(items: sectionItems)
                 )
+                list += sectionItems
+                list += [SectionItem.plusItem(), SectionItem.trashItem()]
                 
-                sections.append(
-                    .footerSection(items: [
-                        .footerItem(viewModel: ItemDetailFooterViewModel(kind: "plus")),
-                        .footerItem(viewModel: ItemDetailFooterViewModel(kind: "trash"))
-                        ])
-                )
-                return sections
+//                sections.append(
+//                    .footerSection(items: [
+//                        .plusItem(),
+//                        .trashItem()
+//                        ])
+//                )
+                
+                
+                
+                return [AnimatableSectionModel<String, SectionItem>(model: "", items: list)]
+//                return sections
                 
             }
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
+        
     }
     
 
     
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
         
-        let itemListService = ItemListService()
-        itemListService.removeTopic(id: sensor?.uuid ?? "")
         let action = ItemState.Action.loadItems()
         appStore.dispatch(action)
         navigationController?.popViewController(animated: true)

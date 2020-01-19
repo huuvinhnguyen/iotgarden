@@ -70,9 +70,9 @@ struct SensorsDataInteractor : DataInteractor {
         localItem.setValue(item.topic, forKeyPath: "topic")
         
         localItem.setValue(item.time, forKeyPath: "time")
-
-
         
+        localItem.setValue(item.time, forKeyPath: "message")
+
         do {
             
             finished(item)
@@ -107,8 +107,8 @@ struct SensorsDataInteractor : DataInteractor {
                 object.setValue(item.topic, forKeyPath: "topic")
                 
                 object.setValue(item.time, forKeyPath: "time")
-
-
+                
+                object.setValue(item.message, forKeyPath: "message")
             }
         }
         
@@ -139,7 +139,8 @@ struct SensorsDataInteractor : DataInteractor {
                               serverUUID: String(describing: object.value(forKeyPath: "serverUUID") ?? ""),
                               kind: String(describing: object.value(forKeyPath: "kind") ?? ""),
                               topic: String(describing: object.value(forKeyPath: "topic") ?? ""),
-                              time: String(describing: object.value(forKeyPath: "time") ?? ""))
+                              time: String(describing: object.value(forKeyPath: "time") ?? ""),
+                              message: String(describing: object.value(forKeyPath: "message") ?? ""))
                 finished(topic)
                 return
             }
@@ -165,7 +166,8 @@ struct SensorsDataInteractor : DataInteractor {
                        serverUUID: String(describing: $0.value(forKeyPath: "serverUUID") ?? ""),
                        kind: String(describing: $0.value(forKeyPath: "kind") ?? ""),
                        topic: String(describing: $0.value(forKeyPath: "topic") ?? ""),
-                    time: String(describing: $0.value(forKeyPath: "time") ?? "")
+                    time: String(describing: $0.value(forKeyPath: "time") ?? ""),
+                    message: String(describing: $0.value(forKeyPath: "message") ?? "")
 
                 )
                         }

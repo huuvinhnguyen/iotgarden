@@ -17,7 +17,7 @@ struct ItemState: ReSwift.StateType, Identifiable {
     var sections: [ItemSectionModel] = []
     var itemViewModels: [ItemViewModel] = []
     var itemViewModel = ItemViewModel()
-    var topicItems: [ItemDetailSectionModel] = []
+    var topicItems: [ItemDetailViewController.Section] = []
     var topicViewModel = Topic()
     var connectionViewModel = Server(id:"", name: "hvm server", url: "", user: "", password: "", port: "", sslPort: "555")
     var tasks: [String: TopicConnector] = [:]

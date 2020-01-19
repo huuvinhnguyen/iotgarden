@@ -11,27 +11,44 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TopicTypeCell" rowHeight="72" id="Lnz-GB-IFw" customClass="TopicTypeCell" customModule="IoTGarden" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TopicTypeCell" rowHeight="132" id="dUZ-RM-eoS" customClass="TopicTypeCell" customModule="IoTGarden" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lnz-GB-IFw" id="CO8-15-Rxg">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dUZ-RM-eoS" id="pat-1L-KIk">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="131.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Switch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52L-Gz-ewQ">
-                        <rect key="frame" x="98" y="25.5" width="57" height="21"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="md22.igoogle.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QcB-hn-DxO">
+                        <rect key="frame" x="50" y="43" width="177" height="24"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T00-1e-iWf">
+                        <rect key="frame" x="282" y="54" width="22" height="22"/>
+                        <state key="normal" image="icon_circle_o"/>
+                        <state key="selected" image="icon_dot_circle_o"/>
+                    </button>
                 </subviews>
-                <color key="backgroundColor" red="0.2470588235" green="0.44705882349999998" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="52L-Gz-ewQ" firstAttribute="centerY" secondItem="CO8-15-Rxg" secondAttribute="centerY" id="ZLv-Ya-Pzh"/>
-                    <constraint firstItem="52L-Gz-ewQ" firstAttribute="leading" secondItem="CO8-15-Rxg" secondAttribute="leading" constant="98" id="sKJ-NC-12x"/>
+                    <constraint firstItem="QcB-hn-DxO" firstAttribute="top" secondItem="pat-1L-KIk" secondAttribute="top" constant="43" id="KhD-6z-buU"/>
+                    <constraint firstItem="T00-1e-iWf" firstAttribute="centerY" secondItem="pat-1L-KIk" secondAttribute="centerY" id="ZfA-yV-LtI"/>
+                    <constraint firstItem="QcB-hn-DxO" firstAttribute="leading" secondItem="pat-1L-KIk" secondAttribute="leading" constant="50" id="l3X-bd-uqM"/>
+                    <constraint firstAttribute="bottom" secondItem="QcB-hn-DxO" secondAttribute="bottom" constant="64.5" id="oKz-0s-hud"/>
+                    <constraint firstAttribute="trailing" secondItem="T00-1e-iWf" secondAttribute="trailing" constant="71" id="s9j-6P-Jtb"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="72.799999999999997" y="22.488755622188908"/>
+            <color key="backgroundColor" red="0.2470588235" green="0.44705882349999998" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="nameLabel" destination="QcB-hn-DxO" id="KSl-UO-5aK"/>
+                <outlet property="selectButton" destination="T00-1e-iWf" id="VGK-cy-HfF"/>
+            </connections>
+            <point key="canvasLocation" x="24.800000000000001" y="54.872563718140931"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="icon_circle_o" width="22" height="22"/>
+        <image name="icon_dot_circle_o" width="22" height="22"/>
+    </resources>
 </document>

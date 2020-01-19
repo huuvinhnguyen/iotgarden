@@ -14,8 +14,8 @@ import ReSwift
 class TopicViewController: UIViewController, StoreSubscriber {
     
     func newState(state: TopicState) {
-        topicRelay.accept(state.topic)
-        topic = state.topic ?? Topic()
+        topicRelay.accept(state.editableTopic)
+        topic = state.editableTopic ?? Topic()
     }
     
     enum Mode {
@@ -63,24 +63,23 @@ class TopicViewController: UIViewController, StoreSubscriber {
                 
 
                 cell.didTapSelectAction = {
-                    let viewController = R.storyboard.selection.selectionViewController()!
+                    let viewController = R.storyboard.connection.topicTypeViewController()!
                     self.modalPresentationStyle = .currentContext
                     self.present(viewController, animated: true, completion: nil)
-                    
+                    viewController.topic = self.topic
                 }
                 
-                cell.viewModel = viewModel
+                cell.configure(viewModel: viewModel)
 
-                
                 return cell
             case .topicSwitchItem(let viewModel):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.topicSwitchCell, for: indexPath) else { return UITableViewCell() }
                 
-                cell.viewModel = viewModel
                 cell.viewModelRelay.subscribe(onNext: { viewModel in
                     self.switchViewModel = viewModel
                 }).disposed(by: self.disposeBag)
-                
+                cell.viewModel = viewModel
+
                 return cell
                 
             case .topicQosItem(let viewModel):
@@ -94,15 +93,6 @@ class TopicViewController: UIViewController, StoreSubscriber {
             case .topicSaveItem(_):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.topicSaveCell, for: indexPath) else { return UITableViewCell() }
                 cell.didTapSaveAction = {
-                    
-//                    self.navigationController?.popViewController(animated: true)
-//
-//                    if let id = self.identifier {
-//                        appStore.dispatch(TopicState.Action.updateTopic(topicViewModel: self.topic))
-//                    } else {
-//                        self.topic?.id = UUID().uuidString
-//                        appStore.dispatch(TopicState.Action.addTopic(viewModel: self.topic))
-//                    }
                     
                     self.saveTopic()
                 }
@@ -119,8 +109,9 @@ class TopicViewController: UIViewController, StoreSubscriber {
         prepairNibs()
         loadData()
         appStore.subscribe(self) { $0.select { $0.topicState }.skipRepeats() }
-        
-        appStore.dispatch(TopicState.Action.loadTopic(id: mode?.topicId ?? ""))
+        let topic = appStore.state.topicState.topic
+
+        appStore.dispatch(TopicState.Action.fetchEditableTopic(topic: topic))
      }
     
     private func prepairNibs() {
@@ -133,15 +124,20 @@ class TopicViewController: UIViewController, StoreSubscriber {
     
     private func loadData() {
         
-        topicRelay.map { [
-            ServerViewController.Section(title: "", items: [
-                .topicItem(viewModel: TopicCell.ViewModel(id: $0?.id ?? "", name: $0?.name ?? "" , topic: $0?.topic ?? "", type: $0?.type ?? "")),
-                .topicSwitchItem(viewModel: TopicSwitchCell.ViewModel()),
-                .topicQosItem(viewModel: TopicQosCell.ViewModel()),
-                .topicSaveItem(viewModel: TopicSaveCell.ViewModel())
-                
-                ])
-            ]}
+        topicRelay.map { item in
+            var items: [ServerViewController.SectionItem] = []
+            items += [ServerViewController.SectionItem.topicItem(viewModel: TopicCell.ViewModel(id: item?.id ?? "", name: item?.name ?? "" , topic: item?.topic ?? "", type: item?.type ?? ""))]
+            
+            if item?.type == "switch" {
+                items += [ServerViewController.SectionItem.topicSwitchItem(viewModel: TopicSwitchCell.ViewModel(value: item?.value ?? "", message: item?.message ?? ""))]
+            }
+            items += [ServerViewController.SectionItem.topicQosItem(viewModel: TopicQosCell.ViewModel()),
+                ServerViewController.SectionItem.topicSaveItem(viewModel: TopicSaveCell.ViewModel())]
+            return [
+            ServerViewController.Section(title: "", items: items
+                )]
+            
+            }
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
@@ -153,20 +149,18 @@ class TopicViewController: UIViewController, StoreSubscriber {
         topic.name = topicViewModel?.name ?? ""
         topic.topic = topicViewModel?.topic ?? ""
         topic.type = topicViewModel?.type ?? ""
-        
-        
-//        topic?.value = switchViewModel?.value ?? ""
+        topic.message = switchViewModel?.message ?? ""
         
         
         switch mode {
         case .add:
             topic.id = UUID().uuidString
-            appStore.dispatch(TopicState.Action.addTopic(viewModel: self.topic))
+            appStore.dispatch(TopicState.Action.addTopic(topic: self.topic))
         case .edit(_):
             appStore.dispatch(TopicState.Action.updateTopic(topic: self.topic))
         }
         
-        navigationController?.popViewController(animated: true)
+            navigationController?.popViewController(animated: true)
     }
     
 }

@@ -18,8 +18,9 @@ class TopicSwitchCell: UITableViewCell {
     
     var viewModel: ViewModel? {
         didSet {
-            onTextField.text = viewModel?.onText ?? ""
-            offTextField.text = viewModel?.offText ?? ""
+            let dataDictionary = convertToDictionary(text: viewModel?.message ?? "")
+            onTextField.text = dataDictionary?["on"] ?? ""
+            offTextField.text = dataDictionary?["off"] ?? ""
             viewModelRelay.accept(viewModel)
         }
     }
@@ -31,21 +32,40 @@ class TopicSwitchCell: UITableViewCell {
     
     private func configure() {
         onTextField.rx.text.subscribe(onNext:{ [weak self] text in
-            guard let self = self else { return }
-            self.viewModel?.onText = text ?? ""
+            guard let self = self, let vm = self.viewModel else { return }
+            let dict = self.convertToDictionary(text: vm.message)
+            let onValue = text ?? ""
+            let offValue = dict?["off"] ?? ""
+            self.viewModel?.message = "{\"on\":\"" + onValue + "\", \"off\":\"" + offValue + "\"}"
             self.viewModelRelay.accept(self.viewModel)
         }).disposed(by: self.disposeBag)
         
         offTextField.rx.text.subscribe(onNext:{ [weak self] text in
-            guard let self = self else { return }
-            self.viewModel?.offText = text ?? ""
+            guard let self = self, let vm = self.viewModel else { return }
+            let dict = self.convertToDictionary(text: vm.message)
+            let onValue = dict?["on"] ?? ""
+            let offValue = text ?? ""
+            self.viewModel?.message = "{\"on\":\"" + onValue + "\", \"off\":\"" + offValue + "\"}"
             self.viewModelRelay.accept(self.viewModel)
         }).disposed(by: self.disposeBag)
     }
     
     struct ViewModel {
-        var onText = ""
-        var offText = ""
+
+        var value = ""
+        var message = ""
+        
+    }
+    
+    private func convertToDictionary(text: String) -> [String: String]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: String]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return nil
     }
 }
 

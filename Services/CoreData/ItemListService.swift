@@ -25,6 +25,8 @@ struct ItemListService {
         var topic: String = ""
         
         var time: String = ""
+        
+        var message: String = ""
     }
     
     func loadTopics(finished: (_ topics: [ItemListService.TopicData])-> ()) {

@@ -139,7 +139,7 @@ extension ItemSectionModel: SectionModelType {
              self = .itemSection(title: title, items: items)
         }
     }
-    
+
     var items: [SectionItem] {
         switch self {
         case .itemSection(title: _, items: let items):

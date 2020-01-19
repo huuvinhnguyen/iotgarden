@@ -9,9 +9,19 @@ import UIKit
 
 class TopicTypeCell: UITableViewCell {
     
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var selectButton: UIButton!
     
-}
-
-struct TopicTypeViewModel {
-
+    var viewModel: ViewModel? {
+        didSet {
+            nameLabel.text = viewModel?.name ?? ""
+            selectButton.isSelected = viewModel?.isSelected ?? false
+        }
+    }
+    
+    struct ViewModel {
+        let id: String
+        let name: String
+        let isSelected: Bool
+    }
 }

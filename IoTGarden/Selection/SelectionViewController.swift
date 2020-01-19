@@ -13,7 +13,6 @@ import ReSwift
 
 class SelectionViewController:  UIViewController, StoreSubscriber {
     
-//    typealias StoreSubscriberStateType = ConnectionState
     
     func newState(state: ServerState) {
         

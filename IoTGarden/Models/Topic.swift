@@ -14,4 +14,5 @@ struct Topic {
     var serverId = ""
     var type = ""
     var qos = ""
+    var message = ""
 }
