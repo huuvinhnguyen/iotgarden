@@ -122,9 +122,11 @@ extension TopicState {
                 
                 if case TopicState.Action.updateTopic(let item) = action {
                     guard let item = item else { return }
+                    let topic = ItemListService.TopicData(uuid: item.id , name: item.name, value: item.value, serverUUID: item.serverId, kind: item.type, topic: item.topic, time: item.time, message: item.message)
                     let service = ItemListService()
-                    service.updateTopic(topic: ItemListService.TopicData(uuid: item.id , name: item.name, value: item.value, serverUUID: item.serverId, kind: item.type, topic: item.topic, time: item.time, message: item.message))
-                    dispatch(TopicState.Action.loadTopic(id: item.id))
+                    service.updateTopic(topic: topic) { id in
+                        dispatch(TopicState.Action.loadTopic(id: id))
+                    }
                 }
                 
                 if case TopicState.Action.removeConnection(let id) = action {

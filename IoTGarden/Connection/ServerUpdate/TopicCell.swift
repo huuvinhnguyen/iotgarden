@@ -64,12 +64,13 @@ class TopicCell: UITableViewCell {
             self.viewModelRelay.accept(self.viewModel)
         }).disposed(by: self.disposeBag)
         
+        typeTextField.text = viewModel?.type ?? ""
+ 
         typeTextField.rx.text.subscribe(onNext:{ [weak self] text in
             guard let self = self else { return }
             self.viewModel?.type = text ?? ""
             self.viewModelRelay.accept(self.viewModel)
         }).disposed(by: self.disposeBag)
         
-        typeTextField.text = viewModel?.type ?? ""        
     }
 }

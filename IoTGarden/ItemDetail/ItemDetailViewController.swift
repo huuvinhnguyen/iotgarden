@@ -43,6 +43,23 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                 
                 }
                 return cell
+            case .topicValueItem(let viewModel):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailTopicCell, for: indexPath) else { return UITableViewCell() }
+                
+                cell.didTapInfoAction = {
+                    
+                    guard let weakSelf = self else { return }
+                    let viewController = R.storyboard.itemTopic.itemTopic()!
+                    weakSelf.navigationController?.pushViewController(viewController, animated: true)
+                    viewController.identifier = viewModel.id
+                }
+                
+                cell.didTapPublishAction = { messageResult in
+                    appStore.dispatch(TopicState.Action.publish(topicId: viewModel.id, message: messageResult))
+                }
+                
+                cell.viewModel = viewModel
+                return cell
                 
             case .topicSwitchItem(let viewModel):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailSwitchCell, for: indexPath) else { return UITableViewCell() }
@@ -64,7 +81,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                 return cell
             case .plusItem():
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailPlusCell, for: indexPath) else { return UITableViewCell() }
-                //                cell.viewModel = viewModel
+                
                 cell.didTapPlusAction = {
                     guard let weakSelf = self else { return }
                     let viewController = R.storyboard.connection.topicViewController()!
@@ -148,9 +165,13 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
 
         topicsRelay
             .map { $0.map { topic -> SectionItem in
-                return SectionItem.topicSwitchItem(viewModel:  ItemDetailSwitchCell.ViewModel(id: topic.id, name: topic.name, value: topic.value, message: topic.message))
-                if topic.type == "Switch" {
+                
+                if topic.type == "switch" {
                     return SectionItem.topicSwitchItem(viewModel:  ItemDetailSwitchCell.ViewModel(id: topic.id, name: topic.name, value: topic.value, message: topic.message))
+                }
+                
+                if topic.type == "value" {
+                    return SectionItem.topicValueItem(viewModel:  ItemDetailTopicCell.ViewModel(id: topic.id, name: topic.name, value: topic.value, message: topic.message))
                 }
                 return SectionItem.topicItem()
                 
@@ -161,9 +182,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
             
                 var sections: [Section] = []
                 let item = appStore.state.itemState.itemViewModels.filter {$0.uuid == self.identifier }.first
-//                sections.append(
-//                    .headerSection(items: [.headerItem(viewModel: ItemDetailHeaderCell.ViewModel(name: item?.name ?? ""))])
-//                )
+
                 var list = [SectionItem]()
 
                 list += [SectionItem.headerItem(viewModel: ItemDetailHeaderCell.ViewModel(name: item?.name ?? ""))]
@@ -174,17 +193,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                 list += sectionItems
                 list += [SectionItem.plusItem(), SectionItem.trashItem()]
                 
-//                sections.append(
-//                    .footerSection(items: [
-//                        .plusItem(),
-//                        .trashItem()
-//                        ])
-//                )
-                
-                
-                
                 return [AnimatableSectionModel<String, SectionItem>(model: "", items: list)]
-//                return sections
                 
             }
             .bind(to: tableView.rx.items(dataSource: dataSource))

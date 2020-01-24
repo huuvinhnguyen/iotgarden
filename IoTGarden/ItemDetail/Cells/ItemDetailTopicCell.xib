@@ -48,6 +48,9 @@
                         <rect key="frame" x="229" y="49" width="59" height="50"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" backgroundImage="icon_publish"/>
+                        <connections>
+                            <action selector="publishButtonTapped:" destination="aAC-58-Pkj" eventType="touchUpInside" id="OuU-cR-fdg"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77L-vY-qBa">
                         <rect key="frame" x="314" y="158" width="45" height="45"/>
@@ -56,6 +59,9 @@
                             <constraint firstAttribute="width" constant="45" id="eES-Pz-1ev"/>
                         </constraints>
                         <state key="normal" backgroundImage="icon_info"/>
+                        <connections>
+                            <action selector="infoButtonTapped:" destination="aAC-58-Pkj" eventType="touchUpInside" id="EnA-VW-tCm"/>
+                        </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_clock_o" translatesAutoresizingMaskIntoConstraints="NO" id="3sE-fk-Uuy">
                         <rect key="frame" x="22" y="101" width="61" height="15"/>
@@ -92,6 +98,10 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.2470588235" green="0.44705882349999998" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="nameLabel" destination="wrY-EJ-IAo" id="cbr-MH-tOq"/>
+                <outlet property="valueTextField" destination="1ZG-hi-Mkv" id="ood-hk-LKw"/>
+            </connections>
             <point key="canvasLocation" x="-2.3999999999999999" y="78.710644677661179"/>
         </tableViewCell>
     </objects>

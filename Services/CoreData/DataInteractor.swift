@@ -71,7 +71,9 @@ struct SensorsDataInteractor : DataInteractor {
         
         localItem.setValue(item.time, forKeyPath: "time")
         
-        localItem.setValue(item.time, forKeyPath: "message")
+        localItem.setValue(item.message, forKeyPath: "message")
+        localItem.setValue(Date(), forKeyPath: "date")
+
 
         do {
             
@@ -113,7 +115,7 @@ struct SensorsDataInteractor : DataInteractor {
         }
         
         do {
-            
+            finished(item.uuid)
             try context.save()
         } catch let error as NSError {
             
@@ -153,6 +155,11 @@ struct SensorsDataInteractor : DataInteractor {
         
         let context = Storage.shared.context
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Sensors")
+        
+        let sort = NSSortDescriptor(key: "date", ascending: false)
+        
+        let sortDescriptors = [sort]
+        fetchRequest.sortDescriptors = sortDescriptors
         
         do {
                         let result = try context.fetch(fetchRequest)

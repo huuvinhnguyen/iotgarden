@@ -30,7 +30,7 @@ class TopicViewController: UIViewController, StoreSubscriber {
         }
     }
     
-    var mode: Mode?
+    var mode: Mode = .add
     
     var identifier: String?
     
@@ -75,7 +75,7 @@ class TopicViewController: UIViewController, StoreSubscriber {
             case .topicSwitchItem(let viewModel):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.topicSwitchCell, for: indexPath) else { return UITableViewCell() }
                 
-                cell.viewModelRelay.subscribe(onNext: { viewModel in
+                    cell.viewModelRelay.subscribe(onNext: { viewModel in
                     self.switchViewModel = viewModel
                 }).disposed(by: self.disposeBag)
                 cell.viewModel = viewModel
@@ -109,9 +109,14 @@ class TopicViewController: UIViewController, StoreSubscriber {
         prepairNibs()
         loadData()
         appStore.subscribe(self) { $0.select { $0.topicState }.skipRepeats() }
-        let topic = appStore.state.topicState.topic
-
-        appStore.dispatch(TopicState.Action.fetchEditableTopic(topic: topic))
+        
+        if case .add = mode {
+            let topic = Topic()
+            appStore.dispatch(TopicState.Action.fetchEditableTopic(topic: topic))
+        } else {
+            let topic = appStore.state.topicState.topic
+            appStore.dispatch(TopicState.Action.fetchEditableTopic(topic: topic))
+        }        
      }
     
     private func prepairNibs() {
@@ -144,7 +149,6 @@ class TopicViewController: UIViewController, StoreSubscriber {
     }
     
     private func saveTopic() {
-        guard let mode = mode else { return }
         
         topic.name = topicViewModel?.name ?? ""
         topic.topic = topicViewModel?.topic ?? ""

@@ -63,6 +63,7 @@ extension ItemDetailViewController {
         
         case headerItem(viewModel: ItemDetailHeaderCell.ViewModel)
         case topicItem()
+        case topicValueItem(viewModel: ItemDetailTopicCell.ViewModel)
         case topicSwitchItem(viewModel: ItemDetailSwitchCell.ViewModel)
         case topicRelayItem(viewModel: ItemDetailSwitchCell.ViewModel)
         case topicTemperatureItem(viewModel: ItemDetailSwitchCell.ViewModel)
@@ -74,7 +75,8 @@ extension ItemDetailViewController {
         
         var identity: String {
             switch self {
-           
+            case .topicValueItem(let viewModel):
+                return viewModel.id
             case .topicSwitchItem(let viewModel):
                 return viewModel.id
             case .plusItem():
