@@ -20,6 +20,8 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
 
     private let disposeBag = DisposeBag()
     
+    lazy var heightDictionary: [Int: CGFloat] = [:]
+    
     var topicsRelay = PublishRelay<[Topic]>()
 
     private var dataSource: RxTableViewSectionedAnimatedDataSource<AnimatableSectionModel<String, SectionItem>> {
@@ -137,6 +139,10 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
 
         tableView.register(R.nib.itemDetailTrashCell)
         tableView.remembersLastFocusedIndexPath = true
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.delegate = self
+
         
         
 
@@ -195,5 +201,17 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         appStore.dispatch(action)
         navigationController?.popViewController(animated: true)
     }
+    
 
+}
+
+extension ItemDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        heightDictionary[indexPath.row] = cell.frame.size.height
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        let height = heightDictionary[indexPath.row]
+        return height ?? UITableView.automaticDimension
+    }
 }
