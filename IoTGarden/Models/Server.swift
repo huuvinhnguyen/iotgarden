@@ -13,4 +13,5 @@ struct Server {
     let password: String
     let port: String
     let sslPort: String
+    let canDelete: Bool
 }

@@ -23,7 +23,7 @@ private struct ItemDef {
 class ItemListViewController: UIViewController, StoreSubscriber {
     
     func newState(state: ItemState) {
-        itemRelay.accept(state.itemViewModels)
+        itemRelay.accept(state.items)
     }
     
     var itemRelay = PublishRelay<[ItemViewModel]>()

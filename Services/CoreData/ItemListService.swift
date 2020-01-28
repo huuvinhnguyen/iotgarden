@@ -22,18 +22,24 @@ struct ItemListService {
         
         var kind: String = ""
         
+        var qos: String = ""
+        
         var topic: String = ""
         
         var time: String = ""
         
         var message: String = ""
+        
+        var retain: String = ""
+        
+        var itemId: String = ""
     }
     
-    func loadTopics(finished: (_ topics: [ItemListService.TopicData])-> ()) {
+    func loadTopics(itemId: String, finished: (_ topics: [ItemListService.TopicData])-> ()) {
         
         let interactor = SensorsDataInteractor()
         
-        interactor.getItems { topics in
+        interactor.getItems(itemId: itemId) { topics in
             
             finished(topics)
         }

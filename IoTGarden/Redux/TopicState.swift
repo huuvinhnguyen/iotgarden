@@ -71,6 +71,7 @@ extension TopicState {
             
         case Action.stopAllTasks():
             state.tasks.forEach { $0.value.disconnect() }
+            state.tasks.removeAll()
             
             
         default: ()
@@ -92,17 +93,29 @@ extension TopicState {
                 if case TopicState.Action.addTopic(let topic) = action {
                     let service = ItemListService()
                     let id = topic?.id ?? ""
-                    service.addTopic(topic: ItemListService.TopicData(uuid: id, name: topic?.name ?? "", value: topic?.value ?? "", serverUUID: topic?.serverId ?? "", kind: topic?.type ?? "", topic: topic?.topic ?? "", time: topic?.time ?? "",  message: topic?.message ?? "")) { item in
-                        dispatch(TopicState.Action.loadTopics(itemId: ""))
+                    service.addTopic(topic: ItemListService.TopicData(
+                        uuid: id, name: topic?.name ?? "",
+                        value: topic?.value ?? "",
+                        serverUUID: topic?.serverId ?? "",
+                        kind: topic?.type ?? "",
+                        qos: topic?.qos ?? "",
+                        topic: topic?.topic ?? "",
+                        time: topic?.time ?? "",
+                        message: topic?.message ?? "",
+                        retain: topic?.retain ?? "",
+                        itemId: topic?.itemId ?? "")) { item in
+                        dispatch(TopicState.Action.loadTopics(itemId: topic?.itemId ?? ""))
                         dispatch(TopicState.Action.loadTopic(id: id))
-
                     }
                 }
                 
                 if case TopicState.Action.removeTopic(let id) = action {
+                    let state = getState()?.topicState ?? TopicState()
+                    let topic = state.topics.filter { $0.id == id}.first ?? Topic()
+                    
                     let service = ItemListService()
                     service.removeTopic(id: id)
-                    dispatch(TopicState.Action.loadTopics(itemId: ""))
+                    dispatch(TopicState.Action.loadTopics(itemId: topic.itemId))
                 }
                 
                 if case TopicState.Action.loadTopic(let id) = action {
@@ -111,39 +124,53 @@ extension TopicState {
                     service.loadTopic(uuid: id) { topic in
                         service.loadServer(uuid: topic?.serverUUID ?? "", finished: { serverResult in
                             let topicViewModel = topic.map { _ in
-                                Topic(id: topic?.uuid ?? "", name: topic?.name ?? "", topic: topic?.topic ?? "", value: topic?.value ?? "", time: topic?.time ?? "", serverId: topic?.serverUUID ?? "", type: topic?.kind ?? "" , qos: "2", message: topic?.message ?? "")}
-                            let server = serverResult.map { Server(id: $0.uuid, name: $0.name, url: $0.url, user: $0.username, password: $0.password, port: $0.port, sslPort: $0.sslPort) }
+                                Topic(id: topic?.uuid ?? "", name: topic?.name ?? "", topic: topic?.topic ?? "", value: topic?.value ?? "", time: topic?.time ?? "", serverId: topic?.serverUUID ?? "", type: topic?.kind ?? "" , qos: topic?.qos ?? "", message: topic?.message ?? "", retain: "", itemId: "")}
+                            let server = serverResult.map { Server(id: $0.uuid, name: $0.name, url: $0.url, user: $0.username, password: $0.password, port: $0.port, sslPort: $0.sslPort, canDelete: true) }
                             dispatch(TopicState.Action.fetchTopic(topic: topicViewModel))
                             dispatch(ServerState.Action.loadServer(id: topic?.serverUUID ?? ""))
                         })
                     }
-                    dispatch(TopicState.Action.loadTopics(itemId: ""))
                 }
                 
                 if case TopicState.Action.updateTopic(let item) = action {
                     guard let item = item else { return }
-                    let topic = ItemListService.TopicData(uuid: item.id , name: item.name, value: item.value, serverUUID: item.serverId, kind: item.type, topic: item.topic, time: item.time, message: item.message)
+                    let topic = ItemListService.TopicData(
+                        uuid: item.id ,
+                        name: item.name,
+                        value: item.value,
+                        serverUUID: item.serverId,
+                        kind: item.type,
+                        qos: item.qos,
+                        topic: item.topic,
+                        time: item.time,
+                        message: item.message,
+                        retain: item.retain,
+                        itemId: item.itemId
+                    )
                     let service = ItemListService()
                     service.updateTopic(topic: topic) { id in
                         dispatch(TopicState.Action.loadTopic(id: id))
+                        dispatch(TopicState.Action.loadTopics(itemId: topic.itemId))
+
                     }
                 }
                 
                 if case TopicState.Action.removeConnection(let id) = action {
                     
                     let state = getState()?.topicState ?? TopicState()
-                    var topicViewModel = state.topic
-                    topicViewModel?.serverId = ""
-                    dispatch(TopicState.Action.updateTopic(topic: topicViewModel))
+                    var topic = state.topic
+                    topic?.serverId = ""
+                    dispatch(TopicState.Action.updateTopic(topic: topic))
                 }
                 
                 if case Action.loadTopics(let itemId) = action {
                     let service = ItemListService()
-                    service.loadTopics { topics in
+                    service.loadTopics(itemId: itemId) { topics in
                         let topics = topics.map {
-                            Topic(id: $0.uuid, name: $0.name, topic: $0.topic, value: $0.value, time: $0.time, serverId: $0.serverUUID, type: $0.kind, qos: "0", message: $0.message)
+                            Topic(id: $0.uuid, name: $0.name, topic: $0.topic, value: $0.value, time: $0.time, serverId: $0.serverUUID, type: $0.kind, qos: $0.qos, message: $0.message, retain: $0.retain, itemId: $0.itemId)
                         }
                         
+                        dispatch(TopicState.Action.stopAllTasks())
                         topics.forEach {
                             dispatch(TopicState.Action.updateTask(topic: $0))
                         }
@@ -156,7 +183,7 @@ extension TopicState {
                 if case Action.updateTask(let topic) = action {
                     let service = ItemListService()
                     service.loadServer(uuid: topic.serverId) { configuration in
-                        let server = configuration.map {  Server(id: $0.uuid , name: $0.name , url: $0.url, user: $0.username, password: $0.password, port: $0.port, sslPort: $0.sslPort)
+                        let server = configuration.map {  Server(id: $0.uuid , name: $0.name , url: $0.url, user: $0.username, password: $0.password, port: $0.port, sslPort: $0.sslPort, canDelete: true)
                         }
                         guard let result = server else { return }
                         guard let state = getState()?.topicState else { return }

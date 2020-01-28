@@ -129,7 +129,8 @@ class ServerViewController: UIViewController, StoreSubscriber {
                 user: serverViewModel?.user ?? "",
                 password: serverViewModel?.password ?? "",
                 port: serverViewModel?.port ?? "",
-                sslPort: serverViewModel?.sslPort ?? "")
+                sslPort: serverViewModel?.sslPort ?? "",
+                canDelete: true)
             
             topic?.serverId = server.id
             
@@ -145,7 +146,8 @@ class ServerViewController: UIViewController, StoreSubscriber {
                 user: serverViewModel?.user ?? "",
                 password: serverViewModel?.password ?? "",
                 port: serverViewModel?.port ?? "",
-                sslPort: serverViewModel?.sslPort ?? "")
+                sslPort: serverViewModel?.sslPort ?? "",
+                canDelete: true)
             
             topic?.serverId = server.id
             

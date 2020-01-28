@@ -15,11 +15,11 @@ struct ItemState: ReSwift.StateType, Identifiable {
     var identifiableComponent = IdentifiableComponent()
     
     var sections: [ItemSectionModel] = []
-    var itemViewModels: [ItemViewModel] = []
+    var items: [ItemViewModel] = []
     var itemViewModel = ItemViewModel()
     var topicItems: [ItemDetailViewController.Section] = []
     var topicViewModel = Topic()
-    var connectionViewModel = Server(id:"", name: "hvm server", url: "", user: "", password: "", port: "", sslPort: "555")
+    var connectionViewModel = Server(id:"", name: "hvm server", url: "", user: "", password: "", port: "", sslPort: "555", canDelete: true)
     var tasks: [String: TopicConnector] = [:]
     var imageList: [ItemImageViewController.SectionModel] = []
     var itemImageViewModels: [ItemImageViewModel] = []

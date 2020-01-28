@@ -19,7 +19,7 @@ class TopicViewController: UIViewController, StoreSubscriber {
     }
     
     enum Mode {
-        case add
+        case add(itemId: String)
         case edit(topicId: String)
         
         var topicId: String {
@@ -30,7 +30,7 @@ class TopicViewController: UIViewController, StoreSubscriber {
         }
     }
     
-    var mode: Mode = .add
+    var mode: Mode = .add(itemId: "")
     
     var identifier: String?
     
@@ -157,8 +157,9 @@ class TopicViewController: UIViewController, StoreSubscriber {
         
         
         switch mode {
-        case .add:
+        case .add(let itemId):
             topic.id = UUID().uuidString
+            topic.itemId = itemId
             appStore.dispatch(TopicState.Action.addTopic(topic: self.topic))
         case .edit(_):
             appStore.dispatch(TopicState.Action.updateTopic(topic: self.topic))

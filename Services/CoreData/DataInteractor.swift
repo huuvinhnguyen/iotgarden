@@ -72,8 +72,12 @@ struct SensorsDataInteractor : DataInteractor {
         localItem.setValue(item.time, forKeyPath: "time")
         
         localItem.setValue(item.message, forKeyPath: "message")
+        
         localItem.setValue(Date(), forKeyPath: "date")
-
+        
+        localItem.setValue(item.retain, forKeyPath: "retained")
+        
+        localItem.setValue(item.itemId, forKeyPath: "itemId")
 
         do {
             
@@ -111,6 +115,12 @@ struct SensorsDataInteractor : DataInteractor {
                 object.setValue(item.time, forKeyPath: "time")
                 
                 object.setValue(item.message, forKeyPath: "message")
+                
+                object.setValue(item.retain, forKeyPath: "retained")
+                
+                object.setValue(item.itemId, forKeyPath: "itemId")
+
+
             }
         }
         
@@ -140,9 +150,13 @@ struct SensorsDataInteractor : DataInteractor {
                               value:   String(describing:object.value(forKeyPath: "value") ?? "") ,
                               serverUUID: String(describing: object.value(forKeyPath: "serverUUID") ?? ""),
                               kind: String(describing: object.value(forKeyPath: "kind") ?? ""),
+                              qos: String(describing: object.value(forKeyPath: "qos") ?? ""),
                               topic: String(describing: object.value(forKeyPath: "topic") ?? ""),
                               time: String(describing: object.value(forKeyPath: "time") ?? ""),
-                              message: String(describing: object.value(forKeyPath: "message") ?? ""))
+                              message: String(describing: object.value(forKeyPath: "message") ?? ""),
+                              retain: String(describing: object.value(forKeyPath: "retained") ?? ""),
+                              itemId: String(describing: object.value(forKeyPath: "itemId") ?? "")
+                )
                 finished(topic)
                 return
             }
@@ -151,11 +165,12 @@ struct SensorsDataInteractor : DataInteractor {
         finished(nil)
     }
     
-    func getItems(finished: (_ items: [ItemListService.TopicData]) ->()) {
+    func getItems(itemId: String, finished: (_ items: [ItemListService.TopicData]) ->()) {
         
         let context = Storage.shared.context
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Sensors")
-        
+        fetchRequest.predicate = NSPredicate.init(format: "itemId == %@", itemId)
+
         let sort = NSSortDescriptor(key: "date", ascending: false)
         
         let sortDescriptors = [sort]
@@ -172,9 +187,12 @@ struct SensorsDataInteractor : DataInteractor {
                        value:   String(describing:$0.value(forKeyPath: "value") ?? "") ,
                        serverUUID: String(describing: $0.value(forKeyPath: "serverUUID") ?? ""),
                        kind: String(describing: $0.value(forKeyPath: "kind") ?? ""),
+                       qos: String(describing: $0.value(forKeyPath: "qos") ?? ""),
                        topic: String(describing: $0.value(forKeyPath: "topic") ?? ""),
                     time: String(describing: $0.value(forKeyPath: "time") ?? ""),
-                    message: String(describing: $0.value(forKeyPath: "message") ?? "")
+                    message: String(describing: $0.value(forKeyPath: "message") ?? ""),
+                    retain: String(describing: $0.value(forKeyPath: "retained") ?? ""),
+                    itemId: String(describing: $0.value(forKeyPath: "itemId") ?? "")
 
                 )
                         }

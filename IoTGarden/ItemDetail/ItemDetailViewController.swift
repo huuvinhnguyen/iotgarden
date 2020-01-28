@@ -85,7 +85,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                 cell.didTapPlusAction = {
                     guard let weakSelf = self else { return }
                     let viewController = R.storyboard.connection.topicViewController()!
-                    viewController.mode = .add
+                    viewController.mode = .add(itemId: self?.identifier ?? "")
                     weakSelf.navigationController?.pushViewController(viewController, animated: true)
                 }
                 return cell
@@ -109,10 +109,10 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
     }
 
     func newState(state: (identifier :String, topicState: TopicState)) {
-        
+        self.identifier = state.identifier
+        if identifier == "" { return }
         topicsRelay.accept(state.topicState.topics)
         print("#detail identifier: \(identifier) ")
-        self.identifier = state.identifier
         
     }
     
@@ -128,6 +128,8 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
 
         }
     }
+    
+    
 
     override func viewDidLoad() {
         
@@ -142,8 +144,9 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                 return (identifier, state.topicState)
                 
                 }
-        }    
-        appStore.dispatch(TopicState.Action.loadTopics(itemId: ""))
+        }
+     
+        appStore.dispatch(TopicState.Action.loadTopics(itemId: identifier))
     }
     
     private func configureTableView() {
@@ -163,7 +166,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         
         
 
-        topicsRelay
+        topicsRelay.distinctUntilChanged()
             .map { $0.map { topic -> SectionItem in
                 
                 if topic.type == "switch" {
@@ -181,7 +184,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
             .map { sectionItems -> [AnimatableSectionModel<String, SectionItem>] in
             
                 var sections: [Section] = []
-                let item = appStore.state.itemState.itemViewModels.filter {$0.uuid == self.identifier }.first
+                let item = appStore.state.itemState.items.filter {$0.uuid == self.identifier }.first
 
                 var list = [SectionItem]()
 
@@ -199,19 +202,8 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
-        
     }
     
-
-    
-    @IBAction func deleteButtonTapped(_ sender: UIButton) {
-        
-        let action = ItemState.Action.loadItems()
-        appStore.dispatch(action)
-        navigationController?.popViewController(animated: true)
-    }
-    
-
 }
 
 extension ItemDetailViewController: UITableViewDelegate {

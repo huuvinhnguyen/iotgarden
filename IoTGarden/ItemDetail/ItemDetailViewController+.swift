@@ -99,7 +99,7 @@ extension ItemDetailViewController {
                 }
             }
             
-            return true
+            return false
         }
 
     }
