@@ -47,6 +47,34 @@ struct SensorsDataInteractor : DataInteractor {
         }
     }
     
+    func deleteTopics(itemId: String, finished: (String) -> ()) {
+        
+        let context = Storage.shared.context
+        
+        let request: NSFetchRequest<Sensors> = Sensors.fetchRequest()
+        
+        request.predicate = NSPredicate.init(format: "itemId == %@", itemId)
+        
+        if let result = try? context.fetch(request) {
+            
+            for object in result {
+                
+                print("#delete all object")
+                context.delete(object)
+            }
+        }
+        
+        do {
+            
+            finished(itemId)
+            try context.save()
+            
+        } catch let error as NSError {
+            
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
     typealias MappingData = ItemListService.TopicData
     
     func add(item: MappingData, finished:(_ item: MappingData)->()) {
@@ -109,6 +137,8 @@ struct SensorsDataInteractor : DataInteractor {
                 object.setValue(item.value, forKeyPath: "value")
                 
                 object.setValue(item.kind, forKeyPath: "kind")
+                
+                object.setValue(item.qos, forKeyPath: "qos")
                 
                 object.setValue(item.topic, forKeyPath: "topic")
                 

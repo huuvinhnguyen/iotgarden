@@ -31,7 +31,6 @@
 		047390B3234F961B005567CE /* SelectionServerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047390B2234F961B005567CE /* SelectionServerCell.xib */; };
 		047390B5234F962A005567CE /* SelectionServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047390B4234F962A005567CE /* SelectionServerCell.swift */; };
 		047390B7234F9756005567CE /* SelectionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047390B6234F9756005567CE /* SelectionSection.swift */; };
-		047CCB992365FD920044B9F2 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CCB982365FD920044B9F2 /* Middleware.swift */; };
 		049A857E2364A8050038D247 /* ItemNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A857D2364A8050038D247 /* ItemNameViewController.swift */; };
 		049A85802364A8920038D247 /* ItemList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049A857F2364A8920038D247 /* ItemList.storyboard */; };
 		049A85822365A1A30038D247 /* TopicListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A85812365A1A30038D247 /* TopicListService.swift */; };
@@ -205,7 +204,6 @@
 		047390B2234F961B005567CE /* SelectionServerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionServerCell.xib; sourceTree = "<group>"; };
 		047390B4234F962A005567CE /* SelectionServerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionServerCell.swift; sourceTree = "<group>"; };
 		047390B6234F9756005567CE /* SelectionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSection.swift; sourceTree = "<group>"; };
-		047CCB982365FD920044B9F2 /* Middleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
 		049A857D2364A8050038D247 /* ItemNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNameViewController.swift; sourceTree = "<group>"; };
 		049A857F2364A8920038D247 /* ItemList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemList.storyboard; sourceTree = "<group>"; };
 		049A85812365A1A30038D247 /* TopicListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicListService.swift; sourceTree = "<group>"; };
@@ -680,7 +678,6 @@
 				18E7A71D218EE4E800F7E689 /* ReactiveReSwiftBridge.swift */,
 				18E7A723218EFDF600F7E689 /* ItemState.swift */,
 				18B5506421C55A14004EC438 /* ItemReducer.swift */,
-				047CCB982365FD920044B9F2 /* Middleware.swift */,
 				04F315022376C6D700184507 /* TopicState.swift */,
 				043009E3237DB682004FA341 /* ServerState.swift */,
 				18E7A727218EFEDD00F7E689 /* ItemListAction.swift */,
@@ -1089,7 +1086,6 @@
 				181BAC72220DE57100A0D458 /* SensorRequest.swift in Sources */,
 				1803374C21C9EDC90098F944 /* SensorMapping.swift in Sources */,
 				1826C625218F51B700A5CE38 /* ItemListService.swift in Sources */,
-				047CCB992365FD920044B9F2 /* Middleware.swift in Sources */,
 				04161F5023A1105D00BAB4B3 /* ItemNameCell.swift in Sources */,
 				04F2480623378E04003239B6 /* ItemTopicServerCell.swift in Sources */,
 				18E7A728218EFEDD00F7E689 /* ItemListAction.swift in Sources */,

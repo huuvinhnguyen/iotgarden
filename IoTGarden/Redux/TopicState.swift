@@ -34,6 +34,7 @@ extension TopicState {
         case fetchTask(topicId: String, task: TopicConnector)
         case publish(topicId: String, message: String)
         case stopAllTasks()
+        case removeTopics(itemId: String)
     }
 }
 
@@ -72,7 +73,12 @@ extension TopicState {
         case Action.stopAllTasks():
             state.tasks.forEach { $0.value.disconnect() }
             state.tasks.removeAll()
-            
+        case Action.removeTopics(let itemId):
+            let service = ItemListService()
+            service.removeTopics(itemId: itemId) { _ in
+                
+            }
+
             
         default: ()
 
@@ -124,7 +130,7 @@ extension TopicState {
                     service.loadTopic(uuid: id) { topic in
                         service.loadServer(uuid: topic?.serverUUID ?? "", finished: { serverResult in
                             let topicViewModel = topic.map { _ in
-                                Topic(id: topic?.uuid ?? "", name: topic?.name ?? "", topic: topic?.topic ?? "", value: topic?.value ?? "", time: topic?.time ?? "", serverId: topic?.serverUUID ?? "", type: topic?.kind ?? "" , qos: topic?.qos ?? "", message: topic?.message ?? "", retain: "", itemId: "")}
+                                Topic(id: topic?.uuid ?? "", name: topic?.name ?? "", topic: topic?.topic ?? "", value: topic?.value ?? "", time: topic?.time ?? "", serverId: topic?.serverUUID ?? "", type: topic?.kind ?? "" , qos: topic?.qos ?? "", message: topic?.message ?? "", retain: topic?.retain ?? "", itemId: topic?.itemId ?? "")}
                             let server = serverResult.map { Server(id: $0.uuid, name: $0.name, url: $0.url, user: $0.username, password: $0.password, port: $0.port, sslPort: $0.sslPort, canDelete: true) }
                             dispatch(TopicState.Action.fetchTopic(topic: topicViewModel))
                             dispatch(ServerState.Action.loadServer(id: topic?.serverUUID ?? ""))

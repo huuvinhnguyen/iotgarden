@@ -32,7 +32,6 @@ extension ItemState {
         case switchItem(cellUI: SwitchCellUI, message: String)
         case inputItem(cellUI: InputCellUI, message: String)
         case updateSwitchItem(viewModel: SwitchCellUI)
-        case updateInputItem(cellUI: InputCellUI)
         case loadItems()
         case addItem(item: ItemViewModel)
         case removeItem(id: String)
@@ -44,6 +43,7 @@ extension ItemState {
         case loadItem(id: String)
         case updateItemImage(imageUrl: String)
         case updateItem(item: ItemViewModel)
+        
     }
 }
 
@@ -66,6 +66,7 @@ extension ItemState {
                     let itemListService = ItemListService()
                     itemListService.removeItem(id: id) { _ in
                         dispatch(ItemState.Action.loadItems())
+                        dispatch(TopicState.Action.removeTopics(itemId: id))
                     }
                 }
                 

@@ -78,4 +78,13 @@ struct ItemListService {
             
         }
     }
+    
+    func removeTopics(itemId: String, finished: (_ id: String) -> ()) {
+        
+        let sensors = SensorsDataInteractor()
+        sensors.deleteTopics(itemId: itemId) { id in
+            finished(itemId)
+        }
+    }
+    
 }

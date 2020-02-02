@@ -11,7 +11,7 @@ import ReSwiftRouter
 var appStore = ReSwift.Store<AppState>(
     reducer: appReduce,
     state: nil,
-    middleware: [switchingMiddleware, inputMiddleware, ItemState.middleware, imageMiddleware, TopicState.middleware, ServerState.middleware])
+    middleware: [ItemState.middleware, TopicState.middleware, ServerState.middleware])
 
 func appReduce(action: ReSwift.Action, state: AppState?) -> AppState {
     var state = state ?? AppState()

@@ -111,7 +111,8 @@ class TopicViewController: UIViewController, StoreSubscriber {
         appStore.subscribe(self) { $0.select { $0.topicState }.skipRepeats() }
         
         if case .add = mode {
-            let topic = Topic()
+            var topic = Topic()
+            topic.type = "switch"
             appStore.dispatch(TopicState.Action.fetchEditableTopic(topic: topic))
         } else {
             let topic = appStore.state.topicState.topic
@@ -155,7 +156,6 @@ class TopicViewController: UIViewController, StoreSubscriber {
         topic.type = topicViewModel?.type ?? ""
         topic.message = switchViewModel?.message ?? ""
         
-        
         switch mode {
         case .add(let itemId):
             topic.id = UUID().uuidString
@@ -165,7 +165,7 @@ class TopicViewController: UIViewController, StoreSubscriber {
             appStore.dispatch(TopicState.Action.updateTopic(topic: self.topic))
         }
         
-            navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
 }
