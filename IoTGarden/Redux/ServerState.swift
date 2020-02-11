@@ -49,9 +49,9 @@ extension ServerState {
         case .loadServer(let id):
             let service = ItemListService()
             service.loadServer(uuid: id) { configuration in
-                let viewModel = configuration.map {  Server(id: $0.uuid , name: $0.name , url: $0.url, user: $0.username, password: $0.password, port: $0.port, sslPort: $0.sslPort, canDelete: true)}
+                let server = configuration.map {  Server(id: $0.uuid , name: $0.name , url: $0.url, user: $0.username, password: $0.password, port: $0.port, sslPort: $0.sslPort, canDelete: true)}
                 
-                state.server = viewModel
+                state.server = server
                 state.identifiableComponent.update()
             }
             

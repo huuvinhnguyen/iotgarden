@@ -32,7 +32,6 @@ class ServerViewController: UIViewController, StoreSubscriber {
     
     var mode: Mode?
     
-    
     var serverIdentifier: String?
     
     private var serverViewModel: ServerCell.ViewModel?
@@ -119,17 +118,19 @@ class ServerViewController: UIViewController, StoreSubscriber {
     private func saveServer() {
         
         guard let mode = mode else { return }
+        guard let viewModel = serverViewModel else { return }
+
         switch mode {
         case .add(let topicId):
-            var topic = appStore.state.topicState.topics.filter { $0.id == topicId}.first
-            let serverId = serverIdentifier ?? UUID().uuidString
+            var topic = appStore.state.topicState.topics.filter { $0.id == topicId }.first
+            let serverId = viewModel.id == "" ? UUID().uuidString : viewModel.id
             let server = Server(
-                id: serverId, name: serverViewModel?.name ?? "",
-                url: serverViewModel?.serverUrl ?? "",
-                user: serverViewModel?.user ?? "",
-                password: serverViewModel?.password ?? "",
-                port: serverViewModel?.port ?? "",
-                sslPort: serverViewModel?.sslPort ?? "",
+                id: serverId, name: viewModel.name,
+                url: viewModel.serverUrl,
+                user: viewModel.user,
+                password: viewModel.password,
+                port: viewModel.port,
+                sslPort: viewModel.sslPort,
                 canDelete: true)
             
             topic?.serverId = server.id
@@ -138,23 +139,20 @@ class ServerViewController: UIViewController, StoreSubscriber {
             appStore.dispatch(TopicState.Action.updateTopic(topic: topic))
             
         case .edit(let topicId):
-            var topic = appStore.state.topicState.topics.filter { $0.id == topicId}.first
-            guard let serverId = serverIdentifier else { return }
+            var topic = appStore.state.topicState.topics.filter { $0.id == topicId }.first
             let server = Server(
-                id: serverId, name: serverViewModel?.name ?? "",
-                url: serverViewModel?.serverUrl ?? "",
-                user: serverViewModel?.user ?? "",
-                password: serverViewModel?.password ?? "",
-                port: serverViewModel?.port ?? "",
-                sslPort: serverViewModel?.sslPort ?? "",
+                id: viewModel.id, name: viewModel.name ,
+                url: viewModel.serverUrl,
+                user: viewModel.user,
+                password: viewModel.password,
+                port: viewModel.port,
+                sslPort: viewModel.sslPort,
                 canDelete: true)
             
             topic?.serverId = server.id
             
             appStore.dispatch(ServerState.Action.updateServer(server))
             appStore.dispatch(TopicState.Action.updateTopic(topic: topic))
-            
-            
         }
         
         self.navigationController?.popViewController(animated: true)
@@ -174,5 +172,4 @@ class ServerViewController: UIViewController, StoreSubscriber {
             .disposed(by: disposeBag)
 
     }
-    
 }
