@@ -63,7 +63,7 @@ class SelectionViewController:  UIViewController, StoreSubscriber {
             subcription.select { state in state.serverState }.skipRepeats()
         }
         
-        appStore.dispatch(ServerState.Action.loadConnections())
+        appStore.dispatch(ServerState.Action.loadServers())
         selectedRelay.accept("")
 
     }

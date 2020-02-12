@@ -19,10 +19,10 @@ extension ServerState {
     enum Action: ReSwift.Action {
         case addServer(_ model: Server)
         case updateServer(Server)
-        case removeConnection(id: String)
+        case removeServer(id: String)
         case loadServer(id: String)
-        case loadConnections()
-        case selectConnection(id: String)
+        case loadServers()
+        case selectServer(id: String)
     }
 }
 
@@ -37,7 +37,7 @@ extension ServerState {
         
         switch action {
             
-        case .loadConnections():
+        case .loadServers():
             
             let service = ItemListService()
             service.loadConfigures { configurations in
@@ -70,10 +70,10 @@ extension ServerState {
         return { next in
             print("enter detail middleware")
             return { action in
-                if case ServerState.Action.removeConnection(let id) = action {
+                if case ServerState.Action.removeServer(let id) = action {
                     let service = ItemListService()
                     service.deleteConfigure(id: id, finished: { id in
-                        dispatch(ServerState.Action.loadConnections())
+                        dispatch(ServerState.Action.loadServers())
                     })
                 }
                 
@@ -81,7 +81,7 @@ extension ServerState {
                     let service = ItemListService()
                     service.addConfiguration(configuration: ItemListService.Server(uuid: server.id, name: server.name, url: server.url, username: server.user, password: server.password, port: server.port, sslPort: server.sslPort), finished: { id in
                         
-                        dispatch(ServerState.Action.loadConnections())
+                        dispatch(ServerState.Action.loadServers())
                     })
                 }
                 
@@ -89,7 +89,7 @@ extension ServerState {
                     let service = ItemListService()
                     service.updateConfiguration(configuration: ItemListService.Server(uuid: server.id, name: server.name, url: server.url, username: server.user, password: server.password, port: server.port, sslPort: server.sslPort), finished: { id in
                         
-                        dispatch(ServerState.Action.loadConnections())
+                        dispatch(ServerState.Action.loadServer(id: server.id))
                     })
                 }
                 

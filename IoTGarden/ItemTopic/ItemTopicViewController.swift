@@ -64,7 +64,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                 cell.didTapSignInAction = {
                     let viewController = R.storyboard.connection.serverViewController()!
                     guard let topicId = self.identifier else { return }
-                    viewController.mode = .add(topicId: topicId)
+                    viewController.topicId = topicId
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }
                 return cell
@@ -75,9 +75,8 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                 cell.viewModel = viewModel
                 cell.didTapEditAction = {
                     let viewController = R.storyboard.connection.serverViewController()!
-                    viewController.serverIdentifier = viewModel?.id
                     guard let topicId = self.identifier else { return }
-                    viewController.mode = .edit(topicId: topicId)
+                    viewController.topicId = topicId
                     
                     self.navigationController?.pushViewController(viewController, animated: true)
                     
