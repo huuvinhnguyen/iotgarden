@@ -64,7 +64,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                 cell.didTapSignInAction = {
                     let viewController = R.storyboard.connection.serverViewController()!
                     guard let topicId = self.identifier else { return }
-                    viewController.mode = .add(topicId: topicId)
+                    viewController.topicId = topicId
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }
                 return cell
@@ -75,9 +75,8 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                 cell.viewModel = viewModel
                 cell.didTapEditAction = {
                     let viewController = R.storyboard.connection.serverViewController()!
-                    viewController.serverIdentifier = viewModel?.id
                     guard let topicId = self.identifier else { return }
-                    viewController.mode = .edit(topicId: topicId)
+                    viewController.topicId = topicId
                     
                     self.navigationController?.pushViewController(viewController, animated: true)
                     
@@ -113,7 +112,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
             let footerItems = server == nil ? [ItemTopicSectionItem.footerSignInItem(), ItemTopicSectionItem.footerItem(viewModel: nil)] :  [ItemTopicSectionItem.footerItem(viewModel: nil)]
             let serverItems = server == nil ? [] : [ItemTopicSectionItem.connectionItem(viewModel: ItemTopicServerCell.ViewModel(id: server?.id ?? "", name: server?.name ?? "", server: server?.url ?? "", user: server?.user ?? "", password: server?.password ?? "", port: server?.port ?? "", sslPort: server?.sslPort ?? ""))]
             
-            let topicViewModel = ItemTopicCell.ViewModel(id: topic?.id ?? "", name: topic?.name ?? "", topic: topic?.topic ?? "", value: topic?.value ?? "", time: topic?.time ?? "11:30", qos: "1")
+            let topicViewModel = ItemTopicCell.ViewModel(id: topic?.id ?? "", name: topic?.name ?? "", topic: topic?.topic ?? "", value: topic?.value ?? "", time: topic?.time ?? "11:30", qos: "1", type: topic?.type ?? "")
             
             return [
                 ItemTopicSection.topicSection(items: [

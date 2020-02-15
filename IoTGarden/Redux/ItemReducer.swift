@@ -25,7 +25,7 @@ extension ItemState {
                     ItemViewModel(uuid: $0.uuid, name: $0.name, imageUrl: $0.imageUrlString)
                 }
             
-                state.itemViewModels = itemViewModels
+                state.items = itemViewModels
                 state.identifiableComponent.update()
             }
 

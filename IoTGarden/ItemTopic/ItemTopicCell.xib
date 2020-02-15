@@ -127,6 +127,7 @@
                 <outlet property="qosLabel" destination="KT7-CF-nUo" id="fmN-AU-nJQ"/>
                 <outlet property="timeLabel" destination="flb-Eo-sWc" id="h04-iO-DSQ"/>
                 <outlet property="topicLabel" destination="U0L-fv-G2W" id="jjc-Et-Jkz"/>
+                <outlet property="typeLabel" destination="MQj-Vy-Yki" id="FPS-C1-zGa"/>
                 <outlet property="valueLabel" destination="sSw-sV-XWw" id="Ldf-YM-fya"/>
             </connections>
             <point key="canvasLocation" x="-180" y="2.6986506746626691"/>

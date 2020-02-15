@@ -22,16 +22,24 @@ struct ItemListService {
         
         var kind: String = ""
         
+        var qos: String = ""
+        
         var topic: String = ""
         
         var time: String = ""
+        
+        var message: String = ""
+        
+        var retain: String = ""
+        
+        var itemId: String = ""
     }
     
-    func loadTopics(finished: (_ topics: [ItemListService.TopicData])-> ()) {
+    func loadTopics(itemId: String, finished: (_ topics: [ItemListService.TopicData])-> ()) {
         
         let interactor = SensorsDataInteractor()
         
-        interactor.getItems { topics in
+        interactor.getItems(itemId: itemId) { topics in
             
             finished(topics)
         }
@@ -53,12 +61,12 @@ struct ItemListService {
         }
     }
     
-    func updateTopic(topic: ItemListService.TopicData) {
+    func updateTopic(topic: ItemListService.TopicData, finished: (_ id: String) -> ()) {
         
         let sensors = SensorsDataInteractor()
         
         sensors.update(item: topic) { id in
-            
+            finished(id)
         }
     }
     
@@ -70,4 +78,13 @@ struct ItemListService {
             
         }
     }
+    
+    func removeTopics(itemId: String, finished: (_ id: String) -> ()) {
+        
+        let sensors = SensorsDataInteractor()
+        sensors.deleteTopics(itemId: itemId) { id in
+            finished(itemId)
+        }
+    }
+    
 }

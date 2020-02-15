@@ -13,7 +13,6 @@ import ReSwift
 
 class SelectionViewController:  UIViewController, StoreSubscriber {
     
-//    typealias StoreSubscriberStateType = ConnectionState
     
     func newState(state: ServerState) {
         
@@ -64,7 +63,7 @@ class SelectionViewController:  UIViewController, StoreSubscriber {
             subcription.select { state in state.serverState }.skipRepeats()
         }
         
-        appStore.dispatch(ServerState.Action.loadConnections())
+        appStore.dispatch(ServerState.Action.loadServers())
         selectedRelay.accept("")
 
     }

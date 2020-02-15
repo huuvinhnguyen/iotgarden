@@ -27,16 +27,17 @@ class TopicCell: UITableViewCell {
     
     var viewModel: ViewModel? {
         didSet {
-            nameTextField.text  = viewModel?.name ?? ""
-            topicTextField.text = viewModel?.topic ?? ""
-            typeTextField.text = viewModel?.type ?? ""
-            viewModelRelay.accept(viewModel)
+           
+                nameTextField.text  = viewModel?.name ?? ""
+                topicTextField.text = viewModel?.topic ?? ""
+                viewModelRelay.accept(viewModel)
+            
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        configure()
+
     }
     
     struct ViewModel {
@@ -46,7 +47,11 @@ class TopicCell: UITableViewCell {
         var type = ""
     }
     
-    private func configure() {
+    func configure(viewModel: ViewModel?) {
+
+        if self.viewModel == nil {
+            self.viewModel = viewModel
+        }
         nameTextField.rx.text.subscribe(onNext:{ [weak self] text in
             guard let self = self else { return }
             self.viewModel?.name = text ?? ""
@@ -59,6 +64,8 @@ class TopicCell: UITableViewCell {
             self.viewModelRelay.accept(self.viewModel)
         }).disposed(by: self.disposeBag)
         
+        typeTextField.text = viewModel?.type ?? ""
+ 
         typeTextField.rx.text.subscribe(onNext:{ [weak self] text in
             guard let self = self else { return }
             self.viewModel?.type = text ?? ""
@@ -66,5 +73,4 @@ class TopicCell: UITableViewCell {
         }).disposed(by: self.disposeBag)
         
     }
-
 }

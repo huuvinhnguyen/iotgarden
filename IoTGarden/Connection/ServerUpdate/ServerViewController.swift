@@ -14,30 +14,38 @@ import ReSwift
 class ServerViewController: UIViewController, StoreSubscriber {
 
     func newState(state: ServerState ) {
-        connectionRelay.accept(state.server)
+        serverRelay.accept(state.server)
     }
     
     enum Mode {
-        case add(topicId: String)
-        case edit(topicId: String)
+        case add(topicId: String, serverId: String)
+        case edit(topicId: String, serverId: String)
         var topicId: String {
             switch self {
-            case .add(let topicId):
-                return topicId
-            case .edit(let topicId):
-                return topicId
+            case .add(let id, _):
+                return id
+            case .edit(let id, _):
+                return id
+            }
+        }
+        
+        var serverId: String {
+            switch self {
+            case .add(_, let id):
+                return id
+            case .edit(_, let id):
+                return id
             }
         }
     }
     
-    var mode: Mode?
+    private var mode: Mode?
     
-    
-    var serverIdentifier: String?
+    var topicId: String?
     
     private var serverViewModel: ServerCell.ViewModel?
     
-    var connectionRelay = PublishRelay<Server?>()
+    var serverRelay = PublishRelay<Server?>()
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -48,7 +56,6 @@ class ServerViewController: UIViewController, StoreSubscriber {
             
             guard let self = self else { return UITableViewCell() }
 
-            
             switch dataSource[indexPath] {
                 
             case .serverItem(let viewModel):
@@ -76,7 +83,7 @@ class ServerViewController: UIViewController, StoreSubscriber {
                 
                 cell.didTapTrashAction = {
                     self.navigationController?.popViewController(animated: true)
-                    appStore.dispatch(ServerState.Action.removeConnection(id: id))
+                    appStore.dispatch(ServerState.Action.removeServer(id: id))
                     appStore.dispatch(TopicState.Action.loadTopic(id: self.mode?.topicId ?? ""))
 
                 }
@@ -96,14 +103,26 @@ class ServerViewController: UIViewController, StoreSubscriber {
         })
     }
     
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        saveServer()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         prepairNibs()
+        guard let id = topicId else { return }
+        let topic = appStore.state.topicState.topics.filter { $0.id == id }.first
+        if topic?.serverId == "" {
+            mode = .add(topicId: topic?.id ?? "", serverId: UUID().uuidString)
+        } else {
+            mode = .edit(topicId: topic?.id ?? "", serverId: topic?.serverId ?? "")
+        }
+
         
         appStore.subscribe(self) { $0.select { $0.serverState }.skipRepeats() }
         loadData()
         
-        appStore.dispatch(ServerState.Action.loadServer(id: serverIdentifier ?? ""))
+        appStore.dispatch(ServerState.Action.loadServer(id: mode?.serverId ?? ""))
 
     }
     
@@ -119,40 +138,28 @@ class ServerViewController: UIViewController, StoreSubscriber {
     private func saveServer() {
         
         guard let mode = mode else { return }
+        guard let viewModel = serverViewModel else { return }
+        let server = Server(
+            id: mode.serverId, name: viewModel.name,
+            url: viewModel.serverUrl,
+            user: viewModel.user,
+            password: viewModel.password,
+            port: viewModel.port,
+            sslPort: viewModel.sslPort,
+            canDelete: true)
+
         switch mode {
-        case .add(let topicId):
-            var topic = appStore.state.topicState.topics.filter { $0.id == topicId}.first
-            let serverId = serverIdentifier ?? UUID().uuidString
-            let server = Server(
-                id: serverId, name: serverViewModel?.name ?? "",
-                url: serverViewModel?.serverUrl ?? "",
-                user: serverViewModel?.user ?? "",
-                password: serverViewModel?.password ?? "",
-                port: serverViewModel?.port ?? "",
-                sslPort: serverViewModel?.sslPort ?? "")
+        case .add(let topicId, _):
             
+            var topic = appStore.state.topicState.topics.filter { $0.id == topicId }.first
             topic?.serverId = server.id
             
             appStore.dispatch(ServerState.Action.addServer(server))
             appStore.dispatch(TopicState.Action.updateTopic(topic: topic))
             
-        case .edit(let topicId):
-            var topic = appStore.state.topicState.topics.filter { $0.id == topicId}.first
-            guard let serverId = serverIdentifier else { return }
-            let server = Server(
-                id: serverId, name: serverViewModel?.name ?? "",
-                url: serverViewModel?.serverUrl ?? "",
-                user: serverViewModel?.user ?? "",
-                password: serverViewModel?.password ?? "",
-                port: serverViewModel?.port ?? "",
-                sslPort: serverViewModel?.sslPort ?? "")
-            
-            topic?.serverId = server.id
+        case .edit(_, _):
             
             appStore.dispatch(ServerState.Action.updateServer(server))
-            appStore.dispatch(TopicState.Action.updateTopic(topic: topic))
-            
-            
         }
         
         self.navigationController?.popViewController(animated: true)
@@ -161,16 +168,23 @@ class ServerViewController: UIViewController, StoreSubscriber {
     
     private func loadData() {
         
-        connectionRelay.map {
-            [Section(title: "", items: [
+        
+        
+        
+        serverRelay.map { [weak self] in
+            var items = [
                 SectionItem.serverItem(viewModel: ServerCell.ViewModel(id: $0?.id ?? "", name: $0?.name ?? "", user: $0?.user ?? "", password: $0?.password ?? "", serverUrl: $0?.url ?? "", port: $0?.port ?? "", sslPort: $0?.sslPort ?? "" )),
-                SectionItem.topicSaveItem(viewModel: TopicSaveCell.ViewModel()),
-                SectionItem.trashItem(id: $0?.id ?? "")
-                                              ])]
+                SectionItem.topicSaveItem(viewModel: TopicSaveCell.ViewModel())
+               ]
+            
+            if case .edit? = self?.mode {
+                items += [SectionItem.trashItem(id: $0?.id ?? "")]
+            }
+
+            return [Section(title: "", items: items)]
             }
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
 
     }
-    
 }

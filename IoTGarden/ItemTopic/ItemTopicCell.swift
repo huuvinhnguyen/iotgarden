@@ -14,6 +14,7 @@ class ItemTopicCell: UITableViewCell {
     @IBOutlet weak var topicLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var qosLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
     
     var viewModel: ViewModel? {
         didSet {
@@ -23,6 +24,7 @@ class ItemTopicCell: UITableViewCell {
             topicLabel.text = viewModel?.topic ?? ""
             timeLabel.text = viewModel?.time ?? ""
             qosLabel.text = viewModel?.qos ?? ""
+            typeLabel.text = viewModel?.type ?? ""
 
         }
     }
@@ -40,5 +42,6 @@ class ItemTopicCell: UITableViewCell {
         var value = ""
         var time = ""
         var qos = ""
+        var type = ""
     }
 }

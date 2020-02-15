@@ -835,6 +835,7 @@ struct _R: Rswift.Validatable {
       try _TopicCell.validate()
       try _TopicQosCell.validate()
       try _TopicSaveCell.validate()
+      try _TopicTypeCell.validate()
     }
     
     struct _AddItemTopicCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
@@ -1397,7 +1398,7 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    struct _TopicTypeCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+    struct _TopicTypeCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
       typealias ReusableType = TopicTypeCell
       
       let bundle = R.hostingBundle
@@ -1406,6 +1407,13 @@ struct _R: Rswift.Validatable {
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> TopicTypeCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? TopicTypeCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_circle_o", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_circle_o' is used in nib 'TopicTypeCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_dot_circle_o", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_dot_circle_o' is used in nib 'TopicTypeCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
       }
       
       fileprivate init() {}
@@ -1490,6 +1498,7 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
+        if UIKit.UIImage(named: "icon_save", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_save' is used in storyboard 'Connection', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
         if _R.storyboard.connection().serverViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'serverViewController' could not be loaded from storyboard 'Connection' as 'ServerViewController'.") }

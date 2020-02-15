@@ -15,11 +15,10 @@ struct ItemState: ReSwift.StateType, Identifiable {
     var identifiableComponent = IdentifiableComponent()
     
     var sections: [ItemSectionModel] = []
-    var itemViewModels: [ItemViewModel] = []
+    var items: [ItemViewModel] = []
     var itemViewModel = ItemViewModel()
-    var topicItems: [ItemDetailSectionModel] = []
+    var topicItems: [ItemDetailViewController.Section] = []
     var topicViewModel = Topic()
-    var connectionViewModel = Server(id:"", name: "hvm server", url: "", user: "", password: "", port: "", sslPort: "555")
     var tasks: [String: TopicConnector] = [:]
     var imageList: [ItemImageViewController.SectionModel] = []
     var itemImageViewModels: [ItemImageViewModel] = []
@@ -32,7 +31,6 @@ extension ItemState {
         case switchItem(cellUI: SwitchCellUI, message: String)
         case inputItem(cellUI: InputCellUI, message: String)
         case updateSwitchItem(viewModel: SwitchCellUI)
-        case updateInputItem(cellUI: InputCellUI)
         case loadItems()
         case addItem(item: ItemViewModel)
         case removeItem(id: String)
@@ -44,6 +42,7 @@ extension ItemState {
         case loadItem(id: String)
         case updateItemImage(imageUrl: String)
         case updateItem(item: ItemViewModel)
+        
     }
 }
 
@@ -66,6 +65,7 @@ extension ItemState {
                     let itemListService = ItemListService()
                     itemListService.removeItem(id: id) { _ in
                         dispatch(ItemState.Action.loadItems())
+                        dispatch(TopicState.Action.removeTopics(itemId: id))
                     }
                 }
                 

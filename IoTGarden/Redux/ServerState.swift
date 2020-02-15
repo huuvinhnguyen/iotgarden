@@ -19,10 +19,10 @@ extension ServerState {
     enum Action: ReSwift.Action {
         case addServer(_ model: Server)
         case updateServer(Server)
-        case removeConnection(id: String)
+        case removeServer(id: String)
         case loadServer(id: String)
-        case loadConnections()
-        case selectConnection(id: String)
+        case loadServers()
+        case selectServer(id: String)
     }
 }
 
@@ -37,11 +37,11 @@ extension ServerState {
         
         switch action {
             
-        case .loadConnections():
+        case .loadServers():
             
             let service = ItemListService()
             service.loadConfigures { configurations in
-                state.servers = configurations.map { Server(id: $0.uuid ,name: $0.name, url: $0.url, user: $0.username, password: $0.password, port: $0.port, sslPort: $0.sslPort) }
+                state.servers = configurations.map { Server(id: $0.uuid ,name: $0.name, url: $0.url, user: $0.username, password: $0.password, port: $0.port, sslPort: $0.sslPort, canDelete: true) }
             }
             
             state.identifiableComponent.update()
@@ -49,9 +49,9 @@ extension ServerState {
         case .loadServer(let id):
             let service = ItemListService()
             service.loadServer(uuid: id) { configuration in
-                let viewModel = configuration.map {  Server(id: $0.uuid , name: $0.name , url: $0.url, user: $0.username, password: $0.password, port: $0.port, sslPort: $0.sslPort)}
+                let server = configuration.map {  Server(id: $0.uuid , name: $0.name , url: $0.url, user: $0.username, password: $0.password, port: $0.port, sslPort: $0.sslPort, canDelete: true)}
                 
-                state.server = viewModel
+                state.server = server
                 state.identifiableComponent.update()
             }
             
@@ -70,18 +70,18 @@ extension ServerState {
         return { next in
             print("enter detail middleware")
             return { action in
-                if case ServerState.Action.removeConnection(let id) = action {
+                if case ServerState.Action.removeServer(let id) = action {
                     let service = ItemListService()
                     service.deleteConfigure(id: id, finished: { id in
-                        dispatch(ServerState.Action.loadConnections())
+                        dispatch(ServerState.Action.loadServers())
                     })
                 }
                 
                 if case ServerState.Action.addServer(let server) = action {
                     let service = ItemListService()
-                    service.addConfiguration(configuration: ItemListService.Server(uuid: server.id, name: server.name, url: server.url, username: server.user, password: server.password, port: server.password, sslPort: server.sslPort), finished: { id in
+                    service.addConfiguration(configuration: ItemListService.Server(uuid: server.id, name: server.name, url: server.url, username: server.user, password: server.password, port: server.port, sslPort: server.sslPort), finished: { id in
                         
-                        dispatch(ServerState.Action.loadConnections())
+                        dispatch(ServerState.Action.loadServers())
                     })
                 }
                 
@@ -89,7 +89,7 @@ extension ServerState {
                     let service = ItemListService()
                     service.updateConfiguration(configuration: ItemListService.Server(uuid: server.id, name: server.name, url: server.url, username: server.user, password: server.password, port: server.port, sslPort: server.sslPort), finished: { id in
                         
-                        dispatch(ServerState.Action.loadConnections())
+                        dispatch(ServerState.Action.loadServer(id: server.id))
                     })
                 }
                 

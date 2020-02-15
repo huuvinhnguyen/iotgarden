@@ -23,7 +23,7 @@ private struct ItemDef {
 class ItemListViewController: UIViewController, StoreSubscriber {
     
     func newState(state: ItemState) {
-        itemRelay.accept(state.itemViewModels)
+        itemRelay.accept(state.items)
     }
     
     var itemRelay = PublishRelay<[ItemViewModel]>()
@@ -139,7 +139,7 @@ extension ItemSectionModel: SectionModelType {
              self = .itemSection(title: title, items: items)
         }
     }
-    
+
     var items: [SectionItem] {
         switch self {
         case .itemSection(title: _, items: let items):

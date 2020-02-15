@@ -378,7 +378,7 @@ extension DemoBaseViewController: UITableViewDelegate, UITableViewDataSource {
 
 class ItemDetailTempViewController: DemoBaseViewController {
     
-    var item = ItemTemp()
+//    var item = ItemTemp()
     
     @IBOutlet var chartView: LineChartView!
     @IBOutlet var sliderX: UISlider!

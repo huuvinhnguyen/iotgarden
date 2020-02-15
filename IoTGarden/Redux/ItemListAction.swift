@@ -14,7 +14,7 @@ struct AddItemAction: Action {
 
 struct RemoveItemAction: Action {
     
-    let item: [Item]
+//    let item: [Item]
 }
 
 struct AddSensorAction: Action {
