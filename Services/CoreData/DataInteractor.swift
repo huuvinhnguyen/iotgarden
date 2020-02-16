@@ -95,6 +95,8 @@ struct SensorsDataInteractor : DataInteractor {
         
         localItem.setValue(item.kind, forKeyPath: "kind")
         
+        localItem.setValue(item.qos, forKeyPath: "qos")
+        
         localItem.setValue(item.topic, forKeyPath: "topic")
         
         localItem.setValue(item.time, forKeyPath: "time")
@@ -149,8 +151,6 @@ struct SensorsDataInteractor : DataInteractor {
                 object.setValue(item.retain, forKeyPath: "retained")
                 
                 object.setValue(item.itemId, forKeyPath: "itemId")
-
-
             }
         }
         

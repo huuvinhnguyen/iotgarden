@@ -22,7 +22,7 @@ extension ItemState {
             
             itemListService.loadItems { itemDatas in
                 let itemViewModels = itemDatas.map {
-                    ItemViewModel(uuid: $0.uuid, name: $0.name, imageUrl: $0.imageUrlString)
+                    Item(uuid: $0.uuid, name: $0.name, imageUrl: $0.imageUrlString)
                 }
             
                 state.items = itemViewModels
@@ -30,23 +30,23 @@ extension ItemState {
             }
 
         case .loadImages(let list):
-            state.itemImageViewModels = list
+            state.images = list
             state.identifiableComponent.update()
         case .loadImage(let viewModel):
-            state.itemImageViewModel = viewModel
+            state.image = viewModel
             state.identifiableComponent.update()
             
         case .loadItem(let id):
             let service = ItemListService()
             service.loadItem(id: id) { item in
-                state.itemViewModel = ItemViewModel(uuid: item?.uuid ?? "", name: item?.name ?? "", imageUrl: item?.imageUrlString ?? "")
+                state.item = Item(uuid: item?.uuid ?? "", name: item?.name ?? "", imageUrl: item?.imageUrlString ?? "")
                 state.identifiableComponent.update()
             }
             
         case .updateItemImage(let imageUrl):
-            var item = state.itemViewModel
+            var item = state.item
             item.imageUrl = imageUrl
-            state.itemViewModel = item
+            state.item = item
             state.identifiableComponent.update()
 
 

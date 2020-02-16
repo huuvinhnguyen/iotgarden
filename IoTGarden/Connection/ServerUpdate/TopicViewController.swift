@@ -39,6 +39,7 @@ class TopicViewController: UIViewController, StoreSubscriber {
     private var topicViewModel: TopicCell.ViewModel?
     private var switchViewModel: TopicSwitchCell.ViewModel?
     private var qosViewModel: TopicQosCell.ViewModel?
+    private var retainViewModel: TopicRetainCell.ViewModel?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -90,6 +91,15 @@ class TopicViewController: UIViewController, StoreSubscriber {
                 }).disposed(by: self.disposeBag)
                 
                 return cell
+            case .topicRetainItem(let viewModel):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.topicRetainCell, for: indexPath) else { return UITableViewCell() }
+                cell.viewModel = viewModel
+                cell.viewModelRelay.subscribe(onNext: { viewModel in
+                    self.retainViewModel = viewModel
+                }).disposed(by: self.disposeBag)
+                
+                return cell
+        
             case .topicSaveItem(_):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.topicSaveCell, for: indexPath) else { return UITableViewCell() }
                 cell.didTapSaveAction = {
@@ -125,20 +135,28 @@ class TopicViewController: UIViewController, StoreSubscriber {
         tableView.register(R.nib.topicCell)
         tableView.register(R.nib.topicSwitchCell)
         tableView.register(R.nib.topicQosCell)
+        tableView.register(R.nib.topicRetainCell)
         tableView.register(R.nib.topicSaveCell)
     }
     
     private func loadData() {
         
-        topicRelay.map { item in
+        topicRelay.map { [weak self] item in
+            let item = item ?? Topic()
             var items: [ServerViewController.SectionItem] = []
-            items += [ServerViewController.SectionItem.topicItem(viewModel: TopicCell.ViewModel(id: item?.id ?? "", name: item?.name ?? "" , topic: item?.topic ?? "", type: item?.type ?? ""))]
+            items += [ServerViewController.SectionItem.topicItem(viewModel: TopicCell.ViewModel(id: item.id, name: item.name, topic: item.topic, type: item.type))]
             
-            if item?.type == "switch" {
-                items += [ServerViewController.SectionItem.topicSwitchItem(viewModel: TopicSwitchCell.ViewModel(value: item?.value ?? "", message: item?.message ?? ""))]
+            if item.type == "switch" {
+                items += [ServerViewController.SectionItem.topicSwitchItem(viewModel: TopicSwitchCell.ViewModel(value: item.value, message: item.message))]
             }
-            items += [ServerViewController.SectionItem.topicQosItem(viewModel: TopicQosCell.ViewModel()),
-                ServerViewController.SectionItem.topicSaveItem(viewModel: TopicSaveCell.ViewModel())]
+            let qos = self?.qosViewModel?.value
+            items += [ServerViewController.SectionItem.topicQosItem(viewModel: TopicQosCell.ViewModel(value: qos ?? item.qos))]
+            
+            let retain = self?.retainViewModel?.value
+            items += [ServerViewController.SectionItem.topicRetainItem(viewModel: TopicRetainCell.ViewModel(value: retain ?? item.retain)),
+                      ServerViewController.SectionItem.topicSaveItem(viewModel: TopicSaveCell.ViewModel())]
+            
+            
             return [
             ServerViewController.Section(title: "", items: items
                 )]
@@ -155,6 +173,8 @@ class TopicViewController: UIViewController, StoreSubscriber {
         topic.topic = topicViewModel?.topic ?? ""
         topic.type = topicViewModel?.type ?? ""
         topic.message = switchViewModel?.message ?? ""
+        topic.qos = qosViewModel?.value ?? ""
+        topic.retain = retainViewModel?.value ?? ""
         
         switch mode {
         case .add(let itemId):

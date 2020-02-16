@@ -15,19 +15,26 @@ class ItemTopicCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var qosLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var retainLabel: UILabel!    
     
     var viewModel: ViewModel? {
         didSet {
-            
-            nameLabel.text = viewModel?.name ?? ""
-            valueLabel.text = viewModel?.value ?? ""
-            topicLabel.text = viewModel?.topic ?? ""
-            timeLabel.text = viewModel?.time ?? ""
-            qosLabel.text = viewModel?.qos ?? ""
-            typeLabel.text = viewModel?.type ?? ""
+            let model = viewModel ?? ViewModel()
+            nameLabel.text = model.name
+            valueLabel.text = model.value
+            topicLabel.text = model.topic
+            timeLabel.text = model.time
+            qosLabel.text = model.qos
+            if model.retain == "0" {
+                retainLabel.text = "No"
+            } else if model.retain == "1" {
+                retainLabel.text = "Yes"
+            } else { retainLabel.text = "Unknow" }
+            typeLabel.text = model.type
 
         }
     }
+    
     var didTapEditAction: (() -> Void)?
     
     @IBAction private func editButtonTapped(_ sender: UIButton) {
@@ -42,6 +49,7 @@ class ItemTopicCell: UITableViewCell {
         var value = ""
         var time = ""
         var qos = ""
+        var retain = ""
         var type = ""
     }
 }

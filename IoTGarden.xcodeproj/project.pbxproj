@@ -37,8 +37,11 @@
 		049A85862365A4DC0038D247 /* TopicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A85852365A4DC0038D247 /* TopicData.swift */; };
 		049A85882365B3010038D247 /* ItemDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A85872365B3010038D247 /* ItemDataInteractor.swift */; };
 		049C7DB823AF621900B047E7 /* Routers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049C7DB723AF621900B047E7 /* Routers.swift */; };
+		04C774D623F94D030085E4F7 /* TopicRetainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C774D523F94D030085E4F7 /* TopicRetainCell.swift */; };
+		04C774D823F94D430085E4F7 /* TopicRetainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C774D723F94D430085E4F7 /* TopicRetainCell.xib */; };
 		04CD3798239963990020A8B5 /* ItemTopicSignInCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD3797239963990020A8B5 /* ItemTopicSignInCell.swift */; };
 		04CD379A239963B30020A8B5 /* ItemTopicSignInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CD3799239963B30020A8B5 /* ItemTopicSignInCell.xib */; };
+		04DF830523F80B24003B57A3 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DF830423F80B24003B57A3 /* Image.swift */; };
 		04E56B8023D2172B001CFABC /* TopicTypeViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E56B7F23D2172B001CFABC /* TopicTypeViewController+.swift */; };
 		04F247FC23378B80003239B6 /* ItemTopic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F247FB23378B80003239B6 /* ItemTopic.storyboard */; };
 		04F247FE23378B9B003239B6 /* ItemTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F247FD23378B9B003239B6 /* ItemTopicViewController.swift */; };
@@ -210,8 +213,11 @@
 		049A85852365A4DC0038D247 /* TopicData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicData.swift; sourceTree = "<group>"; };
 		049A85872365B3010038D247 /* ItemDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataInteractor.swift; sourceTree = "<group>"; };
 		049C7DB723AF621900B047E7 /* Routers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routers.swift; sourceTree = "<group>"; };
+		04C774D523F94D030085E4F7 /* TopicRetainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicRetainCell.swift; sourceTree = "<group>"; };
+		04C774D723F94D430085E4F7 /* TopicRetainCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicRetainCell.xib; sourceTree = "<group>"; };
 		04CD3797239963990020A8B5 /* ItemTopicSignInCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicSignInCell.swift; sourceTree = "<group>"; };
 		04CD3799239963B30020A8B5 /* ItemTopicSignInCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTopicSignInCell.xib; sourceTree = "<group>"; };
+		04DF830423F80B24003B57A3 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		04E56B7F23D2172B001CFABC /* TopicTypeViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopicTypeViewController+.swift"; sourceTree = "<group>"; };
 		04F247FB23378B80003239B6 /* ItemTopic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemTopic.storyboard; sourceTree = "<group>"; };
 		04F247FD23378B9B003239B6 /* ItemTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicViewController.swift; sourceTree = "<group>"; };
@@ -425,6 +431,8 @@
 				04468823233F65D70074CF75 /* TopicQosCell.xib */,
 				04F314FE23732D4700184507 /* TopicSaveCell.swift */,
 				04F3150023732D6300184507 /* TopicSaveCell.xib */,
+				04C774D523F94D030085E4F7 /* TopicRetainCell.swift */,
+				04C774D723F94D430085E4F7 /* TopicRetainCell.xib */,
 			);
 			path = ServerUpdate;
 			sourceTree = "<group>";
@@ -480,6 +488,7 @@
 				183A920222EC023D00EBDC4A /* TopicConnector.swift */,
 				040345CA23B74F8600E2095A /* Server.swift */,
 				04FCF07723B8C5820070BDCE /* Topic.swift */,
+				04DF830423F80B24003B57A3 /* Image.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -824,6 +833,7 @@
 			files = (
 				18A0431521894CD4005E04D4 /* LaunchScreen.storyboard in Resources */,
 				04161F5823A29E4700BAB4B3 /* ItemSaveCell.xib in Resources */,
+				04C774D823F94D430085E4F7 /* TopicRetainCell.xib in Resources */,
 				04468820233F5B0C0074CF75 /* TopicSwitchCell.xib in Resources */,
 				185FF15422ABB0DD003C0DDF /* ItemInputValueCell.xib in Resources */,
 				04161F5423A1122B00BAB4B3 /* ItemNameHeaderCell.xib in Resources */,
@@ -1037,6 +1047,7 @@
 				1803376921CBAC7D0098F944 /* HumidityCell.swift in Sources */,
 				04E56B8023D2172B001CFABC /* TopicTypeViewController+.swift in Sources */,
 				04051B66233E6E2D00224600 /* TopicTypeViewController.swift in Sources */,
+				04C774D623F94D030085E4F7 /* TopicRetainCell.swift in Sources */,
 				18D7C6D9220EB81000FF8529 /* MotionDevice.swift in Sources */,
 				5B2CD58722896E5400EA8B25 /* UIFont+Extension.swift in Sources */,
 				18A33DDC2324FAD800DFDBB6 /* ItemDetailTrashCell.swift in Sources */,
@@ -1072,6 +1083,7 @@
 				1803376021CB41640098F944 /* SensorConnect.swift in Sources */,
 				0412B97123BDB2FD00F6B56B /* ItemData.swift in Sources */,
 				04CD3798239963990020A8B5 /* ItemTopicSignInCell.swift in Sources */,
+				04DF830523F80B24003B57A3 /* Image.swift in Sources */,
 				04F247FE23378B9B003239B6 /* ItemTopicViewController.swift in Sources */,
 				18B5506721C56104004EC438 /* ItemStore.swift in Sources */,
 				5B2CD58522896DB600EA8B25 /* UIColor+Extension.swift in Sources */,
