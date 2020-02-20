@@ -82,7 +82,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                     
                 }
                 cell.didTapTrashAction = {
-                    appStore.dispatch(TopicState.Action.removeConnection())
+                    appStore.dispatch(TopicState.Action.removeServer())
                 }
                 return cell
                 

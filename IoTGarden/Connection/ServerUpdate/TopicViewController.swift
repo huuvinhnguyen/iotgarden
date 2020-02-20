@@ -123,6 +123,8 @@ class TopicViewController: UIViewController, StoreSubscriber {
         if case .add = mode {
             var topic = Topic()
             topic.type = "switch"
+            topic.qos = "2"
+            topic.retain = "1"
             appStore.dispatch(TopicState.Action.fetchEditableTopic(topic: topic))
         } else {
             let topic = appStore.state.topicState.topic

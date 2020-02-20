@@ -71,6 +71,7 @@ class ServerViewController: UIViewController, StoreSubscriber {
                 cell.didTapSelectAction = {
                     
                     let viewController = R.storyboard.selection.selectionViewController()!
+                    viewController.selectedId = viewModel?.id ?? ""
                     self.modalPresentationStyle = .currentContext
                     self.present(viewController, animated: true, completion: nil)
                     

@@ -82,6 +82,7 @@ extension ItemDetailServerViewController: CocoaMQTTDelegate {
             if let vc = storyboard?.instantiateViewController(withIdentifier :"SelectionViewController") as? SelectionViewController {
                 
 //                vc.configuration = configuration
+                vc.selectedId = serverUUID ?? ""
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             

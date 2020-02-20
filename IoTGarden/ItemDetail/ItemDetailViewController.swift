@@ -125,6 +125,8 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         
         if self.isMovingFromParent {
             appStore.dispatch(ReSwiftRouter.SetRouteAction([mainViewRoute]))
+            appStore.state.topicState.topics.removeAll()
+            appStore.state.topicState.tasks.removeAll()
 
         }
     }
