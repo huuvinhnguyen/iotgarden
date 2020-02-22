@@ -25,8 +25,11 @@
                             <constraint firstAttribute="width" constant="59" id="w18-NO-Bdv"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11 mins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9Q-EF-Nw0">
-                        <rect key="frame" x="91" y="181" width="56" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 seconds ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9Q-EF-Nw0">
+                        <rect key="frame" x="91" y="181" width="212" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="212" id="spa-Xt-aRA"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -71,6 +74,10 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_bulb_off" highlightedImage="icon_bulb_on" translatesAutoresizingMaskIntoConstraints="NO" id="Nku-N1-eJs">
+                        <rect key="frame" x="296" y="11" width="63" height="43"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
@@ -90,13 +97,17 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.2470588235" green="0.44705882349999998" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
+                <outlet property="bulbImageView" destination="Nku-N1-eJs" id="9TP-pS-bAX"/>
                 <outlet property="nameLabel" destination="loV-lX-2ie" id="7Xu-tT-Ri6"/>
+                <outlet property="timeLabel" destination="a9Q-EF-Nw0" id="k5l-tc-QYu"/>
                 <outlet property="valueLabel" destination="bb6-Fi-ZtO" id="uZa-lZ-h1m"/>
             </connections>
             <point key="canvasLocation" x="149.59999999999999" y="80.50974512743629"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="icon_bulb_off" width="24" height="24"/>
+        <image name="icon_bulb_on" width="24" height="24"/>
         <image name="icon_clock_o" width="22" height="22"/>
         <image name="icon_info" width="22" height="22"/>
         <image name="icon_power_off" width="22" height="23"/>

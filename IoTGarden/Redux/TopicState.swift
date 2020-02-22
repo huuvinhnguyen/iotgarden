@@ -209,6 +209,12 @@ extension TopicState {
                            let value = message.string ?? ""
                             if connector.topic.value != value {
                                connector.topic.value = value
+                                
+                                let formatter = DateFormatter()
+                                formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                                let now = Date()
+                                let dateString = formatter.string(from: now)
+                                connector.topic.time = dateString
                                 dispatch(TopicState.Action.updateTopic(topic: connector.topic))
                             }
                         }
