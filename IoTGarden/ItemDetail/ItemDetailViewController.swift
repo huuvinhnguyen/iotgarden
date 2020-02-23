@@ -176,7 +176,8 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                 }
                 
                 if topic.type == "value" {
-                    return SectionItem.topicValueItem(viewModel:  ItemDetailTopicCell.ViewModel(id: topic.id, name: topic.name, value: topic.value, message: topic.message, time: topic.time))
+                    return SectionItem.topicValueItem(viewModel:  ItemDetailTopicCell.ViewModel(id: topic.id, name: topic.name, value: topic.value, message: topic.message, time: topic.time
+                    ))
                 }
                 return SectionItem.topicItem()
                 

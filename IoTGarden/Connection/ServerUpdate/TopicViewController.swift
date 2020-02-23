@@ -85,19 +85,20 @@ class TopicViewController: UIViewController, StoreSubscriber {
                 
             case .topicQosItem(let viewModel):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.topicQosCell, for: indexPath) else { return UITableViewCell() }
-                cell.viewModel = viewModel
                 cell.viewModelRelay.subscribe(onNext: { viewModel in
                     self.qosViewModel = viewModel
                 }).disposed(by: self.disposeBag)
+                cell.viewModel = viewModel
+
                 
                 return cell
             case .topicRetainItem(let viewModel):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.topicRetainCell, for: indexPath) else { return UITableViewCell() }
-                cell.viewModel = viewModel
                 cell.viewModelRelay.subscribe(onNext: { viewModel in
                     self.retainViewModel = viewModel
                 }).disposed(by: self.disposeBag)
-                
+                cell.viewModel = viewModel
+
                 return cell
         
             case .topicSaveItem(_):

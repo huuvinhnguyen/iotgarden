@@ -99,6 +99,12 @@ extension ItemDetailViewController {
                 }
             }
             
+            if case SectionItem.topicValueItem(let vm1) = lhs {
+                if case SectionItem.topicValueItem(viewModel: let vm2) = rhs {
+                    return vm1 == vm2
+                }
+            }
+            
             return false
         }
 
