@@ -28,9 +28,3 @@ class ItemImageCell: UICollectionViewCell {
         var imageUrl = ""
     }
 }
-
-struct ItemImageViewModel {
-    let id: String
-    var isSelected: Bool
-    var imageUrl: String
-}

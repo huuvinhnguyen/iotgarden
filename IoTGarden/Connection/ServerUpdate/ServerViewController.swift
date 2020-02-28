@@ -12,7 +12,7 @@ import RxDataSources
 import ReSwift
 
 class ServerViewController: UIViewController, StoreSubscriber {
-
+    
     func newState(state: ServerState ) {
         serverRelay.accept(state.server)
     }
@@ -46,7 +46,7 @@ class ServerViewController: UIViewController, StoreSubscriber {
     private var serverViewModel: ServerCell.ViewModel?
     
     var serverRelay = PublishRelay<Server?>()
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     private let disposeBag = DisposeBag()
@@ -55,7 +55,7 @@ class ServerViewController: UIViewController, StoreSubscriber {
         return RxTableViewSectionedReloadDataSource<Section>(configureCell: { [weak self] dataSource, tableView, indexPath, viewModel in
             
             guard let self = self else { return UITableViewCell() }
-
+            
             switch dataSource[indexPath] {
                 
             case .serverItem(let viewModel):
@@ -69,25 +69,31 @@ class ServerViewController: UIViewController, StoreSubscriber {
                 }).disposed(by: self.disposeBag)
                 
                 cell.didTapSelectAction = {
-
+                    
                     let viewController = R.storyboard.selection.selectionViewController()!
+                    viewController.selectedId = viewModel?.id ?? ""
                     self.modalPresentationStyle = .currentContext
                     self.present(viewController, animated: true, completion: nil)
                     
                 }
-            
+                
                 return cell
                 
             case .trashItem(let id):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailTrashCell, for: indexPath) else { return UITableViewCell() }
                 
                 cell.didTapTrashAction = {
+                    
+                    var topic = appStore.state.topicState.topics.filter { $0.id == self.mode?.topicId}.first
+                    topic?.serverId = ""
+                    
                     self.navigationController?.popViewController(animated: true)
                     appStore.dispatch(ServerState.Action.removeServer(id: id))
-                    appStore.dispatch(TopicState.Action.loadTopic(id: self.mode?.topicId ?? ""))
-
+                    
+                    appStore.dispatch(TopicState.Action.updateTopic(topic: topic))
+                    
                 }
-            
+                
                 return cell
                 
             case .topicSaveItem(_):
@@ -117,13 +123,13 @@ class ServerViewController: UIViewController, StoreSubscriber {
         } else {
             mode = .edit(topicId: topic?.id ?? "", serverId: topic?.serverId ?? "")
         }
-
+        
         
         appStore.subscribe(self) { $0.select { $0.serverState }.skipRepeats() }
         loadData()
         
         appStore.dispatch(ServerState.Action.loadServer(id: mode?.serverId ?? ""))
-
+        
     }
     
     private func prepairNibs() {
@@ -132,7 +138,7 @@ class ServerViewController: UIViewController, StoreSubscriber {
         tableView.register(R.nib.topicCell)
         tableView.register(R.nib.itemDetailTrashCell)
         tableView.register(R.nib.topicSaveCell)
-
+        
     }
     
     private func saveServer() {
@@ -147,7 +153,7 @@ class ServerViewController: UIViewController, StoreSubscriber {
             port: viewModel.port,
             sslPort: viewModel.sslPort,
             canDelete: true)
-
+        
         switch mode {
         case .add(let topicId, _):
             
@@ -175,16 +181,16 @@ class ServerViewController: UIViewController, StoreSubscriber {
             var items = [
                 SectionItem.serverItem(viewModel: ServerCell.ViewModel(id: $0?.id ?? "", name: $0?.name ?? "", user: $0?.user ?? "", password: $0?.password ?? "", serverUrl: $0?.url ?? "", port: $0?.port ?? "", sslPort: $0?.sslPort ?? "" )),
                 SectionItem.topicSaveItem(viewModel: TopicSaveCell.ViewModel())
-               ]
+            ]
             
             if case .edit? = self?.mode {
                 items += [SectionItem.trashItem(id: $0?.id ?? "")]
             }
-
+            
             return [Section(title: "", items: items)]
             }
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-
+        
     }
 }

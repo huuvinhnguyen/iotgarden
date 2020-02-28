@@ -23,7 +23,7 @@ class TopicTypeViewController: UIViewController {
         appStore.dispatch(TopicState.Action.fetchEditableTopic(topic: topic))
     }
     
-    private var topicName = ""
+    var topicName = ""
     var topic: Topic? 
     var selectedRelay = PublishRelay<String>()
     
@@ -48,7 +48,7 @@ class TopicTypeViewController: UIViewController {
         super.viewDidLoad()
         prepairNibs()
         loadData()
-        selectedRelay.accept("")
+        selectedRelay.accept("1")
     }
     
     private func loadData() {

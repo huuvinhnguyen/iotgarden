@@ -64,7 +64,7 @@ class SelectionViewController:  UIViewController, StoreSubscriber {
         }
         
         appStore.dispatch(ServerState.Action.loadServers())
-        selectedRelay.accept("")
+        selectedRelay.accept(selectedId)
 
     }
     

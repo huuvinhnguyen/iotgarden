@@ -25,7 +25,7 @@ extension TopicState {
         case addTopic(topic: Topic?)
         case removeTopic(id: String)
         case loadTopic(id: String)
-        case removeConnection()
+        case removeServer()
         case fetchTopic(topic: Topic?)
         case fetchEditableTopic(topic: Topic?)
         case updateTopic(topic: Topic?)
@@ -73,13 +73,17 @@ extension TopicState {
         case Action.stopAllTasks():
             state.tasks.forEach { $0.value.disconnect() }
             state.tasks.removeAll()
-        case Action.removeTopics(let itemId):
-            let service = ItemListService()
-            service.removeTopics(itemId: itemId) { _ in
-                
-            }
-
+//        case Action.removeTopics(let itemId):
+//            let service = ItemListService()
+//            service.removeTopics(itemId: itemId) { _ in
+//
+//            }
             
+//            state.topics.forEach {
+//                dispatch(TopicState.Action.removeTopic(id: $0.id))
+//            }
+
+
         default: ()
 
         }
@@ -122,6 +126,8 @@ extension TopicState {
                     let service = ItemListService()
                     service.removeTopic(id: id)
                     dispatch(TopicState.Action.loadTopics(itemId: topic.itemId))
+                    
+                    dispatch(ServerState.Action.removeServer(id: topic.serverId))
                 }
                 
                 if case TopicState.Action.loadTopic(let id) = action {
@@ -161,7 +167,7 @@ extension TopicState {
                     }
                 }
                 
-                if case TopicState.Action.removeConnection(let id) = action {
+                if case TopicState.Action.removeServer(let id) = action {
                     
                     let state = getState()?.topicState ?? TopicState()
                     var topic = state.topic
@@ -203,12 +209,27 @@ extension TopicState {
                            let value = message.string ?? ""
                             if connector.topic.value != value {
                                connector.topic.value = value
+                                
+                                let formatter = DateFormatter()
+                                formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                                let now = Date()
+                                let dateString = formatter.string(from: now)
+                                connector.topic.time = dateString
                                 dispatch(TopicState.Action.updateTopic(topic: connector.topic))
                             }
                         }
                         dispatch(TopicState.Action.fetchTask(topicId: topic.id, task: connector))
 
                     }
+                }
+                
+                if case Action.removeTopics(let itemId) = action {
+                    
+                    let state = getState()?.topicState ?? TopicState()
+                    state.topics.forEach {
+                        dispatch(TopicState.Action.removeTopic(id: $0.id))
+                    }
+
                 }
 
                 next(action)

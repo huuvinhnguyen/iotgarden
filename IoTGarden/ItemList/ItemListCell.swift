@@ -101,11 +101,3 @@ struct SwitchCellUI: CellUI {
 
 }
 
-struct ItemViewModel {
-    var uuid: String = ""
-    var name: String = ""
-    var imageUrl = ""
-    
-}
-
-

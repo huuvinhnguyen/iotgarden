@@ -13,19 +13,20 @@ import ReSwift
 class ItemImageViewController: UIViewController,  StoreSubscriber {
     
     func newState(state: ItemState) {
-        imagesRelay.accept(state.itemImageViewModels)
+        imagesRelay.accept(state.images)
     }
     
     @IBAction func didSaveButtonTapped(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
-        let viewModel = appStore.state.itemState.itemImageViewModel
-        appStore.dispatch(ItemState.Action.updateItemImage(imageUrl: viewModel.imageUrl))
+        appStore.dispatch(ItemState.Action.updateItemImage(imageUrl: imageUrl))
 
     }
     private let disposeBag = DisposeBag()
 
     private var sections = PublishRelay<[SectionModel]>()
-    private var imagesRelay = PublishRelay<[ItemImageViewModel]>()
+    private var imagesRelay = PublishRelay<[Image]>()
+    private var imageUrl = ""
+
 
 
     @IBOutlet weak var collectionView: UICollectionView!
@@ -41,7 +42,7 @@ class ItemImageViewController: UIViewController,  StoreSubscriber {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        prepareNibs()
+            prepareNibs()
         
         appStore.subscribe(self) { $0.select { $0.itemState }.skipRepeats() }
         
@@ -58,9 +59,11 @@ class ItemImageViewController: UIViewController,  StoreSubscriber {
         appStore.dispatch(action)
 
         
-        collectionView.rx.modelSelected(SectionItem.self).subscribe(onNext: { sectionItem in
+        collectionView.rx.modelSelected(SectionItem.self).subscribe(onNext: { [weak self] sectionItem in
             if case  SectionItem.imageSectionItem(let viewModel) = sectionItem {
                 appStore.dispatch(ItemState.Action.selectImage(id: viewModel.id))
+                guard let weakSelf = self else { return }
+                weakSelf.imageUrl = viewModel.imageUrl
             }
             
         }).disposed(by: disposeBag)

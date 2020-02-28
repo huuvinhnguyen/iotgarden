@@ -19,7 +19,7 @@ class ItemNameViewController: UIViewController, StoreSubscriber {
     private let disposeBag = DisposeBag()
 
     func newState(state: (identifier :String, itemState: ItemState)) {
-        itemRelay.accept(state.itemState.itemViewModel)
+        itemRelay.accept(state.itemState.item)
         self.identifier = state.identifier
         print("#item name identifier: \(identifier)")
 
@@ -27,8 +27,8 @@ class ItemNameViewController: UIViewController, StoreSubscriber {
     
     var identifier = ""
     
-    private let itemRelay = PublishRelay<ItemViewModel>()
-    private var itemViewModel = ItemViewModel()
+    private let itemRelay = PublishRelay<Item>()
+    private var itemViewModel = Item()
     
     private var dataSource: RxTableViewSectionedReloadDataSource<Section> {
         
@@ -130,10 +130,10 @@ class ItemNameViewController: UIViewController, StoreSubscriber {
         let id = self.identifier == "" ?  UUID().uuidString : self.identifier
         
         if self.identifier == "" {
-            let action = ItemState.Action.addItem(item: ItemViewModel(uuid: id, name: itemViewModel.name, imageUrl: itemViewModel.imageUrl))
+            let action = ItemState.Action.addItem(item: Item(uuid: id, name: itemViewModel.name, imageUrl: itemViewModel.imageUrl))
             appStore.dispatch(action)
         } else {
-            let action = ItemState.Action.updateItem(item: ItemViewModel(uuid: id, name: itemViewModel.name, imageUrl: itemViewModel.imageUrl))
+            let action = ItemState.Action.updateItem(item: Item(uuid: id, name: itemViewModel.name, imageUrl: itemViewModel.imageUrl))
             appStore.dispatch(action)
         }
         

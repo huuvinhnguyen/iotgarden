@@ -2,12 +2,12 @@
 //  Item.swift
 //  IoTGarden
 //
-//  Created by Apple on 10/31/18.
+//  Created by Vinh Nguyen on 10/31/18.
 //
-import CocoaMQTT
 
-
-
-
-
-
+struct Item {
+    var uuid: String = ""
+    var name: String = ""
+    var imageUrl = ""
+    
+}

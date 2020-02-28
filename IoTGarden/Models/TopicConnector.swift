@@ -61,8 +61,17 @@ class TopicConnector {
     
     func publish(message: String) {
         
+        var qos: CocoaMQTTQOS = .qos0
+        if topic.qos == "1" {
+            qos = .qos1
+        } else if topic.qos == "2" {
+            qos = .qos2
+        }
+        
+        let isRetained = topic.retain == "1"
+        
         print("#publish message: \(message)")
-        mqtt?.publish(topic.topic , withString: message, qos: .qos0, retained: true, dup: false)
+        mqtt?.publish(topic.topic , withString: message, qos: qos, retained: isRetained, dup: false)
     }
 }
 

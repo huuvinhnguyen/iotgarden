@@ -82,7 +82,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                     
                 }
                 cell.didTapTrashAction = {
-                    appStore.dispatch(TopicState.Action.removeConnection())
+                    appStore.dispatch(TopicState.Action.removeServer())
                 }
                 return cell
                 
@@ -112,7 +112,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
             let footerItems = server == nil ? [ItemTopicSectionItem.footerSignInItem(), ItemTopicSectionItem.footerItem(viewModel: nil)] :  [ItemTopicSectionItem.footerItem(viewModel: nil)]
             let serverItems = server == nil ? [] : [ItemTopicSectionItem.connectionItem(viewModel: ItemTopicServerCell.ViewModel(id: server?.id ?? "", name: server?.name ?? "", server: server?.url ?? "", user: server?.user ?? "", password: server?.password ?? "", port: server?.port ?? "", sslPort: server?.sslPort ?? ""))]
             
-            let topicViewModel = ItemTopicCell.ViewModel(id: topic?.id ?? "", name: topic?.name ?? "", topic: topic?.topic ?? "", value: topic?.value ?? "", time: topic?.time ?? "11:30", qos: "1", type: topic?.type ?? "")
+            let topicViewModel = ItemTopicCell.ViewModel(id: topic?.id ?? "", name: topic?.name ?? "", topic: topic?.topic ?? "", value: topic?.value ?? "", time: topic?.time ?? "11:30", qos: topic?.qos ?? "", retain: topic?.retain ?? "", type: topic?.type ?? "")
             
             return [
                 ItemTopicSection.topicSection(items: [

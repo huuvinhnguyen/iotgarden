@@ -14,6 +14,7 @@ extension ServerViewController {
         case topicItem(viewModel: TopicCell.ViewModel?)
         case topicSwitchItem(viewModel: TopicSwitchCell.ViewModel)
         case topicQosItem(viewModel: TopicQosCell.ViewModel)
+        case topicRetainItem(viewModel: TopicRetainCell.ViewModel)
         case topicSaveItem(viewModel: TopicSaveCell.ViewModel)
         case trashItem(id: String)
     }

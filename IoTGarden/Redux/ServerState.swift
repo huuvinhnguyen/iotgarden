@@ -23,6 +23,7 @@ extension ServerState {
         case loadServer(id: String)
         case loadServers()
         case selectServer(id: String)
+
     }
 }
 
@@ -90,6 +91,7 @@ extension ServerState {
                     service.updateConfiguration(configuration: ItemListService.Server(uuid: server.id, name: server.name, url: server.url, username: server.user, password: server.password, port: server.port, sslPort: server.sslPort), finished: { id in
                         
                         dispatch(ServerState.Action.loadServer(id: server.id))
+
                     })
                 }
                 

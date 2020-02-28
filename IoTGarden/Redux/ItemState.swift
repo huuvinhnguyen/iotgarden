@@ -14,15 +14,10 @@ struct ItemState: ReSwift.StateType, Identifiable {
     
     var identifiableComponent = IdentifiableComponent()
     
-    var sections: [ItemSectionModel] = []
-    var items: [ItemViewModel] = []
-    var itemViewModel = ItemViewModel()
-    var topicItems: [ItemDetailViewController.Section] = []
-    var topicViewModel = Topic()
-    var tasks: [String: TopicConnector] = [:]
-    var imageList: [ItemImageViewController.SectionModel] = []
-    var itemImageViewModels: [ItemImageViewModel] = []
-    var itemImageViewModel = ItemImageViewModel(id: "", isSelected: true, imageUrl: "")
+    var items: [Item] = []
+    var item = Item()
+    var images: [Image] = []
+    var image = Image(id: "", isSelected: true, imageUrl: "")
     
 }
 
@@ -32,16 +27,16 @@ extension ItemState {
         case inputItem(cellUI: InputCellUI, message: String)
         case updateSwitchItem(viewModel: SwitchCellUI)
         case loadItems()
-        case addItem(item: ItemViewModel)
+        case addItem(item: Item)
         case removeItem(id: String)
         case loadDetail(id: String)
-        case loadImages(list: [ItemImageViewModel])
+        case loadImages(list: [Image])
         case selectImage(id: String)
         case fetchImages()
-        case loadImage(viewModel: ItemImageViewModel)
+        case loadImage(viewModel: Image)
         case loadItem(id: String)
         case updateItemImage(imageUrl: String)
-        case updateItem(item: ItemViewModel)
+        case updateItem(item: Item)
         
     }
 }
@@ -77,9 +72,32 @@ extension ItemState {
                   
                 }
                 
+                if case Action.fetchImages() = action {
+                    let service = FirebaseService()
+                    service.getItems(finished: { items in
+                        let list = items.map {
+                            Image(id: $0.id ?? "", isSelected: false, imageUrl: $0.imageUrl ?? "")
+                        }
+                        dispatch(ItemState.Action.loadImages(list: list))
+                    })
+                }
+                
+                if case Action.selectImage(let id) = action {
+                    var images: [Image] = getState()?.itemState.images ?? []
+                    var newImages: [Image] = images.compactMap {
+                        var newImage = $0
+                        newImage.isSelected = $0.id == id
+                       
+                        return newImage
+                    }
+                    
+                    dispatch(ItemState.Action.loadImages(list: newImages))
+                
+                }
+                
                 next(action)
             }
         }
+
     }
-    
 }

@@ -30,7 +30,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 33 images.
+  /// This `R.image` struct is generated, and contains static references to 36 images.
   struct image {
     /// Image `add_button`.
     static let add_button = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_button")
@@ -40,6 +40,10 @@ struct R: Rswift.Validatable {
     static let icon_arrow_cicle_o_right = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_arrow_cicle_o_right")
     /// Image `icon_bookmark`.
     static let icon_bookmark = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_bookmark")
+    /// Image `icon_bulb_off`.
+    static let icon_bulb_off = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_bulb_off")
+    /// Image `icon_bulb_on`.
+    static let icon_bulb_on = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_bulb_on")
     /// Image `icon_camera`.
     static let icon_camera = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_camera")
     /// Image `icon_check_square_o`.
@@ -84,6 +88,8 @@ struct R: Rswift.Validatable {
     static let icon_qrcode = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_qrcode")
     /// Image `icon_save`.
     static let icon_save = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_save")
+    /// Image `icon_send`.
+    static let icon_send = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_send")
     /// Image `icon_sign_in`.
     static let icon_sign_in = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_sign_in")
     /// Image `icon_square_o`.
@@ -122,6 +128,16 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icon_bookmark", bundle: ..., traitCollection: ...)`
     static func icon_bookmark(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_bookmark, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_bulb_off", bundle: ..., traitCollection: ...)`
+    static func icon_bulb_off(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_bulb_off, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_bulb_on", bundle: ..., traitCollection: ...)`
+    static func icon_bulb_on(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_bulb_on, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "icon_camera", bundle: ..., traitCollection: ...)`
@@ -234,6 +250,11 @@ struct R: Rswift.Validatable {
       return UIKit.UIImage(resource: R.image.icon_save, compatibleWith: traitCollection)
     }
     
+    /// `UIImage(named: "icon_send", bundle: ..., traitCollection: ...)`
+    static func icon_send(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_send, compatibleWith: traitCollection)
+    }
+    
     /// `UIImage(named: "icon_sign_in", bundle: ..., traitCollection: ...)`
     static func icon_sign_in(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_sign_in, compatibleWith: traitCollection)
@@ -267,7 +288,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 32 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 33 nibs.
   struct nib {
     /// Nib `AddItemTopicCell`.
     static let addItemTopicCell = _R.nib._AddItemTopicCell()
@@ -327,6 +348,8 @@ struct R: Rswift.Validatable {
     static let topicCell = _R.nib._TopicCell()
     /// Nib `TopicQosCell`.
     static let topicQosCell = _R.nib._TopicQosCell()
+    /// Nib `TopicRetainCell`.
+    static let topicRetainCell = _R.nib._TopicRetainCell()
     /// Nib `TopicSaveCell`.
     static let topicSaveCell = _R.nib._TopicSaveCell()
     /// Nib `TopicSwitchCell`.
@@ -508,6 +531,12 @@ struct R: Rswift.Validatable {
       return UIKit.UINib(resource: R.nib.topicQosCell)
     }
     
+    /// `UINib(name: "TopicRetainCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.topicRetainCell) instead")
+    static func topicRetainCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.topicRetainCell)
+    }
+    
     /// `UINib(name: "TopicSaveCell", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.topicSaveCell) instead")
     static func topicSaveCell(_: Void = ()) -> UIKit.UINib {
@@ -642,6 +671,10 @@ struct R: Rswift.Validatable {
       return R.nib.topicQosCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? TopicQosCell
     }
     
+    static func topicRetainCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> TopicRetainCell? {
+      return R.nib.topicRetainCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? TopicRetainCell
+    }
+    
     static func topicSaveCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> TopicSaveCell? {
       return R.nib.topicSaveCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? TopicSaveCell
     }
@@ -657,7 +690,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 27 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 28 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `AddItemTopicCell`.
     static let addItemTopicCell: Rswift.ReuseIdentifier<AddItemTopicCell> = Rswift.ReuseIdentifier(identifier: "AddItemTopicCell")
@@ -707,6 +740,8 @@ struct R: Rswift.Validatable {
     static let topicCell: Rswift.ReuseIdentifier<TopicCell> = Rswift.ReuseIdentifier(identifier: "TopicCell")
     /// Reuse identifier `TopicQosCell`.
     static let topicQosCell: Rswift.ReuseIdentifier<TopicQosCell> = Rswift.ReuseIdentifier(identifier: "TopicQosCell")
+    /// Reuse identifier `TopicRetainCell`.
+    static let topicRetainCell: Rswift.ReuseIdentifier<TopicRetainCell> = Rswift.ReuseIdentifier(identifier: "TopicRetainCell")
     /// Reuse identifier `TopicSaveCell`.
     static let topicSaveCell: Rswift.ReuseIdentifier<TopicSaveCell> = Rswift.ReuseIdentifier(identifier: "TopicSaveCell")
     /// Reuse identifier `TopicSwitchCell`.
@@ -834,6 +869,7 @@ struct _R: Rswift.Validatable {
       try _TemperatureCell.validate()
       try _TopicCell.validate()
       try _TopicQosCell.validate()
+      try _TopicRetainCell.validate()
       try _TopicSaveCell.validate()
       try _TopicTypeCell.validate()
     }
@@ -961,6 +997,8 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
+        if UIKit.UIImage(named: "icon_bulb_off", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_bulb_off' is used in nib 'ItemDetailSwitchCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_bulb_on", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_bulb_on' is used in nib 'ItemDetailSwitchCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_clock_o", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_clock_o' is used in nib 'ItemDetailSwitchCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_info", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_info' is used in nib 'ItemDetailSwitchCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_power_off", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_power_off' is used in nib 'ItemDetailSwitchCell', but couldn't be loaded.") }
@@ -986,7 +1024,7 @@ struct _R: Rswift.Validatable {
       static func validate() throws {
         if UIKit.UIImage(named: "icon_clock_o", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_clock_o' is used in nib 'ItemDetailTopicCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_info", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_info' is used in nib 'ItemDetailTopicCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "icon_publish", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_publish' is used in nib 'ItemDetailTopicCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_send", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_send' is used in nib 'ItemDetailTopicCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_tag", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_tag' is used in nib 'ItemDetailTopicCell', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
@@ -1357,6 +1395,27 @@ struct _R: Rswift.Validatable {
       static func validate() throws {
         if UIKit.UIImage(named: "icon_circle_o", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_circle_o' is used in nib 'TopicQosCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon_dot_circle_o", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_dot_circle_o' is used in nib 'TopicQosCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _TopicRetainCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = TopicRetainCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "TopicRetainCell"
+      let name = "TopicRetainCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> TopicRetainCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? TopicRetainCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "icon_circle_o", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_circle_o' is used in nib 'TopicRetainCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon_dot_circle_o", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_dot_circle_o' is used in nib 'TopicRetainCell', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
       }

@@ -125,6 +125,8 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         
         if self.isMovingFromParent {
             appStore.dispatch(ReSwiftRouter.SetRouteAction([mainViewRoute]))
+            appStore.dispatch(TopicState.Action.stopAllTasks())
+            appStore.state.topicState.topics.removeAll()
 
         }
     }
@@ -170,11 +172,12 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
             .map { $0.map { topic -> SectionItem in
                 
                 if topic.type == "switch" {
-                    return SectionItem.topicSwitchItem(viewModel:  ItemDetailSwitchCell.ViewModel(id: topic.id, name: topic.name, value: topic.value, message: topic.message))
+                    return SectionItem.topicSwitchItem(viewModel:  ItemDetailSwitchCell.ViewModel(id: topic.id, name: topic.name, value: topic.value, message: topic.message, time: topic.time))
                 }
                 
                 if topic.type == "value" {
-                    return SectionItem.topicValueItem(viewModel:  ItemDetailTopicCell.ViewModel(id: topic.id, name: topic.name, value: topic.value, message: topic.message))
+                    return SectionItem.topicValueItem(viewModel:  ItemDetailTopicCell.ViewModel(id: topic.id, name: topic.name, value: topic.value, message: topic.message, time: topic.time
+                    ))
                 }
                 return SectionItem.topicItem()
                 

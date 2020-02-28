@@ -14,11 +14,16 @@ class ItemDetailSwitchCell: UITableViewCell {
     var didTapSwitchAction: ((String) -> Void)?
     
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var bulbImageView: UIImageView!
+    
+    private weak var timer: Timer?
+    
     @IBAction private func infoButtonTapped(_ sender: UIButton) {
         didTapInfoAction?()
     }
     
-    @IBOutlet weak var valueLabel: UILabel!
     @IBAction private func switchButtonTapped(_ sender: UIButton) {
         
         let dict = convertToDictionary(text: viewModel?.message ?? "")
@@ -46,7 +51,26 @@ class ItemDetailSwitchCell: UITableViewCell {
         didSet {
             let value = viewModel?.value ?? ""
             nameLabel.text = viewModel?.name
+            timeLabel.text = ""
             valueLabel.text = value
+            
+            timer?.invalidate()
+            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+                guard let weakSelf = self else { return }
+                weakSelf.timeLabel.text = weakSelf.viewModel?.time.toDate()?.timeAgoDisplay()
+
+            }
+            
+            let dict = convertToDictionary(text: viewModel?.message ?? "")
+            let msgOff = dict?["off"] as? String ?? ""
+            let msgOn = dict?["on"] as? String ?? ""
+            
+            if msgOn == viewModel?.value {
+                bulbImageView.isHighlighted = true
+            } else if msgOff == viewModel?.value {
+                bulbImageView.isHighlighted = false
+            }
+
         }
     }
     
@@ -55,13 +79,14 @@ class ItemDetailSwitchCell: UITableViewCell {
         var name = ""
         var value = ""
         var message = ""
+        var time = ""
         
         typealias Identity = String
         var identity: String { return id }
         
         static func == (lhs: ViewModel, rhs: ViewModel) -> Bool {
             
-            return lhs.id == rhs.id && lhs.name == rhs.name && lhs.value == rhs.value && lhs.message == rhs.message
+            return lhs.id == rhs.id && lhs.name == rhs.name && lhs.value == rhs.value && lhs.message == rhs.message && lhs.time == rhs.time
         }
 
     }
@@ -80,5 +105,4 @@ class ItemDetailSwitchCell: UITableViewCell {
         }
         return nil
     }
-
 }
