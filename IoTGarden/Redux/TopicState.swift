@@ -21,11 +21,11 @@ extension TopicState {
     enum Action: ReSwift.Action {
         case loadTopics(itemId: String)
         case fetchTopics(topics: [Topic])
-        case loadConection()
+        case loadConection
         case addTopic(topic: Topic?)
         case removeTopic(id: String)
         case loadTopic(id: String)
-        case removeServer()
+        case removeServer(id: String)
         case fetchTopic(topic: Topic?)
         case fetchEditableTopic(topic: Topic?)
         case updateTopic(topic: Topic?)
@@ -33,7 +33,7 @@ extension TopicState {
         case updateTask(topic: Topic)
         case fetchTask(topicId: String, task: TopicConnector)
         case publish(topicId: String, message: String)
-        case stopAllTasks()
+        case stopAllTasks
         case removeTopics(itemId: String)
     }
 }
@@ -70,7 +70,7 @@ extension TopicState {
                 let task = state.tasks[topicId]
                 task?.publish(message: message)
             
-        case Action.stopAllTasks():
+        case Action.stopAllTasks:
             state.tasks.forEach { $0.value.disconnect() }
             state.tasks.removeAll()
 //        case Action.removeTopics(let itemId):
@@ -182,7 +182,7 @@ extension TopicState {
                             Topic(id: $0.uuid, name: $0.name, topic: $0.topic, value: $0.value, time: $0.time, serverId: $0.serverUUID, type: $0.kind, qos: $0.qos, message: $0.message, retain: $0.retain, itemId: $0.itemId)
                         }
                         
-                        dispatch(TopicState.Action.stopAllTasks())
+                        dispatch(TopicState.Action.stopAllTasks)
                         topics.forEach {
                             dispatch(TopicState.Action.updateTask(topic: $0))
                         }

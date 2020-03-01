@@ -21,7 +21,7 @@ extension ServerState {
         case updateServer(Server)
         case removeServer(id: String)
         case loadServer(id: String)
-        case loadServers()
+        case loadServers
         case selectServer(id: String)
 
     }
@@ -38,7 +38,7 @@ extension ServerState {
         
         switch action {
             
-        case .loadServers():
+        case .loadServers:
             
             let service = ItemListService()
             service.loadConfigures { configurations in
@@ -74,7 +74,7 @@ extension ServerState {
                 if case ServerState.Action.removeServer(let id) = action {
                     let service = ItemListService()
                     service.deleteConfigure(id: id, finished: { id in
-                        dispatch(ServerState.Action.loadServers())
+                        dispatch(ServerState.Action.loadServers)
                     })
                 }
                 
@@ -82,7 +82,7 @@ extension ServerState {
                     let service = ItemListService()
                     service.addConfiguration(configuration: ItemListService.Server(uuid: server.id, name: server.name, url: server.url, username: server.user, password: server.password, port: server.port, sslPort: server.sslPort), finished: { id in
                         
-                        dispatch(ServerState.Action.loadServers())
+                        dispatch(ServerState.Action.loadServers)
                     })
                 }
                 

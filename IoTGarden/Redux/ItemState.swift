@@ -26,13 +26,13 @@ extension ItemState {
         case switchItem(cellUI: SwitchCellUI, message: String)
         case inputItem(cellUI: InputCellUI, message: String)
         case updateSwitchItem(viewModel: SwitchCellUI)
-        case loadItems()
+        case loadItems
         case addItem(item: Item)
         case removeItem(id: String)
         case loadDetail(id: String)
         case loadImages(list: [Image])
         case selectImage(id: String)
-        case fetchImages()
+        case fetchImages
         case loadImage(viewModel: Image)
         case loadItem(id: String)
         case updateItemImage(imageUrl: String)
@@ -52,14 +52,14 @@ extension ItemState {
                     let service = ItemListService()
                     service.addItem(item: ItemListService.ItemData(uuid: viewModel.uuid, name: viewModel.name, imageUrlString: viewModel.imageUrl, topics:[])) { item in
                         
-                        dispatch(ItemState.Action.loadItems())
+                        dispatch(ItemState.Action.loadItems)
                     }
                 }
                 
                 if case Action.removeItem(let id) = action {
                     let itemListService = ItemListService()
                     itemListService.removeItem(id: id) { _ in
-                        dispatch(ItemState.Action.loadItems())
+                        dispatch(ItemState.Action.loadItems)
                         dispatch(TopicState.Action.removeTopics(itemId: id))
                     }
                 }
@@ -67,12 +67,12 @@ extension ItemState {
                 if case Action.updateItem(let viewModel) = action {
                     let itemListService = ItemListService()
                     itemListService.updateItem(item: ItemListService.ItemData(uuid: viewModel.uuid, name: viewModel.name, imageUrlString: viewModel.imageUrl, topics:[])) { _ in
-                        dispatch(ItemState.Action.loadItems())
+                        dispatch(ItemState.Action.loadItems)
                     }
                   
                 }
                 
-                if case Action.fetchImages() = action {
+                if case Action.fetchImages = action {
                     let service = FirebaseService()
                     service.getItems(finished: { items in
                         let list = items.map {

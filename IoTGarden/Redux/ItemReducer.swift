@@ -17,7 +17,7 @@ extension ItemState {
         switch action {
             
 
-        case .loadItems():
+        case .loadItems:
             let itemListService = ItemListService()
             
             itemListService.loadItems { itemDatas in

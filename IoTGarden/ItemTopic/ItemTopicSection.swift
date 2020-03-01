@@ -23,7 +23,7 @@ enum ItemTopicSectionItem {
     case topicItem(viewModel: ItemTopicCell.ViewModel?)
     case connectionItem(viewModel: ItemTopicServerCell.ViewModel?)
     case footerItem(viewModel: SectionItemViewModel?)
-    case footerSignInItem()
+    case footerSignInItem
 
 
 }

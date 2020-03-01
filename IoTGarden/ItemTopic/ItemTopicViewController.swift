@@ -59,7 +59,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                     appStore.dispatch(action)
                 }
                 return cell
-            case .footerSignInItem():
+            case .footerSignInItem:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemTopicSignInCell, for: indexPath) else { return UITableViewCell() }
                 cell.didTapSignInAction = {
                     let viewController = R.storyboard.connection.serverViewController()!
@@ -82,7 +82,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                     
                 }
                 cell.didTapTrashAction = {
-                    appStore.dispatch(TopicState.Action.removeServer())
+                    appStore.dispatch(TopicState.Action.removeServer(id: ""))
                 }
                 return cell
                 
@@ -109,7 +109,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
     private func loadData() {
         
         let tableRelay = Observable.combineLatest(topicRelay, serverRelay).map { topic, server -> [ItemTopicSection] in
-            let footerItems = server == nil ? [ItemTopicSectionItem.footerSignInItem(), ItemTopicSectionItem.footerItem(viewModel: nil)] :  [ItemTopicSectionItem.footerItem(viewModel: nil)]
+            let footerItems = server == nil ? [ItemTopicSectionItem.footerSignInItem, ItemTopicSectionItem.footerItem(viewModel: nil)] :  [ItemTopicSectionItem.footerItem(viewModel: nil)]
             let serverItems = server == nil ? [] : [ItemTopicSectionItem.connectionItem(viewModel: ItemTopicServerCell.ViewModel(id: server?.id ?? "", name: server?.name ?? "", server: server?.url ?? "", user: server?.user ?? "", password: server?.password ?? "", port: server?.port ?? "", sslPort: server?.sslPort ?? ""))]
             
             let topicViewModel = ItemTopicCell.ViewModel(id: topic?.id ?? "", name: topic?.name ?? "", topic: topic?.topic ?? "", value: topic?.value ?? "", time: topic?.time ?? "11:30", qos: topic?.qos ?? "", retain: topic?.retain ?? "", type: topic?.type ?? "")

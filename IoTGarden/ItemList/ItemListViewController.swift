@@ -50,14 +50,14 @@ class ItemListViewController: UIViewController, StoreSubscriber {
         super.viewDidLoad()
         prepareNibs()
 
-        let action = ItemState.Action.loadItems()
+        let action = ItemState.Action.loadItems
         appStore.dispatch(action)
         
         itemRelay.asObservable()
             .map { item -> [SectionItem] in
                 
                 let items: [SectionItem] = item.map { SectionItem.itemListSectionItem(viewModel: ItemListCell.ViewModel(uuid: $0.uuid, name: $0.name, imageUrl: $0.imageUrl))}
-                let tailItem = SectionItem.tailSectionItem()
+                let tailItem = SectionItem.tailSectionItem
                 
                 var sectionItems: [SectionItem] = []
                 sectionItems.append(tailItem)
@@ -70,7 +70,7 @@ class ItemListViewController: UIViewController, StoreSubscriber {
         itemListCollectionView.rx.modelSelected(SectionItem.self).subscribe(onNext:{ [weak self] sectionItem in
             guard let weakSelf = self else { return }
             
-            if case  SectionItem.tailSectionItem() = sectionItem {
+            if case  SectionItem.tailSectionItem = sectionItem {
                 appStore.dispatch(ReSwiftRouter.SetRouteAction([mainViewRoute, itemNameRoute], animated: true))
 
             } else {
@@ -115,7 +115,7 @@ class ItemListViewController: UIViewController, StoreSubscriber {
     
     private func configureRefreshControl() {
         
-        let action = ItemState.Action.loadItems()
+        let action = ItemState.Action.loadItems
         appStore.dispatch(action)
     }
     
@@ -149,12 +149,12 @@ extension ItemSectionModel: SectionModelType {
 }
 
 enum SectionItem {
-    case headerSectionItem()
+    case headerSectionItem
     case itemListSectionItem(viewModel: ItemListCell.ViewModel?)
     case switchSectionItem(cellUI: SwitchCellUI)
     case inputSectionItem(cellUI: InputCellUI)
     case temperatureSectionItem(name: TemperatureDevice)
-    case tailSectionItem()
+    case tailSectionItem
 }
 
 
@@ -223,7 +223,7 @@ extension ItemListViewController {
                 cell.configure(cellUI: cellUI)
                 return cell
                 
-            case .tailSectionItem():
+            case .tailSectionItem:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemListPlusCell", for: indexPath) as! ItemListPlusCell
                 return cell
             default:
