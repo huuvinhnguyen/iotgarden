@@ -48,7 +48,7 @@ class LineChart3ViewController: UIViewController {
             return ChartDataEntry(x: Double(i), y: val)
         }
         
-        let set3 = LineChartDataSet(values: yVals3, label: "DataSet 3")
+        let set3 = LineChartDataSet(entries: yVals3, label: "DataSet 3")
 //        set3.axisDependency = .left
         set3.setColor(UIColor(red: 255/255, green: 241/255, blue: 46/255, alpha: 1))
         set3.drawCirclesEnabled = true

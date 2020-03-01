@@ -65,7 +65,7 @@ class TopicViewController: UIViewController, StoreSubscriber {
 
                 cell.didTapSelectAction = {
                     let viewController = R.storyboard.connection.topicTypeViewController()!
-                    self.modalPresentationStyle = .currentContext
+                    self.modalPresentationStyle = .overFullScreen
                     self.present(viewController, animated: true, completion: nil)
                     viewController.topic = self.topic
                 }

@@ -27,7 +27,7 @@
 
 @end
 
-@interface MDCInkView () <CALayerDelegate, MDCInkLayerDelegate>
+@interface MDCInkView () <CALayerDelegate, MDCInkLayerDelegate, MDCLegacyInkLayerDelegate>
 
 @property(nonatomic, strong) CAShapeLayer *maskLayer;
 @property(nonatomic, copy) MDCInkCompletionBlock startInkRippleCompletionBlock;
@@ -35,7 +35,7 @@
 @property(nonatomic, strong) MDCInkLayer *activeInkLayer;
 
 // Legacy ink ripple
-@property(nonatomic, readonly) MDCLegacyInkLayer *inkLayer;
+@property(nonatomic, readonly, weak) MDCLegacyInkLayer *inkLayer;
 
 @end
 
@@ -74,13 +74,17 @@
   // Use mask layer when the superview has a shadowPath.
   _maskLayer = [CAShapeLayer layer];
   _maskLayer.delegate = self;
+
+  self.inkLayer.animationDelegate = self;
 }
 
 - (void)layoutSubviews {
   [super layoutSubviews];
 
-  // If the superview has a shadowPath make sure ink does not spread outside of the shadowPath.
-  if (self.superview.layer.shadowPath) {
+  if (self.inkStyle == MDCInkStyleUnbounded) {
+    self.layer.mask = nil;
+  } else if (self.superview.layer.shadowPath) {
+    // If the superview has a shadowPath make sure ink does not spread outside of the shadowPath.
     self.maskLayer.path = self.superview.layer.shadowPath;
     self.layer.mask = _maskLayer;
   }
@@ -93,7 +97,16 @@
     if ([layer isKindOfClass:[MDCInkLayer class]]) {
       MDCInkLayer *inkLayer = (MDCInkLayer *)layer;
       inkLayer.bounds = inkBounds;
+      inkLayer.fillColor = self.inkColor.CGColor;
     }
+  }
+}
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+  [super traitCollectionDidChange:previousTraitCollection];
+
+  if (self.traitCollectionDidChangeBlock) {
+    self.traitCollectionDidChangeBlock(self, previousTraitCollection);
   }
 }
 
@@ -124,7 +137,7 @@
 
 - (void)setInkColor:(UIColor *)inkColor {
   if (inkColor == nil) {
-    return;
+    inkColor = self.defaultInkColor;
   }
   self.inkLayer.inkColor = inkColor;
 }
@@ -241,7 +254,12 @@
 }
 
 - (UIColor *)defaultInkColor {
-  return [[UIColor alloc] initWithWhite:0 alpha:(CGFloat)0.14];
+  static UIColor *defaultInkColor;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    defaultInkColor = [[UIColor alloc] initWithWhite:0 alpha:(CGFloat)0.14];
+  });
+  return defaultInkColor;
 }
 
 + (MDCInkView *)injectedInkViewForView:(UIView *)view {
@@ -259,6 +277,20 @@
     [view addSubview:foundInkView];
   }
   return foundInkView;
+}
+
+#pragma mark - MDCLegacyInkLayerDelegate
+
+- (void)legacyInkLayerAnimationDidStart:(MDCLegacyInkLayer *)inkLayer {
+  if ([self.animationDelegate respondsToSelector:@selector(inkAnimationDidStart:)]) {
+    [self.animationDelegate inkAnimationDidStart:self];
+  }
+}
+
+- (void)legacyInkLayerAnimationDidEnd:(MDCLegacyInkLayer *)inkLayer {
+  if ([self.animationDelegate respondsToSelector:@selector(inkAnimationDidEnd:)]) {
+    [self.animationDelegate inkAnimationDidEnd:self];
+  }
 }
 
 #pragma mark - MDCInkLayerDelegate

@@ -53,6 +53,10 @@ class AddItemViewController:  UIViewController {
 }
 
 extension AddItemViewController: CocoaMQTTDelegate {
+    func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopic topics: [String]) {
+        
+    }
+    
     // Optional ssl CocoaMQTTDelegate
     func mqtt(_ mqtt: CocoaMQTT, didReceive trust: SecTrust, completionHandler: @escaping (Bool) -> Void) {
         

@@ -72,7 +72,7 @@ class ServerViewController: UIViewController, StoreSubscriber {
                     
                     let viewController = R.storyboard.selection.selectionViewController()!
                     viewController.selectedId = viewModel?.id ?? ""
-                    self.modalPresentationStyle = .currentContext
+                    self.modalPresentationStyle = .overFullScreen
                     self.present(viewController, animated: true, completion: nil)
                     
                 }

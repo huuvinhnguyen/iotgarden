@@ -48,11 +48,11 @@ class BarChartViewController: UIViewController {
         var set1: BarChartDataSet! = nil
         if let set = chartView.data?.dataSets.first as? BarChartDataSet {
             set1 = set
-            set1.values = values
+            //set1.values = values
             chartView.data?.notifyDataChanged()
             chartView.notifyDataSetChanged()
         } else {
-            set1 = BarChartDataSet(values: values, label: "The year 2019")
+            set1 = BarChartDataSet(entries: values, label: "The year 2019")
             set1.colors = ChartColorTemplates.material()
             set1.drawValuesEnabled = false
 

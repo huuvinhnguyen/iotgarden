@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>442582091227-osau34lc0fvfc403av8tmsfdv5j07j4n.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.442582091227-osau34lc0fvfc403av8tmsfdv5j07j4n</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBKroEycLka9Oi1Y-OKcR9ctBfkYrvXXvQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>442582091227</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ving.kvxios</string>
+	<key>PROJECT_ID</key>
+	<string>kvxa-e1524</string>
+	<key>STORAGE_BUCKET</key>
+	<string>kvxa-e1524.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:442582091227:ios:7641554458d2b1958413fe</string>
+	<key>DATABASE_URL</key>
+	<string>https://kvxa-e1524.firebaseio.com</string>
+</dict>
+</plist>

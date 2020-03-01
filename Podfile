@@ -27,7 +27,8 @@ target 'IoTGarden' do
   pod 'ReSwiftRouter'
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
-  pod 'SDWebImage'  
+  pod 'SDWebImage'
+  pod 'GaugeKit'  
 
 
   target 'IoTGardenTests' do

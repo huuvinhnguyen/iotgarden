@@ -95,10 +95,9 @@ class ItemListRoutable: Routable {
         if routeElementIdentifier == itemNameRoute {
             
             let vc = R.storyboard.itemList.instantiateInitialViewController()!
-            viewController.modalPresentationStyle = .currentContext
+            viewController.modalPresentationStyle = .fullScreen
             viewController.present(vc, animated: true, completion: nil)
-            
-            
+
             completionHandler()
             
             return ItemNameRoutable(viewController)
@@ -146,8 +145,9 @@ class ItemDetailRoutable: Routable {
         if routeElementIdentifier == itemNameRoute {
             
             let vc = R.storyboard.itemList.instantiateInitialViewController()!
-            viewController.modalPresentationStyle = .currentContext
+            viewController.modalPresentationStyle = .fullScreen
             viewController.present(vc, animated: true, completion: nil)
+
             
             
             completionHandler()

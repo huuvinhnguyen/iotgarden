@@ -12,9 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import "MDCShapedShadowLayerNew.h"
+#import "MDCShapedShadowLayer.h"
 
-#import "MDCShapeGeneratingNew.h"
+#import "MDCShapeGenerating.h"
+#import "MaterialColor.h"
 
 @implementation MDCShapedShadowLayer
 
@@ -125,6 +126,11 @@
 - (void)setShapedBorderColor:(UIColor *)shapedBorderColor {
   _shapedBorderColor = shapedBorderColor;
 
+  if ([self.delegate isKindOfClass:[UIView class]]) {
+    UIView *view = (UIView *)self.delegate;
+    _shapedBorderColor =
+        [_shapedBorderColor mdc_resolvedColorWithTraitCollection:view.traitCollection];
+  }
   if (CGPathIsEmpty(self.path)) {
     self.borderColor = _shapedBorderColor.CGColor;
     _colorLayer.strokeColor = nil;

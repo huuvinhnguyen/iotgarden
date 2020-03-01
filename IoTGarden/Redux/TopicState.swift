@@ -35,6 +35,7 @@ extension TopicState {
         case publish(topicId: String, message: String)
         case stopAllTasks
         case removeTopics(itemId: String)
+        case clearAllTopics
     }
 }
 
@@ -82,7 +83,8 @@ extension TopicState {
 //            state.topics.forEach {
 //                dispatch(TopicState.Action.removeTopic(id: $0.id))
 //            }
-
+        case Action.clearAllTopics:
+            state.topics.removeAll()
 
         default: ()
 
