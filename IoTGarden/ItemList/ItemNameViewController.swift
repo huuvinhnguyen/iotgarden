@@ -51,7 +51,7 @@ class ItemNameViewController: UIViewController, StoreSubscriber {
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
                 return cell
-            case .footerItem():
+            case .footerItem:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemSaveCell, for: indexPath) else { return UITableViewCell() }
                 cell.didTapSaveAction = {
                     self.saveButtonTapped("")
@@ -80,9 +80,9 @@ class ItemNameViewController: UIViewController, StoreSubscriber {
             [
                 
                                     Section(title: "", items: [
-                                        .headerItem(viewModel: ItemNameHeaderCell.ViewModel(name: viewModel.name)),
-                                        .item(viewModel: ItemNameCell.ViewModel(imageUrl: viewModel.imageUrl)),
-                                        .footerItem()
+                                        SectionItem.headerItem(viewModel: ItemNameHeaderCell.ViewModel(name: viewModel.name)),
+                                        SectionItem.item(viewModel: ItemNameCell.ViewModel(imageUrl: viewModel.imageUrl)),
+                                        SectionItem.footerItem
                                         ])
                                 ]
             }.bind(to: tableView.rx.items(dataSource: dataSource))
@@ -105,7 +105,7 @@ class ItemNameViewController: UIViewController, StoreSubscriber {
                     Section(title: "", items: [
                         .headerItem(viewModel: ItemNameHeaderCell.ViewModel(name: "abc")),
                         .item(viewModel: ItemNameCell.ViewModel()),
-                        .footerItem()
+                        .footerItem
                         ])
                 ]
         
@@ -172,6 +172,6 @@ extension ItemNameViewController {
     enum SectionItem {
         case headerItem(viewModel: ItemNameHeaderCell.ViewModel?)
         case item(viewModel: ItemNameCell.ViewModel?)
-        case footerItem()
+        case footerItem
     }
 }

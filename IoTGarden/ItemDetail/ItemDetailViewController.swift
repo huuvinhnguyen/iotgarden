@@ -79,7 +79,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                 }
                 cell.viewModel = viewModel
                 return cell
-            case .plusItem():
+            case .plusItem:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailPlusCell, for: indexPath) else { return UITableViewCell() }
                 
                 cell.didTapPlusAction = {
@@ -89,7 +89,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                     weakSelf.navigationController?.pushViewController(viewController, animated: true)
                 }
                 return cell
-            case .trashItem():
+            case .trashItem:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailTrashCell, for: indexPath) else { return UITableViewCell() }
                 cell.didTapTrashAction = {
                     guard let weakSelf = self else { return }
@@ -125,7 +125,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         
         if self.isMovingFromParent {
             appStore.dispatch(ReSwiftRouter.SetRouteAction([mainViewRoute]))
-            appStore.dispatch(TopicState.Action.stopAllTasks())
+            appStore.dispatch(TopicState.Action.stopAllTasks)
             appStore.state.topicState.topics.removeAll()
 
         }
@@ -179,7 +179,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                     return SectionItem.topicValueItem(viewModel:  ItemDetailTopicCell.ViewModel(id: topic.id, name: topic.name, value: topic.value, message: topic.message, time: topic.time
                     ))
                 }
-                return SectionItem.topicItem()
+                return SectionItem.topicItem
                 
                 }
                 
@@ -197,7 +197,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                     .topicSection(items: sectionItems)
                 )
                 list += sectionItems
-                list += [SectionItem.plusItem(), SectionItem.trashItem()]
+                list += [SectionItem.plusItem, SectionItem.trashItem]
                 
                 return [AnimatableSectionModel<String, SectionItem>(model: "", items: list)]
                 

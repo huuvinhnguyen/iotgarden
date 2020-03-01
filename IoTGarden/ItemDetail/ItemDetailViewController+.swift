@@ -62,13 +62,13 @@ extension ItemDetailViewController {
     enum SectionItem: IdentifiableType, Equatable {
         
         case headerItem(viewModel: ItemDetailHeaderCell.ViewModel)
-        case topicItem()
+        case topicItem
         case topicValueItem(viewModel: ItemDetailTopicCell.ViewModel)
         case topicSwitchItem(viewModel: ItemDetailSwitchCell.ViewModel)
         case topicRelayItem(viewModel: ItemDetailSwitchCell.ViewModel)
         case topicTemperatureItem(viewModel: ItemDetailSwitchCell.ViewModel)
-        case plusItem()
-        case trashItem()
+        case plusItem
+        case trashItem
         case footerItem(viewModel: ItemDetailFooterViewModel)
         
         typealias Identity = String
@@ -79,9 +79,9 @@ extension ItemDetailViewController {
                 return viewModel.id
             case .topicSwitchItem(let viewModel):
                 return viewModel.id
-            case .plusItem():
+            case .plusItem:
                 return "plus"
-            case .trashItem():
+            case .trashItem:
                 return "trash"
             case .headerItem(_):
                 return "header"

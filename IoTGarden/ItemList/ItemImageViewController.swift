@@ -55,7 +55,7 @@ class ItemImageViewController: UIViewController,  StoreSubscriber {
             .disposed(by: disposeBag)
         
         
-        let action = ItemState.Action.fetchImages()
+        let action = ItemState.Action.fetchImages
         appStore.dispatch(action)
 
         
