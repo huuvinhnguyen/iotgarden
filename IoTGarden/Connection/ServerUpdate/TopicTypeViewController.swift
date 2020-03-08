@@ -55,7 +55,9 @@ class TopicTypeViewController: UIViewController {
         let obs = selectedRelay.flatMapLatest { selectedId -> Observable<[Section]> in
             let section  = Section(title: "", items: [
                 .selectionItem(viewModel: TopicTypeCell.ViewModel(id: "1", name: "switch", isSelected: selectedId == "1")),
-                .selectionItem(viewModel: TopicTypeCell.ViewModel(id: "2", name: "value", isSelected: selectedId == "2"))
+                .selectionItem(viewModel: TopicTypeCell.ViewModel(id: "2", name: "value", isSelected: selectedId == "2")),
+                .selectionItem(viewModel: TopicTypeCell.ViewModel(id: "3", name: "gauge", isSelected: selectedId == "3"))
+
                 ])
             return Observable.just([section])
             }

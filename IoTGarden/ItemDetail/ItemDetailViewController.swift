@@ -77,6 +77,20 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                     appStore.dispatch(TopicState.Action.publish(topicId: viewModel.id, message: messageResult))
                     
                 }
+                
+                cell.viewModel = viewModel
+                return cell
+            case .topicGaugeItem(let viewModel):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemGaugeCell, for: indexPath) else { return UITableViewCell() }
+                
+                cell.didTapInfoAction = {
+                                
+                                guard let weakSelf = self else { return }
+                                let viewController = R.storyboard.itemTopic.itemTopic()!
+                                weakSelf.navigationController?.pushViewController(viewController, animated: true)
+                                viewController.identifier = viewModel.id
+                            }
+                
                 cell.viewModel = viewModel
                 return cell
             case .plusItem:
@@ -158,15 +172,13 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         tableView.register(R.nib.itemDetailFooterCell)
         tableView.register(R.nib.itemDetailSwitchCell)
         tableView.register(R.nib.itemDetailPlusCell)
+        tableView.register(R.nib.itemGaugeCell)
 
         tableView.register(R.nib.itemDetailTrashCell)
         tableView.remembersLastFocusedIndexPath = true
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.delegate = self
-
-        
-        
 
         topicsRelay.distinctUntilChanged()
             .map { $0.map { topic -> SectionItem in
@@ -179,6 +191,11 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                     return SectionItem.topicValueItem(viewModel:  ItemDetailTopicCell.ViewModel(id: topic.id, name: topic.name, value: topic.value, message: topic.message, time: topic.time
                     ))
                 }
+                
+                if topic.type == "gauge" {
+                    return SectionItem.topicGaugeItem(viewModel: ItemGaugeCell.ViewModel(id: topic.id, name: topic.name, value: topic.value, time: topic.time))
+                }
+                
                 return SectionItem.topicItem
                 
                 }

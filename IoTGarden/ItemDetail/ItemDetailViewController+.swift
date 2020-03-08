@@ -65,6 +65,7 @@ extension ItemDetailViewController {
         case topicItem
         case topicValueItem(viewModel: ItemDetailTopicCell.ViewModel)
         case topicSwitchItem(viewModel: ItemDetailSwitchCell.ViewModel)
+        case topicGaugeItem(viewModel: ItemGaugeCell.ViewModel)
         case topicRelayItem(viewModel: ItemDetailSwitchCell.ViewModel)
         case topicTemperatureItem(viewModel: ItemDetailSwitchCell.ViewModel)
         case plusItem
@@ -78,6 +79,8 @@ extension ItemDetailViewController {
             case .topicValueItem(let viewModel):
                 return viewModel.id
             case .topicSwitchItem(let viewModel):
+                return viewModel.id
+            case .topicGaugeItem(let viewModel):
                 return viewModel.id
             case .plusItem:
                 return "plus"

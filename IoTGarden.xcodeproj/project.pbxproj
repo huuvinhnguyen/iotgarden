@@ -21,6 +21,7 @@
 		04161F5423A1122B00BAB4B3 /* ItemNameHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04161F5323A1122B00BAB4B3 /* ItemNameHeaderCell.xib */; };
 		04161F5623A29E3600BAB4B3 /* ItemSaveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04161F5523A29E3600BAB4B3 /* ItemSaveCell.swift */; };
 		04161F5823A29E4700BAB4B3 /* ItemSaveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04161F5723A29E4700BAB4B3 /* ItemSaveCell.xib */; };
+		042A5B252414E27C005C8307 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A5B242414E27C005C8307 /* String+Extension.swift */; };
 		043009E4237DB682004FA341 /* ServerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043009E3237DB682004FA341 /* ServerState.swift */; };
 		0446881E233F5AD00074CF75 /* TopicSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0446881D233F5AD00074CF75 /* TopicSwitchCell.swift */; };
 		04468820233F5B0C0074CF75 /* TopicSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0446881F233F5B0C0074CF75 /* TopicSwitchCell.xib */; };
@@ -42,6 +43,8 @@
 		04CD3798239963990020A8B5 /* ItemTopicSignInCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD3797239963990020A8B5 /* ItemTopicSignInCell.swift */; };
 		04CD379A239963B30020A8B5 /* ItemTopicSignInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CD3799239963B30020A8B5 /* ItemTopicSignInCell.xib */; };
 		04DF830523F80B24003B57A3 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DF830423F80B24003B57A3 /* Image.swift */; };
+		04E1E41C240C0F8400320717 /* ItemGaugeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E1E41B240C0F8400320717 /* ItemGaugeCell.xib */; };
+		04E1E41E240C15C900320717 /* ItemGaugeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E1E41D240C15C900320717 /* ItemGaugeCell.swift */; };
 		04E56B8023D2172B001CFABC /* TopicTypeViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E56B7F23D2172B001CFABC /* TopicTypeViewController+.swift */; };
 		04F247FC23378B80003239B6 /* ItemTopic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F247FB23378B80003239B6 /* ItemTopic.storyboard */; };
 		04F247FE23378B9B003239B6 /* ItemTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F247FD23378B9B003239B6 /* ItemTopicViewController.swift */; };
@@ -197,6 +200,7 @@
 		04161F5323A1122B00BAB4B3 /* ItemNameHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemNameHeaderCell.xib; sourceTree = "<group>"; };
 		04161F5523A29E3600BAB4B3 /* ItemSaveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSaveCell.swift; sourceTree = "<group>"; };
 		04161F5723A29E4700BAB4B3 /* ItemSaveCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemSaveCell.xib; sourceTree = "<group>"; };
+		042A5B242414E27C005C8307 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		043009E3237DB682004FA341 /* ServerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerState.swift; sourceTree = "<group>"; };
 		0446881D233F5AD00074CF75 /* TopicSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicSwitchCell.swift; sourceTree = "<group>"; };
 		0446881F233F5B0C0074CF75 /* TopicSwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicSwitchCell.xib; sourceTree = "<group>"; };
@@ -218,6 +222,8 @@
 		04CD3797239963990020A8B5 /* ItemTopicSignInCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicSignInCell.swift; sourceTree = "<group>"; };
 		04CD3799239963B30020A8B5 /* ItemTopicSignInCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTopicSignInCell.xib; sourceTree = "<group>"; };
 		04DF830423F80B24003B57A3 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		04E1E41B240C0F8400320717 /* ItemGaugeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemGaugeCell.xib; sourceTree = "<group>"; };
+		04E1E41D240C15C900320717 /* ItemGaugeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemGaugeCell.swift; sourceTree = "<group>"; };
 		04E56B7F23D2172B001CFABC /* TopicTypeViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopicTypeViewController+.swift"; sourceTree = "<group>"; };
 		04F247FB23378B80003239B6 /* ItemTopic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemTopic.storyboard; sourceTree = "<group>"; };
 		04F247FD23378B9B003239B6 /* ItemTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTopicViewController.swift; sourceTree = "<group>"; };
@@ -598,6 +604,8 @@
 			isa = PBXGroup;
 			children = (
 				189C812C2311397D00E4BC95 /* ItemDetailHeaderCell.swift */,
+				04E1E41B240C0F8400320717 /* ItemGaugeCell.xib */,
+				04E1E41D240C15C900320717 /* ItemGaugeCell.swift */,
 				18592A072321699100DFB310 /* ItemDetailSwitchCell.xib */,
 				18592A09232169AE00DFB310 /* ItemDetailSwitchCell.swift */,
 				189C812E231139C800E4BC95 /* ItemDetailHeaderCell.xib */,
@@ -645,6 +653,7 @@
 				5B2CD58422896DB600EA8B25 /* UIColor+Extension.swift */,
 				5B2CD58622896E5400EA8B25 /* UIFont+Extension.swift */,
 				5B2CD588228973A400EA8B25 /* UIView+Extension.swift */,
+				042A5B242414E27C005C8307 /* String+Extension.swift */,
 				1803375221C9EF810098F944 /* Libs */,
 				18E7A71C218EE0F800F7E689 /* Redux */,
 				18A0431121894CD4005E04D4 /* Assets.xcassets */,
@@ -857,6 +866,7 @@
 				5B04F010227AEEBD0096FBA1 /* PositiveNegativeBarChartViewController.xib in Resources */,
 				5B04F00A227AE8F80096FBA1 /* LineChart3ViewController.xib in Resources */,
 				186AB62323328FFF0017F935 /* AddItemTopicCell.xib in Resources */,
+				04E1E41C240C0F8400320717 /* ItemGaugeCell.xib in Resources */,
 				18A33DE22326AAE400DFDBB6 /* ItemListPlusCell.xib in Resources */,
 				18A0431221894CD4005E04D4 /* Assets.xcassets in Resources */,
 				04CD379A239963B30020A8B5 /* ItemTopicSignInCell.xib in Resources */,
@@ -1046,6 +1056,7 @@
 				18B975C822FE945700E7DD8D /* AppStore.swift in Sources */,
 				1803376921CBAC7D0098F944 /* HumidityCell.swift in Sources */,
 				04E56B8023D2172B001CFABC /* TopicTypeViewController+.swift in Sources */,
+				042A5B252414E27C005C8307 /* String+Extension.swift in Sources */,
 				04051B66233E6E2D00224600 /* TopicTypeViewController.swift in Sources */,
 				04C774D623F94D030085E4F7 /* TopicRetainCell.swift in Sources */,
 				18D7C6D9220EB81000FF8529 /* MotionDevice.swift in Sources */,
@@ -1065,6 +1076,7 @@
 				04051B68233E6F3400224600 /* TopicTypeCell.swift in Sources */,
 				18A33DE42326AAFA00DFDBB6 /* ItemListPlusCell.swift in Sources */,
 				18A0430821894CD2005E04D4 /* AppDelegate.swift in Sources */,
+				04E1E41E240C15C900320717 /* ItemGaugeCell.swift in Sources */,
 				049A857E2364A8050038D247 /* ItemNameViewController.swift in Sources */,
 				049A85822365A1A30038D247 /* TopicListService.swift in Sources */,
 				185FF15622ABB5B3003C0DDF /* InputDevice.swift in Sources */,

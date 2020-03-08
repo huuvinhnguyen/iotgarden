@@ -240,6 +240,38 @@
             endingLineNumber = "157"
             landmarkName = "saveServer()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4B8EDE54-6243-43DF-AA3D-F102460CA5DA - 76a8101bf4fcd078"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IoTGarden.ServerViewController.(saveServer in _4C114E22E757B606664B8CD390F606F8)() -&gt; ()"
+                  moduleName = "IoTGarden"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/iotgarden/IoTGarden/Connection/ServerUpdate/ServerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "680">
+               </Location>
+               <Location
+                  uuid = "4B8EDE54-6243-43DF-AA3D-F102460CA5DA - 76a8101bf4fcd078"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IoTGarden.ServerViewController.(saveServer in _4C114E22E757B606664B8CD390F606F8)() -&gt; ()"
+                  moduleName = "IoTGarden"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/iotgarden/IoTGarden/Connection/ServerUpdate/ServerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "784">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -274,6 +306,38 @@
             endingLineNumber = "156"
             landmarkName = "saveServer()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "21B690FD-83A2-4256-B861-BF4B61957B02 - 76a8101bf4fcd078"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IoTGarden.ServerViewController.(saveServer in _4C114E22E757B606664B8CD390F606F8)() -&gt; ()"
+                  moduleName = "IoTGarden"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/iotgarden/IoTGarden/Connection/ServerUpdate/ServerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "680">
+               </Location>
+               <Location
+                  uuid = "21B690FD-83A2-4256-B861-BF4B61957B02 - 76a8101bf4fcd078"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IoTGarden.ServerViewController.(saveServer in _4C114E22E757B606664B8CD390F606F8)() -&gt; ()"
+                  moduleName = "IoTGarden"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/iotgarden/IoTGarden/Connection/ServerUpdate/ServerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "784">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -330,23 +394,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AFDDD03C-D6FE-4F84-A30B-5EEC161A92F4"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Services/CoreData/DataInteractor.swift"
-            timestampString = "604059173.570919"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "update(item:finished:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "D5BB31D5-23A3-4ADB-BB3B-9CB003C582AA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -359,125 +406,6 @@
             endingLineNumber = "31"
             landmarkName = "switchButtonTapped(_:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "44002365-55CC-44D4-B953-74D7D91518F3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IoTGarden/Redux/TopicState.swift"
-            timestampString = "604064418.163095"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "middleware"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3FB39350-C80D-4370-9243-818FD91DD622"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Services/CoreData/DataInteractor.swift"
-            timestampString = "604059173.571467"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
-            landmarkName = "update(item:finished:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9B3349A6-6518-406E-97F3-79CA7A06E87A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IoTGarden/Redux/TopicState.swift"
-            timestampString = "604064418.163169"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "middleware"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "58CED2AD-9FF3-4140-BD50-E1C5050E2D1F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Services/CoreData/DataInteractor.swift"
-            timestampString = "604059173.571786"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "update(item:finished:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3EED4524-8180-4F6E-8817-EAC65C6F5F61"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Services/CoreData/DataInteractor.swift"
-            timestampString = "604059173.5720561"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "update(item:finished:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8669A175-ACBC-4883-949A-F3BC16BA8FA8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Services/CoreData/ItemListService.swift"
-            timestampString = "603534230.573025"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "updateTopic(topic:finished:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "099DE2ED-9123-4892-B634-CEB504FDE85E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IoTGarden/ItemDetail/ItemDetailViewController.swift"
-            timestampString = "604143948.577817"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "dataSource"
-            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -542,8 +470,8 @@
             timestampString = "604143948.577922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "configureTableView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -576,10 +504,10 @@
             timestampString = "604143948.578043"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "newState(state:)"
-            landmarkType = "7">
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "dataSource"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -648,57 +576,6 @@
             endingLineNumber = "183"
             landmarkName = "saveTopic()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1C893BD2-F771-443F-BD08-33AFE038F77C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IoTGarden/Redux/TopicState.swift"
-            timestampString = "604064418.163852"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "middleware"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5CBB54DB-4D01-4C01-BF7B-F3E192718192"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Services/CoreData/DataInteractor.swift"
-            timestampString = "604059173.572791"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
-            landmarkName = "getItems(itemId:finished:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A84195A0-EF7E-4A78-9A3B-075A71ECC52A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IoTGarden/Redux/TopicState.swift"
-            timestampString = "604064418.163924"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "middleware"
-            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -831,10 +708,10 @@
             timestampString = "604143948.578271"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "viewWillDisappear(_:)"
-            landmarkType = "7">
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "ItemDetailViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -903,6 +780,38 @@
             endingLineNumber = "90"
             landmarkName = "dataSource"
             landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "4C44B53C-DE84-4417-B39D-28ABEA870BF3 - 38e516f1b0f791dd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (RxDataSources.TableViewSectionedDataSource&lt;IoTGarden.ServerViewController.Section&gt;, __C.UITableView, Foundation.IndexPath, IoTGarden.ServerViewController.SectionItem) -&gt; __C.UITableViewCell in IoTGarden.TopicViewController.(dataSource in _BF4D4D49B1D8890FDABA38EC5D6FB00D).getter : RxDataSources.RxTableViewSectionedReloadDataSource&lt;IoTGarden.ServerViewController.Section&gt;"
+                  moduleName = "IoTGarden"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/iotgarden/IoTGarden/Connection/ServerUpdate/TopicViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
+                  offsetFromSymbolStart = "4324">
+               </Location>
+               <Location
+                  uuid = "4C44B53C-DE84-4417-B39D-28ABEA870BF3 - 84ea3a52d25ea621"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 (Swift.Optional&lt;IoTGarden.TopicQosCell.ViewModel&gt;) -&gt; () in closure #1 (RxDataSources.TableViewSectionedDataSource&lt;IoTGarden.ServerViewController.Section&gt;, __C.UITableView, Foundation.IndexPath, IoTGarden.ServerViewController.SectionItem) -&gt; __C.UITableViewCell in IoTGarden.TopicViewController.(dataSource in _BF4D4D49B1D8890FDABA38EC5D6FB00D).getter : RxDataSources.RxTableViewSectionedReloadDataSource&lt;IoTGarden.ServerViewController.Section&gt;"
+                  moduleName = "IoTGarden"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/iotgarden/IoTGarden/Connection/ServerUpdate/TopicViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
+                  offsetFromSymbolStart = "140">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -920,6 +829,38 @@
             endingLineNumber = "88"
             landmarkName = "dataSource"
             landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "9326ED39-273C-42F7-BDDD-593CA3E1B038 - 38e516f1b0f791dd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (RxDataSources.TableViewSectionedDataSource&lt;IoTGarden.ServerViewController.Section&gt;, __C.UITableView, Foundation.IndexPath, IoTGarden.ServerViewController.SectionItem) -&gt; __C.UITableViewCell in IoTGarden.TopicViewController.(dataSource in _BF4D4D49B1D8890FDABA38EC5D6FB00D).getter : RxDataSources.RxTableViewSectionedReloadDataSource&lt;IoTGarden.ServerViewController.Section&gt;"
+                  moduleName = "IoTGarden"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/iotgarden/IoTGarden/Connection/ServerUpdate/TopicViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "3916">
+               </Location>
+               <Location
+                  uuid = "9326ED39-273C-42F7-BDDD-593CA3E1B038 - 84ea3a52d25ea621"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 (Swift.Optional&lt;IoTGarden.TopicQosCell.ViewModel&gt;) -&gt; () in closure #1 (RxDataSources.TableViewSectionedDataSource&lt;IoTGarden.ServerViewController.Section&gt;, __C.UITableView, Foundation.IndexPath, IoTGarden.ServerViewController.SectionItem) -&gt; __C.UITableViewCell in IoTGarden.TopicViewController.(dataSource in _BF4D4D49B1D8890FDABA38EC5D6FB00D).getter : RxDataSources.RxTableViewSectionedReloadDataSource&lt;IoTGarden.ServerViewController.Section&gt;"
+                  moduleName = "IoTGarden"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/iotgarden/IoTGarden/Connection/ServerUpdate/TopicViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "112">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
