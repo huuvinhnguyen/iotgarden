@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,20 +13,19 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="91"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V2c-jC-L7e" id="4WM-rl-obw">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="90.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="91"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pMe-P9-3fc">
-                        <rect key="frame" x="35" y="30" width="330" height="30"/>
-                        <nil key="textColor"/>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pMe-P9-3fc" customClass="OutlineTextField" customModule="IoTGarden" customModuleProvider="target">
+                        <rect key="frame" x="20" y="30" width="335" height="30.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="pMe-P9-3fc" firstAttribute="leading" secondItem="4WM-rl-obw" secondAttribute="leading" constant="35" id="2bc-0d-zlB"/>
+                    <constraint firstItem="pMe-P9-3fc" firstAttribute="leading" secondItem="4WM-rl-obw" secondAttribute="leading" constant="20" id="2bc-0d-zlB"/>
                     <constraint firstItem="pMe-P9-3fc" firstAttribute="top" secondItem="4WM-rl-obw" secondAttribute="top" constant="30" id="Wf1-hR-2M1"/>
-                    <constraint firstAttribute="trailing" secondItem="pMe-P9-3fc" secondAttribute="trailing" constant="10" id="gtx-eg-DpP"/>
+                    <constraint firstAttribute="trailing" secondItem="pMe-P9-3fc" secondAttribute="trailing" constant="20" id="gtx-eg-DpP"/>
                     <constraint firstAttribute="bottom" secondItem="pMe-P9-3fc" secondAttribute="bottom" constant="30.5" id="uPE-o0-t39"/>
                 </constraints>
             </tableViewCellContentView>

@@ -55,6 +55,11 @@ class ItemDetailTopicCell: UITableViewCell {
         }
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.updateConstraints()
+    }
+    
     struct ViewModel: IdentifiableType, Equatable {
         var id = ""
         var name = ""

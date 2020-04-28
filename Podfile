@@ -18,6 +18,7 @@ target 'IoTGarden' do
   pod 'MaterialComponents/NavigationBar'
   pod 'MaterialComponents/NavigationBar+ColorThemer'
   pod 'MaterialComponents/ButtonBar'
+  pod 'MaterialComponents/TextFields' , '~>108.0.0'
   pod 'R.swift'
   pod 'SwiftLint'
   pod 'RxDataSources'

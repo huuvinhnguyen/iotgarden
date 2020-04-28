@@ -7,19 +7,28 @@
 
 import RxSwift
 import RxCocoa
+import MaterialComponents.MaterialTextFields
 
 class TopicCell: UITableViewCell {
     var didTapSelectAction: (() -> Void)?
     
-    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var nameTextField: MDCTextField!
     
-    @IBOutlet weak var topicTextField: UITextField!
+    @IBOutlet weak var topicTextField: OutlineTextField!
     
-    @IBOutlet weak var typeTextField: UITextField!
+    @IBOutlet weak var typeTextField: MDCTextField!
     
     private let disposeBag = DisposeBag()
     
     var viewModelRelay = PublishRelay<ViewModel?>()
+    
+    lazy var topicTextFieldControllerFloating = MDCTextInputControllerUnderline()
+    lazy var nameTextFieldControllerFloating = MDCTextInputControllerUnderline()
+    
+    lazy var inputControllerOutlined = MDCTextInputControllerOutlined()
+
+
+
     
     @IBAction private func selectButtonTapped(_ sender: UIButton) {
         didTapSelectAction?()
@@ -27,16 +36,49 @@ class TopicCell: UITableViewCell {
     
     var viewModel: ViewModel? {
         didSet {
+            
            
                 nameTextField.text  = viewModel?.name ?? ""
                 topicTextField.text = viewModel?.topic ?? ""
                 viewModelRelay.accept(viewModel)
+            
+            
             
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+
+//        inputControllerOutlined.activeColor = .yellow
+//        inputControllerOutlined.textInput = nameTextField
+//        inputControllerOutlined.normalColor = .green
+//        inputControllerOutlined.floatingPlaceholderActiveColor = .green
+//        inputControllerOutlined.textInputFont = .systemFont(ofSize: 25)
+//        inputControllerOutlined.inlinePlaceholderFont = .systemFont(ofSize: 25)
+
+        
+//        
+//        topicTextFieldControllerFloating.normalColor = .red
+////        topicTextFieldControllerFloating.floatingPlaceholderNormalColor = .red
+//        topicTextFieldControllerFloating.expandsOnOverflow = true
+////        topicTextFieldControllerFloating.floatingPlaceholderActiveColor = .lightGray
+////        topicTextFieldControllerFloating.activeColor = .yellow
+//        topicTextFieldControllerFloating.textInput = topicTextField
+//        
+//        nameTextFieldControllerFloating.normalColor = .red
+////        nameTextFieldControllerFloating.floatingPlaceholderNormalColor = .red
+//        nameTextFieldControllerFloating.expandsOnOverflow = true
+//        nameTextFieldControllerFloating.floatingPlaceholderActiveColor = .lightGray
+//        nameTextFieldControllerFloating.activeColor = .yellow
+//        nameTextFieldControllerFloating.textInput = nameTextField
+        
+    
+
+        
+        
+       
 
     }
     
@@ -71,6 +113,27 @@ class TopicCell: UITableViewCell {
             self.viewModel?.type = text ?? ""
             self.viewModelRelay.accept(self.viewModel)
         }).disposed(by: self.disposeBag)
+        
+    }
+}
+
+
+class OutlineTextField: MDCTextField {
+    var inputControllerOutlined = MDCTextInputControllerOutlined()
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+        createBorder()
+    }
+    
+    func createBorder(){
+        
+        inputControllerOutlined.activeColor = .yellow
+        inputControllerOutlined.textInput = self
+        inputControllerOutlined.normalColor = .green
+        inputControllerOutlined.floatingPlaceholderActiveColor = .green
+        inputControllerOutlined.textInputFont = .systemFont(ofSize: 25)
+        inputControllerOutlined.inlinePlaceholderFont = .systemFont(ofSize: 25)
         
     }
 }

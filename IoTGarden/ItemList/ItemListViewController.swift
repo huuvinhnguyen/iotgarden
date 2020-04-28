@@ -13,6 +13,7 @@ import RxSwift
 import RxCocoa
 import ReSwift
 import ReSwiftRouter
+import MaterialComponents.MaterialTextFields
 
 private struct ItemDef {
     let title: String
@@ -49,6 +50,10 @@ class ItemListViewController: UIViewController, StoreSubscriber {
         
         super.viewDidLoad()
         prepareNibs()
+        
+        let textFieldFloating = MDCMultilineTextField()
+
+
 
         let action = ItemState.Action.loadItems
         appStore.dispatch(action)
