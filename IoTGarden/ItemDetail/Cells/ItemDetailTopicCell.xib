@@ -17,25 +17,27 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d44-Kg-vcQ">
-                        <rect key="frame" x="10" y="10" width="22" height="22"/>
+                        <rect key="frame" x="10" y="10" width="1" height="22"/>
                         <state key="normal" image="icon_tag"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fan speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrY-EJ-IAo">
-                        <rect key="frame" x="47" y="12" width="83.5" height="20.5"/>
+                        <rect key="frame" x="26" y="12" width="83.5" height="20.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ZG-hi-Mkv" customClass="OutlineTextField" customModule="IoTGarden" customModuleProvider="target">
-                        <rect key="frame" x="20" y="72.5" width="202" height="19"/>
+                        <rect key="frame" x="20" y="72.5" width="202" height="76"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="height" constant="76" id="DCT-zJ-BHZ"/>
                             <constraint firstAttribute="width" constant="202" id="SJN-2i-6gb"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwQ-Aj-gNJ">
-                        <rect key="frame" x="230" y="53.5" width="79" height="51"/>
+                        <rect key="frame" x="230" y="70" width="79" height="51"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="51" id="Czk-Eg-Aab"/>
                             <constraint firstAttribute="width" constant="79" id="Fes-60-gNi"/>
@@ -57,14 +59,14 @@
                         </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_clock_o" translatesAutoresizingMaskIntoConstraints="NO" id="3sE-fk-Uuy">
-                        <rect key="frame" x="22" y="141.5" width="61" height="15"/>
+                        <rect key="frame" x="22" y="198.5" width="61" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="61" id="2Qw-tg-iIy"/>
                             <constraint firstAttribute="height" constant="15" id="OUB-gh-RHf"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 seconds ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFG-aA-tvw">
-                        <rect key="frame" x="72" y="138.5" width="203" height="21"/>
+                        <rect key="frame" x="72" y="195.5" width="203" height="21"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>

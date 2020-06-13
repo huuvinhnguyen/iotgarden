@@ -74,6 +74,7 @@ class TopicCell: UITableViewCell {
 //        nameTextFieldControllerFloating.activeColor = .yellow
 //        nameTextFieldControllerFloating.textInput = nameTextField
         
+        
     
 
         
@@ -119,21 +120,32 @@ class TopicCell: UITableViewCell {
 
 
 class OutlineTextField: MDCTextField {
-    var inputControllerOutlined = MDCTextInputControllerOutlined()
+    var inputControllerOutlined = MDCTextInputControllerFilled()
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
         createBorder()
     }
     
+    
+    
     func createBorder(){
         
-        inputControllerOutlined.activeColor = .yellow
+//        inputControllerOutlined.activeColor = .yellow
         inputControllerOutlined.textInput = self
         inputControllerOutlined.normalColor = .green
         inputControllerOutlined.floatingPlaceholderActiveColor = .green
-        inputControllerOutlined.textInputFont = .systemFont(ofSize: 25)
-        inputControllerOutlined.inlinePlaceholderFont = .systemFont(ofSize: 25)
+        inputControllerOutlined.textInputFont = .systemFont(ofSize: 16)
+        inputControllerOutlined.inlinePlaceholderFont = .systemFont(ofSize: 16)
+        inputControllerOutlined.borderFillColor = .purple
+        inputControllerOutlined.leadingUnderlineLabelTextColor = .red
+        inputControllerOutlined.characterCountMax = 200
+        inputControllerOutlined.helperText = "AAAAAA"
+        leadingUnderlineLabel
+        backgroundColor = .cyan
         
+    
     }
 }
+
+

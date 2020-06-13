@@ -9,13 +9,14 @@ import UIKit
 import Differentiator
 import RxCocoa
 import RxSwift
+import MaterialComponents
 
 class ItemDetailTopicCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var updatedLabel: UILabel!
-    @IBOutlet weak var valueTextField: UITextField!
+    @IBOutlet weak var valueTextField: MDCTextField!
     @IBOutlet weak var timeLabel: UILabel!
     
     private weak var timer: Timer?
@@ -51,6 +52,9 @@ class ItemDetailTopicCell: UITableViewCell {
                 weakSelf.timeLabel.text = weakSelf.viewModel?.time.toDate()?.timeAgoDisplay()
                 
             }
+            
+            valueTextField.leadingUnderlineLabel.text = "sssss"
+            valueTextField.isSecureTextEntry = true
 
         }
     }
