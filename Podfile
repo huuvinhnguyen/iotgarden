@@ -15,10 +15,7 @@ target 'IoTGarden' do
   pod 'Charts'
   pod 'APIKit'
   pod "Himotoki"
-  pod 'MaterialComponents/NavigationBar'
-  pod 'MaterialComponents/NavigationBar+ColorThemer'
-  pod 'MaterialComponents/ButtonBar'
-  pod 'MaterialComponents/TextFields' , '~>108.0.0'
+  pod 'MaterialComponents'
   pod 'R.swift'
   pod 'SwiftLint'
   pod 'RxDataSources'
