@@ -21,6 +21,7 @@ enum ItemTopicSectionItem {
     
     case headerItem(viewModel: SectionItemViewModel?)
     case topicItem(viewModel: ItemTopicCell.ViewModel?)
+    case topicGaugeItem(viewModel: ItemGaugeCell.ViewModel?)
     case connectionItem(viewModel: ItemTopicServerCell.ViewModel?)
     case footerItem(viewModel: SectionItemViewModel?)
     case footerSignInItem

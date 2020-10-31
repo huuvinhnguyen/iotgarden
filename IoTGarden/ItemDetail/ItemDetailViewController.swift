@@ -81,7 +81,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                 cell.viewModel = viewModel
                 return cell
             case .topicGaugeItem(let viewModel):
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemGaugeCell, for: indexPath) else { return UITableViewCell() }
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemDetailGaugeCell, for: indexPath) else { return UITableViewCell() }
                 
                 cell.didTapInfoAction = {
                                 
@@ -163,9 +163,12 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         }
      
         appStore.dispatch(TopicState.Action.loadTopics(itemId: identifier))
+        
+     
     }
     
     private func configureTableView() {
+        tableView.backgroundColor = .primary
         
         tableView.register(R.nib.itemDetailHeaderCell)
         tableView.register(R.nib.itemDetailTopicCell)
@@ -173,6 +176,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
         tableView.register(R.nib.itemDetailSwitchCell)
         tableView.register(R.nib.itemDetailPlusCell)
         tableView.register(R.nib.itemGaugeCell)
+        tableView.register(R.nib.itemDetailGaugeCell)
 
         tableView.register(R.nib.itemDetailTrashCell)
         tableView.remembersLastFocusedIndexPath = true
@@ -193,7 +197,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
                 }
                 
                 if topic.type == "gauge" {
-                    return SectionItem.topicGaugeItem(viewModel: ItemGaugeCell.ViewModel(id: topic.id, name: topic.name, value: topic.value, time: topic.time))
+                    return SectionItem.topicGaugeItem(viewModel: ItemDetailGaugeCell.ViewModel(id: topic.id, name: topic.name, value: topic.value, time: topic.time))
                 }
                 
                 return SectionItem.topicItem
@@ -208,7 +212,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
 
                 var list = [SectionItem]()
 
-                list += [SectionItem.headerItem(viewModel: ItemDetailHeaderCell.ViewModel(name: item?.name ?? ""))]
+                list += [SectionItem.headerItem(viewModel: ItemDetailHeaderCell.ViewModel(name: item?.name ?? "", imageUrl: item?.imageUrl ?? ""))]
                 
                 sections.append(
                     .topicSection(items: sectionItems)
@@ -222,6 +226,7 @@ class ItemDetailViewController: UIViewController, StoreSubscriber {
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
+    
     }
     
 }

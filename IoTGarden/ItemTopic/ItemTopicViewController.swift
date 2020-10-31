@@ -39,7 +39,6 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                 
                 cell.viewModel = viewModel
                 
-                
                 cell.didTapEditAction = {
                     guard let topicId = viewModel?.id else { return }
                     let viewController = R.storyboard.connection.topicViewController()!
@@ -86,6 +85,11 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
                 }
                 return cell
                 
+            case .topicGaugeItem(let viewModel):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.itemGaugeCell, for: indexPath) else { return UITableViewCell() }
+                cell.viewModel = viewModel
+                return cell
+                
             default:
                 return UITableViewCell()
             }
@@ -114,9 +118,14 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
             
             let topicViewModel = ItemTopicCell.ViewModel(id: topic?.id ?? "", name: topic?.name ?? "", topic: topic?.topic ?? "", value: topic?.value ?? "", time: topic?.time ?? "11:30", qos: topic?.qos ?? "", retain: topic?.retain ?? "", type: topic?.type ?? "")
             
+            var topicItems: [ItemTopicSectionItem] = []
+            if topic?.type == "gauge" {
+                topicItems += [.topicGaugeItem(viewModel: ItemGaugeCell.ViewModel(id: topic?.id ?? "", name: topic?.name ?? "", value: topic?.value ?? ""   , time: topic?.time ?? ""))]
+            }
+             topicItems +=   [.topicItem(viewModel: topicViewModel)]
+        
             return [
-                ItemTopicSection.topicSection(items: [
-                .topicItem(viewModel: topicViewModel)]),
+                ItemTopicSection.topicSection(items: topicItems),
                 .serverSection(items: serverItems),
                 .footerSection(items: footerItems)
             ]
@@ -134,6 +143,7 @@ class ItemTopicViewController: UIViewController, StoreSubscriber {
         tableView.register(R.nib.itemTopicServerCell)
         tableView.register(R.nib.itemDetailTrashCell)
         tableView.register(R.nib.itemTopicSignInCell)
+        tableView.register(R.nib.itemGaugeCell)
     }
     
 }

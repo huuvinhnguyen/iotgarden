@@ -65,7 +65,7 @@ extension ItemDetailViewController {
         case topicItem
         case topicValueItem(viewModel: ItemDetailTopicCell.ViewModel)
         case topicSwitchItem(viewModel: ItemDetailSwitchCell.ViewModel)
-        case topicGaugeItem(viewModel: ItemGaugeCell.ViewModel)
+        case topicGaugeItem(viewModel: ItemDetailGaugeCell.ViewModel)
         case topicRelayItem(viewModel: ItemDetailSwitchCell.ViewModel)
         case topicTemperatureItem(viewModel: ItemDetailSwitchCell.ViewModel)
         case plusItem
